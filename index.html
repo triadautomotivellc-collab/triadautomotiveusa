@@ -1,23 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Triad Automotive LLC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Triad Automotive LLC</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: #f2f2f2;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        radial-gradient(circle at top, rgba(180,0,0,.35), transparent 35%),
+        linear-gradient(to bottom, #090909, #000);
+    }
+
+    .hero {
+      max-width: 900px;
+    }
+
+    .logo {
+      width: 90%;
+      max-width: 520px;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 0 25px rgba(255,0,0,.35));
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 7vw, 5rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: linear-gradient(#fff, #777);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      color: #c40000;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 15px 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .sub {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 8px;
+      padding: 14px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .btn-red {
+      background: #b00000;
+      color: white;
+      box-shadow: 0 0 18px rgba(255,0,0,.35);
+    }
+
+    .btn-dark {
+      border: 1px solid #777;
+      color: white;
+      background: #111;
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 35px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #111, #070707);
+      border: 1px solid #333;
+      border-top: 3px solid #b00000;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,.6);
+    }
+
+    .card h3 {
+      color: #e0e0e0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      color: #aaa;
+    }
+
+    .about {
+      text-align: center;
+      color: #ccc;
+      font-size: 1.1rem;
+      max-width: 850px;
+    }
+
+    .highlight {
+      color: #c40000;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #030303;
+      border-top: 1px solid #222;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Triad Automotive LLC</h1>
-    <p>Performance • Repair • Diagnostics</p>
 
+  <header>
+    <div class="hero">
+      <img src="logo.jpeg" alt="Triad Automotive Logo" class="logo" />
+
+      <h1>Triad Automotive</h1>
+      <p class="tagline">Performance • Diagnostics • Repair</p>
+      <p class="sub">Texas Roots. Wisconsin Built. Serving Baraboo and surrounding areas.</p>
+
+      <div class="buttons">
+        <a href="mailto:triadautomotivellc@gmail.com" class="btn-red">Request Quote</a>
+        <a href="#services" class="btn-dark">View Services</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="services">
     <h2>Services</h2>
-    <ul>
-        <li>Engine Swaps</li>
-        <li>Diagnostics</li>
-        <li>Electrical Repair</li>
-        <li>Performance Upgrades</li>
-        <li>Suspension & Brakes</li>
-    </ul>
 
+    <div class="grid">
+      <div class="card">
+        <h3>Diagnostics</h3>
+        <p>Check engine lights, drivability issues, electrical problems, and no-start diagnostics.</p>
+      </div>
+
+      <div class="card">
+        <h3>Performance</h3>
+        <p>Upgrades, custom setups, exhaust work, tuning support, and performance-focused builds.</p>
+      </div>
+
+      <div class="card">
+        <h3>Engine Swaps</h3>
+        <p>Engine replacements, swap support, teardown, installation, and build planning.</p>
+      </div>
+
+      <div class="card">
+        <h3>Suspension & Brakes</h3>
+        <p>Brake service, suspension work, lowering kits, repairs, and handling upgrades.</p>
+      </div>
+
+      <div class="card">
+        <h3>Electrical Repair</h3>
+        <p>Wiring issues, modules, sensors, lighting problems, and hard-to-find electrical faults.</p>
+      </div>
+
+      <div class="card">
+        <h3>Custom Builds</h3>
+        <p>Street builds, trucks, swaps, performance projects, and clean OEM+ setups.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Built Different</h2>
+    <p class="about">
+      <span class="highlight">Triad Automotive LLC</span> is built for people who care about their vehicles.
+      From daily drivers to performance projects, we bring real diagnostic work, mechanical skill,
+      and custom automotive experience together under one name.
+    </p>
+  </section>
+
+  <section>
     <h2>Contact</h2>
-    <p>Baraboo, Wisconsin</p>
-    <p>Email: triadautomotivellc@gmail.com</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Location</h3>
+        <p>Baraboo, Wisconsin</p>
+      </div>
+
+      <div class="card">
+        <h3>Email</h3>
+        <p><a href="mailto:triadautomotivellc@gmail.com" style="color:white;">triadautomotivellc@gmail.com</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Website</h3>
+        <p>triadautomotiveusa.com</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Triad Automotive LLC. All Rights Reserved.</p>
+    <p>Performance • Diagnostics • Repair</p>
+  </footer>
+
 </body>
 </html>
