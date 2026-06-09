@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Triad Automotive LLC</title>
+  <title>Triad Automotive LLC | Baraboo, WI</title>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #050505;
-      color: #f2f2f2;
+      color: #f4f4f4;
       line-height: 1.6;
     }
+
+    a { color: inherit; }
 
     header {
       min-height: 100vh;
@@ -20,25 +23,23 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 35px 18px;
       background:
-        radial-gradient(circle at top, rgba(180,0,0,.35), transparent 35%),
+        radial-gradient(circle at top, rgba(180,0,0,.28), transparent 32%),
         linear-gradient(to bottom, #090909, #000);
     }
 
-    .hero {
-      max-width: 900px;
-    }
+    .hero { max-width: 850px; }
 
     .logo {
-      width: 90%;
-      max-width: 520px;
-      margin-bottom: 25px;
-      filter: drop-shadow(0 0 25px rgba(255,0,0,.35));
+      width: 74%;
+      max-width: 420px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 22px rgba(255,0,0,.28));
     }
 
     h1 {
-      font-size: clamp(2.2rem, 7vw, 5rem);
+      font-size: clamp(2.2rem, 8vw, 5rem);
       letter-spacing: 4px;
       text-transform: uppercase;
       background: linear-gradient(#fff, #777);
@@ -47,16 +48,16 @@
     }
 
     .tagline {
-      color: #c40000;
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin: 15px 0;
+      color: #d00000;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 18px 0;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
 
     .sub {
-      color: #ccc;
+      color: #cfcfcf;
       font-size: 1.1rem;
       margin-bottom: 30px;
     }
@@ -64,10 +65,10 @@
     .buttons a {
       display: inline-block;
       margin: 8px;
-      padding: 14px 24px;
-      border-radius: 6px;
+      padding: 15px 24px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 800;
       text-transform: uppercase;
     }
 
@@ -79,8 +80,8 @@
 
     .btn-dark {
       border: 1px solid #777;
-      color: white;
       background: #111;
+      color: white;
     }
 
     section {
@@ -91,47 +92,56 @@
 
     h2 {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-bottom: 35px;
       text-transform: uppercase;
-      color: #fff;
+      letter-spacing: 2px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 22px;
     }
 
     .card {
       background: linear-gradient(145deg, #111, #070707);
       border: 1px solid #333;
-      border-top: 3px solid #b00000;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,.6);
+      border-top: 4px solid #b00000;
+      padding: 26px;
+      border-radius: 12px;
+      box-shadow: 0 0 24px rgba(0,0,0,.55);
     }
 
     .card h3 {
-      color: #e0e0e0;
+      color: #fff;
       margin-bottom: 10px;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .card p {
-      color: #aaa;
+      color: #bdbdbd;
+      font-size: 1rem;
     }
 
     .about {
-      text-align: center;
-      color: #ccc;
-      font-size: 1.1rem;
       max-width: 850px;
+      margin: auto;
+      text-align: center;
+      color: #cfcfcf;
+      font-size: 1.1rem;
     }
 
     .highlight {
-      color: #c40000;
-      font-weight: bold;
+      color: #e00000;
+      font-weight: 800;
+    }
+
+    .owners {
+      margin-top: 22px;
+      color: #aaa;
+      font-size: .95rem;
     }
 
     footer {
@@ -142,10 +152,7 @@
       color: #aaa;
     }
 
-    footer a {
-      color: #fff;
-      text-decoration: none;
-    }
+    footer p { margin: 6px 0; }
   </style>
 </head>
 
@@ -156,12 +163,12 @@
       <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="logo" />
 
       <h1>Triad Automotive</h1>
-      <p class="tagline">Performance • Diagnostics • Repair</p>
-      <p class="sub">Texas Roots. Wisconsin Built. Serving Baraboo and surrounding areas.</p>
+      <p class="tagline">Diagnostics • Repair • Exhaust • Mobile Service</p>
+      <p class="sub">Local automotive repair serving Baraboo, Wisconsin and surrounding areas.</p>
 
       <div class="buttons">
-        <a href="mailto:triadautomotivellc@gmail.com" class="btn-red">Request Quote</a>
-        <a href="#services" class="btn-dark">View Services</a>
+        <a href="tel:9564757834" class="btn-red">Call 956-475-7834</a>
+        <a href="tel:9564757053" class="btn-dark">Call 956-475-7053</a>
       </div>
     </div>
   </header>
@@ -172,42 +179,45 @@
     <div class="grid">
       <div class="card">
         <h3>Diagnostics</h3>
-        <p>Check engine lights, drivability issues, electrical problems, and no-start diagnostics.</p>
+        <p>Check engine lights, no-start issues, drivability problems, sensors, and troubleshooting.</p>
       </div>
 
       <div class="card">
-        <h3>Performance</h3>
-        <p>Upgrades, custom setups, exhaust work, tuning support, and performance-focused builds.</p>
+        <h3>General Repair</h3>
+        <p>Reliable repair work for daily drivers, family vehicles, and work vehicles.</p>
       </div>
 
       <div class="card">
-        <h3>Engine Swaps</h3>
-        <p>Engine replacements, swap support, teardown, installation, and build planning.</p>
+        <h3>Exhaust & Muffler</h3>
+        <p>Muffler repair, exhaust leaks, broken hangers, pipe repair, and exhaust replacement.</p>
       </div>
 
       <div class="card">
-        <h3>Suspension & Brakes</h3>
-        <p>Brake service, suspension work, lowering kits, repairs, and handling upgrades.</p>
+        <h3>Brakes</h3>
+        <p>Brake pads, rotors, calipers, brake noise, leaks, and safety inspections.</p>
       </div>
 
       <div class="card">
-        <h3>Electrical Repair</h3>
-        <p>Wiring issues, modules, sensors, lighting problems, and hard-to-find electrical faults.</p>
+        <h3>Suspension</h3>
+        <p>Struts, shocks, control arms, ball joints, tie rods, wheel bearings, and steering issues.</p>
       </div>
 
       <div class="card">
-        <h3>Custom Builds</h3>
-        <p>Street builds, trucks, swaps, performance projects, and clean OEM+ setups.</p>
+        <h3>Mobile Service</h3>
+        <p>Select mobile diagnostic and repair services available. Call or text for availability.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>Built Different</h2>
+    <h2>Local. Honest. Reliable.</h2>
     <p class="about">
-      <span class="highlight">Triad Automotive LLC</span> is built for people who care about their vehicles.
-      From daily drivers to performance projects, we bring real diagnostic work, mechanical skill,
-      and custom automotive experience together under one name.
+      <span class="highlight">Triad Automotive LLC</span> is a local automotive repair business built by
+      Pepe, Javy, and Mickey. We focus on honest work, accurate diagnostics, and dependable repairs
+      for customers in Baraboo and nearby communities.
+    </p>
+    <p class="about owners">
+      Family owned • Local service • Mobile work available
     </p>
   </section>
 
@@ -216,25 +226,32 @@
 
     <div class="grid">
       <div class="card">
-        <h3>Location</h3>
-        <p>Baraboo, Wisconsin</p>
+        <h3>Service Area</h3>
+        <p>Baraboo, Wisconsin and surrounding areas.</p>
+      </div>
+
+      <div class="card">
+        <h3>Call or Text</h3>
+        <p>
+          <a href="tel:9564757834">956-475-7834</a><br>
+          <a href="tel:9564757053">956-475-7053</a>
+        </p>
       </div>
 
       <div class="card">
         <h3>Email</h3>
-        <p><a href="mailto:triadautomotivellc@gmail.com" style="color:white;">triadautomotivellc@gmail.com</a></p>
-      </div>
-
-      <div class="card">
-        <h3>Website</h3>
-        <p>triadautomotiveusa.com</p>
+        <p>
+          <a href="mailto:triadautomotivellc@gmail.com">
+            triadautomotivellc@gmail.com
+          </a>
+        </p>
       </div>
     </div>
   </section>
 
   <footer>
     <p>© 2026 Triad Automotive LLC. All Rights Reserved.</p>
-    <p>Performance • Diagnostics • Repair</p>
+    <p>Diagnostics • Repair • Exhaust • Mobile Service</p>
   </footer>
 
 </body>
