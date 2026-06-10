@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triad Automotive | Premium Diagnostics & Service</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -17,7 +16,12 @@
             --text-muted: #9ca3af;
             color-scheme: dark;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
@@ -28,9 +32,15 @@
             align-items: center;
             min-height: 100vh;
         }
-        .container { width: 100%; max-width: 480px; }
-        
-        .utility-bar { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+        .utility-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+        }
         .lang-btn {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-color);
@@ -47,15 +57,24 @@
             align-items: center;
             margin-bottom: 24px;
         }
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand-img { height: 36px; }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-img {
+            height: 36px;
+        }
         .brand-name {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
             font-size: 18px;
             text-transform: uppercase;
         }
-        .contact-group { display: flex; gap: 8px; }
+        .contact-group {
+            display: flex;
+            gap: 8px;
+        }
         .contact-btn {
             font-size: 12px;
             font-weight: 600;
@@ -66,7 +85,6 @@
             border: 1px solid var(--border-color);
             border-radius: 20px;
         }
-        
         .info-bar {
             display: flex;
             flex-direction: column;
@@ -76,7 +94,7 @@
             border: 1px solid var(--border-color);
             padding: 12px 16px;
             border-radius: 14px;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             font-size: 13px;
         }
         .info-main {
@@ -95,7 +113,23 @@
             font-size: 12px;
             font-weight: 500;
         }
-        
+        .trust-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+        .trust-pill {
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+        }
         .dept-navigation {
             display: flex;
             gap: 16px;
@@ -112,7 +146,9 @@
             text-decoration: none;
             white-space: nowrap;
         }
-        .dept-tab.active { color: var(--accent-red); }
+        .dept-tab.active {
+            color: var(--accent-red);
+        }
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -133,8 +169,12 @@
             border-radius: 6px;
             margin-bottom: 18px;
         }
-        .core-badge.blue { background: var(--accent-blue); }
-        .core-badge.dark { background: #1e293b; }
+        .core-badge.blue {
+            background: var(--accent-blue);
+        }
+        .core-badge.dark {
+            background: #1e293b;
+        }
         .card-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
@@ -148,7 +188,6 @@
             line-height: 1.5;
             margin-bottom: 24px;
         }
-        
         .promo-box {
             background: rgba(37, 211, 102, 0.1);
             border: 1px solid rgba(37, 211, 102, 0.3);
@@ -168,6 +207,7 @@
             justify-content: space-between;
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
+            gap: 12px;
         }
         .price-label {
             font-size: 11px;
@@ -191,8 +231,36 @@
             border-radius: 14px;
             text-align: center;
             display: inline-block;
+            border: none;
+            cursor: pointer;
         }
-        .book-btn.blue { background: var(--accent-blue); }
+        .book-btn.blue {
+            background: var(--accent-blue);
+        }
+        .quick-help {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 18px;
+            margin-bottom: 24px;
+        }
+        .quick-help-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .quick-help-text {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .quick-help a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+        }
         .review-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
@@ -200,9 +268,21 @@
             border-radius: 16px;
             margin-bottom: 12px;
         }
-        .stars { color: #f59e0b; font-size: 14px; margin-bottom: 8px; }
-        .review-text { font-style: italic; font-size: 14px; margin-bottom: 8px; }
-        .review-name { font-weight: 700; font-size: 12px; color: var(--accent-blue); }
+        .stars {
+            color: #f59e0b;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .review-text {
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .review-name {
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--accent-blue);
+        }
         .gallery-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 13px;
@@ -231,7 +311,9 @@
             object-fit: cover;
             display: block;
         }
-        .form-group { margin-bottom: 14px; }
+        .form-group {
+            margin-bottom: 14px;
+        }
         .form-label {
             display: block;
             color: var(--text-muted);
@@ -263,6 +345,29 @@
             cursor: pointer;
             margin-top: 8px;
         }
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            padding: 12px 0 24px;
+        }
+        @media (max-width: 390px) {
+            .brand-name {
+                font-size: 15px;
+            }
+            .contact-btn {
+                padding: 7px 10px;
+            }
+            .card {
+                padding: 24px;
+            }
+            .card-title {
+                font-size: 22px;
+            }
+            .price-value {
+                font-size: 26px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -284,16 +389,33 @@
             <span class="info-main" id="txtInfoArea">Texas Roots, <span class="info-red">Wisconsin Tough</span></span>
             <span class="info-sub" id="txtInfoSub">Serving Baraboo, WI 53913 and surrounding areas</span>
         </div>
+        <div class="trust-strip">
+            <span class="trust-pill" id="pillDiag">Diagnostics</span>
+            <span class="trust-pill" id="pillMobile">Mobile Repair</span>
+            <span class="trust-pill" id="pillTow">Truck & Trailer</span>
+            <span class="trust-pill" id="pillParts">Custom Parts</span>
+            <span class="trust-pill" id="pillSpanish">English / Español</span>
+        </div>
         <nav class="dept-navigation">
             <a href="#" class="dept-tab active" id="tabAll">All Services</a>
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
             <a href="#parts" class="dept-tab" id="tabParts">Custom Parts</a>
+            <a href="#builds" class="dept-tab" id="tabBuilds">Build Planning</a>
         </nav>
+        <div class="quick-help">
+            <h2 class="quick-help-title" id="quickTitle">Not sure what you need?</h2>
+            <p class="quick-help-text" id="quickText">
+                Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.
+            </p>
+            <a href="sms:+19564757053" id="quickBtn">Text a Picture →</a>
+        </div>
         <main class="card" id="diagnostics">
             <div class="core-badge" id="bdgDiag">Core Evaluation</div>
             <h2 class="card-title" id="ttlDiag">Check Engine Light Scan</h2>
-            <p class="card-desc" id="dscDiag">No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and give you an honest direction on what may be failing.</p>
+            <p class="card-desc" id="dscDiag">
+                No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and give you an honest direction on what may be failing.
+            </p>
             <div class="card-footer">
                 <div>
                     <span class="price-label" id="lblPriceDiag">Flat Rate</span>
@@ -305,9 +427,13 @@
         <section class="card" id="towing">
             <div class="core-badge blue" id="bdgTow">Recovery & Transport</div>
             <h2 class="card-title" id="ttlTow">Truck & Trailer Service</h2>
-            <p class="card-desc" id="dscTow">Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.</p>
+            <p class="card-desc" id="dscTow">
+                Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.
+            </p>
             <div class="promo-box">
-                <p class="promo-text" id="promoTow">💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!</p>
+                <p class="promo-text" id="promoTow">
+                    💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!
+                </p>
             </div>
             <div class="card-footer">
                 <div>
@@ -323,9 +449,13 @@
         <section class="card" id="parts">
             <div class="core-badge dark" id="bdgParts">Special Order</div>
             <h2 class="card-title" id="ttlParts">Custom Parts by Order</h2>
-            <p class="card-desc" id="dscParts">Building something different? We can help source and order custom parts for daily drivers, lowered trucks, lifted trucks, performance builds, lighting, accessories, suspension, wheels, tires, and OEM replacement parts.</p>
+            <p class="card-desc" id="dscParts">
+                Building something different? We can help source and order custom parts for daily drivers, lowered trucks, lifted trucks, performance builds, lighting, accessories, suspension, wheels, tires, and OEM replacement parts.
+            </p>
             <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
-                <p class="promo-text" style="color: var(--accent-red);" id="promoParts">Tell us what you're building and we'll help you find the right parts for your vehicle.</p>
+                <p class="promo-text" style="color: var(--accent-red);" id="promoParts">
+                    Tell us what you're building and we'll help you find the right parts for your vehicle.
+                </p>
             </div>
             <div class="card-footer">
                 <div>
@@ -335,26 +465,59 @@
                 <a href="#scheduler" class="book-btn" id="btnParts">Request Parts</a>
             </div>
         </section>
+        <section class="card" id="builds">
+            <div class="core-badge dark" id="bdgBuilds">Build Planning</div>
+            <h2 class="card-title" id="ttlBuilds">Build & Upgrade Consultation</h2>
+            <p class="card-desc" id="dscBuilds">
+                Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, and custom upgrades before you spend money on the wrong parts.
+            </p>
+            <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
+                <p class="promo-text" style="color: var(--accent-red);" id="promoBuilds">
+                    Text us your vehicle and your goal. We’ll help you build a parts plan that makes sense.
+                </p>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <span class="price-label" id="lblPriceBuilds">Starting At</span>
+                    <span class="price-value" id="valPriceBuilds">$25</span>
+                </div>
+                <a href="#scheduler" class="book-btn" id="btnBuilds">Plan Build</a>
+            </div>
+        </section>
         <section class="card" style="background:transparent; border:none; padding:0;">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"Fixed my truck real fast when it died in the trailer park. Legit guys, don't go anywhere else."</p>
+                <p class="review-text">
+                    "Fixed my truck real fast when it died in the trailer park. Legit guys, don't go anywhere else."
+                </p>
                 <div class="review-name">— Dylan Seipp</div>
             </div>
             <div class="review-card">
                 <div class="stars">★★★★★</div>
-                <p class="review-text">"These guys know what they're doing. Got me back on the road in no time."</p>
+                <p class="review-text">
+                    "These guys know what they're doing. Got me back on the road in no time."
+                </p>
                 <div class="review-name">— Kavik Copus</div>
             </div>
         </section>
         <section>
             <h3 class="gallery-title" id="galTitle">Shop Operations & Sourcing</h3>
-            <p class="card-desc" id="galSub">Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.</p>
+            <p class="card-desc" id="galSub">
+                Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.
+            </p>
             <div class="grid-container">
-                <div class="image-card"><img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck Build" class="grid-img"></div>
-                <div class="image-card"><img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img"></div>
-                <div class="image-card"><img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette" class="grid-img"></div>
-                <div class="image-card"><img src="IMG_7602.jpeg" alt="Dually Truck" class="grid-img"></div>
+                <div class="image-card">
+                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck Build" class="grid-img">
+                </div>
+                <div class="image-card">
+                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img">
+                </div>
+                <div class="image-card">
+                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette" class="grid-img">
+                </div>
+                <div class="image-card">
+                    <img src="IMG_7602.jpeg" alt="Dually Truck" class="grid-img">
+                </div>
             </div>
         </section>
         <section class="card" id="scheduler" style="background: rgba(18,22,31,0.9);">
@@ -371,6 +534,8 @@
                         <option value="Wisconsin Dells">Wisconsin Dells</option>
                         <option value="Portage">Portage</option>
                         <option value="Reedsburg">Reedsburg</option>
+                        <option value="Sauk City">Sauk City</option>
+                        <option value="Lake Delton">Lake Delton</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
@@ -388,14 +553,34 @@
                         <select id="bookingTime" class="form-input">
                             <option value="ASAP">ASAP</option>
                             <option value="8:00 AM">8:00 AM</option>
+                            <option value="8:30 AM">8:30 AM</option>
+                            <option value="9:00 AM">9:00 AM</option>
+                            <option value="9:30 AM">9:30 AM</option>
                             <option value="10:00 AM">10:00 AM</option>
+                            <option value="10:30 AM">10:30 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="11:30 AM">11:30 AM</option>
                             <option value="12:00 PM">12:00 PM</option>
+                            <option value="12:30 PM">12:30 PM</option>
+                            <option value="1:00 PM">1:00 PM</option>
+                            <option value="1:30 PM">1:30 PM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="2:30 PM">2:30 PM</option>
+                            <option value="3:00 PM">3:00 PM</option>
+                            <option value="3:30 PM">3:30 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                            <option value="4:30 PM">4:30 PM</option>
+                            <option value="5:00 PM">5:00 PM</option>
+                            <option value="After Hours">After Hours</option>
                         </select>
                     </div>
                 </div>
                 <button type="submit" class="submit-btn" id="btnFrmSubmit">💬 Confirm & Text Request</button>
             </form>
         </section>
+        <footer>
+            <p id="footerText">Triad Automotive LLC • Baraboo, Wisconsin</p>
+        </footer>
     </div>
     <script>
         let currentLang = 'en';
@@ -406,10 +591,19 @@
                 txtTextBtn: "Text",
                 txtInfoArea: "Texas Roots, <span class='info-red'>Wisconsin Tough</span>",
                 txtInfoSub: "Serving Baraboo, WI 53913 and surrounding areas",
+                pillDiag: "Diagnostics",
+                pillMobile: "Mobile Repair",
+                pillTow: "Truck & Trailer",
+                pillParts: "Custom Parts",
+                pillSpanish: "English / Español",
                 tabAll: "All Services",
                 tabDiag: "Diagnostics",
                 tabTow: "Truck & Trailer",
                 tabParts: "Custom Parts",
+                tabBuilds: "Build Planning",
+                quickTitle: "Not sure what you need?",
+                quickText: "Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.",
+                quickBtn: "Text a Picture →",
                 bdgDiag: "Core Evaluation",
                 ttlDiag: "Check Engine Light Scan",
                 dscDiag: "No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and give you an honest direction on what may be failing.",
@@ -430,6 +624,13 @@
                 lblPriceParts: "Availability",
                 valPriceParts: "Quote",
                 btnParts: "Request Parts",
+                bdgBuilds: "Build Planning",
+                ttlBuilds: "Build & Upgrade Consultation",
+                dscBuilds: "Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, and custom upgrades before you spend money on the wrong parts.",
+                promoBuilds: "Text us your vehicle and your goal. We’ll help you build a parts plan that makes sense.",
+                lblPriceBuilds: "Starting At",
+                valPriceBuilds: "$25",
+                btnBuilds: "Plan Build",
                 galTitle: "Shop Operations & Sourcing",
                 galSub: "Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.",
                 frmTitle: "📅 Schedule Service",
@@ -439,12 +640,14 @@
                 lblFrmDate: "4. Date",
                 lblFrmTime: "5. Time",
                 btnFrmSubmit: "💬 Confirm & Text Request",
+                footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 svcs: [
                     {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
                     {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
                     {v: "Mobile Repair", t: "Mobile Repair"},
                     {v: "Custom Parts by Order", t: "Custom Parts by Order"},
-                    {v: "Source Rust Free Texas Truck/Car", t: "Sourcing: Rust-Free Texas Truck/Car"}
+                    {v: "Build & Upgrade Consultation", t: "Build & Upgrade Consultation"},
+                    {v: "Source Rust-Free Texas Truck/Car", t: "Sourcing: Rust-Free Texas Truck/Car"}
                 ]
             },
             es: {
@@ -453,10 +656,19 @@
                 txtTextBtn: "Texto",
                 txtInfoArea: "Raíces de Texas, <span class='info-red'>Fuerza de Wisconsin</span>",
                 txtInfoSub: "Sirviendo Baraboo, WI 53913 y áreas cercanas",
+                pillDiag: "Diagnósticos",
+                pillMobile: "Reparación Móvil",
+                pillTow: "Camión y Remolque",
+                pillParts: "Partes Especiales",
+                pillSpanish: "English / Español",
                 tabAll: "Servicios",
                 tabDiag: "Diagnósticos",
                 tabTow: "Camión y Remolque",
                 tabParts: "Partes Especiales",
+                tabBuilds: "Plan de Proyecto",
+                quickTitle: "¿No sabes qué necesitas?",
+                quickText: "Mándanos una foto de la luz del tablero, fuga, daño, ruido o parte que quieres instalar. Te ayudamos a saber por dónde empezar.",
+                quickBtn: "Mandar Foto →",
                 bdgDiag: "Evaluación Central",
                 ttlDiag: "Diagnóstico por Computadora",
                 dscDiag: "Sin rodeos corporativos. Conectamos el escáner al sistema de tu vehículo para leer los códigos y darte una dirección honesta sobre lo que puede estar fallando.",
@@ -477,6 +689,13 @@
                 lblPriceParts: "Disponibilidad",
                 valPriceParts: "Cotizar",
                 btnParts: "Pedir Partes",
+                bdgBuilds: "Plan de Proyecto",
+                ttlBuilds: "Consulta de Modificaciones",
+                dscBuilds: "¿Quieres modificar tu troca, carro o SUV pero no sabes por dónde empezar? Te ayudamos a planear rines, llantas, suspensión, luces, performance, accesorios y upgrades antes de gastar dinero en partes equivocadas.",
+                promoBuilds: "Mándanos tu vehículo y tu meta. Te ayudamos a armar un plan de partes que tenga sentido.",
+                lblPriceBuilds: "Desde",
+                valPriceBuilds: "$25",
+                btnBuilds: "Planear Proyecto",
                 galTitle: "Operaciones y Búsqueda",
                 galSub: "¿Buscas tu próximo auto? A través de nuestra red de socios autorizados, te ayudamos a encontrar el vehículo perfecto o conseguir <strong>autos y camionetas de Texas libres de óxido</strong>.",
                 frmTitle: "📅 Agendar Servicio",
@@ -486,12 +705,14 @@
                 lblFrmDate: "4. Fecha",
                 lblFrmTime: "5. Hora",
                 btnFrmSubmit: "💬 Confirmar y Enviar SMS",
+                footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 svcs: [
                     {v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"},
-                    {v: "Servicio de Remolque", t: "Servicio de Remolque"},
+                    {v: "Servicio de Camión y Remolque", t: "Servicio de Camión y Remolque"},
                     {v: "Reparación Móvil", t: "Reparación Móvil"},
                     {v: "Partes Especiales por Pedido", t: "Partes Especiales por Pedido"},
-                    {v: "Búsqueda de Vehículo Texas", t: "Búsqueda de Vehículo de Texas"}
+                    {v: "Consulta de Modificaciones", t: "Consulta de Modificaciones"},
+                    {v: "Búsqueda de Vehículo de Texas", t: "Búsqueda de Vehículo de Texas"}
                 ]
             }
         };
@@ -522,7 +743,12 @@
             const loc = document.getElementById('bookingLocation').value;
             const rawDate = document.getElementById('bookingDate').value;
             const time = document.getElementById('bookingTime').value;
-            const msg = "Hi Triad, I need: " + svc + ". City: " + city + ". Location: " + loc + ". Date: " + rawDate + ". Time: " + time;
+            const msg =
+                "Hi Triad, I need: " + svc +
+                ". City: " + city +
+                ". Location: " + loc +
+                ". Date: " + rawDate +
+                ". Time: " + time;
             window.location.href = `sms:+19564757053?body=${encodeURIComponent(msg)}`;
         }
         populateDropdowns();
