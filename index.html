@@ -37,13 +37,9 @@
 
         body {
             background:
-                linear-gradient(180deg, rgba(5, 6, 8, 0.62), rgba(5, 6, 8, 0.82)),
-                radial-gradient(circle at top left, rgba(255, 59, 87, 0.12), transparent 36%),
-                radial-gradient(circle at top right, rgba(0, 122, 255, 0.06), transparent 34%),
-                url("IMG_7642.jpeg"); /* IMPORTANT: Upload IMG_7642.jpeg to the same GitHub folder as index.html */
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.035), transparent 30%),
+                radial-gradient(circle at top right, rgba(255, 255, 255, 0.025), transparent 28%),
+                linear-gradient(180deg, #050608 0%, #080a0f 42%, #030405 100%);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             padding: 18px 16px 28px;
@@ -61,9 +57,9 @@
             inset: 0;
             background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
             background-repeat: no-repeat;
-            background-position: center 155px;
-            background-size: 420px auto;
-            opacity: 0.004;
+            background-position: center 160px;
+            background-size: 500px auto;
+            opacity: 0.010;
             pointer-events: none;
             z-index: 0;
         }
@@ -153,7 +149,7 @@
         .contact-btn.primary {
             background: var(--accent-red);
             border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(255, 59, 87, 0.16);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.025);
         }
 
 
@@ -233,7 +229,7 @@
         }
 
         .hero {
-            background: linear-gradient(145deg, rgba(10, 13, 19, 0.78), rgba(6, 8, 12, 0.84));
+            background: linear-gradient(145deg, rgba(10, 13, 19, 0.94), rgba(6, 8, 12, 0.96));
             border: 1px solid rgba(255, 255, 255, 0.075);
             border-radius: 28px;
             padding: 22px;
@@ -318,7 +314,7 @@
 
         .hero-btn.red {
             background: var(--accent-red);
-            box-shadow: 0 14px 38px rgba(255, 59, 87, 0.18);
+            box-shadow: 0 14px 38px rgba(255, 255, 255, 0.035);
         }
 
         .hero-btn.dark {
@@ -452,7 +448,7 @@
         }
 
         .card {
-            background: rgba(13, 16, 24, 0.76);
+            background: rgba(13, 16, 24, 0.92);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--border-color);
@@ -600,7 +596,7 @@
             display: inline-block;
             border: none;
             cursor: pointer;
-            box-shadow: 0 12px 30px rgba(255, 59, 87, 0.16);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.025);
         }
 
         .book-btn.blue {
@@ -1037,15 +1033,7 @@
             margin-top: 8px;
             text-align: center;
         }
-
-
-        @supports (-webkit-touch-callout: none) {
-            body {
-                background-attachment: scroll;
-            }
-        }
-
-        @media (max-width: 410px) {
+@media (max-width: 410px) {
 
             .logo-header {
                 margin-top: 0;
