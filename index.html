@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Auto | Premium Diagnostics & Custom Shop</title>
+    <title>Triad Automotive | Premium Diagnostics & Custom Shop</title>
     
+    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
             max-width: 480px;
         }
 
-        /* --- Header con tu Logotipo Real --- */
+        /* --- Header --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -70,8 +71,8 @@
         .brand-name {
             font-family: var(--font-display);
             font-weight: 800;
-            font-size: 22px;
-            letter-spacing: 1.5px;
+            font-size: 18px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: #fff;
         }
@@ -87,7 +88,7 @@
             border-radius: 20px;
         }
 
-        /* --- Barra de Información de Ubicación --- */
+        /* --- Info Bar --- */
         .info-bar {
             display: flex;
             align-items: center;
@@ -103,7 +104,7 @@
 
         .geo-icon { color: var(--accent-red); font-size: 16px; }
 
-        /* --- Pestañas de Departamentos (Estructura Original) --- */
+        /* --- Navigation --- */
         .dept-navigation {
             display: flex;
             gap: 16px;
@@ -130,7 +131,7 @@
             position: relative;
         }
 
-        /* --- Tarjetas de Servicio Estilo Texas --- */
+        /* --- Cards --- */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -209,7 +210,7 @@
             box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
         }
 
-        /* --- Galería de Fotos del Taller (4 Vehículos) --- */
+        /* --- Gallery Section --- */
         .gallery-section {
             width: 100%;
             margin-bottom: 32px;
@@ -222,8 +223,16 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             text-align: center;
+        }
+
+        .gallery-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         .grid-container {
@@ -247,16 +256,7 @@
             object-fit: cover;
         }
 
-        .img-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-            padding: 12px;
-        }
-
-        .img-label { font-size: 12px; font-weight: 600; color: #fff; }
-
-        /* --- Sección de Calendario Interactivo con WhatsApp --- */
+        /* --- Scheduler Section --- */
         .scheduler-section {
             width: 100%;
             background: rgba(18, 22, 31, 0.8);
@@ -338,27 +338,30 @@
 
     <div class="container">
         
+        <!-- Header -->
         <header>
             <div class="brand">
-                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Logo" class="brand-img">
-                <h1 class="brand-name">Triad</h1>
+                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="brand-img">
+                <h1 class="brand-name">Triad Automotive</h1>
             </div>
             <a href="tel:9564757834" class="contact-btn">Llamar</a>
         </header>
 
+        <!-- Info Bar -->
         <div class="info-bar">
             <span class="geo-icon">📍</span>
             <span>Área de Servicio: <strong>Baraboo 53913</strong></span>
         </div>
 
+        <!-- Navigation Tabs -->
         <nav class="dept-navigation">
             <a href="#" class="dept-tab active">Todos los Servicios</a>
             <a href="#diagnostics" class="dept-tab">Diagnósticos</a>
             <a href="#towing" class="dept-tab">Grúas y Móvil</a>
-            <a href="#" class="dept-tab">Sistemas de Escape</a>
-            <a href="#" class="dept-tab">Frenos</a>
+            <a href="#scheduler" class="dept-tab">Agendar Cita</a>
         </nav>
 
+        <!-- SERVICIO 1: Diagnóstico en Taller -->
         <main class="card" id="diagnostics">
             <div class="core-badge">Evaluación Central</div>
             <h2 class="card-title">Check Engine Light Scan</h2>
@@ -374,6 +377,7 @@
             </div>
         </main>
 
+        <!-- SERVICIO 2: Grúas y Mecánica Móvil -->
         <section class="card" id="towing">
             <div class="core-badge blue">Asistencia en Camino</div>
             <h2 class="card-title">Servicio de Grúa y Mobile Work</h2>
@@ -392,45 +396,41 @@
             </div>
         </section>
 
+        <!-- Galería del Taller limpia + Info de Camionetas de Texas -->
         <section class="gallery-section">
-            <h3 class="gallery-title">Nuestras Naves</h3>
+            <h3 class="gallery-title">Trabajos del Taller</h3>
+            <p class="gallery-subtitle">Traemos camionetas libres de óxido (Rust-Free) desde el sur de Texas bajo pedido. Contáctanos para una cotización especial.</p>
             
             <div class="grid-container">
+                <!-- Foto 1: Camión Negro Elevado -->
                 <div class="image-card">
-                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Javy's Truck" class="grid-img">
-                    <div class="img-overlay">
-                        <p class="img-label">Late Model Performance</p>
-                    </div>
+                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck build" class="grid-img">
                 </div>
 
+                <!-- Foto 2: El coche clásico de tu Tío -->
                 <div class="image-card">
-                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Uncle's Classic Car" class="grid-img">
-                    <div class="img-overlay">
-                        <p class="img-label">Classic Custom Restorations</p>
-                    </div>
+                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img">
                 </div>
 
+                <!-- Foto 3: Corvette Azul C4 -->
                 <div class="image-card">
                     <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="C4 Corvette" class="grid-img">
-                    <div class="img-overlay">
-                        <p class="img-label">Sports & EFI Tuning</p>
-                    </div>
                 </div>
 
+                <!-- Foto 4: Ford Dually Truck -->
                 <div class="image-card">
-                    <img src="IMG_7602.jpeg" alt="Heavy Duty Dually" class="grid-img">
-                    <div class="img-overlay">
-                        <p class="img-label">Heavy Duty Service</p>
-                    </div>
+                    <img src="IMG_7602.jpeg" alt="Ford Dually" class="grid-img">
                 </div>
             </div>
         </section>
 
+        <!-- Calendario de Citas con Sistema Text-To-Phone Automático -->
         <section id="scheduler" class="scheduler-section">
             <h3 class="scheduler-title">📅 Agenda tu Cita</h3>
             <p class="scheduler-desc">Selecciona tu servicio, el día y la hora. El sistema armará el mensaje directo para enviarlo a nuestro teléfono.</p>
             
             <form id="bookingForm" onsubmit="event.preventDefault(); sendBookingText();">
+                <!-- Selector de Servicio -->
                 <div class="form-group">
                     <label class="form-label">1. Selecciona el Servicio</label>
                     <select id="bookingService" class="form-input">
@@ -438,14 +438,17 @@
                         <option value="Cambio de Aceite y Filtro">Cambio de Aceite — Mantenimiento</option>
                         <option value="Servicio de Grúa">Servicio de Grúa (Urgencia)</option>
                         <option value="Asistencia Mecánica Móvil">Mobile Work (Trabajo en Sitio)</option>
+                        <option value="Cotización de Camioneta de Texas (Rust-Free)">Cotización: Traer Camioneta de Texas (Rust-Free)</option>
                     </select>
                 </div>
 
+                <!-- Selector de Fecha -->
                 <div class="form-group">
                     <label class="form-label">2. Elige el Día</label>
                     <input type="date" id="bookingDate" class="form-input" required>
                 </div>
 
+                <!-- Selector de Hora -->
                 <div class="form-group">
                     <label class="form-label">3. Elige la Hora</label>
                     <select id="bookingTime" class="form-input">
@@ -458,6 +461,7 @@
                     </select>
                 </div>
 
+                <!-- Botón de Envío -->
                 <button type="submit" class="submit-booking-btn">
                     💬 Confirmar y Enviar Mensaje
                 </button>
@@ -466,6 +470,7 @@
 
     </div>
 
+    <!-- Script de Automatización de Mensajes -->
     <script>
         // Evita que seleccionen días pasados en el calendario
         document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
@@ -479,8 +484,8 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
             const formattedDate = new Date(date).toLocaleDateString('es-ES', options);
 
-            // Estructura limpia del mensaje de texto
-            const baseMessage = `Qué onda muchachos, me gustaría agendar una cita.\n\n🛠️ Servicio: ${service}\n📅 Día: ${formattedDate}\n⏰ Hora: ${time}`;
+            // Estructura limpia del mensaje de texto enviado a tu negocio
+            const baseMessage = `Qué onda muchachos de Triad Automotive, me gustaría agendar una cita.\n\n🛠️ Servicio: ${service}\n📅 Día: ${formattedDate}\n⏰ Hora: ${time}`;
             
             // Codificación segura y redirección directa
             const encodedMessage = encodeURIComponent(baseMessage);
