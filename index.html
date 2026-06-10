@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- TRIAD UPDATE: PICKUP DROPOFF + SHO EXACT FILE V5 CLEAN -->
     <!-- TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 -->
     <!-- TRIAD FIX: GALLERY INLINE THUMBNAILS V3 - hard inline sizing -->
     <!-- TRIAD VERSION: COMPACT GALLERY V2 - images reduced hard -->
@@ -541,6 +542,15 @@
             margin-bottom: 22px;
             position: relative;
             z-index: 1;
+        }
+
+        .promo-box.blue {
+            background: rgba(0, 122, 255, 0.09);
+            border-color: rgba(0, 122, 255, 0.26);
+        }
+
+        .promo-box.blue .promo-text {
+            color: #8ec5ff;
         }
 
         .promo-box.red {
@@ -1293,6 +1303,7 @@
             <span class="trust-pill" id="pillDomestic">Domestic & Foreign</span>
             <span class="trust-pill" id="pillDiag">Diagnostics</span>
             <span class="trust-pill" id="pillMobile">Mobile Repair</span>
+            <span class="trust-pill" id="pillPickup">Pickup & Drop-Off</span>
             <span class="trust-pill" id="pillTow">Truck & Trailer</span>
             <span class="trust-pill" id="pillParts">LEDs & Audio</span>
             <span class="trust-pill" id="pillPerformance">SBC / LS / LT</span>
@@ -1305,6 +1316,7 @@
             <a href="#about" class="dept-tab" id="tabAbout">About Us</a>
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
+            <a href="#pickup-dropoff" class="dept-tab" id="tabPickup">Pickup & Drop-Off</a>
             <a href="#parts" class="dept-tab" id="tabParts">Parts</a>
             <a href="#performance" class="dept-tab" id="tabPerf">Performance</a>
             <a href="#scheduler" class="dept-tab" id="tabSchedule">Schedule</a>
@@ -1407,6 +1419,36 @@
                     <a href="sms:+16084047360" class="book-btn blue" style="padding:10px 14px; font-size:12px;" id="btnActionTow">Get Tow</a>
                     <a href="#scheduler" class="book-btn dark" style="padding:10px 14px; font-size:12px;" id="btnActionMobile">Schedule</a>
                 </div>
+            </div>
+        </section>
+
+
+        <section class="card" id="pickup-dropoff">
+            <div class="core-badge blue" id="bdgPickup">Convenience Service</div>
+            <h2 class="card-title" id="ttlPickup">Workday Pickup & Drop-Off</h2>
+            <p class="card-desc" id="dscPickup">
+                Busy at work? Schedule with Triad and we can arrange vehicle pickup, service, and drop-off when available. You keep working while your vehicle gets maintenance, diagnostics, parts installs, or approved repairs handled.
+            </p>
+
+            <div class="mini-list">
+                <div class="mini-item" id="pickupMini1">At Work</div>
+                <div class="mini-item" id="pickupMini2">At Home</div>
+                <div class="mini-item" id="pickupMini3">Scheduled Only</div>
+                <div class="mini-item" id="pickupMini4">Availability Based</div>
+            </div>
+
+            <div class="promo-box blue">
+                <p class="promo-text" id="promoPickup">
+                    Pickup and drop-off depends on location, schedule, vehicle condition, and job type. Some vehicles may require trailer transport instead.
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <div>
+                    <span class="price-label" id="lblPricePickup">Convenience</span>
+                    <span class="price-value" id="valPricePickup">Quote</span>
+                </div>
+                <a href="#scheduler" class="book-btn blue" id="btnPickup">Schedule Pickup</a>
             </div>
         </section>
 
@@ -1532,8 +1574,8 @@
 
                 <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
                     <!-- SHO IMAGE FILENAME MUST MATCH EXACTLY IN GITHUB ROOT -->
-                    <img src="./014F6546-DD28-487F-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-fallback-card">SHO Diagnostics & Maintenance<span>Upload/check: 014F6546-DD28-487F-B3EA-CFFCF828DC0C.png</span></div>
+                    <img src="./014F6546-DD28-487E-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-fallback-card">SHO Diagnostics & Maintenance<span>Upload/check: 014F6546-DD28-487E-B3EA-CFFCF828DC0C.png</span></div>
                     <div class="project-caption">Diagnostics & Maintenance<span>Modern vehicles, no-starts, leaks, and warning lights</span></div>
                 </div>
 
@@ -1622,14 +1664,26 @@
                     <input type="text" id="bookingLocation" class="form-input" placeholder="123 Main St or general area" required>
                 </div>
 
+
+                <div class="form-group">
+                    <label class="form-label" id="lblFrmPickup">6. Pickup / Drop-Off Needed?</label>
+                    <select id="bookingPickup" class="form-input">
+                        <option value="No pickup/drop-off needed">No pickup/drop-off needed</option>
+                        <option value="Pickup and drop-off requested">Pickup and drop-off requested</option>
+                        <option value="Pickup only requested">Pickup only requested</option>
+                        <option value="Drop-off only requested">Drop-off only requested</option>
+                        <option value="Vehicle may need trailer transport">Vehicle may need trailer transport</option>
+                    </select>
+                </div>
+
                 <div style="display:flex; gap:12px;">
                     <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmDate">6. Date</label>
+                        <label class="form-label" id="lblFrmDate">7. Date</label>
                         <input type="date" id="bookingDate" class="form-input" required>
                     </div>
 
                     <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmTime">7. Time</label>
+                        <label class="form-label" id="lblFrmTime">8. Time</label>
                         <select id="bookingTime" class="form-input">
                             <option value="ASAP">ASAP</option>
                             <option value="8:00 AM">8:00 AM</option>
@@ -1657,7 +1711,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" id="lblFrmNotes">8. What’s Going On?</label>
+                    <label class="form-label" id="lblFrmNotes">9. What’s Going On?</label>
                     <textarea id="bookingNotes" class="form-input" placeholder="Example: check engine light, brakes grinding, no start, needs tow, wants parts ordered..."></textarea>
                 </div>
 
@@ -1731,6 +1785,7 @@
                 pillDomestic: "Domestic & Foreign",
                 pillDiag: "Diagnostics",
                 pillMobile: "Mobile Repair",
+                pillPickup: "Pickup & Drop-Off",
                 pillTow: "Truck & Trailer",
                 pillParts: "LEDs & Audio",
                 pillPerformance: "SBC / LS / LT",
@@ -1740,6 +1795,7 @@
                 tabAbout: "About Us",
                 tabDiag: "Diagnostics",
                 tabTow: "Truck & Trailer",
+                tabPickup: "Pickup & Drop-Off",
                 tabParts: "Parts",
                 tabPerf: "Performance",
                 tabSchedule: "Schedule",
@@ -1777,7 +1833,18 @@
                 valPriceTow: "Quote",
                 btnActionTow: "Get Tow",
                 btnActionMobile: "Schedule",
-                bdgParts: "Special Order",
+                bdgParts: "Special Order",                bdgPickup: "Convenience Service",
+                ttlPickup: "Workday Pickup & Drop-Off",
+                dscPickup: "Busy at work? Schedule with Triad and we can arrange vehicle pickup, service, and drop-off when available. You keep working while your vehicle gets maintenance, diagnostics, parts installs, or approved repairs handled.",
+                pickupMini1: "At Work",
+                pickupMini2: "At Home",
+                pickupMini3: "Scheduled Only",
+                pickupMini4: "Availability Based",
+                promoPickup: "Pickup and drop-off depends on location, schedule, vehicle condition, and job type. Some vehicles may require trailer transport instead.",
+                lblPricePickup: "Convenience",
+                valPricePickup: "Quote",
+                btnPickup: "Schedule Pickup",
+
                 ttlParts: "Custom Parts by Order",
                 dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds.",
                 partsMini1: "OEM Parts",
@@ -1824,9 +1891,10 @@
                 lblFrmSvc: "3. Select Service",
                 lblFrmCity: "4. City / Area",
                 lblFrmLoc: "5. Address / Location",
-                lblFrmDate: "6. Date",
-                lblFrmTime: "7. Time",
-                lblFrmNotes: "8. What’s Going On?",
+                lblFrmPickup: "6. Pickup / Drop-Off Needed?",
+                lblFrmDate: "7. Date",
+                lblFrmTime: "8. Time",
+                lblFrmNotes: "9. What’s Going On?",
                 btnFrmSubmit: "Confirm & Text Request",
                 frmNote: "This form opens your text messages. Your request is not sent until you press send on your phone.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
@@ -1841,6 +1909,7 @@
                     {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
                     {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
                     {v: "Mobile Repair", t: "Mobile Repair"},
+                    {v: "Workday Pickup & Drop-Off", t: "Workday Pickup & Drop-Off"},
                     {v: "Custom Parts by Order", t: "Custom Parts by Order"},
                     {v: "LED Lighting / Audio Gear", t: "LED Lighting / Audio Gear"},
                     {v: "SBC, LS & LT Parts Support", t: "SBC, LS & LT Parts Support"},
@@ -1866,6 +1935,7 @@
                 pillDomestic: "Domésticos y Extranjeros",
                 pillDiag: "Diagnósticos",
                 pillMobile: "Reparación Móvil",
+                pillPickup: "Pickup y Entrega",
                 pillTow: "Camión y Remolque",
                 pillParts: "LEDs y Audio",
                 pillPerformance: "SBC / LS / LT",
@@ -1875,6 +1945,7 @@
                 tabAbout: "Nosotros",
                 tabDiag: "Diagnósticos",
                 tabTow: "Camión y Remolque",
+                tabPickup: "Pickup y Entrega",
                 tabParts: "Partes",
                 tabPerf: "Performance",
                 tabSchedule: "Agendar",
@@ -1912,7 +1983,18 @@
                 valPriceTow: "Cotizar",
                 btnActionTow: "Pedir Grúa",
                 btnActionMobile: "Agendar",
-                bdgParts: "Orden Especial",
+                bdgParts: "Orden Especial",                bdgPickup: "Servicio de Conveniencia",
+                ttlPickup: "Pickup y Entrega Durante el Trabajo",
+                dscPickup: "¿Estás ocupado en el trabajo? Agenda con Triad y podemos coordinar pickup, servicio y entrega cuando esté disponible. Tú sigues trabajando mientras tu vehículo recibe mantenimiento, diagnóstico, instalación de partes o reparaciones aprobadas.",
+                pickupMini1: "En el Trabajo",
+                pickupMini2: "En Casa",
+                pickupMini3: "Solo con Cita",
+                pickupMini4: "Según Disponibilidad",
+                promoPickup: "Pickup y entrega depende de ubicación, horario, condición del vehículo y tipo de trabajo. Algunos vehículos pueden requerir transporte en remolque.",
+                lblPricePickup: "Conveniencia",
+                valPricePickup: "Cotizar",
+                btnPickup: "Agendar Pickup",
+
                 ttlParts: "Partes Especiales por Pedido",
                 dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces LED, equipo de audio, suspensión, rines, llantas y partes para proyectos personalizados.",
                 partsMini1: "Partes OEM",
@@ -1959,9 +2041,10 @@
                 lblFrmSvc: "3. Selecciona Servicio",
                 lblFrmCity: "4. Ciudad / Área",
                 lblFrmLoc: "5. Dirección / Ubicación",
-                lblFrmDate: "6. Fecha",
-                lblFrmTime: "7. Hora",
-                lblFrmNotes: "8. ¿Qué Está Pasando?",
+                lblFrmPickup: "6. ¿Necesitas Pickup / Entrega?",
+                lblFrmDate: "7. Fecha",
+                lblFrmTime: "8. Hora",
+                lblFrmNotes: "9. ¿Qué Está Pasando?",
                 btnFrmSubmit: "Confirmar y Enviar Texto",
                 frmNote: "Este formulario abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar en tu teléfono.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
@@ -2508,6 +2591,7 @@
             const service = document.getElementById('bookingService').value;
             const city = document.getElementById('bookingCity').value;
             const location = document.getElementById('bookingLocation').value;
+            const pickup = document.getElementById("bookingPickup") ? document.getElementById("bookingPickup").value : "No pickup/drop-off needed";
             const date = document.getElementById('bookingDate').value;
             const time = document.getElementById('bookingTime').value;
             const notes = document.getElementById('bookingNotes').value;
@@ -2518,6 +2602,7 @@
                 ". I need: " + service +
                 ". City: " + city +
                 ". Location: " + location +
+                ". Pickup/Drop-off: " + pickup +
                 ". Preferred date: " + date +
                 ". Preferred time: " + time +
                 ". Notes: " + notes;
