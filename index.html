@@ -37,9 +37,13 @@
 
         body {
             background:
-                radial-gradient(circle at top left, rgba(255, 59, 87, 0.04), transparent 30%),
-                radial-gradient(circle at top right, rgba(0, 122, 255, 0.035), transparent 28%),
-                linear-gradient(180deg, #050608 0%, #07080b 45%, #050608 100%);
+                linear-gradient(180deg, rgba(5, 6, 8, 0.91), rgba(5, 6, 8, 0.97)),
+                radial-gradient(circle at top left, rgba(255, 59, 87, 0.18), transparent 34%),
+                radial-gradient(circle at top right, rgba(0, 122, 255, 0.08), transparent 32%),
+                url("IMG_7642.jpeg");
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             padding: 18px 16px 28px;
@@ -57,9 +61,9 @@
             inset: 0;
             background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
             background-repeat: no-repeat;
-            background-position: center 145px;
-            background-size: 340px auto;
-            opacity: 0.007;
+            background-position: center 155px;
+            background-size: 440px auto;
+            opacity: 0.009;
             pointer-events: none;
             z-index: 0;
         }
@@ -187,7 +191,7 @@
         }
 
         .hero {
-            background: linear-gradient(145deg, rgba(10, 13, 19, 0.96), rgba(6, 8, 12, 0.96));
+            background: linear-gradient(145deg, rgba(10, 13, 19, 0.90), rgba(6, 8, 12, 0.94));
             border: 1px solid rgba(255, 255, 255, 0.075);
             border-radius: 28px;
             padding: 22px;
@@ -406,7 +410,7 @@
         }
 
         .card {
-            background: var(--card-bg);
+            background: rgba(13, 16, 24, 0.86);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--border-color);
@@ -990,6 +994,13 @@
             line-height: 1.35;
             margin-top: 8px;
             text-align: center;
+        }
+
+
+        @supports (-webkit-touch-callout: none) {
+            body {
+                background-attachment: scroll;
+            }
         }
 
         @media (max-width: 410px) {
