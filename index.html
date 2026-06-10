@@ -3,279 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Automotive | Professional Service</title>
-    
+    <title>Triad Automotive | Premium Diagnostics & Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0c10;
             --card-bg: rgba(18, 22, 31, 0.75);
             --border-color: rgba(255, 255, 255, 0.08);
-            --accent-red: #ff3b57;
-            --accent-blue: #007aff;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
+            --accent-red: #ff3b57;
+            --accent-blue: #007aff;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-sans: 'Inter', sans-serif;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; padding: 20px 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-sans); padding: 20px 16px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         .container { width: 100%; max-width: 480px; }
-        
-        /* Top Bar & Header */
-        .utility-bar { display: flex; justify-content: flex-end; margin-bottom: 12px; }
-        .lang-btn { background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; }
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .top-utility-bar { display: flex; justify-content: flex-end; width: 100%; margin-bottom: 12px; }
+        .lang-switch-btn { background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); color: #fff; padding: 6px 12px; border-radius: 20px; font-family: var(--font-sans); font-size: 12px; font-weight: 600; cursor: pointer; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding: 0 4px; }
         .brand { display: flex; align-items: center; gap: 12px; }
-        .brand-img { height: 36px; }
-        .brand-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 18px; text-transform: uppercase; }
-        .contact-group { display: flex; gap: 8px; }
-        .contact-btn { font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; padding: 8px 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 20px; }
-        
-        /* Info & Nav */
+        .brand-img { width: auto; height: 36px; object-fit: contain; }
+        .brand-name { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; color: #fff; }
+        .contact-group { display: flex; gap: 6px; }
+        .contact-btn { font-size: 12px; font-weight: 600; color: var(--text-main); text-decoration: none; padding: 8px 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 20px; }
         .info-bar { display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 10px 16px; border-radius: 14px; margin-bottom: 24px; font-size: 13px; color: var(--text-muted); }
         .dept-navigation { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); }
-        .dept-navigation::-webkit-scrollbar { display: none; }
-        .dept-tab { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-muted); text-decoration: none; white-space: nowrap; }
+        .dept-tab { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text-muted); text-decoration: none; cursor: pointer; }
         .dept-tab.active { color: var(--accent-red); }
-
-        /* Cards */
         .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 24px; padding: 28px; margin-bottom: 24px; }
-        .core-badge { display: inline-block; background: var(--accent-red); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 6px 12px; border-radius: 6px; margin-bottom: 18px; }
+        .core-badge { display: inline-block; background: var(--accent-red); color: #fff; font-family: var(--font-display); font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 6px; margin-bottom: 18px; }
         .core-badge.blue { background: var(--accent-blue); }
-        .card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 24px; margin-bottom: 12px; color: #fff; }
-        .card-desc { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bottom: 24px; }
-        
-        /* Promo Box */
+        .card-title { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 12px; color: #fff; }
+        .card-description { color: var(--text-muted); font-size: 15px; margin-bottom: 24px; }
         .promo-box { background: rgba(37, 211, 102, 0.1); border: 1px solid rgba(37, 211, 102, 0.3); border-radius: 12px; padding: 14px; margin-bottom: 24px; }
         .promo-text { font-size: 13px; color: #25d366; font-weight: 600; line-height: 1.4; }
-
         .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 20px; }
-        .price-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); }
-        .price-value { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 30px; color: #fff; display: block; }
-        .book-btn { font-weight: 700; font-size: 14px; color: #fff; text-decoration: none; background: var(--accent-red); padding: 14px 24px; border-radius: 14px; text-align: center; display: inline-block; }
-        .book-btn.blue { background: var(--accent-blue); }
-
-        /* Gallery */
-        .gallery-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 8px; }
-        .gallery-sub { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 20px; line-height: 1.4; }
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
-        .image-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); aspect-ratio: 4 / 5; }
+        .price-value { font-family: var(--font-display); font-weight: 700; font-size: 30px; color: #fff; }
+        .book-now-btn { font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: #fff; text-decoration: none; background: var(--accent-red); padding: 14px 24px; border-radius: 14px; text-align: center; }
+        .book-now-btn.blue-btn { background: var(--accent-blue); }
+        .gallery-section { width: 100%; margin-bottom: 32px; }
+        .gallery-title { font-family: var(--font-display); font-size: 13px; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 8px; }
+        .gallery-subtitle { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .image-card { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); aspect-ratio: 4 / 5; }
         .grid-img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Form */
+        .scheduler-section { width: 100%; background: rgba(18, 22, 31, 0.8); border: 2px solid var(--border-color); border-radius: 24px; padding: 28px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-        .form-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
-        .form-input { background: #0a0c10; color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); padding: 14px; border-radius: 12px; font-size: 15px; width: 100%; font-family: 'Inter', sans-serif; }
-        .submit-btn { background: var(--accent-blue); color: #fff; padding: 16px; border: none; border-radius: 16px; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; margin-top: 8px; }
+        .form-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+        .form-input { background: #0a0c10; color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); padding: 14px; border-radius: 12px; font-size: 15px; width: 100%; }
+        .submit-booking-btn { background: var(--accent-blue); color: #fff; padding: 16px; border: none; border-radius: 16px; font-weight: 700; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Language Switcher -->
-        <div class="utility-bar">
-            <button class="lang-btn" onclick="toggleLanguage()">🌐 <span id="txtLangBtn">Español</span></button>
-        </div>
-
-        <!-- Header -->
+        <div class="top-utility-bar"><button class="lang-switch-btn" onclick="toggleLanguage()">🌐 <span id="langBtnText">Español</span></button></div>
         <header>
             <div class="brand">
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Logo" class="brand-img">
-                <h1 class="brand-name">Triad</h1>
+                <h1 class="brand-name">Triad Automotive</h1>
             </div>
             <div class="contact-group">
-                <a href="mailto:triadautomotivellc@gmail.com" class="contact-btn" id="txtEmailBtn">Email</a>
-                <a href="sms:+19564757053" class="contact-btn" id="txtTextBtn">Text</a>
+                <a href="mailto:triadautomotivellc@gmail.com" class="contact-btn" id="emailBtn">Email</a>
+                <a href="sms:+19564757053" class="contact-btn" id="callBtn">Text</a>
             </div>
         </header>
-
-        <!-- Info Bar & Navigation -->
-        <div class="info-bar"><span style="color:var(--accent-red)">📍</span><span id="txtInfoArea">Service Area: <strong>Baraboo 53913</strong></span></div>
+        <div class="info-bar"><span class="geo-icon">📍</span><span id="infoBarText">Service Area: <strong>Baraboo 53913</strong></span></div>
         <nav class="dept-navigation">
             <a href="#" class="dept-tab active" id="tabAll">All Services</a>
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
         </nav>
-
-        <!-- CARD 1: Diagnostics -->
         <main class="card" id="diagnostics">
-            <div class="core-badge" id="bdgDiag">Core Evaluation</div>
-            <h2 class="card-title" id="ttlDiag">Check Engine Light Scan</h2>
-            <p class="card-desc" id="dscDiag">No corporate runarounds. We plug the scanner straight into your vehicle's system to read exact fault codes and tell you honestly what is failing.</p>
+            <div class="core-badge" id="badgeDiag">Core Evaluation</div>
+            <h2 class="card-title" id="titleDiag">Check Engine Light Scan</h2>
+            <p class="card-description" id="descDiag">No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and tell you exactly what is failing.</p>
             <div class="card-footer">
-                <div><span class="price-label" id="lblPriceDiag">Flat Rate</span><span class="price-value">$45.00</span></div>
-                <a href="#scheduler" class="book-btn" id="btnBookDiag">Book Slot</a>
+                <div class="price-container"><span class="price-label" id="labelPriceDiag">Flat Rate</span><span class="price-value">$45.00</span></div>
+                <a href="#scheduler" class="book-now-btn" id="btnBookDiag">Book Slot</a>
             </div>
         </main>
-
-        <!-- CARD 2: Truck & Trailer -->
         <section class="card" id="towing">
-            <div class="core-badge blue" id="bdgTow">Recovery & Transport</div>
-            <h2 class="card-title" id="ttlTow">Truck & Trailer Service</h2>
-            <p class="card-desc" id="dscTow">Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.</p>
-            
-            <!-- PROMO BOX -->
-            <div class="promo-box">
-                <p class="promo-text" id="promoTow">💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!</p>
-            </div>
-
+            <div class="core-badge blue" id="badgeTow">Recovery & Transport</div>
+            <h2 class="card-title" id="titleTow">Truck & Trailer Service</h2>
+            <p class="card-description" id="descTow">Stuck on the road? We'll dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.</p>
+            <div class="promo-box"><p class="promo-text" id="promoTow">💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!</p></div>
             <div class="card-footer">
-                <div><span class="price-label" id="lblPriceTow">Urgent</span><span class="price-value" id="valPriceTow">Quote</span></div>
-                <div style="display:flex; flex-direction:column; gap:8px;">
-                    <a href="sms:+19564757053" class="book-btn blue" style="padding:10px; font-size:12px;" id="btnActionTow">Get Tow</a>
-                    <a href="#scheduler" class="book-btn" style="padding:10px; font-size:12px; background:#1e293b;" id="btnActionMobile">Schedule Pickup</a>
+                <div class="price-container"><span class="price-label" id="labelPriceTow">Urgent</span><span class="price-value" id="valPriceTow">Quote</span></div>
+                <div style="display: flex; flex-direction: column; gap: 8px; width: 50%;">
+                    <a href="sms:+19564757053" class="book-now-btn blue-btn" style="padding: 10px; font-size: 12px;" id="btnActionTow">Get Tow</a>
+                    <a href="#scheduler" class="book-now-btn" style="padding: 10px; font-size: 12px; background: #1e293b;" id="btnActionMobile">Schedule Pickup</a>
                 </div>
             </div>
         </section>
-
-        <!-- GALLERY -->
-        <section>
-            <h3 class="gallery-title" id="galTitle">Shop Operations</h3>
-            <p class="gallery-sub" id="galSub">We source rust-free trucks from South Texas. Reach out for a custom quote.</p>
+        <section class="gallery-section">
+            <h3 class="gallery-title" id="galleryTitle">Shop Operations</h3>
+            <p class="gallery-subtitle" id="gallerySubtitle">We source rust-free trucks from South Texas. Reach out for a custom quote.</p>
             <div class="grid-container">
-                <div class="image-card"><img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck Build" class="grid-img"></div>
-                <div class="image-card"><img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img"></div>
+                <div class="image-card"><img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck" class="grid-img"></div>
+                <div class="image-card"><img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic" class="grid-img"></div>
                 <div class="image-card"><img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette" class="grid-img"></div>
-                <div class="image-card"><img src="IMG_7602.jpeg" alt="Dually Truck" class="grid-img"></div>
+                <div class="image-card"><img src="IMG_7602.jpeg" alt="Dually" class="grid-img"></div>
             </div>
         </section>
-
-        <!-- SCHEDULER FORM -->
-        <section class="card" id="scheduler" style="background: rgba(18,22,31,0.9);">
-            <h3 class="card-title" style="text-align:center; font-size:20px;" id="frmTitle">📅 Schedule Service</h3>
-            <p class="card-desc" style="text-align:center; margin-bottom:24px;" id="frmDesc">Fill out the details to request your service via text message.</p>
-            
-            <form onsubmit="event.preventDefault(); sendBookingSMS();">
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmSvc">1. Select Service</label>
-                    <select id="bookingService" class="form-input"></select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmCity">2. City / Area</label>
-                    <select id="bookingCity" class="form-input">
-                        <option value="Baraboo">Baraboo</option>
-                        <option value="Wisconsin Dells">Wisconsin Dells</option>
-                        <option value="Portage">Portage</option>
-                        <option value="Reedsburg">Reedsburg</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmLoc">3. Detailed Address / Location</label>
-                    <input type="text" id="bookingLocation" class="form-input" placeholder="123 Main St" required>
-                </div>
-
-                <div style="display:flex; gap:12px;">
-                    <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmDate">4. Date</label>
-                        <input type="date" id="bookingDate" class="form-input" required>
-                    </div>
-                    <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmTime">5. Time</label>
-                        <select id="bookingTime" class="form-input">
-                            <option value="ASAP">ASAP (Urgent)</option>
-                            <option value="8:00 AM">8:00 AM</option>
-                            <option value="10:00 AM">10:00 AM</option>
-                            <option value="12:00 PM">12:00 PM</option>
-                            <option value="2:00 PM">2:00 PM</option>
-                            <option value="4:00 PM">4:00 PM</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="btnFrmSubmit">💬 Confirm & Text Request</button>
-                <p style="font-size: 10px; color: #666; margin-top: 12px; text-align: center;" id="txtLegal">*By submitting, you certify you are the owner or authorized agent of the vehicle.</p>
+        <section id="scheduler" class="scheduler-section">
+            <h3 class="scheduler-title" id="schedTitle">📅 Schedule Appointment</h3>
+            <p class="scheduler-desc" id="schedDesc">Fill out the details to request your service via text.</p>
+            <form id="bookingForm" onsubmit="event.preventDefault(); sendBookingSMS();">
+                <div class="form-group"><label class="form-label" id="lblFormService">Service</label><select id="bookingService" class="form-input"></select></div>
+                <div class="form-group"><label class="form-label" id="lblFormCity">City / Area</label><select id="bookingCity" class="form-input"><option value="Baraboo">Baraboo</option><option value="Wisconsin Dells">Wisconsin Dells</option><option value="Portage">Portage</option><option value="Reedsburg">Reedsburg</option><option value="Other">Other</option></select></div>
+                <div class="form-group"><label class="form-label" id="lblFormDate">Date</label><input type="date" id="bookingDate" class="form-input" required></div>
+                <div class="form-group"><label class="form-label" id="lblFormTime">Time</label><select id="bookingTime" class="form-input"><option value="8:00 AM">8:00 AM</option><option value="10:00 AM">10:00 AM</option><option value="12:00 PM">12:00 PM</option><option value="2:00 PM">2:00 PM</option><option value="4:00 PM">4:00 PM</option></select></div>
+                <div class="form-group"><label class="form-label" id="lblFormLoc">Vehicle Location / Address</label><input type="text" id="bookingLocation" class="form-input" placeholder="e.g. 123 Main St" required></div>
+                <button type="submit" class="submit-booking-btn" id="btnSubmitForm">💬 Confirm & Text</button>
+                <p style="font-size: 10px; color: #666; margin-top: 12px; text-align: center;">*By submitting, you certify that you are the vehicle owner or authorized agent.</p>
             </form>
         </section>
     </div>
-
-    <!-- LANGUAGE & SMS ENGINE -->
     <script>
         let currentLang = 'en';
-        
         const trans = {
-            en: {
-                txtLangBtn: "Español", txtEmailBtn: "Email", txtTextBtn: "Text", txtInfoArea: "Service Area: <strong>Baraboo 53913</strong>",
-                tabAll: "All Services", tabDiag: "Diagnostics", tabTow: "Truck & Trailer",
-                bdgDiag: "Core Evaluation", ttlDiag: "Check Engine Light Scan", dscDiag: "No corporate runarounds. We plug the scanner straight into your vehicle's system to read exact fault codes and tell you honestly what is failing.", lblPriceDiag: "Flat Rate", btnBookDiag: "Book Slot",
-                bdgTow: "Recovery & Transport", ttlTow: "Truck & Trailer Service", dscTow: "Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.",
-                promoTow: "💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!",
-                lblPriceTow: "Urgent", valPriceTow: "Quote", btnActionTow: "Get Tow", btnActionMobile: "Schedule Pickup",
-                galTitle: "Shop Operations", galSub: "We source rust-free trucks from South Texas. Reach out for a custom quote.",
-                frmTitle: "📅 Schedule Service", frmDesc: "Fill out the details to request your service via text message.",
-                lblFrmSvc: "1. Select Service", lblFrmCity: "2. City / Area", lblFrmLoc: "3. Detailed Address / Location", lblFrmDate: "4. Date", lblFrmTime: "5. Time",
-                btnFrmSubmit: "💬 Confirm & Text Request", txtLegal: "*By submitting, you certify you are the owner or authorized agent of the vehicle.",
-                sms: "Hi Triad, I need: {svc}\n📍 City: {city}\n🏠 Loc: {loc}\n📅 Date: {date}\n⏰ Time: {time}",
-                svcs: [{v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"}, {v: "Truck & Trailer Service", t: "Truck & Trailer Service"}, {v: "Mobile Repair", t: "Mobile Repair"}, {v: "Texas Truck Quote", t: "Texas Truck Quote"}]
-            },
-            es: {
-                txtLangBtn: "English", txtEmailBtn: "Correo", txtTextBtn: "Texto", txtInfoArea: "Área de Servicio: <strong>Baraboo 53913</strong>",
-                tabAll: "Servicios", tabDiag: "Diagnósticos", tabTow: "Camión y Remolque",
-                bdgDiag: "Evaluación Central", ttlDiag: "Diagnóstico por Computadora", dscDiag: "Sin rodeos corporativos. Conectamos el escáner al sistema de tu vehículo para leer los códigos exactos y decirte con honestidad qué falla.", lblPriceDiag: "Precio Fijo", btnBookDiag: "Agendar",
-                bdgTow: "Recuperación y Transporte", ttlTow: "Servicio de Camión y Remolque", dscTow: "¿Quedaste tirado? Enviamos nuestro camión y remolque para transportar tu vehículo o realizar reparaciones móviles.",
-                promoTow: "💸 Trae tu vehículo a nuestro taller para reparación y obtén un descuento—¡o incluso la grúa GRATIS dependiendo de tu ubicación!",
-                lblPriceTow: "Urgencias", valPriceTow: "Cotizar", btnActionTow: "Pedir Grúa", btnActionMobile: "Agendar Recolección",
-                galTitle: "Operaciones del Taller", galSub: "Conseguimos camionetas libres de óxido del sur de Texas bajo pedido.",
-                frmTitle: "📅 Agendar Servicio", frmDesc: "Completa los detalles para solicitar tu servicio por mensaje de texto.",
-                lblFrmSvc: "1. Selecciona Servicio", lblFrmCity: "2. Ciudad / Área", lblFrmLoc: "3. Dirección Detallada", lblFrmDate: "4. Fecha", lblFrmTime: "5. Hora",
-                btnFrmSubmit: "💬 Confirmar y Enviar SMS", txtLegal: "*Al enviar, certificas que eres el propietario o agente autorizado del vehículo.",
-                sms: "Hola Triad, necesito: {svc}\n📍 Ciudad: {city}\n🏠 Ubic: {loc}\n📅 Fecha: {date}\n⏰ Hora: {time}",
-                svcs: [{v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"}, {v: "Servicio de Remolque", t: "Servicio de Remolque"}, {v: "Reparación Móvil", t: "Reparación Móvil"}, {v: "Cotización Camioneta Texas", t: "Cotización Camioneta Texas"}]
-            }
+            en: { langBtn: "Español", emailBtn: "Email", callBtn: "Text", infoBar: "Service Area: <strong>Baraboo 53913</strong>", tabAll: "All Services", tabDiag: "Diagnostics", tabTow: "Truck & Trailer", tabSched: "Book", badgeDiag: "Evaluation", titleDiag: "Diagnostics", descDiag: "Honest, direct computer scanning to identify faults accurately.", labelPriceDiag: "Flat Rate", btnBookDiag: "Book", badgeTow: "Recovery & Transport", titleTow: "Truck & Trailer Service", descTow: "Stuck on the road? We'll dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.", promoTow: "💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!", labelPriceTow: "Urgent", valPriceTow: "Quote", btnActionTow: "Get Tow", btnActionMobile: "Schedule Pickup", galleryTitle: "Operations", gallerySubtitle: "Rust-free Texas trucks on request.", schedTitle: "📅 Schedule", schedDesc: "Complete details to request service via text.", lblFormService: "Service", lblFormCity: "City / Area", lblFormDate: "Date", lblFormTime: "Time", lblFormLoc: "Location / Address", btnSubmitForm: "💬 Confirm & Text", sms: "I would like to book: {service}.\n📍 City: {city}\n🏠 Loc: {loc}\n📅 Date: {date}\n⏰ Time: {time}.", svcs: [{v:"Diagnostics ($45)",t:"Diagnostics ($45)"}, {v:"Truck & Trailer Service",t:"Truck & Trailer Service"}, {v:"Mobile Repair",t:"Mobile Repair"}] },
+            es: { langBtn: "English", emailBtn: "Correo", callBtn: "Texto", infoBar: "Área: <strong>Baraboo 53913</strong>", tabAll: "Servicios", tabDiag: "Diagnósticos", tabTow: "Camión y Remolque", tabSched: "Agendar", badgeDiag: "Evaluación", titleDiag: "Diagnósticos", descDiag: "Escaneo computarizado honesto y directo para identificar fallas.", labelPriceDiag: "Precio Fijo", btnBookDiag: "Agendar", badgeTow: "Recuperación y Transporte", titleTow: "Servicio de Camión y Remolque", descTow: "¿Quedaste tirado? Enviamos nuestro camión y remolque para transportar tu vehículo o realizar reparaciones móviles.", promoTow: "💸 Trae tu vehículo a nuestro taller para reparación y obtén un descuento—¡o incluso la grúa GRATIS dependiendo de tu ubicación!", labelPriceTow: "Urgencia", valPriceTow: "Cotizar", btnActionTow: "Pedir Grúa", btnActionMobile: "Agendar Recolección", galleryTitle: "Operaciones", gallerySubtitle: "Camionetas libres de óxido de Texas.", schedTitle: "📅 Agendar Cita", schedDesc: "Completa tus datos para solicitar el servicio vía SMS.", lblFormService: "Servicio", lblFormCity: "Ciudad / Área", lblFormDate: "Fecha", lblFormTime: "Hora", lblFormLoc: "Ubicación / Dirección", btnSubmitForm: "💬 Confirmar y Enviar", sms: "Solicito agendar: {service}.\n📍 Ciudad: {city}\n🏠 Ubic: {loc}\n📅 Fecha: {date}\n⏰ Hora: {time}.", svcs: [{v:"Diagnóstico ($45)",t:"Diagnóstico ($45)"}, {v:"Servicio Camión/Remolque",t:"Servicio Camión/Remolque"}, {v:"Reparación Móvil",t:"Reparación Móvil"}] }
         };
-
-        function populateDropdowns() {
-            const svcSelect = document.getElementById('bookingService');
-            const currentVal = svcSelect.value;
-            svcSelect.innerHTML = '';
-            trans[currentLang].svcs.forEach(s => {
-                let opt = document.createElement('option');
-                opt.value = s.v; opt.textContent = s.t;
-                svcSelect.appendChild(opt);
-            });
-            // Try to keep selection if switching language
-            if(currentVal) {
-                const index = trans[currentLang === 'en' ? 'es' : 'en'].svcs.findIndex(x => x.v === currentVal);
-                if(index >= 0) svcSelect.selectedIndex = index;
-            }
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            const t = trans[currentLang];
-            
-            // Update all text elements by ID
-            Object.keys(t).forEach(id => {
-                const el = document.getElementById(id);
-                if(el && id !== 'sms' && id !== 'svcs') {
-                    if(id === 'txtInfoArea') el.innerHTML = t[id];
-                    else el.textContent = t[id];
-                }
-            });
-            populateDropdowns();
-        }
-
-        function sendBookingSMS() {
-            const svc = document.getElementById('bookingService').value;
-            const city = document.getElementById('bookingCity').value;
-            const loc = document.getElementById('bookingLocation').value;
-            const rawDate = document.getElementById('bookingDate').value;
-            const time = document.getElementById('bookingTime').value;
-            
-            const dateOpts = { weekday: 'short', month: 'short', day: 'numeric' };
-            const formattedDate = new Date(rawDate).toLocaleDateString(currentLang === 'en' ? 'en-US' : 'es-ES', dateOpts);
-
-            const msg = trans[currentLang].sms
-                .replace('{svc}', svc).replace('{city}', city).replace('{loc}', loc)
-                .replace('{date}', formattedDate).replace('{time}', time);
-                
-            window.location.href = `sms:+19564757053?body=${encodeURIComponent(msg)}`;
-        }
-
-        // Init
+        function populateServices() { const s = document.getElementById('bookingService'); const val = s.value; s.innerHTML = ''; trans[currentLang].svcs.forEach(i => s.innerHTML += `<option value="${i.v}">${i.t}</option>`); if (val) { const idx = trans[currentLang === 'en' ? 'es' : 'en'].svcs.findIndex(x => x.v === val); if (idx >= 0) s.selectedIndex = idx; } }
+        function updateDOM() { const t = trans[currentLang]; document.getElementById('langBtnText').textContent = t.langBtn; document.getElementById('emailBtn').textContent = t.emailBtn; document.getElementById('callBtn').textContent = t.callBtn; document.getElementById('infoBarText').innerHTML = t.infoBar; document.getElementById('tabAll').textContent = t.tabAll; document.getElementById('tabDiag').textContent = t.tabDiag; document.getElementById('tabTow').textContent = t.tabTow; document.getElementById('tabSched').textContent = t.tabSched; document.getElementById('badgeDiag').textContent = t.badgeDiag; document.getElementById('titleDiag').textContent = t.titleDiag; document.getElementById('descDiag').textContent = t.descDiag; document.getElementById('labelPriceDiag').textContent = t.labelPriceDiag; document.getElementById('btnBookDiag').textContent = t.btnBookDiag; document.getElementById('badgeTow').textContent = t.badgeTow; document.getElementById('titleTow').textContent = t.titleTow; document.getElementById('descTow').textContent = t.descTow; document.getElementById('promoTow').textContent = t.promoTow; document.getElementById('labelPriceTow').textContent = t.labelPriceTow; document.getElementById('valPriceTow').textContent = t.valPriceTow; document.getElementById('btnActionTow').textContent = t.btnActionTow; document.getElementById('btnActionMobile').textContent = t.btnActionMobile; document.getElementById('galleryTitle').textContent = t.galleryTitle; document.getElementById('gallerySubtitle').textContent = t.gallerySubtitle; document.getElementById('schedTitle').textContent = t.schedTitle; document.getElementById('schedDesc').textContent = t.schedDesc; document.getElementById('lblFormService').textContent = t.lblFormService; document.getElementById('lblFormCity').textContent = t.lblFormCity; document.getElementById('lblFormDate').textContent = t.lblFormDate; document.getElementById('lblFormTime').textContent = t.lblFormTime; document.getElementById('lblFormLoc').textContent = t.lblFormLoc; document.getElementById('btnSubmitForm').textContent = t.btnSubmitForm; populateServices(); }
+        function toggleLanguage() { currentLang = currentLang === 'en' ? 'es' : 'en'; updateDOM(); }
+        function sendBookingSMS() { const s = document.getElementById('bookingService').value, c = document.getElementById('bookingCity').value, l = document.getElementById('bookingLocation').value, d = document.getElementById('bookingDate').value, t = document.getElementById('bookingTime').value; const opts = { weekday: 'short', month: 'short', day: 'numeric' }; const fd = new Date(d).toLocaleDateString(currentLang === 'en' ? 'en-US' : 'es-ES', opts); const msg = trans[currentLang].sms.replace('{service}', s).replace('{city}', c).replace('{loc}', l).replace('{date}', fd).replace('{time}', t); window.location.href = `sms:+19564757053?body=${encodeURIComponent(msg)}`; }
         document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
-        populateDropdowns();
+        updateDOM();
     </script>
 </body>
 </html>
