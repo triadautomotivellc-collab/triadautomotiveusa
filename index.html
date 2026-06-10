@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Automotive | Service, Maintenance & Diagnostics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <title>Triad Automotive | Baraboo, WI Auto Service & Diagnostics</title>
+    <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, mobile repair, truck and trailer service, custom parts sourcing, and SBC/LS/LT performance support in Baraboo, Wisconsin.">
+    <meta name="theme-color" content="#0a0c10">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0c10;
-            --card-bg: rgba(18, 22, 31, 0.75);
-            --border-color: rgba(255, 255, 255, 0.08);
+            --bg-soft: #10141d;
+            --card-bg: rgba(18, 22, 31, 0.82);
+            --card-bg-strong: rgba(18, 22, 31, 0.94);
+            --border-color: rgba(255, 255, 255, 0.09);
+            --border-strong: rgba(255, 255, 255, 0.16);
             --accent-red: #ff3b57;
+            --accent-red-dark: #d92942;
             --accent-blue: #007aff;
+            --accent-green: #25d366;
             --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
+            --text-muted: #a3aab8;
+            --text-soft: #737b8c;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
             color-scheme: dark;
         }
         * {
@@ -22,11 +31,17 @@
             padding: 0;
             scroll-behavior: smooth;
         }
+        html {
+            background: var(--bg-dark);
+        }
         body {
-            background-color: var(--bg-dark);
+            background:
+                radial-gradient(circle at top left, rgba(255, 59, 87, 0.08), transparent 34%),
+                radial-gradient(circle at top right, rgba(0, 122, 255, 0.08), transparent 32%),
+                linear-gradient(180deg, #0a0c10 0%, #07080b 100%);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            padding: 20px 16px;
+            padding: 18px 16px 28px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,15 +55,18 @@
             inset: 0;
             background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
             background-repeat: no-repeat;
-            background-position: center 120px;
-            background-size: 360px auto;
-            opacity: 0.035;
+            background-position: center 145px;
+            background-size: 370px auto;
+            opacity: 0.014;
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
+        }
+        a {
+            -webkit-tap-highlight-color: transparent;
         }
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 490px;
             position: relative;
             z-index: 1;
         }
@@ -61,17 +79,19 @@
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-color);
             color: #fff;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 12px;
+            border-radius: 999px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
             gap: 12px;
         }
         .brand {
@@ -81,9 +101,10 @@
             min-width: 0;
         }
         .brand-img {
-            height: 52px;
+            height: 54px;
             width: auto;
             flex-shrink: 0;
+            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
         }
         .brand-name {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -92,6 +113,7 @@
             text-transform: uppercase;
             line-height: 1;
             white-space: nowrap;
+            letter-spacing: -0.3px;
         }
         .contact-group {
             display: flex;
@@ -100,71 +122,149 @@
         }
         .contact-btn {
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 800;
             color: #fff;
             text-decoration: none;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 999px;
         }
-        .info-bar {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.02);
+        .contact-btn.primary {
+            background: var(--accent-red);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(255, 59, 87, 0.18);
+        }
+        .hero {
+            background: linear-gradient(145deg, rgba(18, 22, 31, 0.95), rgba(13, 16, 24, 0.92));
             border: 1px solid var(--border-color);
-            padding: 12px 16px;
-            border-radius: 14px;
+            border-radius: 28px;
+            padding: 22px;
             margin-bottom: 16px;
-            font-size: 13px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
-        .info-main {
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -72px;
+            bottom: -78px;
+            width: 190px;
+            height: 190px;
+            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: 0.012;
+            pointer-events: none;
+        }
+        .slogan {
             color: #fff;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            letter-spacing: 0.4px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
         .info-red {
             color: var(--accent-red);
+        }
+        .hero-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 31px;
+            line-height: 1.02;
+            letter-spacing: -1.4px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.55;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-btn {
+            flex: 1;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 46px;
+            border-radius: 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
             font-weight: 800;
+            border: 1px solid var(--border-color);
+        }
+        .hero-btn.red {
+            background: var(--accent-red);
+            box-shadow: 0 14px 38px rgba(255, 59, 87, 0.20);
+        }
+        .hero-btn.dark {
+            background: rgba(255, 255, 255, 0.06);
         }
         .info-sub {
-            color: var(--text-muted);
+            color: var(--text-soft);
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 600;
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
         }
         .trust-strip {
             display: flex;
             gap: 8px;
             overflow-x: auto;
             padding-bottom: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
+            scrollbar-width: none;
+        }
+        .trust-strip::-webkit-scrollbar,
+        .dept-navigation::-webkit-scrollbar {
+            display: none;
         }
         .trust-pill {
             color: #fff;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             white-space: nowrap;
             padding: 8px 10px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.055);
             border: 1px solid var(--border-color);
         }
         .dept-navigation {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             display: flex;
             gap: 16px;
             overflow-x: auto;
-            padding-bottom: 12px;
-            margin-bottom: 24px;
+            padding: 12px 2px;
+            margin-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 12, 16, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
         .dept-tab {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-muted);
             text-decoration: none;
             white-space: nowrap;
@@ -172,143 +272,14 @@
         .dept-tab.active {
             color: var(--accent-red);
         }
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 28px;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-        .card::after {
-            content: "";
-            position: absolute;
-            right: -70px;
-            bottom: -70px;
-            width: 180px;
-            height: 180px;
-            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            opacity: 0.025;
-            pointer-events: none;
-        }
-        .core-badge {
-            display: inline-block;
-            background: var(--accent-red);
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
-        }
-        .core-badge.blue {
-            background: var(--accent-blue);
-        }
-        .core-badge.dark {
-            background: #1e293b;
-        }
-        .card-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: #fff;
-            position: relative;
-            z-index: 1;
-        }
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
-        .promo-box {
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
-        .promo-text {
-            font-size: 13px;
-            color: #25d366;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-        .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-        }
-        .price-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-        .price-value {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 30px;
-            color: #fff;
-            display: block;
-        }
-        .book-btn {
-            font-weight: 700;
-            font-size: 14px;
-            color: #fff;
-            text-decoration: none;
-            background: var(--accent-red);
-            padding: 14px 24px;
-            border-radius: 14px;
-            text-align: center;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-        .book-btn.blue {
-            background: var(--accent-blue);
-        }
         .quick-help {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.035);
             border: 1px solid var(--border-color);
             padding: 18px;
-            border-radius: 18px;
-            margin-bottom: 24px;
+            border-radius: 20px;
+            margin-bottom: 22px;
             position: relative;
             overflow: hidden;
-        }
-        .quick-help::after {
-            content: "";
-            position: absolute;
-            right: -50px;
-            bottom: -60px;
-            width: 150px;
-            height: 150px;
-            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            opacity: 0.025;
-            pointer-events: none;
         }
         .quick-help-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -333,11 +304,168 @@
             position: relative;
             z-index: 1;
         }
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-color);
+            border-radius: 26px;
+            padding: 26px;
+            margin-bottom: 22px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            right: -72px;
+            bottom: -72px;
+            width: 180px;
+            height: 180px;
+            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: 0.009;
+            pointer-events: none;
+        }
+        .core-badge {
+            display: inline-block;
+            background: var(--accent-red);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 7px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+        }
+        .core-badge.blue {
+            background: var(--accent-blue);
+        }
+        .core-badge.dark {
+            background: #1e293b;
+        }
+        .core-badge.green {
+            background: rgba(37, 211, 102, 0.18);
+            color: var(--accent-green);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+        .card-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.6px;
+        }
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.55;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        .mini-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        .mini-item {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            border-radius: 13px;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .promo-box {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+        .promo-box.red {
+            background: rgba(255, 59, 87, 0.09);
+            border-color: rgba(255, 59, 87, 0.26);
+        }
+        .promo-text {
+            font-size: 13px;
+            color: var(--accent-green);
+            font-weight: 700;
+            line-height: 1.45;
+        }
+        .promo-box.red .promo-text {
+            color: #ff6478;
+        }
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            padding-top: 19px;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .price-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+        .price-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 29px;
+            color: #fff;
+            display: block;
+            letter-spacing: -0.8px;
+        }
+        .book-btn {
+            font-weight: 800;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            background: var(--accent-red);
+            padding: 14px 22px;
+            border-radius: 15px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(255, 59, 87, 0.18);
+        }
+        .book-btn.blue {
+            background: var(--accent-blue);
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.18);
+        }
+        .book-btn.dark {
+            background: #1e293b;
+            box-shadow: none;
+        }
         .review-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.035);
             border: 1px solid var(--border-color);
             padding: 16px;
-            border-radius: 16px;
+            border-radius: 18px;
             margin-bottom: 12px;
         }
         .stars {
@@ -348,10 +476,12 @@
         .review-text {
             font-style: italic;
             font-size: 14px;
+            line-height: 1.45;
             margin-bottom: 8px;
+            color: #e5e7eb;
         }
         .review-name {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 12px;
             color: var(--accent-blue);
         }
@@ -359,18 +489,19 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 13px;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--text-soft);
             text-align: center;
             margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 32px;
+            margin-bottom: 30px;
         }
         .image-card {
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
             border: 1px solid var(--border-color);
             aspect-ratio: 4 / 5;
@@ -390,52 +521,74 @@
             display: block;
             color: var(--text-muted);
             font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 6px;
+            font-weight: 800;
+            margin-bottom: 7px;
         }
         .form-input {
             background: #0a0c10;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             padding: 14px;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 15px;
             width: 100%;
-            min-height: 48px;
+            min-height: 50px;
             appearance: none;
             -webkit-appearance: none;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: rgba(255, 59, 87, 0.6);
+            box-shadow: 0 0 0 4px rgba(255, 59, 87, 0.09);
+        }
+        textarea.form-input {
+            resize: vertical;
+            min-height: 88px;
+            line-height: 1.4;
         }
         .submit-btn {
             background: var(--accent-blue);
             color: #fff;
             padding: 16px;
             border: none;
-            border-radius: 16px;
-            font-weight: 700;
+            border-radius: 17px;
+            font-weight: 800;
             font-size: 15px;
             width: 100%;
             cursor: pointer;
             margin-top: 8px;
+            box-shadow: 0 16px 40px rgba(0, 122, 255, 0.2);
+        }
+        .small-note {
+            color: var(--text-soft);
+            font-size: 12px;
+            line-height: 1.45;
+            text-align: center;
+            margin-top: 12px;
         }
         footer {
             text-align: center;
-            color: var(--text-muted);
+            color: var(--text-soft);
             font-size: 12px;
             padding: 12px 0 24px;
+            line-height: 1.5;
         }
-        @media (max-width: 390px) {
+        @media (max-width: 410px) {
             .brand-img {
-                height: 46px;
+                height: 47px;
             }
             .brand-name {
                 font-size: 14px;
             }
             .contact-btn {
-                padding: 7px 10px;
+                padding: 8px 10px;
                 font-size: 11px;
             }
+            .hero-title {
+                font-size: 28px;
+            }
             .card {
-                padding: 24px;
+                padding: 23px;
             }
             .card-title {
                 font-size: 22px;
@@ -445,8 +598,8 @@
             }
             body::before {
                 background-size: 300px auto;
-                background-position: center 130px;
-                opacity: 0.03;
+                background-position: center 140px;
+                opacity: 0.011;
             }
         }
     </style>
@@ -458,18 +611,26 @@
         </div>
         <header>
             <div class="brand">
-                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Logo" class="brand-img">
+                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="brand-img">
                 <h1 class="brand-name">Triad Automotive</h1>
             </div>
             <div class="contact-group">
                 <a href="mailto:triadautomotivellc@gmail.com" class="contact-btn" id="txtEmailBtn">Email</a>
-                <a href="sms:+19564757053" class="contact-btn" id="txtTextBtn">Text</a>
+                <a href="sms:+19564757053" class="contact-btn primary" id="txtTextBtn">Text</a>
             </div>
         </header>
-        <div class="info-bar">
-            <span class="info-main" id="txtInfoArea">Texas Roots, <span class="info-red">Wisconsin Tough</span></span>
-            <span class="info-sub" id="txtInfoSub">Automotive service, maintenance, diagnostics, and repair in Baraboo, WI</span>
-        </div>
+        <section class="hero" id="top">
+            <div class="slogan" id="txtInfoArea">Texas Roots, <span class="info-red">Wisconsin Tough</span></div>
+            <h2 class="hero-title" id="heroTitle">Auto service built for real life.</h2>
+            <p class="hero-text" id="heroText">
+                Service, maintenance, diagnostics, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and help when your vehicle needs attention.
+            </p>
+            <div class="hero-actions">
+                <a href="#scheduler" class="hero-btn red" id="heroBook">Schedule Service</a>
+                <a href="sms:+19564757053" class="hero-btn dark" id="heroTextBtn">Text Us</a>
+            </div>
+            <p class="info-sub" id="txtInfoSub">Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.</p>
+        </section>
         <div class="trust-strip">
             <span class="trust-pill" id="pillService">Service & Maintenance</span>
             <span class="trust-pill" id="pillDomestic">Domestic & Foreign</span>
@@ -483,9 +644,9 @@
             <a href="#service" class="dept-tab active" id="tabService">Service</a>
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
-            <a href="#parts" class="dept-tab" id="tabParts">Custom Parts</a>
+            <a href="#parts" class="dept-tab" id="tabParts">Parts</a>
             <a href="#performance" class="dept-tab" id="tabPerf">Performance</a>
-            <a href="#builds" class="dept-tab" id="tabBuilds">Build Planning</a>
+            <a href="#scheduler" class="dept-tab" id="tabSchedule">Schedule</a>
         </nav>
         <div class="quick-help">
             <h2 class="quick-help-title" id="quickTitle">Not sure what you need?</h2>
@@ -500,9 +661,15 @@
             <p class="card-desc" id="dscService">
                 Triad Automotive provides service, maintenance, diagnostics, and repair for domestic and foreign vehicles. From daily drivers to work trucks and family SUVs, we help keep your vehicle reliable and road-ready.
             </p>
+            <div class="mini-list">
+                <div class="mini-item" id="svcMini1">Brakes</div>
+                <div class="mini-item" id="svcMini2">Suspension</div>
+                <div class="mini-item" id="svcMini3">Tune-Ups</div>
+                <div class="mini-item" id="svcMini4">No-Starts</div>
+            </div>
             <div class="promo-box">
                 <p class="promo-text" id="promoService">
-                    Oil leaks, brakes, suspension, tune-ups, warning lights, no-starts, and general repair—text us what’s going on and we’ll point you in the right direction.
+                    Oil leaks, warning lights, noises, steering issues, overheating, and general repairs—text us what’s going on and we’ll help you figure out the next step.
                 </p>
             </div>
             <div class="card-footer">
@@ -517,35 +684,38 @@
             <div class="core-badge" id="bdgDiag">Core Evaluation</div>
             <h2 class="card-title" id="ttlDiag">Check Engine Light Scan</h2>
             <p class="card-desc" id="dscDiag">
-                No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and give you an honest direction on what may be failing.
+                We plug the scanner into your vehicle’s system, read the fault codes, and give you honest direction on what may be failing before you start throwing parts at it.
             </p>
+            <div class="promo-box red">
+                <p class="promo-text" id="promoDiag">A scan is a starting point. Real diagnostics may require additional inspection depending on the issue.</p>
+            </div>
             <div class="card-footer">
                 <div>
                     <span class="price-label" id="lblPriceDiag">Flat Rate</span>
-                    <span class="price-value">$45.00</span>
+                    <span class="price-value">$45</span>
                 </div>
-                <a href="#scheduler" class="book-btn" id="btnBookDiag">Book Slot</a>
+                <a href="#scheduler" class="book-btn" id="btnBookDiag">Book Scan</a>
             </div>
         </main>
         <section class="card" id="towing">
             <div class="core-badge blue" id="bdgTow">Recovery & Transport</div>
             <h2 class="card-title" id="ttlTow">Truck & Trailer Service</h2>
             <p class="card-desc" id="dscTow">
-                Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.
+                Stuck or need a vehicle moved? We can dispatch our truck and trailer to safely transport your vehicle or help coordinate pickup for repair.
             </p>
             <div class="promo-box">
                 <p class="promo-text" id="promoTow">
-                    💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!
+                    💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location and repair.
                 </p>
             </div>
             <div class="card-footer">
                 <div>
-                    <span class="price-label" id="lblPriceTow">Urgent</span>
+                    <span class="price-label" id="lblPriceTow">Transport</span>
                     <span class="price-value" id="valPriceTow">Quote</span>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:8px;">
-                    <a href="sms:+19564757053" class="book-btn blue" style="padding:10px; font-size:12px;" id="btnActionTow">Get Tow</a>
-                    <a href="#scheduler" class="book-btn" style="padding:10px; font-size:12px; background:#1e293b;" id="btnActionMobile">Schedule Pickup</a>
+                    <a href="sms:+19564757053" class="book-btn blue" style="padding:10px 14px; font-size:12px;" id="btnActionTow">Get Tow</a>
+                    <a href="#scheduler" class="book-btn dark" style="padding:10px 14px; font-size:12px;" id="btnActionMobile">Schedule</a>
                 </div>
             </div>
         </section>
@@ -555,8 +725,14 @@
             <p class="card-desc" id="dscParts">
                 Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, lighting, suspension, wheels, tires, and parts for custom builds.
             </p>
-            <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
-                <p class="promo-text" style="color: var(--accent-red);" id="promoParts">
+            <div class="mini-list">
+                <div class="mini-item" id="partsMini1">OEM Parts</div>
+                <div class="mini-item" id="partsMini2">Aftermarket</div>
+                <div class="mini-item" id="partsMini3">Accessories</div>
+                <div class="mini-item" id="partsMini4">Suspension</div>
+            </div>
+            <div class="promo-box red">
+                <p class="promo-text" id="promoParts">
                     Tell us what vehicle you have and what you’re looking for. We’ll help find the right part before you waste money on the wrong one.
                 </p>
             </div>
@@ -574,8 +750,14 @@
             <p class="card-desc" id="dscPerf">
                 We offer bolt-on performance work and parts sourcing for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, and supporting parts, we can help plan the setup and source the right components.
             </p>
-            <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
-                <p class="promo-text" style="color: var(--accent-red);" id="promoPerf">
+            <div class="mini-list">
+                <div class="mini-item" id="perfMini1">SBC</div>
+                <div class="mini-item" id="perfMini2">LS Gen 3/4</div>
+                <div class="mini-item" id="perfMini3">LT Bolt-Ons</div>
+                <div class="mini-item" id="perfMini4">Parts Sourcing</div>
+            </div>
+            <div class="promo-box red">
+                <p class="promo-text" id="promoPerf">
                     Tell us your engine, vehicle, and goal. We’ll help point you toward a setup that makes sense.
                 </p>
             </div>
@@ -593,8 +775,8 @@
             <p class="card-desc" id="dscBuilds">
                 Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, and custom upgrades before you spend money on the wrong parts.
             </p>
-            <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
-                <p class="promo-text" style="color: var(--accent-red);" id="promoBuilds">
+            <div class="promo-box red">
+                <p class="promo-text" id="promoBuilds">
                     Text us your vehicle and your goal. We’ll help you build a parts plan that makes sense.
                 </p>
             </div>
@@ -606,7 +788,7 @@
                 <a href="#scheduler" class="book-btn" id="btnBuilds">Plan Build</a>
             </div>
         </section>
-        <section class="card" style="background:transparent; border:none; padding:0;">
+        <section class="card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
                 <p class="review-text">
@@ -624,7 +806,7 @@
         </section>
         <section>
             <h3 class="gallery-title" id="galTitle">Shop Operations & Sourcing</h3>
-            <p class="card-desc" id="galSub">
+            <p class="card-desc" id="galSub" style="text-align:center;">
                 Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.
             </p>
             <div class="grid-container">
@@ -642,15 +824,27 @@
                 </div>
             </div>
         </section>
-        <section class="card" id="scheduler" style="background: rgba(18,22,31,0.9);">
-            <h3 class="card-title" style="text-align:center; font-size:20px;" id="frmTitle">📅 Schedule Service</h3>
+        <section class="card" id="scheduler" style="background: var(--card-bg-strong);">
+            <div class="core-badge blue" id="bdgSchedule">Service Request</div>
+            <h3 class="card-title" style="text-align:left;" id="frmTitle">Schedule Service</h3>
+            <p class="card-desc" id="frmSub">
+                Send us the details and your phone will open a prepared text message to Triad Automotive.
+            </p>
             <form onsubmit="event.preventDefault(); sendBookingSMS();">
                 <div class="form-group">
-                    <label class="form-label" id="lblFrmSvc">1. Select Service</label>
+                    <label class="form-label" id="lblFrmName">1. Your Name</label>
+                    <input type="text" id="bookingName" class="form-input" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="lblFrmVehicle">2. Vehicle</label>
+                    <input type="text" id="bookingVehicle" class="form-input" placeholder="Year / Make / Model" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="lblFrmSvc">3. Select Service</label>
                     <select id="bookingService" class="form-input"></select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" id="lblFrmCity">2. City / Area</label>
+                    <label class="form-label" id="lblFrmCity">4. City / Area</label>
                     <select id="bookingCity" class="form-input">
                         <option value="Baraboo">Baraboo</option>
                         <option value="Wisconsin Dells">Wisconsin Dells</option>
@@ -662,16 +856,16 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" id="lblFrmLoc">3. Detailed Address / Location</label>
-                    <input type="text" id="bookingLocation" class="form-input" placeholder="123 Main St" required>
+                    <label class="form-label" id="lblFrmLoc">5. Address / Location</label>
+                    <input type="text" id="bookingLocation" class="form-input" placeholder="123 Main St or general area" required>
                 </div>
                 <div style="display:flex; gap:12px;">
                     <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmDate">4. Date</label>
+                        <label class="form-label" id="lblFrmDate">6. Date</label>
                         <input type="date" id="bookingDate" class="form-input" required>
                     </div>
                     <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmTime">5. Time</label>
+                        <label class="form-label" id="lblFrmTime">7. Time</label>
                         <select id="bookingTime" class="form-input">
                             <option value="ASAP">ASAP</option>
                             <option value="8:00 AM">8:00 AM</option>
@@ -697,11 +891,19 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn" id="btnFrmSubmit">💬 Confirm & Text Request</button>
+                <div class="form-group">
+                    <label class="form-label" id="lblFrmNotes">8. What’s Going On?</label>
+                    <textarea id="bookingNotes" class="form-input" placeholder="Example: check engine light, brakes grinding, no start, needs tow, wants parts ordered..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="btnFrmSubmit">Confirm & Text Request</button>
+                <p class="small-note" id="frmNote">
+                    This form opens your text messages. Your request is not sent until you press send on your phone.
+                </p>
             </form>
         </section>
         <footer>
             <p id="footerText">Triad Automotive LLC • Baraboo, Wisconsin</p>
+            <p id="footerSub">Automotive service • Diagnostics • Maintenance • Parts sourcing</p>
         </footer>
     </div>
     <script>
@@ -712,7 +914,11 @@
                 txtEmailBtn: "Email",
                 txtTextBtn: "Text",
                 txtInfoArea: "Texas Roots, <span class='info-red'>Wisconsin Tough</span>",
-                txtInfoSub: "Automotive service, maintenance, diagnostics, and repair in Baraboo, WI",
+                heroTitle: "Auto service built for real life.",
+                heroText: "Service, maintenance, diagnostics, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and help when your vehicle needs attention.",
+                heroBook: "Schedule Service",
+                heroTextBtn: "Text Us",
+                txtInfoSub: "Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.",
                 pillService: "Service & Maintenance",
                 pillDomestic: "Domestic & Foreign",
                 pillDiag: "Diagnostics",
@@ -723,35 +929,44 @@
                 tabService: "Service",
                 tabDiag: "Diagnostics",
                 tabTow: "Truck & Trailer",
-                tabParts: "Custom Parts",
+                tabParts: "Parts",
                 tabPerf: "Performance",
-                tabBuilds: "Build Planning",
+                tabSchedule: "Schedule",
                 quickTitle: "Not sure what you need?",
                 quickText: "Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.",
                 quickBtn: "Text a Picture →",
                 bdgService: "General Service",
                 ttlService: "Automotive Service & Maintenance",
                 dscService: "Triad Automotive provides service, maintenance, diagnostics, and repair for domestic and foreign vehicles. From daily drivers to work trucks and family SUVs, we help keep your vehicle reliable and road-ready.",
-                promoService: "Oil leaks, brakes, suspension, tune-ups, warning lights, no-starts, and general repair—text us what’s going on and we’ll point you in the right direction.",
+                svcMini1: "Brakes",
+                svcMini2: "Suspension",
+                svcMini3: "Tune-Ups",
+                svcMini4: "No-Starts",
+                promoService: "Oil leaks, warning lights, noises, steering issues, overheating, and general repairs—text us what’s going on and we’ll help you figure out the next step.",
                 lblPriceService: "General Repair",
                 valPriceService: "Quote",
                 btnService: "Request Service",
                 bdgDiag: "Core Evaluation",
                 ttlDiag: "Check Engine Light Scan",
-                dscDiag: "No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and give you an honest direction on what may be failing.",
+                dscDiag: "We plug the scanner into your vehicle’s system, read the fault codes, and give you honest direction on what may be failing before you start throwing parts at it.",
+                promoDiag: "A scan is a starting point. Real diagnostics may require additional inspection depending on the issue.",
                 lblPriceDiag: "Flat Rate",
-                btnBookDiag: "Book Slot",
+                btnBookDiag: "Book Scan",
                 bdgTow: "Recovery & Transport",
                 ttlTow: "Truck & Trailer Service",
-                dscTow: "Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.",
-                promoTow: "💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!",
-                lblPriceTow: "Urgent",
+                dscTow: "Stuck or need a vehicle moved? We can dispatch our truck and trailer to safely transport your vehicle or help coordinate pickup for repair.",
+                promoTow: "💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location and repair.",
+                lblPriceTow: "Transport",
                 valPriceTow: "Quote",
                 btnActionTow: "Get Tow",
-                btnActionMobile: "Schedule Pickup",
+                btnActionMobile: "Schedule",
                 bdgParts: "Special Order",
                 ttlParts: "Custom Parts by Order",
                 dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, lighting, suspension, wheels, tires, and parts for custom builds.",
+                partsMini1: "OEM Parts",
+                partsMini2: "Aftermarket",
+                partsMini3: "Accessories",
+                partsMini4: "Suspension",
                 promoParts: "Tell us what vehicle you have and what you’re looking for. We’ll help find the right part before you waste money on the wrong one.",
                 lblPriceParts: "Availability",
                 valPriceParts: "Quote",
@@ -759,6 +974,10 @@
                 bdgPerf: "Performance",
                 ttlPerf: "SBC, LS & LT Performance",
                 dscPerf: "We offer bolt-on performance work and parts sourcing for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, and supporting parts, we can help plan the setup and source the right components.",
+                perfMini1: "SBC",
+                perfMini2: "LS Gen 3/4",
+                perfMini3: "LT Bolt-Ons",
+                perfMini4: "Parts Sourcing",
                 promoPerf: "Tell us your engine, vehicle, and goal. We’ll help point you toward a setup that makes sense.",
                 lblPricePerf: "Parts & Labor",
                 valPricePerf: "Quote",
@@ -772,14 +991,21 @@
                 btnBuilds: "Plan Build",
                 galTitle: "Shop Operations & Sourcing",
                 galSub: "Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.",
-                frmTitle: "📅 Schedule Service",
-                lblFrmSvc: "1. Select Service",
-                lblFrmCity: "2. City / Area",
-                lblFrmLoc: "3. Detailed Address / Location",
-                lblFrmDate: "4. Date",
-                lblFrmTime: "5. Time",
-                btnFrmSubmit: "💬 Confirm & Text Request",
+                bdgSchedule: "Service Request",
+                frmTitle: "Schedule Service",
+                frmSub: "Send us the details and your phone will open a prepared text message to Triad Automotive.",
+                lblFrmName: "1. Your Name",
+                lblFrmVehicle: "2. Vehicle",
+                lblFrmSvc: "3. Select Service",
+                lblFrmCity: "4. City / Area",
+                lblFrmLoc: "5. Address / Location",
+                lblFrmDate: "6. Date",
+                lblFrmTime: "7. Time",
+                lblFrmNotes: "8. What’s Going On?",
+                btnFrmSubmit: "Confirm & Text Request",
+                frmNote: "This form opens your text messages. Your request is not sent until you press send on your phone.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
+                footerSub: "Automotive service • Diagnostics • Maintenance • Parts sourcing",
                 svcs: [
                     {v: "Automotive Service & Maintenance", t: "Automotive Service & Maintenance"},
                     {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
@@ -796,7 +1022,11 @@
                 txtEmailBtn: "Correo",
                 txtTextBtn: "Texto",
                 txtInfoArea: "Raíces de Texas, <span class='info-red'>Fuerza de Wisconsin</span>",
-                txtInfoSub: "Servicio, mantenimiento, diagnóstico y reparación automotriz en Baraboo, WI",
+                heroTitle: "Servicio automotriz para la vida real.",
+                heroText: "Servicio, mantenimiento, diagnóstico y reparación para vehículos domésticos y extranjeros en Baraboo, WI. Respuestas directas, dirección honesta y ayuda cuando tu vehículo necesita atención.",
+                heroBook: "Agendar Servicio",
+                heroTextBtn: "Mandar Texto",
+                txtInfoSub: "Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.",
                 pillService: "Servicio y Mantenimiento",
                 pillDomestic: "Domésticos y Extranjeros",
                 pillDiag: "Diagnósticos",
@@ -807,35 +1037,44 @@
                 tabService: "Servicio",
                 tabDiag: "Diagnósticos",
                 tabTow: "Camión y Remolque",
-                tabParts: "Partes Especiales",
+                tabParts: "Partes",
                 tabPerf: "Performance",
-                tabBuilds: "Plan de Proyecto",
+                tabSchedule: "Agendar",
                 quickTitle: "¿No sabes qué necesitas?",
                 quickText: "Mándanos una foto de la luz del tablero, fuga, daño, ruido o parte que quieres instalar. Te ayudamos a saber por dónde empezar.",
                 quickBtn: "Mandar Foto →",
                 bdgService: "Servicio General",
                 ttlService: "Servicio y Mantenimiento Automotriz",
                 dscService: "Triad Automotive ofrece servicio, mantenimiento, diagnóstico y reparación para vehículos domésticos y extranjeros. Desde carros diarios hasta camionetas de trabajo y SUVs familiares, ayudamos a mantener tu vehículo confiable y listo para el camino.",
-                promoService: "Fugas de aceite, frenos, suspensión, tune-ups, luces del tablero, no-starts y reparación general—mándanos qué está pasando y te decimos por dónde empezar.",
+                svcMini1: "Frenos",
+                svcMini2: "Suspensión",
+                svcMini3: "Tune-Ups",
+                svcMini4: "No Prende",
+                promoService: "Fugas de aceite, luces del tablero, ruidos, problemas de dirección, calentamiento y reparación general—mándanos qué está pasando y te ayudamos a saber el siguiente paso.",
                 lblPriceService: "Reparación General",
                 valPriceService: "Cotizar",
                 btnService: "Pedir Servicio",
                 bdgDiag: "Evaluación Central",
                 ttlDiag: "Diagnóstico por Computadora",
-                dscDiag: "Sin rodeos corporativos. Conectamos el escáner al sistema de tu vehículo para leer los códigos y darte una dirección honesta sobre lo que puede estar fallando.",
+                dscDiag: "Conectamos el escáner al sistema de tu vehículo, leemos los códigos y te damos una dirección honesta sobre lo que puede estar fallando antes de gastar dinero en partes.",
+                promoDiag: "El escaneo es el punto de inicio. Un diagnóstico real puede requerir inspección adicional dependiendo del problema.",
                 lblPriceDiag: "Precio Fijo",
-                btnBookDiag: "Agendar",
+                btnBookDiag: "Agendar Scan",
                 bdgTow: "Recuperación y Transporte",
                 ttlTow: "Servicio de Camión y Remolque",
-                dscTow: "¿Quedaste tirado? Enviamos nuestro camión y remolque para transportar tu vehículo o realizar reparaciones móviles.",
-                promoTow: "💸 Trae tu vehículo a nuestro taller para reparación y obtén un descuento—¡o incluso la grúa GRATIS dependiendo de tu ubicación!",
-                lblPriceTow: "Urgencias",
+                dscTow: "¿Quedaste tirado o necesitas mover un vehículo? Podemos enviar nuestro camión y remolque para transportar tu vehículo o coordinar recolección para reparación.",
+                promoTow: "💸 Trae tu vehículo a nuestro taller para reparación y obtén un descuento—¡o incluso la grúa GRATIS dependiendo de tu ubicación y reparación!",
+                lblPriceTow: "Transporte",
                 valPriceTow: "Cotizar",
                 btnActionTow: "Pedir Grúa",
-                btnActionMobile: "Agendar Recolección",
+                btnActionMobile: "Agendar",
                 bdgParts: "Orden Especial",
                 ttlParts: "Partes Especiales por Pedido",
                 dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces, suspensión, rines, llantas y partes para proyectos personalizados.",
+                partsMini1: "Partes OEM",
+                partsMini2: "Aftermarket",
+                partsMini3: "Accesorios",
+                partsMini4: "Suspensión",
                 promoParts: "Dinos qué vehículo tienes y qué estás buscando. Te ayudamos a encontrar la parte correcta antes de que gastes dinero en la equivocada.",
                 lblPriceParts: "Disponibilidad",
                 valPriceParts: "Cotizar",
@@ -843,6 +1082,10 @@
                 bdgPerf: "Performance",
                 ttlPerf: "Performance SBC, LS y LT",
                 dscPerf: "Ofrecemos trabajo de bolt-ons y búsqueda de partes para Small Block Chevy, LS Gen 3, LS Gen 4 y motores LT. Podemos ayudarte con intake, escape, headers, cam, valvetrain, fuel upgrades y partes de soporte para armar una combinación que tenga sentido.",
+                perfMini1: "SBC",
+                perfMini2: "LS Gen 3/4",
+                perfMini3: "LT Bolt-Ons",
+                perfMini4: "Búsqueda de Partes",
                 promoPerf: "Dinos qué motor tienes, qué vehículo es y cuál es tu meta. Te ayudamos a encontrar una combinación que tenga sentido.",
                 lblPricePerf: "Partes y Labor",
                 valPricePerf: "Cotizar",
@@ -856,14 +1099,21 @@
                 btnBuilds: "Planear Proyecto",
                 galTitle: "Operaciones y Búsqueda",
                 galSub: "¿Buscas tu próximo auto? A través de nuestra red de socios autorizados, te ayudamos a encontrar el vehículo perfecto o conseguir <strong>autos y camionetas de Texas libres de óxido</strong>.",
-                frmTitle: "📅 Agendar Servicio",
-                lblFrmSvc: "1. Selecciona Servicio",
-                lblFrmCity: "2. Ciudad / Área",
-                lblFrmLoc: "3. Dirección Detallada",
-                lblFrmDate: "4. Fecha",
-                lblFrmTime: "5. Hora",
-                btnFrmSubmit: "💬 Confirmar y Enviar SMS",
+                bdgSchedule: "Solicitud de Servicio",
+                frmTitle: "Agendar Servicio",
+                frmSub: "Mándanos los detalles y tu teléfono abrirá un mensaje de texto preparado para Triad Automotive.",
+                lblFrmName: "1. Tu Nombre",
+                lblFrmVehicle: "2. Vehículo",
+                lblFrmSvc: "3. Selecciona Servicio",
+                lblFrmCity: "4. Ciudad / Área",
+                lblFrmLoc: "5. Dirección / Ubicación",
+                lblFrmDate: "6. Fecha",
+                lblFrmTime: "7. Hora",
+                lblFrmNotes: "8. ¿Qué Está Pasando?",
+                btnFrmSubmit: "Confirmar y Enviar Texto",
+                frmNote: "Este formulario abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar en tu teléfono.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
+                footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • Búsqueda de partes",
                 svcs: [
                     {v: "Servicio y Mantenimiento Automotriz", t: "Servicio y Mantenimiento Automotriz"},
                     {v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"},
@@ -891,24 +1141,30 @@
             const t = trans[currentLang];
             Object.keys(t).forEach(id => {
                 const el = document.getElementById(id);
-                if (el && id !== 'sms' && id !== 'svcs') {
+                if (el && id !== 'svcs') {
                     el.innerHTML = t[id];
                 }
             });
             populateDropdowns();
         }
         function sendBookingSMS() {
+            const name = document.getElementById('bookingName').value;
+            const vehicle = document.getElementById('bookingVehicle').value;
             const svc = document.getElementById('bookingService').value;
             const city = document.getElementById('bookingCity').value;
             const loc = document.getElementById('bookingLocation').value;
             const rawDate = document.getElementById('bookingDate').value;
             const time = document.getElementById('bookingTime').value;
+            const notes = document.getElementById('bookingNotes').value;
             const msg =
-                "Hi Triad, I need: " + svc +
+                "Hi Triad, my name is " + name +
+                ". Vehicle: " + vehicle +
+                ". I need: " + svc +
                 ". City: " + city +
                 ". Location: " + loc +
-                ". Date: " + rawDate +
-                ". Time: " + time;
+                ". Preferred date: " + rawDate +
+                ". Preferred time: " + time +
+                ". Notes: " + notes;
             window.location.href = `sms:+19564757053?body=${encodeURIComponent(msg)}`;
         }
         populateDropdowns();
