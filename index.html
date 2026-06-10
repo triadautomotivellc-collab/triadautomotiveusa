@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Auto | Diagnostics, Mobile & Towing</title>
+    <title>Triad Auto | Premium Diagnostics & Custom Shop</title>
     
-    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
@@ -104,7 +103,7 @@
 
         .geo-icon { color: var(--accent-red); font-size: 16px; }
 
-        /* --- Pestañas de Departamentos Extendidas --- */
+        /* --- Pestañas de Departamentos (Estructura Original) --- */
         .dept-navigation {
             display: flex;
             gap: 16px;
@@ -168,6 +167,7 @@
             line-height: 1.2;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
+            color: #fff;
         }
 
         .card-description {
@@ -201,6 +201,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 20px rgba(255, 59, 87, 0.3);
+            text-align: center;
         }
 
         .book-now-btn.blue-btn {
@@ -208,11 +209,11 @@
             box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
         }
 
-        /* --- Galería "In The Shop" con Javy's Truck y el '64 de tu Tío --- */
+        /* --- Galería de Fotos del Taller (4 Vehículos) --- */
         .gallery-section {
             width: 100%;
             margin-bottom: 32px;
-            margin-top: 16px;
+            margin-top: 24px;
         }
 
         .gallery-title {
@@ -237,6 +238,7 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
             aspect-ratio: 4 / 5;
+            background: rgba(255, 255, 255, 0.01);
         }
 
         .grid-img {
@@ -254,30 +256,63 @@
 
         .img-label { font-size: 12px; font-weight: 600; color: #fff; }
 
-        /* --- Sección de Agenda General --- */
+        /* --- Sección de Calendario Interactivo con WhatsApp --- */
         .scheduler-section {
             width: 100%;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(18, 22, 31, 0.8);
             border: 2px solid var(--border-color);
             border-radius: 24px;
             padding: 28px;
-            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-top: 16px;
+            margin-bottom: 24px;
         }
 
         .scheduler-title {
             font-family: var(--font-display);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            text-align: center;
+            color: #fff;
         }
 
         .scheduler-desc {
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 24px;
+            text-align: center;
         }
 
-        .phone-booking-btn {
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .form-input {
+            background: #0a0c10;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            width: 100%;
+            outline: none;
+            font-family: var(--font-sans);
+        }
+
+        .submit-booking-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -286,12 +321,16 @@
             font-weight: 700;
             font-size: 15px;
             color: #fff;
-            text-decoration: none;
             background: #25d366; 
-            padding: 16px 20px;
+            padding: 16px;
+            border: none;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
             width: 100%;
+            cursor: pointer;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -299,7 +338,6 @@
 
     <div class="container">
         
-        <!-- Header con tu Imagen de Logo Real de GitHub -->
         <header>
             <div class="brand">
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Logo" class="brand-img">
@@ -308,94 +346,147 @@
             <a href="tel:9564757834" class="contact-btn">Llamar</a>
         </header>
 
-        <!-- Barra de Información de Área de Servicio Real -->
         <div class="info-bar">
             <span class="geo-icon">📍</span>
             <span>Área de Servicio: <strong>Baraboo 53913</strong></span>
         </div>
 
-        <!-- Navegación por Departamentos (Estructura Original Recuperada y Expandida) -->
         <nav class="dept-navigation">
             <a href="#" class="dept-tab active">Todos los Servicios</a>
             <a href="#diagnostics" class="dept-tab">Diagnósticos</a>
-            <a href="#towing" class="dept-tab">Gruas y Mobile Work</a>
+            <a href="#towing" class="dept-tab">Grúas y Móvil</a>
             <a href="#" class="dept-tab">Sistemas de Escape</a>
             <a href="#" class="dept-tab">Frenos</a>
         </nav>
 
-        <!-- TARJETA 1: Diagnóstico en Taller -->
         <main class="card" id="diagnostics">
             <div class="core-badge">Evaluación Central</div>
-
             <h2 class="card-title">Check Engine Light Scan</h2>
             <p class="card-description">
-                Sin rodeos corporativos. Conectamos directamente el escáner al sistema de tu vehículo para leer los códigos de falla exactos y decirte con total honestidad qué está fallando en tu motor o sistema eléctrico en el taller.
+                Sin rodeos corporativos. Conectamos directamente el escáner al sistema de tu vehículo para leer los códigos de falla exactos y decirte con total honestidad qué está fallando en tu motor o sistema eléctrico.
             </p>
-
             <div class="card-footer">
                 <div class="price-container">
                     <span class="price-label">Precio Fijo</span>
                     <span class="price-value">$45.00</span>
                 </div>
-                <a href="https://wa.me/19564757834?text=Qué%20onda%20muchachos,%20quiero%20agendar%20un%20diagnóstico%20de%20$45%20en%20el%20taller" class="book-now-btn" target="_blank">Apartar Lugar</a>
+                <a href="#scheduler" class="book-now-btn">Apartar Lugar</a>
             </div>
         </main>
 
-        <!-- TARJETA 2: Servicio Extendido de Grúas y Mobile Work -->
         <section class="card" id="towing">
             <div class="core-badge blue">Asistencia en Camino</div>
-
             <h2 class="card-title">Servicio de Grúa y Mobile Work</h2>
             <p class="card-description">
-                ¿Te quedaste tirado? Te mandamos una grúa directo a nuestro taller o enviamos a un mecánico en una unidad móvil para arreglar tu vehículo en el lugar donde estés. Rápido, seguro y sin rodeos.
+                ¿Te quedaste tirado? Te mandamos una grúa directo a nuestro taller o enviamos a un mecánico en una unidad móvil para arreglar tu vehículo en el lugar donde estés. Rápido y seguro.
             </p>
-
             <div class="card-footer">
                 <div class="price-container">
                     <span class="price-label">Urgencias</span>
                     <span class="price-value">Cotizar</span>
                 </div>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <a href="https://wa.me/19564757834?text=Necesito%20una%20grúa%20hacia%20el%20taller" class="book-now-btn blue-btn" style="padding: 10px 16px; font-size: 12px; text-align: center;" target="_blank">Pedir Grúa</a>
-                    <a href="https://wa.me/19564757834?text=Necesito%20asistencia%20mecánica%20móvil%20en%20mi%20ubicación" class="book-now-btn" style="padding: 10px 16px; font-size: 12px; background: #1e293b; box-shadow: none; border: 1px solid var(--border-color); text-align: center;" target="_blank">Mobile Work</a>
+                <div style="display: flex; flex-direction: column; gap: 8px; width: 50%;">
+                    <a href="https://wa.me/19564757834?text=Necesito%20una%20grúa%20urgente%20para%20mi%20vehículo" class="book-now-btn blue-btn" style="padding: 10px; font-size: 12px;" target="_blank">Pedir Grúa</a>
+                    <a href="https://wa.me/19564757834?text=Necesito%20asistencia%20mecánica%20móvil%20(Mobile%20Work)%20en%20mi%20ubicación" class="book-now-btn" style="padding: 10px; font-size: 12px; background: #1e293b; box-shadow: none; border: 1px solid var(--border-color);" target="_blank">Mobile Work</a>
                 </div>
             </div>
         </section>
 
-        <!-- Galería Destacada del Taller -->
         <section class="gallery-section">
             <h3 class="gallery-title">Nuestras Naves</h3>
             
             <div class="grid-container">
-                <!-- Foto 1: Javy's Truck -->
                 <div class="image-card">
-                    <img src="IMG_7602.jpeg" alt="Javy's Truck" class="grid-img">
+                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Javy's Truck" class="grid-img">
                     <div class="img-overlay">
                         <p class="img-label">Late Model Performance</p>
                     </div>
                 </div>
 
-                <!-- Foto 2: El coche de tu Tío -->
                 <div class="image-card">
                     <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Uncle's Classic Car" class="grid-img">
                     <div class="img-overlay">
                         <p class="img-label">Classic Custom Restorations</p>
                     </div>
                 </div>
+
+                <div class="image-card">
+                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="C4 Corvette" class="grid-img">
+                    <div class="img-overlay">
+                        <p class="img-label">Sports & EFI Tuning</p>
+                    </div>
+                </div>
+
+                <div class="image-card">
+                    <img src="IMG_7602.jpeg" alt="Heavy Duty Dually" class="grid-img">
+                    <div class="img-overlay">
+                        <p class="img-label">Heavy Duty Service</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Sección de Agenda General Directa a tu Teléfono -->
         <section id="scheduler" class="scheduler-section">
-            <h3 class="scheduler-title">📅 Contáctanos de Inmediato</h3>
-            <p class="scheduler-desc">Dale clic abajo para mandarnos un mensaje rápido y dinos qué tipo de ayuda necesitas con tu nave.</p>
+            <h3 class="scheduler-title">📅 Agenda tu Cita</h3>
+            <p class="scheduler-desc">Selecciona tu servicio, el día y la hora. El sistema armará el mensaje directo para enviarlo a nuestro teléfono.</p>
             
-            <a href="https://wa.me/19564757834?text=Qué%20onda%20muchachos,%20necesito%20ayuda%20con%20mi%20vehículo" class="phone-booking-btn" target="_blank">
-                💬 Enviar Mensaje Al Teléfono
-            </a>
+            <form id="bookingForm" onsubmit="event.preventDefault(); sendBookingText();">
+                <div class="form-group">
+                    <label class="form-label">1. Selecciona el Servicio</label>
+                    <select id="bookingService" class="form-input">
+                        <option value="Diagnóstico por Computadora ($45)">Diagnóstico por Computadora — $45.00</option>
+                        <option value="Cambio de Aceite y Filtro">Cambio de Aceite — Mantenimiento</option>
+                        <option value="Servicio de Grúa">Servicio de Grúa (Urgencia)</option>
+                        <option value="Asistencia Mecánica Móvil">Mobile Work (Trabajo en Sitio)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">2. Elige el Día</label>
+                    <input type="date" id="bookingDate" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3. Elige la Hora</label>
+                    <select id="bookingTime" class="form-input">
+                        <option value="8:00 AM">8:00 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="12:00 PM">12:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-booking-btn">
+                    💬 Confirmar y Enviar Mensaje
+                </button>
+            </form>
         </section>
 
     </div>
+
+    <script>
+        // Evita que seleccionen días pasados en el calendario
+        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+
+        function sendBookingText() {
+            const service = document.getElementById('bookingService').value;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
+
+            // Formatea la fecha de manera clara en español
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
+            const formattedDate = new Date(date).toLocaleDateString('es-ES', options);
+
+            // Estructura limpia del mensaje de texto
+            const baseMessage = `Qué onda muchachos, me gustaría agendar una cita.\n\n🛠️ Servicio: ${service}\n📅 Día: ${formattedDate}\n⏰ Hora: ${time}`;
+            
+            // Codificación segura y redirección directa
+            const encodedMessage = encodeURIComponent(baseMessage);
+            window.open(`https://wa.me/19564757834?text=${encodedMessage}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
