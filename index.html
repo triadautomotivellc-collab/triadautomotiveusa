@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Automotive | Premium Diagnostics & Custom Shop</title>
+    <title>Triad Automotive | Premium Diagnostics & Service</title>
     
     <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +45,34 @@
         .container {
             width: 100%;
             max-width: 480px;
+        }
+
+        /* --- Top Bar with Language Selector --- */
+        .top-utility-bar {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .lang-switch-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .lang-switch-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
         }
 
         /* --- Header --- */
@@ -321,11 +349,11 @@
             font-weight: 700;
             font-size: 15px;
             color: #fff;
-            background: #25d366; 
+            background: var(--accent-blue); 
             padding: 16px;
             border: none;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.2);
             width: 100%;
             cursor: pointer;
             margin-top: 8px;
@@ -338,119 +366,113 @@
 
     <div class="container">
         
+        <!-- Language Selector -->
+        <div class="top-utility-bar">
+            <button class="lang-switch-btn" onclick="toggleLanguage()">
+                🌐 <span id="langBtnText">Español</span>
+            </button>
+        </div>
+
         <!-- Header -->
         <header>
             <div class="brand">
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="brand-img">
                 <h1 class="brand-name">Triad Automotive</h1>
             </div>
-            <a href="tel:9564757834" class="contact-btn">Llamar</a>
+            <a href="sms:+19564757053" class="contact-btn" id="callBtn">Call / Text</a>
         </header>
 
         <!-- Info Bar -->
         <div class="info-bar">
             <span class="geo-icon">📍</span>
-            <span>Área de Servicio: <strong>Baraboo 53913</strong></span>
+            <span id="infoBarText">Service Area: <strong>Baraboo 53913</strong></span>
         </div>
 
         <!-- Navigation Tabs -->
         <nav class="dept-navigation">
-            <a href="#" class="dept-tab active">Todos los Servicios</a>
-            <a href="#diagnostics" class="dept-tab">Diagnósticos</a>
-            <a href="#towing" class="dept-tab">Grúas y Móvil</a>
-            <a href="#scheduler" class="dept-tab">Agendar Cita</a>
+            <a href="#" class="dept-tab active" id="tabAll">All Services</a>
+            <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
+            <a href="#towing" class="dept-tab" id="tabTow">Towing</a>
+            <a href="#scheduler" class="dept-tab" id="tabSched">Book Appt</a>
         </nav>
 
-        <!-- SERVICIO 1: Diagnóstico en Taller -->
+        <!-- SERVICE 1: Diagnostics -->
         <main class="card" id="diagnostics">
-            <div class="core-badge">Evaluación Central</div>
-            <h2 class="card-title">Check Engine Light Scan</h2>
-            <p class="card-description">
-                Sin rodeos corporativos. Conectamos directamente el escáner al sistema de tu vehículo para leer los códigos de falla exactos y decirte con total honestidad qué está fallando en tu motor o sistema eléctrico.
+            <div class="core-badge" id="badgeDiag">Core Evaluation</div>
+            <h2 class="card-title" id="titleDiag">Check Engine Light Scan</h2>
+            <p class="card-description" id="descDiag">
+                No corporate runarounds. We plug the scanner straight into your vehicle's system to read the exact fault codes and tell you with complete honesty what is failing in your engine or electrical setup.
             </p>
             <div class="card-footer">
                 <div class="price-container">
-                    <span class="price-label">Precio Fijo</span>
+                    <span class="price-label" id="labelPriceDiag">Flat Rate</span>
                     <span class="price-value">$45.00</span>
                 </div>
-                <a href="#scheduler" class="book-now-btn">Apartar Lugar</a>
+                <a href="#scheduler" class="book-now-btn" id="btnBookDiag">Book Slot</a>
             </div>
         </main>
 
-        <!-- SERVICIO 2: Grúas y Mecánica Móvil -->
+        <!-- SERVICE 2: Towing & Mobile Work -->
         <section class="card" id="towing">
-            <div class="core-badge blue">Asistencia en Camino</div>
-            <h2 class="card-title">Servicio de Grúa y Mobile Work</h2>
-            <p class="card-description">
-                ¿Te quedaste tirado? Te mandamos una grúa directo a nuestro taller o enviamos a un mecánico en una unidad móvil para arreglar tu vehículo en el lugar donde estés. Rápido y seguro.
+            <div class="core-badge blue" id="badgeTow">Roadside Assistance</div>
+            <h2 class="card-title" id="titleTow">Towing & Mobile Work</h2>
+            <p class="card-description" id="descTow">
+                Stuck on the side of the road? We'll dispatch a tow truck directly to our shop or send a tech out in a mobile work unit to fix your vehicle right where it sits. Fast and dependable.
             </p>
             <div class="card-footer">
                 <div class="price-container">
-                    <span class="price-label">Urgencias</span>
-                    <span class="price-value">Cotizar</span>
+                    <span class="price-label" id="labelPriceTow">Urgent</span>
+                    <span class="price-value" id="valPriceTow">Quote</span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 8px; width: 50%;">
-                    <a href="https://wa.me/19564757834?text=Necesito%20una%20grúa%20urgente%20para%20mi%20vehículo" class="book-now-btn blue-btn" style="padding: 10px; font-size: 12px;" target="_blank">Pedir Grúa</a>
-                    <a href="https://wa.me/19564757834?text=Necesito%20asistencia%20mecánica%20móvil%20(Mobile%20Work)%20en%20mi%20ubicación" class="book-now-btn" style="padding: 10px; font-size: 12px; background: #1e293b; box-shadow: none; border: 1px solid var(--border-color);" target="_blank">Mobile Work</a>
+                    <a href="sms:+19564757053?body=Hello, I require urgent towing service for my vehicle." class="book-now-btn blue-btn" style="padding: 10px; font-size: 12px;" id="btnActionTow">Get Tow</a>
+                    <a href="sms:+19564757053?body=Hello, I require on-site roadside mobile assistance at my location." class="book-now-btn" style="padding: 10px; font-size: 12px; background: #1e293b; box-shadow: none; border: 1px solid var(--border-color);" id="btnActionMobile">Mobile Work</a>
                 </div>
             </div>
         </section>
 
-        <!-- Galería del Taller limpia + Info de Camionetas de Texas -->
+        <!-- Gallery Section -->
         <section class="gallery-section">
-            <h3 class="gallery-title">Trabajos del Taller</h3>
-            <p class="gallery-subtitle">Traemos camionetas libres de óxido (Rust-Free) desde el sur de Texas bajo pedido. Contáctanos para una cotización especial.</p>
+            <h3 class="gallery-title" id="galleryTitle">Shop Operations</h3>
+            <p class="gallery-subtitle" id="gallerySubtitle">We source rust-free trucks directly from South Texas by special request. Reach out to get a custom quote.</p>
             
             <div class="grid-container">
-                <!-- Foto 1: Camión Negro Elevado -->
                 <div class="image-card">
                     <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck build" class="grid-img">
                 </div>
-
-                <!-- Foto 2: El coche clásico de tu Tío -->
                 <div class="image-card">
                     <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img">
                 </div>
-
-                <!-- Foto 3: Corvette Azul C4 -->
                 <div class="image-card">
                     <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="C4 Corvette" class="grid-img">
                 </div>
-
-                <!-- Foto 4: Ford Dually Truck -->
                 <div class="image-card">
                     <img src="IMG_7602.jpeg" alt="Ford Dually" class="grid-img">
                 </div>
             </div>
         </section>
 
-        <!-- Calendario de Citas con Sistema Text-To-Phone Automático -->
+        <!-- Scheduler Section -->
         <section id="scheduler" class="scheduler-section">
-            <h3 class="scheduler-title">📅 Agenda tu Cita</h3>
-            <p class="scheduler-desc">Selecciona tu servicio, el día y la hora. El sistema armará el mensaje directo para enviarlo a nuestro teléfono.</p>
+            <h3 class="scheduler-title" id="schedTitle">📅 Schedule Appointment</h3>
+            <p class="scheduler-desc" id="schedDesc">Select your service, date, and time. Submitting will open your standard text messaging app to send us the request directly.</p>
             
-            <form id="bookingForm" onsubmit="event.preventDefault(); sendBookingText();">
-                <!-- Selector de Servicio -->
+            <form id="bookingForm" onsubmit="event.preventDefault(); sendBookingSMS();">
+                <!-- Service Selector -->
                 <div class="form-group">
-                    <label class="form-label">1. Selecciona el Servicio</label>
-                    <select id="bookingService" class="form-input">
-                        <option value="Diagnóstico por Computadora ($45)">Diagnóstico por Computadora — $45.00</option>
-                        <option value="Cambio de Aceite y Filtro">Cambio de Aceite — Mantenimiento</option>
-                        <option value="Servicio de Grúa">Servicio de Grúa (Urgencia)</option>
-                        <option value="Asistencia Mecánica Móvil">Mobile Work (Trabajo en Sitio)</option>
-                        <option value="Cotización de Camioneta de Texas (Rust-Free)">Cotización: Traer Camioneta de Texas (Rust-Free)</option>
-                    </select>
+                    <label class="form-label" id="lblFormService">1. Select Service</label>
+                    <select id="bookingService" class="form-input"></select>
                 </div>
 
-                <!-- Selector de Fecha -->
+                <!-- Date Picker -->
                 <div class="form-group">
-                    <label class="form-label">2. Elige el Día</label>
+                    <label class="form-label" id="lblFormDate">2. Choose Date</label>
                     <input type="date" id="bookingDate" class="form-input" required>
                 </div>
 
-                <!-- Selector de Hora -->
+                <!-- Time Selector -->
                 <div class="form-group">
-                    <label class="form-label">3. Elige la Hora</label>
+                    <label class="form-label" id="lblFormTime">3. Choose Time</label>
                     <select id="bookingTime" class="form-input">
                         <option value="8:00 AM">8:00 AM</option>
                         <option value="10:00 AM">10:00 AM</option>
@@ -461,36 +483,175 @@
                     </select>
                 </div>
 
-                <!-- Botón de Envío -->
-                <button type="submit" class="submit-booking-btn">
-                    💬 Confirmar y Enviar Mensaje
+                <!-- Submit Button -->
+                <button type="submit" class="submit-booking-btn" id="btnSubmitForm">
+                    💬 Confirm & Text Request
                 </button>
             </form>
         </section>
 
     </div>
 
-    <!-- Script de Automatización de Mensajes -->
+    <!-- Multi-Language Engine & Scripting -->
     <script>
-        // Evita que seleccionen días pasados en el calendario
-        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+        let currentLang = 'en';
 
-        function sendBookingText() {
+        const translations = {
+            en: {
+                langBtn: "Español",
+                callBtn: "Call / Text",
+                infoBar: "Service Area: <strong>Baraboo 53913</strong>",
+                tabAll: "All Services",
+                tabDiag: "Diagnostics",
+                tabTow: "Towing",
+                tabSched: "Book Appt",
+                badgeDiag: "Core Evaluation",
+                titleDiag: "Check Engine Light Scan",
+                descDiag: "No corporate runarounds. We plug the scanner straight into your vehicle's system to read the exact fault codes and tell you with complete honesty what is failing in your engine or electrical setup.",
+                labelPriceDiag: "Flat Rate",
+                btnBookDiag: "Book Slot",
+                badgeTow: "Roadside Assistance",
+                titleTow: "Towing & Mobile Work",
+                descTow: "Stuck on the side of the road? We'll dispatch a tow truck directly to our shop or send a tech out in a mobile work unit to fix your vehicle right where it sits. Fast and dependable.",
+                labelPriceTow: "Urgent",
+                valPriceTow: "Quote",
+                btnActionTow: "Get Tow",
+                btnActionMobile: "Mobile Work",
+                galleryTitle: "Shop Operations",
+                gallerySubtitle: "We source rust-free trucks directly from South Texas by special request. Reach out to get a custom quote.",
+                schedTitle: "📅 Schedule Appointment",
+                schedDesc: "Select your service, date, and time. Submitting will open your standard text messaging app to send us the request directly.",
+                lblFormService: "1. Select Service",
+                lblFormDate: "2. Choose Date",
+                lblFormTime: "3. Choose Time",
+                btnSubmitForm: "💬 Confirm & Text Request",
+                smsTemplate: "Hello Triad Automotive, I would like to schedule an appointment for service.\n\n🛠️ Requested Service: {service}\n📅 Requested Date: {date}\n⏰ Requested Time: {time}",
+                towDefaultBody: "Hello, I require urgent towing service for my vehicle.",
+                mobileDefaultBody: "Hello, I require on-site roadside mobile assistance at my location.",
+                services: [
+                    { value: "Computer Diagnostics ($45)", text: "Computer Diagnostics — $45.00" },
+                    { value: "Oil Change & Maintenance", text: "Oil Change & Filter — Basic Care" },
+                    { value: "Emergency Towing Service", text: "Towing Service (Urgent Dispatch)" },
+                    { value: "Mobile Mechanics Work", text: "Mobile Work (On-Site Repair)" },
+                    { value: "South Texas Truck Sourcing Quote", text: "Sourcing: Rust-Free Texas Truck Quote" }
+                ]
+            },
+            es: {
+                langBtn: "English",
+                callBtn: "Llamar / Texto",
+                infoBar: "Área de Servicio: <strong>Baraboo 53913</strong>",
+                tabAll: "Todos los Servicios",
+                tabDiag: "Diagnósticos",
+                tabTow: "Grúas",
+                tabSched: "Agendar",
+                badgeDiag: "Evaluación Central",
+                titleDiag: "Check Engine Light Scan",
+                descDiag: "Sin rodeos corporativos. Conectamos directamente el escáner al sistema de tu vehículo para leer los códigos de falla exactos y decirte con total honestidad qué está fallando.",
+                labelPriceDiag: "Precio Fijo",
+                btnBookDiag: "Apartar Lugar",
+                badgeTow: "Asistencia en Camino",
+                titleTow: "Servicio de Grúa y Móvil",
+                descTow: "¿Te quedaste tirado? Te mandamos una grúa directo a nuestro taller o enviamos a un mecánico en una unidad móvil para arreglar tu vehículo en el lugar donde estés.",
+                labelPriceTow: "Urgencias",
+                valPriceTow: "Cotizar",
+                btnActionTow: "Pedir Grúa",
+                btnActionMobile: "Mecánico Móvil",
+                galleryTitle: "Trabajos del Taller",
+                gallerySubtitle: "Traemos camionetas libres de óxido (Rust-Free) desde el sur de Texas bajo pedido. Contáctanos para una cotización especial.",
+                schedTitle: "📅 Agenda tu Cita",
+                schedDesc: "Selecciona tu servicio, el día y la hora. Al enviar se abrirá tu aplicación de mensajes de texto normal para enviarnos la solicitud directamente.",
+                lblFormService: "1. Selecciona el Servicio",
+                lblFormDate: "2. Elige el Día",
+                lblFormTime: "3. Elige la Hora",
+                btnSubmitForm: "💬 Confirmar y Enviar Texto",
+                smsTemplate: "Estimado equipo de Triad Automotive, solicito agendar una cita para el siguiente servicio.\n\n🛠️ Servicio: {service}\n📅 Fecha: {date}\n⏰ Hora: {time}",
+                towDefaultBody: "Hola, necesito un servicio de grúa urgente para mi vehículo.",
+                mobileDefaultBody: "Hola, necesito asistencia mecánica móvil en mi ubicación actual.",
+                services: [
+                    { value: "Diagnóstico por Computadora ($45)", text: "Diagnóstico por Computadora — $45.00" },
+                    { value: "Cambio de Aceite y Filtro", text: "Cambio de Aceite — Mantenimiento" },
+                    { value: "Servicio de Grúa", text: "Servicio de Grúa (Urgencia)" },
+                    { value: "Asistencia Mecánica Móvil", text: "Mobile Work (Trabajo en Sitio)" },
+                    { value: "Cotización de Camioneta de Texas (Rust-Free)", text: "Cotización: Traer Camioneta de Texas (Rust-Free)" }
+                ]
+            }
+        };
+
+        function populateServices() {
+            const selectEl = document.getElementById('bookingService');
+            selectEl.innerHTML = '';
+            translations[currentLang].services.forEach(srv => {
+                let opt = document.createElement('option');
+                opt.value = srv.value;
+                opt.textContent = srv.text;
+                selectEl.appendChild(opt);
+            });
+        }
+
+        function updateDOM() {
+            const t = translations[currentLang];
+            document.getElementById('langBtnText').textContent = t.langBtn;
+            document.getElementById('callBtn').textContent = t.callBtn;
+            document.getElementById('infoBarText').innerHTML = t.infoBar;
+            document.getElementById('tabAll').textContent = t.tabAll;
+            document.getElementById('tabDiag').textContent = t.tabDiag;
+            document.getElementById('tabTow').textContent = t.tabTow;
+            document.getElementById('tabSched').textContent = t.tabSched;
+            
+            document.getElementById('badgeDiag').textContent = t.badgeDiag;
+            document.getElementById('titleDiag').textContent = t.titleDiag;
+            document.getElementById('descDiag').textContent = t.descDiag;
+            document.getElementById('labelPriceDiag').textContent = t.labelPriceDiag;
+            document.getElementById('btnBookDiag').textContent = t.btnBookDiag;
+
+            document.getElementById('badgeTow').textContent = t.badgeTow;
+            document.getElementById('titleTow').textContent = t.titleTow;
+            document.getElementById('descTow').textContent = t.descTow;
+            document.getElementById('labelPriceTow').textContent = t.labelPriceTow;
+            document.getElementById('valPriceTow').textContent = t.valPriceTow;
+            
+            document.getElementById('btnActionTow').textContent = t.btnActionTow;
+            document.getElementById('btnActionTow').href = `sms:+19564757053?body=${encodeURIComponent(t.towDefaultBody)}`;
+            document.getElementById('btnActionMobile').textContent = t.btnActionMobile;
+            document.getElementById('btnActionMobile').href = `sms:+19564757053?body=${encodeURIComponent(t.mobileDefaultBody)}`;
+
+            document.getElementById('galleryTitle').textContent = t.galleryTitle;
+            document.getElementById('gallerySubtitle').textContent = t.gallerySubtitle;
+
+            document.getElementById('schedTitle').textContent = t.schedTitle;
+            document.getElementById('schedDesc').textContent = t.schedDesc;
+            document.getElementById('lblFormService').textContent = t.lblFormService;
+            document.getElementById('lblFormDate').textContent = t.lblFormDate;
+            document.getElementById('lblFormTime').textContent = t.lblFormTime;
+            document.getElementById('btnSubmitForm').textContent = t.btnSubmitForm;
+
+            populateServices();
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'en') ? 'es' : 'en';
+            updateDOM();
+        }
+
+        function sendBookingSMS() {
             const service = document.getElementById('bookingService').value;
             const date = document.getElementById('bookingDate').value;
             const time = document.getElementById('bookingTime').value;
 
-            // Formatea la fecha de manera clara en español
+            const localeStr = currentLang === 'en' ? 'en-US' : 'es-ES';
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
-            const formattedDate = new Date(date).toLocaleDateString('es-ES', options);
+            const formattedDate = new Date(date).toLocaleDateString(localeStr, options);
 
-            // Estructura limpia del mensaje de texto enviado a tu negocio
-            const baseMessage = `Qué onda muchachos de Triad Automotive, me gustaría agendar una cita.\n\n🛠️ Servicio: ${service}\n📅 Día: ${formattedDate}\n⏰ Hora: ${time}`;
-            
-            // Codificación segura y redirección directa
-            const encodedMessage = encodeURIComponent(baseMessage);
-            window.open(`https://wa.me/19564757834?text=${encodedMessage}`, '_blank');
+            let bodyText = translations[currentLang].smsTemplate
+                .replace('{service}', service)
+                .replace('{date}', formattedDate)
+                .replace('{time}', time);
+
+            window.location.href = `sms:+19564757053?body=${encodeURIComponent(bodyText)}`;
         }
+
+        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+        updateDOM();
     </script>
 
 </body>
