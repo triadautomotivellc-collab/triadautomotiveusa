@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Auto | Premium Diagnostics & Custom Builds</title>
+    <title>Triad Auto | Diagnostics, Mobile & Towing</title>
     
-    <!-- Premium Google Fonts Integration -->
+    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Modern Design Tokens & Variables */
         :root {
             --bg-dark: #0a0c10;
-            --card-bg: rgba(18, 22, 31, 0.7);
+            --card-bg: rgba(18, 22, 31, 0.75);
             --border-color: rgba(255, 255, 255, 0.08);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --accent-red: #ff3b57;
-            --accent-glow: rgba(255, 59, 87, 0.15);
+            --accent-blue: #007aff;
             --font-display: 'Plus Jakarta Sans', sans-serif;
             --font-sans: 'Inter', sans-serif;
         }
@@ -35,7 +34,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             font-family: var(--font-sans);
-            padding: 24px 16px;
+            padding: 20px 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -45,40 +44,37 @@
 
         .container {
             width: 100%;
-            max-width: 480px; /* Perfect mobile-first view matching original design constraints */
+            max-width: 480px;
         }
 
-        /* --- Streamlined Navigation Header --- */
+        /* --- Header con tu Logotipo Real --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             padding: 0 4px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .brand-logo {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--accent-red), #1e293b);
-            clip-path: polygon(50% 0%, 100% 100%, 0% 100%); /* Sharp, modern geometric custom triad logo */
+        .brand-img {
+            width: auto;
+            height: 36px;
+            object-fit: contain;
         }
 
         .brand-name {
             font-family: var(--font-display);
             font-weight: 800;
-            font-size: 20px;
-            letter-spacing: 2px;
+            font-size: 22px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            background: linear-gradient(to right, #fff, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
         }
 
         .contact-btn {
@@ -90,15 +86,52 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            transition: all 0.2s ease;
         }
 
-        .contact-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+        /* --- Barra de Información de Ubicación --- */
+        .info-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 14px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
-        /* --- Straight-Shooting Service Card --- */
+        .geo-icon { color: var(--accent-red); font-size: 16px; }
+
+        /* --- Pestañas de Departamentos Extendidas --- */
+        .dept-navigation {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .dept-navigation::-webkit-scrollbar { display: none; }
+
+        .dept-tab {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            white-space: nowrap;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .dept-tab.active {
+            color: var(--accent-red);
+            position: relative;
+        }
+
+        /* --- Tarjetas de Servicio Estilo Texas --- */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -106,62 +139,26 @@
             border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 28px;
-            position: relative;
-            overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-bottom: 24px;
         }
 
-        /* Subtle Ambient Back-Glow */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: var(--accent-glow);
-            filter: blur(50px);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .badge-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
+        .core-badge {
+            display: inline-block;
+            background: var(--accent-red);
             color: #fff;
             font-family: var(--font-display);
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
             padding: 6px 12px;
-            border-radius: 30px;
+            border-radius: 6px;
+            margin-bottom: 18px;
         }
 
-        .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-red);
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(255, 59, 87, 0.7);
-            animation: pulse 1.6s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 87, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 59, 87, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 87, 0); }
+        .core-badge.blue {
+            background: var(--accent-blue);
         }
 
         .card-title {
@@ -188,25 +185,9 @@
             padding-top: 20px;
         }
 
-        .price-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .price-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 2px;
-        }
-
-        .price-value {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 28px;
-            color: #fff;
-        }
+        .price-container { display: flex; flex-direction: column; }
+        .price-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        .price-value { font-family: var(--font-display); font-weight: 700; font-size: 30px; color: #fff; }
 
         .book-now-btn {
             font-family: var(--font-sans);
@@ -215,24 +196,23 @@
             color: #fff;
             text-decoration: none;
             background: var(--accent-red);
-            padding: 12px 24px;
+            padding: 14px 24px;
             border-radius: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 20px rgba(255, 59, 87, 0.3);
-            transition: all 0.2s ease;
         }
 
-        .book-now-btn:hover {
-            background: #ff526c;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(255, 59, 87, 0.4);
+        .book-now-btn.blue-btn {
+            background: var(--accent-blue);
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
         }
 
-        /* --- Featured Shop Builds Gallery Section --- */
+        /* --- Galería "In The Shop" con Javy's Truck y el '64 de tu Tío --- */
         .gallery-section {
-            margin-top: 40px;
             width: 100%;
+            margin-bottom: 32px;
+            margin-top: 16px;
         }
 
         .gallery-title {
@@ -257,46 +237,61 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
             aspect-ratio: 4 / 5;
-            background-color: rgba(255, 255, 255, 0.02);
         }
 
         .grid-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .image-card:hover .grid-img {
-            transform: scale(1.04);
         }
 
         .img-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-            padding: 14px 12px 12px 12px;
+            padding: 12px;
         }
 
-        .img-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #fff;
-            letter-spacing: 0.2px;
-        }
+        .img-label { font-size: 12px; font-weight: 600; color: #fff; }
 
-        /* --- Target Scheduling Section --- */
+        /* --- Sección de Agenda General --- */
         .scheduler-section {
-            margin-top: 40px;
             width: 100%;
-            border: 2px dashed var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid var(--border-color);
             border-radius: 24px;
-            padding: 40px 20px;
+            padding: 28px;
             text-align: center;
+        }
+
+        .scheduler-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .scheduler-desc {
+            font-size: 14px;
             color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.01);
+            margin-bottom: 24px;
+        }
+
+        .phone-booking-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 15px;
+            color: #fff;
+            text-decoration: none;
+            background: #25d366; 
+            padding: 16px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
+            width: 100%;
         }
     </style>
 </head>
@@ -304,66 +299,100 @@
 
     <div class="container">
         
-        <!-- Header with Custom Built-In Logo -->
+        <!-- Header con tu Imagen de Logo Real de GitHub -->
         <header>
             <div class="brand">
-                <div class="brand-logo"></div>
-                <h1 class="brand-name">Triad Auto</h1>
+                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Logo" class="brand-img">
+                <h1 class="brand-name">Triad</h1>
             </div>
-            <a href="tel:9564757834" class="contact-btn">Call Shop</a>
+            <a href="tel:9564757834" class="contact-btn">Llamar</a>
         </header>
 
-        <!-- Service Options Area -->
-        <main class="card">
-            <div class="badge-row">
-                <div class="status-badge">
-                    <span class="pulse-dot"></span>
-                    Honest Diagnostics
-                </div>
-            </div>
+        <!-- Barra de Información de Área de Servicio Real -->
+        <div class="info-bar">
+            <span class="geo-icon">📍</span>
+            <span>Área de Servicio: <strong>Baraboo 53913</strong></span>
+        </div>
+
+        <!-- Navegación por Departamentos (Estructura Original Recuperada y Expandida) -->
+        <nav class="dept-navigation">
+            <a href="#" class="dept-tab active">Todos los Servicios</a>
+            <a href="#diagnostics" class="dept-tab">Diagnósticos</a>
+            <a href="#towing" class="dept-tab">Gruas y Mobile Work</a>
+            <a href="#" class="dept-tab">Sistemas de Escape</a>
+            <a href="#" class="dept-tab">Frenos</a>
+        </nav>
+
+        <!-- TARJETA 1: Diagnóstico en Taller -->
+        <main class="card" id="diagnostics">
+            <div class="core-badge">Evaluación Central</div>
 
             <h2 class="card-title">Check Engine Light Scan</h2>
             <p class="card-description">
-                No guesswork, no corporate runaround. We plug directly into your vehicle’s computer system, pull your exact engine trouble codes, and tell you exactly what’s causing the fault.
+                Sin rodeos corporativos. Conectamos directamente el escáner al sistema de tu vehículo para leer los códigos de falla exactos y decirte con total honestidad qué está fallando en tu motor o sistema eléctrico en el taller.
             </p>
 
             <div class="card-footer">
                 <div class="price-container">
-                    <span class="price-label">Flat Rate</span>
+                    <span class="price-label">Precio Fijo</span>
                     <span class="price-value">$45.00</span>
                 </div>
-                <!-- Links smoothly directly down to your scheduling block -->
-                <a href="#scheduler" class="book-now-btn">Book A Bay</a>
+                <a href="https://wa.me/19564757834?text=Qué%20onda%20muchachos,%20quiero%20agendar%20un%20diagnóstico%20de%20$45%20en%20el%20taller" class="book-now-btn" target="_blank">Apartar Lugar</a>
             </div>
         </main>
 
-        <!-- Real Proof: In The Shop Gallery -->
+        <!-- TARJETA 2: Servicio Extendido de Grúas y Mobile Work -->
+        <section class="card" id="towing">
+            <div class="core-badge blue">Asistencia en Camino</div>
+
+            <h2 class="card-title">Servicio de Grúa y Mobile Work</h2>
+            <p class="card-description">
+                ¿Te quedaste tirado? Te mandamos una grúa directo a nuestro taller o enviamos a un mecánico en una unidad móvil para arreglar tu vehículo en el lugar donde estés. Rápido, seguro y sin rodeos.
+            </p>
+
+            <div class="card-footer">
+                <div class="price-container">
+                    <span class="price-label">Urgencias</span>
+                    <span class="price-value">Cotizar</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <a href="https://wa.me/19564757834?text=Necesito%20una%20grúa%20hacia%20el%20taller" class="book-now-btn blue-btn" style="padding: 10px 16px; font-size: 12px; text-align: center;" target="_blank">Pedir Grúa</a>
+                    <a href="https://wa.me/19564757834?text=Necesito%20asistencia%20mecánica%20móvil%20en%20mi%20ubicación" class="book-now-btn" style="padding: 10px 16px; font-size: 12px; background: #1e293b; box-shadow: none; border: 1px solid var(--border-color); text-align: center;" target="_blank">Mobile Work</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería Destacada del Taller -->
         <section class="gallery-section">
-            <h3 class="gallery-title">In The Shop</h3>
+            <h3 class="gallery-title">Nuestras Naves</h3>
             
             <div class="grid-container">
-                <!-- Card 1: Javy's Truck -->
+                <!-- Foto 1: Javy's Truck -->
                 <div class="image-card">
-                    <img src="IMG_7602.jpeg" alt="Javy's Cateye Chevy" class="grid-img">
+                    <img src="IMG_7602.jpeg" alt="Javy's Truck" class="grid-img">
                     <div class="img-overlay">
                         <p class="img-label">Late Model Performance</p>
                     </div>
                 </div>
 
-                <!-- Card 2: Uncle's Car -->
+                <!-- Foto 2: El coche de tu Tío -->
                 <div class="image-card">
-                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic '64 Impala" class="grid-img">
+                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Uncle's Classic Car" class="grid-img">
                     <div class="img-overlay">
-                        <p class="img-label">Classic Custom Wiring</p>
+                        <p class="img-label">Classic Custom Restorations</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Your Existing Scheduling Tool Target Anchor -->
+        <!-- Sección de Agenda General Directa a tu Teléfono -->
         <section id="scheduler" class="scheduler-section">
-            <h3>📅 Your Scheduling Tool Loads Here</h3>
-            <p style="font-size: 14px; margin-top: 8px;">Embed your existing scheduler calendar plugin or script right inside this container block!</p>
+            <h3 class="scheduler-title">📅 Contáctanos de Inmediato</h3>
+            <p class="scheduler-desc">Dale clic abajo para mandarnos un mensaje rápido y dinos qué tipo de ayuda necesitas con tu nave.</p>
+            
+            <a href="https://wa.me/19564757834?text=Qué%20onda%20muchachos,%20necesito%20ayuda%20con%20mi%20vehículo" class="phone-booking-btn" target="_blank">
+                💬 Enviar Mensaje Al Teléfono
+            </a>
         </section>
 
     </div>
