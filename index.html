@@ -31,7 +31,9 @@
             scroll-behavior: smooth;
         }
 
-        html { background: var(--bg-dark); }
+        html {
+            background: var(--bg-dark);
+        }
 
         body {
             background:
@@ -62,7 +64,9 @@
             z-index: 0;
         }
 
-        a { -webkit-tap-highlight-color: transparent; }
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
 
         .container {
             width: 100%;
@@ -90,8 +94,66 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
-        .logo-header {
+        header {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand-img {
+            height: 88px;
+            width: auto;
+            flex-shrink: 0;
+            opacity: 0.84;
+            mix-blend-mode: normal;
+            border-radius: 12px;
+            filter: brightness(1.02) contrast(1.08);
+        }
+
+        .brand-name {
+            font-family: 'Rajdhani', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            line-height: 0.95;
+            white-space: nowrap;
+            letter-spacing: 0.7px;
+        }
+
+        .contact-group {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .contact-btn {
+            font-size: 13px;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 13px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+        }
+
+        .contact-btn.primary {
+            background: var(--accent-red);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.025);
+        }
+
+
+        .logo-header {
             justify-content: center;
             align-items: center;
             margin: 0 0 10px;
@@ -103,16 +165,6 @@
             align-items: center;
             width: 100%;
             text-decoration: none;
-        }
-
-        .brand-img {
-            height: 88px;
-            width: auto;
-            flex-shrink: 0;
-            opacity: 0.84;
-            mix-blend-mode: normal;
-            border-radius: 12px;
-            filter: brightness(1.02) contrast(1.08);
         }
 
         .main-logo {
@@ -138,10 +190,15 @@
             box-shadow: 0 18px 48px rgba(0,0,0,0.28);
         }
 
+        .logo-contact-card a {
+            display: block;
+        }
+
         .top-contact-card {
             display: grid;
             grid-template-columns: 1fr;
             gap: 7px;
+            margin-bottom: 18px;
             padding: 12px 14px;
             background: rgba(5, 6, 8, 0.56);
             border: 1px solid var(--border-color);
@@ -182,7 +239,8 @@
             overflow: hidden;
         }
 
-        .hero::after, .card::after, .quick-help::after {
+        .hero::after,
+        .card::after {
             content: "";
             position: absolute;
             right: -72px;
@@ -209,7 +267,9 @@
             z-index: 1;
         }
 
-        .info-red { color: var(--accent-red); }
+        .info-red {
+            color: var(--accent-red);
+        }
 
         .hero-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -257,7 +317,9 @@
             box-shadow: 0 14px 38px rgba(255, 255, 255, 0.035);
         }
 
-        .hero-btn.dark { background: rgba(255, 255, 255, 0.045); }
+        .hero-btn.dark {
+            background: rgba(255, 255, 255, 0.045);
+        }
 
         .info-sub {
             color: var(--text-soft);
@@ -277,7 +339,8 @@
             scrollbar-width: none;
         }
 
-        .trust-strip::-webkit-scrollbar, .dept-navigation::-webkit-scrollbar, .triad-chat-body::-webkit-scrollbar {
+        .trust-strip::-webkit-scrollbar,
+        .dept-navigation::-webkit-scrollbar {
             display: none;
         }
 
@@ -316,7 +379,37 @@
             white-space: nowrap;
         }
 
-        .dept-tab.active { color: var(--accent-red); }
+        .dept-tab.active {
+            color: var(--accent-red);
+        }
+
+
+        .about-card {
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02)),
+                rgba(5, 6, 8, 0.78);
+            border: 1px solid rgba(255,255,255,0.09);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-point {
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 12px;
+            color: #fff;
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 700;
+        }
 
         .quick-help {
             background: rgba(5, 6, 8, 0.54);
@@ -373,33 +466,6 @@
             opacity: 0.005;
         }
 
-        .about-card {
-            background:
-                linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02)),
-                rgba(5, 6, 8, 0.78);
-            border: 1px solid rgba(255,255,255,0.09);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-point {
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 15px;
-            padding: 12px;
-            color: #fff;
-            font-size: 13px;
-            line-height: 1.45;
-            font-weight: 700;
-        }
-
         .core-badge {
             display: inline-block;
             background: var(--accent-red);
@@ -416,8 +482,13 @@
             letter-spacing: 0.3px;
         }
 
-        .core-badge.blue { background: var(--accent-blue); }
-        .core-badge.dark { background: #1e293b; }
+        .core-badge.blue {
+            background: var(--accent-blue);
+        }
+
+        .core-badge.dark {
+            background: #1e293b;
+        }
 
         .card-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -474,11 +545,6 @@
             border-color: rgba(255, 59, 87, 0.22);
         }
 
-        .promo-box.blue {
-            background: rgba(0, 122, 255, 0.09);
-            border-color: rgba(0, 122, 255, 0.26);
-        }
-
         .promo-text {
             font-size: 13px;
             color: var(--accent-green);
@@ -486,8 +552,9 @@
             line-height: 1.45;
         }
 
-        .promo-box.red .promo-text { color: #ff6478; }
-        .promo-box.blue .promo-text { color: #8ec5ff; }
+        .promo-box.red .promo-text {
+            color: #ff6478;
+        }
 
         .card-footer {
             display: flex;
@@ -603,7 +670,9 @@
             display: block;
         }
 
-        .form-group { margin-bottom: 14px; }
+        .form-group {
+            margin-bottom: 14px;
+        }
 
         .form-label {
             display: block;
@@ -650,44 +719,6 @@
             cursor: pointer;
             margin-top: 8px;
             box-shadow: 0 16px 40px rgba(0, 122, 255, 0.18);
-        }
-
-        .submit-btn.red {
-            background: var(--accent-red);
-            box-shadow: 0 16px 40px rgba(255, 59, 87, 0.15);
-        }
-
-        .vin-actions {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .vin-info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .vin-info-row {
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 10px;
-            color: #fff;
-            font-size: 13px;
-            line-height: 1.35;
-        }
-
-        .vin-info-row strong {
-            color: #8ec5ff;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            display: block;
-            margin-bottom: 3px;
         }
 
         .small-note {
@@ -769,7 +800,9 @@
             -webkit-backdrop-filter: blur(18px);
         }
 
-        .triad-chat-window.open { display: flex; }
+        .triad-chat-window.open {
+            display: flex;
+        }
 
         .triad-chat-header {
             padding: 14px;
@@ -810,29 +843,6 @@
             margin-top: 3px;
         }
 
-        .chat-lang-toggle {
-            display: flex;
-            gap: 5px;
-            margin-left: auto;
-            margin-right: 8px;
-        }
-
-        .chat-lang-btn {
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            border-radius: 999px;
-            padding: 7px 9px;
-            font-size: 10px;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        .chat-lang-btn.active {
-            background: var(--accent-red);
-            border-color: rgba(255,255,255,0.18);
-        }
-
         .triad-chat-close {
             width: 34px;
             height: 34px;
@@ -851,13 +861,22 @@
             scrollbar-width: none;
         }
 
+        .triad-chat-body::-webkit-scrollbar {
+            display: none;
+        }
+
         .chat-row {
             display: flex;
             margin-bottom: 10px;
         }
 
-        .chat-row.bot { justify-content: flex-start; }
-        .chat-row.user { justify-content: flex-end; }
+        .chat-row.bot {
+            justify-content: flex-start;
+        }
+
+        .chat-row.user {
+            justify-content: flex-end;
+        }
 
         .chat-bubble {
             max-width: 88%;
@@ -911,6 +930,68 @@
             border-color: rgba(0,122,255,0.28);
         }
 
+        .triad-chat-lead {
+            margin-top: 12px;
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 18px;
+            padding: 12px;
+        }
+
+        .lead-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .lead-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .lead-input {
+            background: #050608;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 13px;
+            outline: none;
+            width: 100%;
+        }
+
+        .lead-textarea {
+            min-height: 72px;
+            resize: vertical;
+        }
+
+        .lead-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .lead-btn {
+            border: none;
+            border-radius: 13px;
+            padding: 12px 10px;
+            font-weight: 900;
+            color: #fff;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            text-align: center;
+            background: var(--accent-red);
+        }
+
+        .lead-btn.secondary {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.11);
+        }
+
         .triad-chat-footer {
             padding: 12px;
             border-top: 1px solid rgba(255,255,255,0.08);
@@ -952,26 +1033,62 @@
             margin-top: 8px;
             text-align: center;
         }
+@media (max-width: 410px) {
 
-        @media (max-width: 410px) {
-            .logo-header { margin-top: 0; margin-bottom: 12px; }
-            .main-logo { height: 155px; max-width: 96%; }
-            .brand-img { height: 64px; opacity: 0.84; }
-            .hero-title { font-size: 28px; }
-            .card { padding: 23px; }
-            .card-title { font-size: 22px; }
-            .price-value { font-size: 26px; }
+            .logo-header {
+                margin-top: 0;
+                margin-bottom: 12px;
+            }
+
+            .main-logo {
+                height: 132px;
+                max-width: 92%;
+            }
+
+
+            .brand-img {
+                height: 64px;
+                opacity: 0.84;
+            }
+
+            .brand-name {
+                font-size: 21px;
+            }
+
+            .contact-btn {
+                padding: 8px 10px;
+                font-size: 11px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .card {
+                padding: 23px;
+            }
+
+            .card-title {
+                font-size: 22px;
+            }
+
+            .price-value {
+                font-size: 26px;
+            }
+
             body::before {
                 background-size: 290px auto;
                 background-position: center 140px;
                 opacity: 0.005;
             }
+
             .triad-chat-launcher {
                 right: 12px;
                 bottom: 12px;
                 padding: 11px 13px;
                 font-size: 12px;
             }
+
             .triad-chat-window {
                 right: 8px;
                 bottom: 66px;
@@ -982,7 +1099,33 @@
         }
 
         @media (max-width: 370px) {
-            .main-logo { height: 138px; max-width: 96%; }
+
+            .main-logo {
+                height: 118px;
+                max-width: 94%;
+            }
+
+
+            .brand-img {
+                height: 56px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            header {
+                align-items: flex-start;
+            }
+
+            .contact-group {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .contact-btn {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -1042,8 +1185,6 @@
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
             <a href="#parts" class="dept-tab" id="tabParts">Parts</a>
             <a href="#performance" class="dept-tab" id="tabPerf">Performance</a>
-            <a href="#tire-request" class="dept-tab" id="tabTireRequest">Tire Request</a>
-            <a href="#vin-decoder" class="dept-tab" id="tabVin">VIN Decoder</a>
             <a href="#scheduler" class="dept-tab" id="tabSchedule">Schedule</a>
         </nav>
 
@@ -1054,6 +1195,7 @@
             </p>
             <a href="sms:+16084047360" id="quickBtn">Text a Picture →</a>
         </div>
+
 
         <section class="card about-card" id="about">
             <div class="core-badge dark" id="bdgAbout">About Triad</div>
@@ -1244,27 +1386,55 @@
             </div>
         </section>
 
-        <section>
-            <h3 class="gallery-title" id="galTitle">Shop Operations & Sourcing</h3>
+        <section class="project-gallery" id="projects">
+            <h3 class="gallery-title" id="galTitle">Real Vehicles. Real Repairs.</h3>
             <p class="card-desc" id="galSub" style="text-align:center;">
-                Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.
+                From daily drivers and family SUVs to work trucks, classics, performance builds, and engine repairs, Triad Automotive delivers real-world automotive service backed by hands-on experience.
             </p>
 
-            <div class="grid-container">
-                <div class="image-card">
-                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck Build" class="grid-img">
+            <div class="project-grid">
+                <div class="project-card tall">
+                    <img src="IMG_7602.jpeg" alt="Dually truck at Triad Automotive">
+                    <div class="project-caption">Truck & Work Vehicle Service<span>Diesel, gas, trailers, and daily-use rigs</span></div>
                 </div>
-                <div class="image-card">
-                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img">
+
+                <div class="project-card tall">
+                    <img src="82DA2A2C-0BC8-4B41-9AE8-0957E52F55A0.png" alt="Classic Chevrolet truck at Triad Automotive">
+                    <div class="project-caption">Classic Truck Service<span>Older vehicles, clean builds, and repairs</span></div>
                 </div>
-                <div class="image-card">
-                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette" class="grid-img">
+
+                <div class="project-card">
+                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette serviced by Triad Automotive">
+                    <div class="project-caption">Performance & Enthusiast Vehicles<span>Parts support, upgrades, and direction</span></div>
                 </div>
-                <div class="image-card">
-                    <img src="IMG_7602.jpeg" alt="Dually Truck" class="grid-img">
+
+                <div class="project-card">
+                    <img src="014F6546-DD28-487F-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive">
+                    <div class="project-caption">Diagnostics & Maintenance<span>Modern vehicles, no-starts, leaks, and warning lights</span></div>
+                </div>
+
+                <div class="project-card tall">
+                    <img src="5455C887-3C5F-4383-884E-F6934B8291F5.png" alt="Timing chain repair at Triad Automotive">
+                    <div class="project-caption">Timing & Internal Engine Work<span>Real repair work, not guesswork</span></div>
+                </div>
+
+                <div class="project-card tall">
+                    <img src="89F51DBD-F1A4-4C18-B528-432AEA699051.png" alt="LS engine work at Triad Automotive">
+                    <div class="project-caption">LS / SBC / LT Support<span>Valvetrain, swap parts, and build planning</span></div>
+                </div>
+
+                <div class="project-card">
+                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck build at Triad Automotive">
+                    <div class="project-caption">Custom Parts & Upgrades<span>Wheels, lighting, audio, accessories, and more</span></div>
+                </div>
+
+                <div class="project-card">
+                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic car at Triad Automotive">
+                    <div class="project-caption">Domestic & Foreign Vehicles<span>Daily drivers, classics, SUVs, trucks, and cars</span></div>
                 </div>
             </div>
         </section>
+
 
         <section class="card" id="tires">
             <div class="core-badge dark" id="bdgTires">Coming Soon</div>
@@ -1285,159 +1455,6 @@
                     Send us your tire size or vehicle info and we can help source options. Mounting and balancing will be added soon.
                 </p>
             </div>
-        </section>
-
-
-        <section class="card" id="tire-request" style="background: var(--card-bg-strong);">
-            <div class="core-badge dark" id="bdgTireRequest">Tire Request</div>
-            <h2 class="card-title" id="ttlTireRequest">Need Tires?</h2>
-            <p class="card-desc" id="dscTireRequest">
-                Send us your tire size and we’ll check availability for new or used tires. Mounting and balancing is not available yet, but we can help source tires by size, vehicle, and budget.
-            </p>
-
-            <form onsubmit="event.preventDefault(); sendTireRequestSMS();">
-                <div class="form-group">
-                    <label class="form-label" id="lblTireName">1. Your Name</label>
-                    <input type="text" id="tireName" class="form-input" placeholder="Your name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblTireSize">2. Tire Size</label>
-                    <select id="tireSize" class="form-input" onchange="toggleCustomTireSize()" required>
-                        <option value="">Select tire size</option>
-
-                        <option value="195/65R15">195/65R15</option>
-                        <option value="205/55R16">205/55R16</option>
-                        <option value="205/60R16">205/60R16</option>
-                        <option value="215/55R16">215/55R16</option>
-                        <option value="215/60R16">215/60R16</option>
-                        <option value="215/65R16">215/65R16</option>
-
-                        <option value="215/55R17">215/55R17</option>
-                        <option value="225/45R17">225/45R17</option>
-                        <option value="225/50R17">225/50R17</option>
-                        <option value="225/55R17">225/55R17</option>
-                        <option value="225/60R17">225/60R17</option>
-                        <option value="225/65R17">225/65R17</option>
-                        <option value="235/55R17">235/55R17</option>
-                        <option value="235/65R17">235/65R17</option>
-                        <option value="245/65R17">245/65R17</option>
-                        <option value="265/70R17">265/70R17</option>
-                        <option value="285/70R17">285/70R17</option>
-                        <option value="33x12.50R17">33x12.50R17</option>
-                        <option value="35x12.50R17">35x12.50R17</option>
-
-                        <option value="225/60R18">225/60R18</option>
-                        <option value="235/45R18">235/45R18</option>
-                        <option value="235/50R18">235/50R18</option>
-                        <option value="235/55R18">235/55R18</option>
-                        <option value="235/60R18">235/60R18</option>
-                        <option value="245/45R18">245/45R18</option>
-                        <option value="255/55R18">255/55R18</option>
-                        <option value="265/60R18">265/60R18</option>
-                        <option value="265/65R18">265/65R18</option>
-                        <option value="275/65R18">275/65R18</option>
-                        <option value="285/65R18">285/65R18</option>
-                        <option value="33x12.50R18">33x12.50R18</option>
-                        <option value="35x12.50R18">35x12.50R18</option>
-
-                        <option value="245/45R19">245/45R19</option>
-                        <option value="255/50R19">255/50R19</option>
-                        <option value="255/55R19">255/55R19</option>
-
-                        <option value="245/50R20">245/50R20</option>
-                        <option value="255/50R20">255/50R20</option>
-                        <option value="265/50R20">265/50R20</option>
-                        <option value="275/55R20">275/55R20</option>
-                        <option value="275/60R20">275/60R20</option>
-                        <option value="285/50R20">285/50R20</option>
-                        <option value="285/55R20">285/55R20</option>
-                        <option value="295/55R20">295/55R20</option>
-                        <option value="305/55R20">305/55R20</option>
-                        <option value="33x12.50R20">33x12.50R20</option>
-                        <option value="35x12.50R20">35x12.50R20</option>
-                        <option value="37x12.50R20">37x12.50R20</option>
-
-                        <option value="275/45R22">275/45R22</option>
-                        <option value="285/45R22">285/45R22</option>
-                        <option value="305/40R22">305/40R22</option>
-                        <option value="33x12.50R22">33x12.50R22</option>
-                        <option value="35x12.50R22">35x12.50R22</option>
-                        <option value="37x12.50R22">37x12.50R22</option>
-
-                        <option value="Other / Not listed">Other / Not listed</option>
-                    </select>
-
-                    <input type="text" id="customTireSize" class="form-input" placeholder="Type tire size if not listed" style="display:none; margin-top:10px;">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblTireCondition">3. New or Used?</label>
-                    <select id="tireCondition" class="form-input">
-                        <option value="New">New</option>
-                        <option value="Used">Used</option>
-                        <option value="Either new or used">Either new or used</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblTireQty">4. Quantity</label>
-                    <select id="tireQty" class="form-input">
-                        <option value="1 tire">1 tire</option>
-                        <option value="2 tires">2 tires</option>
-                        <option value="4 tires">4 tires</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblTireVehicle">5. Vehicle</label>
-                    <input type="text" id="tireVehicle" class="form-input" placeholder="Year / Make / Model">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblTireNotes">6. Budget or Notes</label>
-                    <textarea id="tireNotes" class="form-input" placeholder="Example: cheapest used pair, all seasons, highway tires, etc."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn red" id="btnTireSubmit">Check Tire Availability</button>
-
-                <p class="small-note" id="tireNote">
-                    This opens your text messages. Your request is not sent until you press send.
-                </p>
-            </form>
-        </section>
-
-        <!-- VIN DECODER: placed right by the scheduling area -->
-        <section class="card" id="vin-decoder" style="background: var(--card-bg-strong);">
-            <div class="core-badge blue" id="bdgVin">Free Vehicle Tool</div>
-            <h2 class="card-title" id="ttlVin">VIN Decoder</h2>
-            <p class="card-desc" id="dscVin">
-                Enter your 17-character VIN and we’ll decode the vehicle info. Then you can use it in your service request so you don’t have to type the year, make, model, or engine by hand.
-            </p>
-
-            <div class="form-group">
-                <label class="form-label" id="lblVin">Enter VIN</label>
-                <input type="text" id="vinInput" class="form-input" placeholder="Example: 1GCEC14X87Z123456" maxlength="17" autocomplete="off" oninput="formatVinInput()">
-            </div>
-
-            <button type="button" class="submit-btn" id="btnDecodeVin" onclick="decodeVIN()">Decode VIN</button>
-
-            <div id="vinResult" class="promo-box blue" style="display:none; margin-top:16px; margin-bottom:0;">
-                <p class="promo-text" id="vinResultText">VIN results will show here.</p>
-                <div id="vinDetails" class="vin-info-grid"></div>
-                <div class="vin-actions">
-                    <button type="button" class="book-btn blue" id="btnUseVin" onclick="useDecodedVehicle()" style="display:none; width:100%;">
-                        Use This Vehicle for Service
-                    </button>
-                    <a href="#scheduler" class="book-btn dark" id="btnGoSchedule" style="width:100%; display:none;">
-                        Continue to Schedule
-                    </a>
-                </div>
-            </div>
-
-            <p class="small-note" id="vinNote">
-                VIN decoding uses the public NHTSA vehicle database. Some trim or engine details may not always be listed.
-            </p>
         </section>
 
         <section class="card" id="scheduler" style="background: var(--card-bg-strong);">
@@ -1548,16 +1565,10 @@
             <div class="triad-chat-brand">
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive" class="triad-chat-logo">
                 <div>
-                    <div class="triad-chat-title" id="chatHeaderTitle">Wawa Bot</div>
-                    <div class="triad-chat-status" id="chatHeaderStatus">Bilingual help • Safety-first</div>
+                    <div class="triad-chat-title" id="chatHeaderTitle">Triad Assistant</div>
+                    <div class="triad-chat-status" id="chatHeaderStatus">Smart help • Safety-first</div>
                 </div>
             </div>
-
-            <div class="chat-lang-toggle">
-                <button type="button" class="chat-lang-btn active" id="chatLangEn" onclick="setChatLanguage('en')">EN</button>
-                <button type="button" class="chat-lang-btn" id="chatLangEs" onclick="setChatLanguage('es')">ES</button>
-            </div>
-
             <button class="triad-chat-close" onclick="toggleTriadChat()" aria-label="Close chat">×</button>
         </div>
 
@@ -1576,15 +1587,14 @@
 
     <script>
         let currentLang = 'en';
-        let decodedVehicleText = "";
-        let decodedVinNumber = "";
-
         const triadPhone = "+16084047360";
         const triadWebsite = "https://www.triadautomotiveusa.com";
 
         const trans = {
             en: {
                 txtLangBtn: "Español",
+                txtCallBtn: "Call",
+                txtTextBtn: "Text",
                 topPhoneLabel: "Phone",
                 topEmailLabel: "Email",
                 txtInfoArea: "Texas Roots. <span class='info-red'>Wisconsin Built.</span>",
@@ -1608,8 +1618,6 @@
                 tabTow: "Truck & Trailer",
                 tabParts: "Parts",
                 tabPerf: "Performance",
-                tabTireRequest: "Tire Request",
-                tabVin: "VIN Decoder",
                 tabSchedule: "Schedule",
                 quickTitle: "Not sure what you need?",
                 quickText: "Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.",
@@ -1674,8 +1682,8 @@
                 lblPriceBuilds: "Starting At",
                 valPriceBuilds: "$25",
                 btnBuilds: "Plan Build",
-                galTitle: "Shop Operations & Sourcing",
-                galSub: "Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>rust-free Texas trucks and cars</strong>.",
+                galTitle: "Real Vehicles. Real Repairs.",
+                galSub: "From daily drivers and family SUVs to work trucks, classics, performance builds, and engine repairs, Triad Automotive delivers real-world automotive service backed by hands-on experience.",
                 bdgTires: "Coming Soon",
                 ttlTires: "Tire Sourcing & Tire Services",
                 dscTires: "Need tires? Triad Automotive can help source new and used tires by size, vehicle, and budget. Mounted and balanced tire service is coming soon.",
@@ -1684,25 +1692,6 @@
                 tiresMini3: "Tire Sourcing",
                 tiresMini4: "Mount & Balance Soon",
                 promoTires: "Send us your tire size or vehicle info and we can help source options. Mounting and balancing will be added soon.",
-                bdgTireRequest: "Tire Request",
-                ttlTireRequest: "Need Tires?",
-                dscTireRequest: "Send us your tire size and we’ll check availability for new or used tires. Mounting and balancing is not available yet, but we can help source tires by size, vehicle, and budget.",
-                lblTireName: "1. Your Name",
-                lblTireSize: "2. Select Tire Size",
-                lblTireCondition: "3. New or Used?",
-                lblTireQty: "4. Quantity",
-                lblTireVehicle: "5. Vehicle",
-                lblTireNotes: "6. Budget or Notes",
-                btnTireSubmit: "Check Tire Availability",
-                tireNote: "This opens your text messages. Your request is not sent until you press send.",
-                bdgVin: "Free Vehicle Tool",
-                ttlVin: "VIN Decoder",
-                dscVin: "Enter your 17-character VIN and we’ll decode the vehicle info. Then you can use it in your service request so you don’t have to type the year, make, model, or engine by hand.",
-                lblVin: "Enter VIN",
-                btnDecodeVin: "Decode VIN",
-                btnUseVin: "Use This Vehicle for Service",
-                btnGoSchedule: "Continue to Schedule",
-                vinNote: "VIN decoding uses the public NHTSA vehicle database. Some trim or engine details may not always be listed.",
                 bdgSchedule: "Service Request",
                 frmTitle: "Schedule Service",
                 frmSub: "Send us the details and your phone will open a prepared text message to Triad Automotive.",
@@ -1719,15 +1708,10 @@
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Automotive service • Diagnostics • Maintenance • Tire sourcing • LEDs • Audio • Parts sourcing • VATS delete support",
                 chatLauncherText: "Wawa Bot",
-                chatHeaderTitle: "Wawa Bot",
-                chatHeaderStatus: "Bilingual help • Safety-first",
+                chatHeaderTitle: "Triad Assistant",
+                chatHeaderStatus: "Smart help • Safety-first",
                 chatDisclaimer: "Safety-first help. For emergencies, move to safety and contact emergency services.",
                 chatPlaceholder: "Ask about service, towing, diagnostics...",
-                vinLengthError: "Please enter a valid 17-character VIN.",
-                vinLoading: "Decoding VIN...",
-                vinNoInfo: "VIN decoded, but limited vehicle info was returned. You can still send the VIN with your service request.",
-                vinError: "VIN decoder is not responding right now. Please try again or text us the VIN.",
-                vinUsed: "Vehicle info added to the service request form.",
                 svcs: [
                     {v: "Automotive Service & Maintenance", t: "Automotive Service & Maintenance"},
                     {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
@@ -1744,6 +1728,8 @@
 
             es: {
                 txtLangBtn: "English",
+                txtCallBtn: "Llamar",
+                txtTextBtn: "Texto",
                 topPhoneLabel: "Teléfono",
                 topEmailLabel: "Correo",
                 txtInfoArea: "Raíces de Texas. <span class='info-red'>Construido en Wisconsin.</span>",
@@ -1767,8 +1753,6 @@
                 tabTow: "Camión y Remolque",
                 tabParts: "Partes",
                 tabPerf: "Performance",
-                tabTireRequest: "Pedir Llantas",
-                tabVin: "VIN Decoder",
                 tabSchedule: "Agendar",
                 quickTitle: "¿No sabes qué necesitas?",
                 quickText: "Mándanos una foto de la luz del tablero, fuga, daño, ruido o parte que quieres instalar. Te ayudamos a saber por dónde empezar.",
@@ -1833,8 +1817,8 @@
                 lblPriceBuilds: "Desde",
                 valPriceBuilds: "$25",
                 btnBuilds: "Planear Proyecto",
-                galTitle: "Operaciones y Búsqueda",
-                galSub: "¿Buscas tu próximo auto? A través de nuestra red de socios autorizados, te ayudamos a encontrar el vehículo perfecto o conseguir <strong>autos y camionetas de Texas libres de óxido</strong>.",
+                galTitle: "Vehículos Reales. Reparaciones Reales.",
+                galSub: "Desde carros diarios y SUVs familiares hasta camionetas de trabajo, clásicos, builds performance y reparaciones de motor, Triad Automotive ofrece servicio real con experiencia práctica.",
                 bdgTires: "Próximamente",
                 ttlTires: "Búsqueda de Llantas y Servicios",
                 dscTires: "¿Necesitas llantas? Triad Automotive puede ayudarte a buscar llantas nuevas o usadas por medida, vehículo y presupuesto. Montaje y balanceo viene pronto.",
@@ -1843,25 +1827,6 @@
                 tiresMini3: "Búsqueda de Llantas",
                 tiresMini4: "Montaje y Balanceo Pronto",
                 promoTires: "Mándanos la medida de tu llanta o la información del vehículo y podemos ayudarte a buscar opciones. Montaje y balanceo viene pronto.",
-                bdgTireRequest: "Pedido de Llantas",
-                ttlTireRequest: "¿Necesitas Llantas?",
-                dscTireRequest: "Mándanos la medida de tu llanta y revisamos disponibilidad de llantas nuevas o usadas. Montaje y balanceo todavía no está disponible, pero podemos ayudarte a conseguir llantas por medida, vehículo y presupuesto.",
-                lblTireName: "1. Tu Nombre",
-                lblTireSize: "2. Selecciona Medida",
-                lblTireCondition: "3. ¿Nueva o Usada?",
-                lblTireQty: "4. Cantidad",
-                lblTireVehicle: "5. Vehículo",
-                lblTireNotes: "6. Presupuesto o Notas",
-                btnTireSubmit: "Revisar Disponibilidad",
-                tireNote: "Esto abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar.",
-                bdgVin: "Herramienta Gratis",
-                ttlVin: "VIN Decoder",
-                dscVin: "Ingresa el VIN de 17 caracteres y vamos a decodificar la información del vehículo. Luego puedes usarlo en la solicitud de servicio para no escribir año, marca, modelo o motor a mano.",
-                lblVin: "Ingresa VIN",
-                btnDecodeVin: "Decodificar VIN",
-                btnUseVin: "Usar Este Vehículo para Servicio",
-                btnGoSchedule: "Continuar a Agendar",
-                vinNote: "El VIN decoder usa la base pública de NHTSA. Algunos detalles de trim o motor no siempre aparecen.",
                 bdgSchedule: "Solicitud de Servicio",
                 frmTitle: "Agendar Servicio",
                 frmSub: "Mándanos los detalles y tu teléfono abrirá un mensaje de texto preparado para Triad Automotive.",
@@ -1878,15 +1843,10 @@
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • Búsqueda de llantas • LEDs • Audio • Búsqueda de partes • Soporte VATS Delete",
                 chatLauncherText: "Wawa Bot",
-                chatHeaderTitle: "Wawa Bot",
-                chatHeaderStatus: "Ayuda bilingüe • Seguridad primero",
+                chatHeaderTitle: "Asistente Triad",
+                chatHeaderStatus: "Ayuda inteligente • Seguridad primero",
                 chatDisclaimer: "Ayuda con enfoque en seguridad. Para emergencias, aléjate del peligro y contacta servicios de emergencia.",
                 chatPlaceholder: "Pregunta por servicio, grúa, diagnósticos...",
-                vinLengthError: "Ingresa un VIN válido de 17 caracteres.",
-                vinLoading: "Decodificando VIN...",
-                vinNoInfo: "VIN decodificado, pero salió información limitada. Aún puedes mandar el VIN con tu solicitud de servicio.",
-                vinError: "El VIN decoder no responde ahorita. Intenta otra vez o mándanos el VIN por texto.",
-                vinUsed: "La información del vehículo fue agregada a la solicitud de servicio.",
                 svcs: [
                     {v: "Servicio y Mantenimiento Automotriz", t: "Servicio y Mantenimiento Automotriz"},
                     {v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"},
@@ -1903,50 +1863,489 @@
         };
 
         const chatData = {
-            en: {
-                welcome: "Welcome to Wawa Bot. I can help you figure out if it is safe to drive, if you should stop, or if Triad should come your way.\n\nTell me what is happening, or tap a quick topic below.\n\nNeed Spanish? Tap ES above.",
-                fallback: "I want to point you the right way without guessing. Tell me:\n1. Year / make / model\n2. What happened\n3. Any warning lights\n4. Noise, smell, smoke, leak, or overheating\n5. Your city/area\n\nIf it does not feel safe to move, stay parked and use the service form so Triad can come your way or help coordinate pickup.",
-                quick: ["Overheating", "No brakes", "Smoke / fire smell", "Check engine flashing", "No start", "Fluid leak", "Tires", "Parts / VATS"],
-                safetyNote: "Safety-first help. If the vehicle feels unsafe, do not force it home. Park safely and request service so Triad can come your way or help coordinate transport.",
-                answers: [
-                    { priority: 100, keys: ["fire", "flames", "burning wire", "electrical fire", "smoke from wires", "battery fire", "fuel fire", "gas fire", "on fire"], answer: "URGENT: pull over safely, shut the vehicle off, get everyone away from it, and do not open the hood if there are flames or heavy smoke.\n\nAfter everyone is safe, request service/transport through Triad. If there is immediate danger, contact emergency services first." },
-                    { priority: 98, keys: ["no brakes", "brake pedal to floor", "pedal went to floor", "brakes failed", "can't stop", "cant stop", "lost brakes", "soft brake pedal"], answer: "Do not keep driving with brake issues like this. Park safely and do not try to limp it home.\n\nTriad can come your way or help coordinate transport so the vehicle can be checked safely." },
-                    { priority: 96, keys: ["oil pressure", "low oil pressure", "red oil light", "oil light", "stop engine", "engine pressure"], answer: "Shut the engine off and do not keep driving with an oil pressure warning. That can turn into major engine damage fast.\n\nPark safely and request Triad service/transport instead of trying to make it home." },
-                    { priority: 95, keys: ["overheat", "overheating", "hot", "temperature", "temp gauge", "steam", "coolant boiling", "boiling", "radiator hot", "car is hot"], answer: "If it is overheating, do not push it. Pull over safely, shut it off, and let it cool. Do not open the radiator cap or coolant reservoir while hot.\n\nIf you cannot safely move it, Triad can come your way or help coordinate transport. Use the service request form and include your location, vehicle, and what the temperature gauge did." },
-                    { priority: 94, keys: ["fuel smell", "smells like gas", "gas smell", "fuel leak", "gas leak", "raw fuel"], answer: "A strong fuel smell or fuel leak is not something to gamble with. Park safely, shut it off, and keep sparks/flames away.\n\nOnce safe, request Triad service/transport so it can be handled without risking a fire." },
-                    { priority: 92, keys: ["check engine flashing", "flashing check engine", "cel flashing", "blinking check engine", "check engine blinking", "flashing engine light"], answer: "A flashing check engine light usually means the vehicle should not be driven hard. If it is shaking, park it.\n\nTriad can scan it and check what is going on before it turns into more damage. Use the service form and mention that the light is flashing." },
-                    { priority: 82, keys: ["flat tire", "tire flat", "blowout", "tire blew", "low tire", "tpms", "tire pressure", "tires", "new tires", "used tires", "mount balance", "mounted balanced"], answer: "Triad can help source new or used tires by size, vehicle, and budget. Mounted and balanced tire service is coming soon.\n\nIf the tire is flat, shredded, or unsafe, do not drive on it. Request service or send your tire size through the website form so Triad can help source options." },
-                    { priority: 80, keys: ["no start", "won't start", "wont start", "doesn't start", "doesnt start", "crank", "click", "dead battery", "starter", "alternator"], answer: "If it will not start, Triad can come your way depending on location and issue.\n\nUse the service request form and include what it does: no power, one click, rapid clicking, cranks/no start, or starts then dies." },
-                    { priority: 70, keys: ["oil leak", "leaking oil", "fluid leak", "leak", "transmission leak", "red fluid", "brown fluid", "coolant leak", "antifreeze leak"], answer: "A leak needs context before guessing. If it is fuel, brake fluid, heavy coolant, or oil pressure warning, do not drive it.\n\nUse the service form and include fluid color, where it is dripping, and your vehicle info so Triad can help." },
-                    { priority: 65, keys: ["diagnostic", "diagnostics", "scan", "scanner", "check engine", "engine light", "cel", "code", "codes", "warning light"], answer: "Triad offers check engine light scans starting at $45. The scan points us in the right direction, then we can decide if deeper diagnostics are needed.\n\nUse the service request form and include any codes or warning lights." },
-                    { priority: 60, keys: ["parts", "part", "source", "sourcing", "order", "oem", "aftermarket", "wheels", "tires", "rims"], answer: "Triad can help source OEM parts, aftermarket parts, tires, wheels, suspension parts, LEDs, audio equipment, and build parts.\n\nUse the service form with your year/make/model, engine, VIN if available, and the exact part or tire size." },
-                    { priority: 55, keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "long tubes", "intake", "valvetrain", "vats", "vats delete", "hp tuners", "hptuners"], answer: "Triad can help with SBC, LS, and LT parts sourcing, swap support, and LS VATS delete support for compatible swap applications using HP Tuners.\n\nUse the form and include engine, vehicle, transmission, current setup, and goal." },
-                    { priority: 50, keys: ["price", "pricing", "cost", "quote", "estimate", "how much", "charge"], answer: "Pricing depends on the vehicle, job, parts, location, and diagnostic time.\n\nUse the service form with your vehicle, issue, city, and preferred time so Triad can quote it properly." },
-                    { priority: 40, keys: ["spanish", "espanol", "español", "habla", "hablan"], answer: "Yes, se habla español. Use the website in English or Spanish and send the details through the service form." }
-                ]
+            "en": {
+                        "welcome": "Welcome to Ask Triad. I can help you figure out if it is safe to drive, if you should stop, or if Triad should come your way.\n\nTell me what is happening, or tap a quick topic below.",
+                        "fallback": "I want to point you the right way without guessing. Tell me:\n1. Year / make / model\n2. What happened\n3. Any warning lights\n4. Noise, smell, smoke, leak, or overheating\n5. Your city/area\n\nIf it does not feel safe to move, stay parked and use the service form so Triad can come your way or help coordinate pickup.",
+                        "quick": [
+                                    "Overheating",
+                                    "No brakes",
+                                    "Smoke / fire smell",
+                                    "Check engine flashing",
+                                    "No start",
+                                    "Fluid leak",
+                                    "Tires",
+                                    "Parts / VATS"
+                        ],
+                        "safetyNote": "Safety-first help. If the vehicle feels unsafe, do not force it home. Park safely and request service so Triad can come your way or help coordinate transport.",
+                        "answers": [
+                                    {
+                                                "priority": 100,
+                                                "keys": [
+                                                            "fire",
+                                                            "flames",
+                                                            "burning wire",
+                                                            "electrical fire",
+                                                            "smoke from wires",
+                                                            "battery fire",
+                                                            "fuel fire",
+                                                            "gas fire",
+                                                            "on fire"
+                                                ],
+                                                "answer": "URGENT: pull over safely, shut the vehicle off, get everyone away from it, and do not open the hood if there are flames or heavy smoke.\n\nAfter everyone is safe, request service/transport through Triad. If there is immediate danger, contact emergency services first."
+                                    },
+                                    {
+                                                "priority": 98,
+                                                "keys": [
+                                                            "no brakes",
+                                                            "brake pedal to floor",
+                                                            "pedal went to floor",
+                                                            "brakes failed",
+                                                            "can't stop",
+                                                            "cant stop",
+                                                            "lost brakes",
+                                                            "soft brake pedal"
+                                                ],
+                                                "answer": "Do not keep driving with brake issues like this. Park safely and do not try to limp it home.\n\nTriad can come your way or help coordinate transport so the vehicle can be checked safely."
+                                    },
+                                    {
+                                                "priority": 96,
+                                                "keys": [
+                                                            "oil pressure",
+                                                            "low oil pressure",
+                                                            "red oil light",
+                                                            "oil light",
+                                                            "stop engine",
+                                                            "engine pressure"
+                                                ],
+                                                "answer": "Shut the engine off and do not keep driving with an oil pressure warning. That can turn into major engine damage fast.\n\nPark safely and request Triad service/transport instead of trying to make it home."
+                                    },
+                                    {
+                                                "priority": 95,
+                                                "keys": [
+                                                            "overheat",
+                                                            "overheating",
+                                                            "hot",
+                                                            "temperature",
+                                                            "temp gauge",
+                                                            "steam",
+                                                            "coolant boiling",
+                                                            "boiling",
+                                                            "radiator hot",
+                                                            "car is hot"
+                                                ],
+                                                "answer": "If it is overheating, do not push it. Pull over safely, shut it off, and let it cool. Do not open the radiator cap or coolant reservoir while hot.\n\nIf you cannot safely move it, Triad can come your way or help coordinate transport. Use the service request form and include your location, vehicle, and what the temperature gauge did."
+                                    },
+                                    {
+                                                "priority": 94,
+                                                "keys": [
+                                                            "fuel smell",
+                                                            "smells like gas",
+                                                            "gas smell",
+                                                            "fuel leak",
+                                                            "gas leak",
+                                                            "raw fuel"
+                                                ],
+                                                "answer": "A strong fuel smell or fuel leak is not something to gamble with. Park safely, shut it off, and keep sparks/flames away.\n\nOnce safe, request Triad service/transport so it can be handled without risking a fire."
+                                    },
+                                    {
+                                                "priority": 92,
+                                                "keys": [
+                                                            "check engine flashing",
+                                                            "flashing check engine",
+                                                            "cel flashing",
+                                                            "blinking check engine",
+                                                            "check engine blinking",
+                                                            "flashing engine light"
+                                                ],
+                                                "answer": "A flashing check engine light usually means the vehicle should not be driven hard. If it is shaking, park it.\n\nTriad can scan it and check what is going on before it turns into more damage. Use the service form and mention that the light is flashing."
+                                    },
+                                    {
+                                                "priority": 90,
+                                                "keys": [
+                                                            "battery smoking",
+                                                            "battery hot",
+                                                            "battery melted",
+                                                            "sparking battery",
+                                                            "battery sparks",
+                                                            "burnt battery",
+                                                            "battery cable hot"
+                                                ],
+                                                "answer": "If the battery is smoking, sparking, melting, or cables are hot, do not touch it with bare hands and do not keep driving.\n\nPark safely, keep clear of the battery area, and request Triad service/transport."
+                                    },
+                                    {
+                                                "priority": 85,
+                                                "keys": [
+                                                            "transmission slipping",
+                                                            "won't shift",
+                                                            "wont shift",
+                                                            "stuck in gear",
+                                                            "no reverse",
+                                                            "no drive",
+                                                            "transmission hot",
+                                                            "burnt transmission"
+                                                ],
+                                                "answer": "Do not keep forcing a transmission that is slipping, not shifting, or smells burnt.\n\nTriad can help check it or coordinate transport so you do not make the damage worse trying to move it."
+                                    },
+                                    {
+                                                "priority": 82,
+                                                "keys": [
+                                                            "flat tire",
+                                                            "tire flat",
+                                                            "blowout",
+                                                            "tire blew",
+                                                            "low tire",
+                                                            "tpms",
+                                                            "tire pressure",
+                                                            "tires",
+                                                            "new tires",
+                                                            "used tires",
+                                                            "mount balance",
+                                                            "mounted balanced"
+                                                ],
+                                                "answer": "Triad can help source new or used tires by size, vehicle, and budget. Mounted and balanced tire service is coming soon.\n\nIf the tire is flat, shredded, or unsafe, do not drive on it. Request service or send your tire size through the website form so Triad can help source options."
+                                    },
+                                    {
+                                                "priority": 80,
+                                                "keys": [
+                                                            "no start",
+                                                            "won't start",
+                                                            "wont start",
+                                                            "doesn't start",
+                                                            "doesnt start",
+                                                            "crank",
+                                                            "click",
+                                                            "dead battery",
+                                                            "starter",
+                                                            "alternator"
+                                                ],
+                                                "answer": "If it will not start, Triad can come your way depending on location and issue.\n\nUse the service request form and include what it does: no power, one click, rapid clicking, cranks/no start, or starts then dies."
+                                    },
+                                    {
+                                                "priority": 70,
+                                                "keys": [
+                                                            "oil leak",
+                                                            "leaking oil",
+                                                            "fluid leak",
+                                                            "leak",
+                                                            "transmission leak",
+                                                            "red fluid",
+                                                            "brown fluid",
+                                                            "coolant leak",
+                                                            "antifreeze leak"
+                                                ],
+                                                "answer": "A leak needs context before guessing. If it is fuel, brake fluid, heavy coolant, or oil pressure warning, do not drive it.\n\nUse the service form and include fluid color, where it is dripping, and your vehicle info so Triad can help."
+                                    },
+                                    {
+                                                "priority": 65,
+                                                "keys": [
+                                                            "diagnostic",
+                                                            "diagnostics",
+                                                            "scan",
+                                                            "scanner",
+                                                            "check engine",
+                                                            "engine light",
+                                                            "cel",
+                                                            "code",
+                                                            "codes",
+                                                            "warning light"
+                                                ],
+                                                "answer": "Triad offers check engine light scans starting at $45. The scan points us in the right direction, then we can decide if deeper diagnostics are needed.\n\nUse the service request form and include any codes or warning lights."
+                                    },
+                                    {
+                                                "priority": 60,
+                                                "keys": [
+                                                            "parts",
+                                                            "part",
+                                                            "source",
+                                                            "sourcing",
+                                                            "order",
+                                                            "oem",
+                                                            "aftermarket",
+                                                            "wheels",
+                                                            "tires",
+                                                            "rims"
+                                                ],
+                                                "answer": "Triad can help source OEM parts, aftermarket parts, tires, wheels, suspension parts, LEDs, audio equipment, and build parts.\n\nUse the service form with your year/make/model, engine, VIN if available, and the exact part or tire size."
+                                    },
+                                    {
+                                                "priority": 55,
+                                                "keys": [
+                                                            "ls",
+                                                            "lt",
+                                                            "sbc",
+                                                            "small block",
+                                                            "swap",
+                                                            "cam",
+                                                            "headers",
+                                                            "long tubes",
+                                                            "intake",
+                                                            "valvetrain",
+                                                            "vats",
+                                                            "vats delete",
+                                                            "hp tuners",
+                                                            "hptuners"
+                                                ],
+                                                "answer": "Triad can help with SBC, LS, and LT parts sourcing, swap support, and LS VATS delete support for compatible swap applications using HP Tuners.\n\nUse the form and include engine, vehicle, transmission, current setup, and goal."
+                                    },
+                                    {
+                                                "priority": 50,
+                                                "keys": [
+                                                            "price",
+                                                            "pricing",
+                                                            "cost",
+                                                            "quote",
+                                                            "estimate",
+                                                            "how much",
+                                                            "charge"
+                                                ],
+                                                "answer": "Pricing depends on the vehicle, job, parts, location, and diagnostic time.\n\nUse the service form with your vehicle, issue, city, and preferred time so Triad can quote it properly."
+                                    },
+                                    {
+                                                "priority": 40,
+                                                "keys": [
+                                                            "spanish",
+                                                            "espanol",
+                                                            "español",
+                                                            "habla",
+                                                            "hablan"
+                                                ],
+                                                "answer": "Yes, se habla español. Use the website in English or Spanish and send the details through the service form."
+                                    }
+                        ]
             },
-            es: {
-                welcome: "Bienvenido a Wawa Bot. Te puedo ayudar a saber si es seguro mover el vehículo, si debes apagarlo, o si Triad puede ir hacia ti.\n\nDime qué está pasando o toca un tema rápido.\n\n¿Prefieres inglés? Toca EN arriba.",
-                fallback: "No quiero adivinar mal. Dime:\n1. Año / marca / modelo\n2. Qué pasó\n3. Luces en el tablero\n4. Ruido, olor, humo, fuga o calentamiento\n5. Tu ciudad/área\n\nSi no se siente seguro moverlo, déjalo estacionado y usa la forma de servicio para que Triad pueda ir hacia ti o coordinar transporte.",
-                quick: ["Se calienta", "Sin frenos", "Humo / olor quemado", "Check engine parpadea", "No prende", "Fuga de líquido", "Llantas", "Partes / VATS"],
-                safetyNote: "Seguridad primero. Si el vehículo se siente inseguro, no lo fuerces a llegar a casa. Estaciónate seguro y pide servicio para que Triad pueda ir hacia ti o ayudar con transporte.",
-                answers: [
-                    { priority: 100, keys: ["fuego", "llamas", "cables quemados", "humo de cables", "bateria quemada", "batería quemada", "se quema", "incendio"], answer: "URGENTE: oríllate seguro, apaga el vehículo, saca a todos y aléjense. No abras el cofre si hay llamas o humo fuerte.\n\nCuando todos estén seguros, pide servicio/transporte con Triad. Si hay peligro inmediato, contacta emergencias primero." },
-                    { priority: 98, keys: ["sin frenos", "no frena", "pedal al piso", "pedal se fue al piso", "perdi frenos", "perdí frenos", "freno aguado"], answer: "No lo sigas manejando con frenos así. Estaciónate seguro y no intentes llegar a casa.\n\nTriad puede ir hacia ti o ayudar a coordinar transporte para revisarlo de forma segura." },
-                    { priority: 96, keys: ["presion de aceite", "presión de aceite", "luz de aceite", "aceite rojo", "stop engine"], answer: "Apaga el motor y no sigas manejando con luz de presión de aceite. Eso puede causar daño grande de motor.\n\nEstaciónate seguro y pide servicio/transporte con Triad en vez de intentar llegar a casa." },
-                    { priority: 95, keys: ["calienta", "calentando", "se calienta", "sobrecalienta", "temperatura", "vapor", "hierve", "anticongelante hirviendo", "radiador caliente"], answer: "Si se está calentando, no lo fuerces. Oríllate seguro, apágalo y deja que se enfríe. No abras el tapón del radiador o depósito mientras está caliente.\n\nSi no puedes moverlo con seguridad, Triad puede ir hacia ti o ayudar a coordinar transporte. Usa la forma de servicio e incluye ubicación, vehículo y qué hizo la temperatura." },
-                    { priority: 94, keys: ["olor a gasolina", "huele a gas", "fuga de gasolina", "tira gasolina", "gasolina"], answer: "Olor fuerte a gasolina o fuga no es para arriesgarse. Estaciónate seguro, apágalo y evita chispas/fuego.\n\nCuando esté seguro, pide servicio/transporte con Triad para manejarlo sin riesgo." },
-                    { priority: 92, keys: ["check engine parpadea", "check engine flashing", "luz parpadea", "parpadeando", "engine parpadeando"], answer: "Check engine parpadeando normalmente significa que no debes manejarlo fuerte. Si tiembla, estaciónalo.\n\nTriad puede escanearlo y revisar qué está pasando antes de que cause más daño. Usa la forma y menciona que la luz parpadea." },
-                    { priority: 82, keys: ["llanta ponchada", "llanta baja", "se poncho", "se ponchó", "truena llanta", "revento llanta", "reventó llanta", "tpms", "presion de llanta", "presión de llanta", "llantas", "llanta nueva", "llanta usada", "balanceo", "montaje"], answer: "Triad puede ayudar a buscar llantas nuevas o usadas por medida, vehículo y presupuesto. Montaje y balanceo viene pronto.\n\nSi la llanta está ponchada, destrozada o insegura, no manejes así. Usa la forma de servicio y manda medida de llanta o info del vehículo para buscar opciones." },
-                    { priority: 80, keys: ["no prende", "no enciende", "no arranca", "bateria", "batería", "marcha", "starter", "alternador", "click"], answer: "Si no prende, Triad puede ir hacia ti dependiendo de ubicación y problema.\n\nUsa la forma de servicio e incluye qué hace: sin poder, un click, click rápido, da marcha pero no prende, o prende y se apaga." },
-                    { priority: 70, keys: ["fuga", "tira aceite", "aceite", "transmision", "transmisión", "liquido", "líquido", "rojo", "cafe", "café", "anticongelante", "coolant"], answer: "Una fuga necesita contexto antes de adivinar. Si es gasolina, líquido de frenos, mucho coolant o luz de aceite, no manejes.\n\nUsa la forma e incluye color, dónde gotea y info del vehículo para que Triad ayude." },
-                    { priority: 65, keys: ["diagnostico", "diagnóstico", "scan", "scanner", "check engine", "luz", "codigo", "código", "codigos", "códigos"], answer: "Triad ofrece escaneo de check engine desde $45. El scan apunta en la dirección correcta y luego se decide si necesita diagnóstico más profundo.\n\nUsa la forma de servicio e incluye códigos o luces del tablero." },
-                    { priority: 60, keys: ["parte", "partes", "pedido", "ordenar", "oem", "aftermarket", "rines", "llantas"], answer: "Triad puede buscar partes OEM, aftermarket, llantas, rines, suspensión, luces, accesorios y partes de proyectos.\n\nUsa la forma con año/marca/modelo, motor, VIN si lo tienes y parte o medida exacta." },
-                    { priority: 55, keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "intake", "valvetrain", "vats", "vats delete", "hp tuners", "hptuners"], answer: "Triad puede ayudar con partes SBC, LS y LT, soporte de swaps y VATS delete LS compatible usando HP Tuners.\n\nUsa la forma e incluye motor, vehículo, transmisión, setup actual y meta." },
-                    { priority: 50, keys: ["precio", "precios", "cuanto", "cuánto", "cotizar", "cotizacion", "cotización", "cobran", "costo"], answer: "El precio depende del vehículo, trabajo, partes, ubicación y tiempo de diagnóstico.\n\nUsa la forma con vehículo, problema, ciudad y hora preferida para cotizar bien." }
-                ]
+            "es": {
+                        "welcome": "Bienvenido a Ask Triad. Te puedo ayudar a saber si es seguro mover el vehículo, si debes apagarlo, o si Triad puede ir hacia ti.\n\nDime qué está pasando o toca un tema rápido.",
+                        "fallback": "No quiero adivinar mal. Dime:\n1. Año / marca / modelo\n2. Qué pasó\n3. Luces en el tablero\n4. Ruido, olor, humo, fuga o calentamiento\n5. Tu ciudad/área\n\nSi no se siente seguro moverlo, déjalo estacionado y usa la forma de servicio para que Triad pueda ir hacia ti o coordinar transporte.",
+                        "quick": [
+                                    "Se calienta",
+                                    "Sin frenos",
+                                    "Humo / olor quemado",
+                                    "Check engine parpadea",
+                                    "No prende",
+                                    "Fuga de líquido",
+                                    "Llantas",
+                                    "Partes / VATS"
+                        ],
+                        "safetyNote": "Seguridad primero. Si el vehículo se siente inseguro, no lo fuerces a llegar a casa. Estaciónate seguro y pide servicio para que Triad pueda ir hacia ti o ayudar con transporte.",
+                        "answers": [
+                                    {
+                                                "priority": 100,
+                                                "keys": [
+                                                            "fuego",
+                                                            "llamas",
+                                                            "cables quemados",
+                                                            "humo de cables",
+                                                            "bateria quemada",
+                                                            "batería quemada",
+                                                            "se quema",
+                                                            "incendio"
+                                                ],
+                                                "answer": "URGENTE: oríllate seguro, apaga el vehículo, saca a todos y aléjense. No abras el cofre si hay llamas o humo fuerte.\n\nCuando todos estén seguros, pide servicio/transporte con Triad. Si hay peligro inmediato, contacta emergencias primero."
+                                    },
+                                    {
+                                                "priority": 98,
+                                                "keys": [
+                                                            "sin frenos",
+                                                            "no frena",
+                                                            "pedal al piso",
+                                                            "pedal se fue al piso",
+                                                            "perdi frenos",
+                                                            "perdí frenos",
+                                                            "freno aguado"
+                                                ],
+                                                "answer": "No lo sigas manejando con frenos así. Estaciónate seguro y no intentes llegar a casa.\n\nTriad puede ir hacia ti o ayudar a coordinar transporte para revisarlo de forma segura."
+                                    },
+                                    {
+                                                "priority": 96,
+                                                "keys": [
+                                                            "presion de aceite",
+                                                            "presión de aceite",
+                                                            "luz de aceite",
+                                                            "aceite rojo",
+                                                            "stop engine"
+                                                ],
+                                                "answer": "Apaga el motor y no sigas manejando con luz de presión de aceite. Eso puede causar daño grande de motor.\n\nEstaciónate seguro y pide servicio/transporte con Triad en vez de intentar llegar a casa."
+                                    },
+                                    {
+                                                "priority": 95,
+                                                "keys": [
+                                                            "calienta",
+                                                            "calentando",
+                                                            "se calienta",
+                                                            "sobrecalienta",
+                                                            "temperatura",
+                                                            "vapor",
+                                                            "hierve",
+                                                            "anticongelante hirviendo",
+                                                            "radiador caliente"
+                                                ],
+                                                "answer": "Si se está calentando, no lo fuerces. Oríllate seguro, apágalo y deja que se enfríe. No abras el tapón del radiador o depósito mientras está caliente.\n\nSi no puedes moverlo con seguridad, Triad puede ir hacia ti o ayudar a coordinar transporte. Usa la forma de servicio e incluye ubicación, vehículo y qué hizo la temperatura."
+                                    },
+                                    {
+                                                "priority": 94,
+                                                "keys": [
+                                                            "olor a gasolina",
+                                                            "huele a gas",
+                                                            "fuga de gasolina",
+                                                            "tira gasolina",
+                                                            "gasolina"
+                                                ],
+                                                "answer": "Olor fuerte a gasolina o fuga no es para arriesgarse. Estaciónate seguro, apágalo y evita chispas/fuego.\n\nCuando esté seguro, pide servicio/transporte con Triad para manejarlo sin riesgo."
+                                    },
+                                    {
+                                                "priority": 92,
+                                                "keys": [
+                                                            "check engine parpadea",
+                                                            "check engine flashing",
+                                                            "luz parpadea",
+                                                            "parpadeando",
+                                                            "engine parpadeando"
+                                                ],
+                                                "answer": "Check engine parpadeando normalmente significa que no debes manejarlo fuerte. Si tiembla, estaciónalo.\n\nTriad puede escanearlo y revisar qué está pasando antes de que cause más daño. Usa la forma y menciona que la luz parpadea."
+                                    },
+                                    {
+                                                "priority": 90,
+                                                "keys": [
+                                                            "bateria humeando",
+                                                            "batería humeando",
+                                                            "bateria caliente",
+                                                            "batería caliente",
+                                                            "bateria derretida",
+                                                            "chispas bateria",
+                                                            "cable caliente"
+                                                ],
+                                                "answer": "Si la batería humea, saca chispas, se derrite o los cables están calientes, no la toques con las manos y no sigas manejando.\n\nEstaciónate seguro, aléjate del área de batería y pide servicio/transporte con Triad."
+                                    },
+                                    {
+                                                "priority": 82,
+                                                "keys": [
+                                                            "llanta ponchada",
+                                                            "llanta baja",
+                                                            "se poncho",
+                                                            "se ponchó",
+                                                            "truena llanta",
+                                                            "revento llanta",
+                                                            "reventó llanta",
+                                                            "tpms",
+                                                            "presion de llanta",
+                                                            "presión de llanta",
+                                                            "llantas",
+                                                            "llanta nueva",
+                                                            "llanta usada",
+                                                            "balanceo",
+                                                            "montaje"
+                                                ],
+                                                "answer": "Triad puede ayudar a buscar llantas nuevas o usadas por medida, vehículo y presupuesto. Montaje y balanceo viene pronto.\n\nSi la llanta está ponchada, destrozada o insegura, no manejes así. Usa la forma de servicio y manda medida de llanta o info del vehículo para buscar opciones."
+                                    },
+                                    {
+                                                "priority": 80,
+                                                "keys": [
+                                                            "no prende",
+                                                            "no enciende",
+                                                            "no arranca",
+                                                            "bateria",
+                                                            "batería",
+                                                            "marcha",
+                                                            "starter",
+                                                            "alternador",
+                                                            "click"
+                                                ],
+                                                "answer": "Si no prende, Triad puede ir hacia ti dependiendo de ubicación y problema.\n\nUsa la forma de servicio e incluye qué hace: sin poder, un click, click rápido, da marcha pero no prende, o prende y se apaga."
+                                    },
+                                    {
+                                                "priority": 70,
+                                                "keys": [
+                                                            "fuga",
+                                                            "tira aceite",
+                                                            "aceite",
+                                                            "transmision",
+                                                            "transmisión",
+                                                            "liquido",
+                                                            "líquido",
+                                                            "rojo",
+                                                            "cafe",
+                                                            "café",
+                                                            "anticongelante",
+                                                            "coolant"
+                                                ],
+                                                "answer": "Una fuga necesita contexto antes de adivinar. Si es gasolina, líquido de frenos, mucho coolant o luz de aceite, no manejes.\n\nUsa la forma e incluye color, dónde gotea y info del vehículo para que Triad ayude."
+                                    },
+                                    {
+                                                "priority": 65,
+                                                "keys": [
+                                                            "diagnostico",
+                                                            "diagnóstico",
+                                                            "scan",
+                                                            "scanner",
+                                                            "check engine",
+                                                            "luz",
+                                                            "codigo",
+                                                            "código",
+                                                            "codigos",
+                                                            "códigos"
+                                                ],
+                                                "answer": "Triad ofrece escaneo de check engine desde $45. El scan apunta en la dirección correcta y luego se decide si necesita diagnóstico más profundo.\n\nUsa la forma de servicio e incluye códigos o luces del tablero."
+                                    },
+                                    {
+                                                "priority": 60,
+                                                "keys": [
+                                                            "parte",
+                                                            "partes",
+                                                            "pedido",
+                                                            "ordenar",
+                                                            "oem",
+                                                            "aftermarket",
+                                                            "rines",
+                                                            "llantas"
+                                                ],
+                                                "answer": "Triad puede buscar partes OEM, aftermarket, llantas, rines, suspensión, luces, accesorios y partes de proyectos.\n\nUsa la forma con año/marca/modelo, motor, VIN si lo tienes y parte o medida exacta."
+                                    },
+                                    {
+                                                "priority": 55,
+                                                "keys": [
+                                                            "ls",
+                                                            "lt",
+                                                            "sbc",
+                                                            "small block",
+                                                            "swap",
+                                                            "cam",
+                                                            "headers",
+                                                            "intake",
+                                                            "valvetrain",
+                                                            "vats",
+                                                            "vats delete",
+                                                            "hp tuners",
+                                                            "hptuners"
+                                                ],
+                                                "answer": "Triad puede ayudar con partes SBC, LS y LT, soporte de swaps y VATS delete LS compatible usando HP Tuners.\n\nUsa la forma e incluye motor, vehículo, transmisión, setup actual y meta."
+                                    },
+                                    {
+                                                "priority": 50,
+                                                "keys": [
+                                                            "precio",
+                                                            "precios",
+                                                            "cuanto",
+                                                            "cuánto",
+                                                            "cotizar",
+                                                            "cotizacion",
+                                                            "cotización",
+                                                            "cobran",
+                                                            "costo"
+                                                ],
+                                                "answer": "El precio depende del vehículo, trabajo, partes, ubicación y tiempo de diagnóstico.\n\nUsa la forma con vehículo, problema, ciudad y hora preferida para cotizar bien."
+                                    },
+                                    {
+                                                "priority": 40,
+                                                "keys": [
+                                                            "ingles",
+                                                            "inglés",
+                                                            "english"
+                                                ],
+                                                "answer": "Yes, se habla español and English. Use the form in either language."
+                                    }
+                        ]
             }
-        };
+};
 
         function populateDropdowns() {
             const serviceSelect = document.getElementById('bookingService');
@@ -1962,12 +2361,6 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
-            applyLanguageWithoutReset();
-            updateChatLanguageButtons();
-            resetChat(true);
-        }
-
-        function applyLanguageWithoutReset() {
             const selectedLanguage = trans[currentLang];
 
             Object.keys(selectedLanguage).forEach(id => {
@@ -1982,6 +2375,7 @@
             if (chatInput) chatInput.placeholder = selectedLanguage.chatPlaceholder;
 
             populateDropdowns();
+            resetChat(true);
         }
 
         function sendBookingSMS() {
@@ -2007,191 +2401,6 @@
             window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
         }
 
-
-        function toggleCustomTireSize() {
-            const tireSize = document.getElementById('tireSize').value;
-            const customTireSize = document.getElementById('customTireSize');
-
-            if (tireSize === "Other / Not listed") {
-                customTireSize.style.display = "block";
-                customTireSize.required = true;
-            } else {
-                customTireSize.style.display = "none";
-                customTireSize.required = false;
-                customTireSize.value = "";
-            }
-        }
-
-        function sendTireRequestSMS() {
-            const name = document.getElementById('tireName').value;
-            const selectedSize = document.getElementById('tireSize').value;
-            const customSize = document.getElementById('customTireSize').value;
-            const size = selectedSize === "Other / Not listed" ? customSize : selectedSize;
-            const condition = document.getElementById('tireCondition').value;
-            const qty = document.getElementById('tireQty').value;
-            const vehicle = document.getElementById('tireVehicle').value;
-            const notes = document.getElementById('tireNotes').value;
-
-            const message =
-                "Hi Triad, my name is " + name +
-                ". I am looking for tires. Size: " + size +
-                ". Condition: " + condition +
-                ". Quantity: " + qty +
-                ". Vehicle: " + vehicle +
-                ". Notes/Budget: " + notes +
-                ". I understand mounting and balancing is not available yet.";
-
-            window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
-        }
-
-        /* VIN DECODER FUNCTIONS */
-        function formatVinInput() {
-            const input = document.getElementById("vinInput");
-            if (!input) return;
-
-            input.value = input.value
-                .toUpperCase()
-                .replace(/[^A-HJ-NPR-Z0-9]/g, "")
-                .slice(0, 17);
-        }
-
-        function getVinValue(field) {
-            return field && field !== "Not Applicable" && field !== "0" ? field : "";
-        }
-
-        function displayVinRow(label, value) {
-            if (!value) return "";
-            return `<div class="vin-info-row"><strong>${label}</strong>${value}</div>`;
-        }
-
-        async function decodeVIN() {
-            const vinInput = document.getElementById("vinInput");
-            const resultBox = document.getElementById("vinResult");
-            const resultText = document.getElementById("vinResultText");
-            const detailsBox = document.getElementById("vinDetails");
-            const useBtn = document.getElementById("btnUseVin");
-            const goScheduleBtn = document.getElementById("btnGoSchedule");
-
-            const lang = trans[currentLang];
-            const vin = vinInput.value.trim().toUpperCase();
-
-            decodedVehicleText = "";
-            decodedVinNumber = "";
-            resultBox.style.display = "block";
-            resultText.textContent = "";
-            detailsBox.innerHTML = "";
-            useBtn.style.display = "none";
-            goScheduleBtn.style.display = "none";
-
-            if (vin.length !== 17) {
-                resultText.textContent = lang.vinLengthError;
-                return;
-            }
-
-            resultText.textContent = lang.vinLoading;
-
-            try {
-                const url = `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/${vin}?format=json`;
-                const response = await fetch(url);
-                const data = await response.json();
-                const vehicle = data.Results && data.Results[0] ? data.Results[0] : {};
-
-                const year = getVinValue(vehicle.ModelYear);
-                const make = getVinValue(vehicle.Make);
-                const model = getVinValue(vehicle.Model);
-                const trim = getVinValue(vehicle.Trim);
-                const engineLiters = getVinValue(vehicle.DisplacementL);
-                const cylinders = getVinValue(vehicle.EngineCylinders);
-                const engineModel = getVinValue(vehicle.EngineModel);
-                const drive = getVinValue(vehicle.DriveType);
-                const body = getVinValue(vehicle.BodyClass);
-                const transmission = getVinValue(vehicle.TransmissionStyle);
-                const fuel = getVinValue(vehicle.FuelTypePrimary);
-                const plantCountry = getVinValue(vehicle.PlantCountry);
-
-                const engineText = [
-                    engineLiters ? `${engineLiters}L` : "",
-                    cylinders ? `${cylinders} cyl` : "",
-                    engineModel
-                ].filter(Boolean).join(" ");
-
-                decodedVehicleText = [year, make, model, trim, engineText].filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
-                decodedVinNumber = vin;
-
-                if (!decodedVehicleText) {
-                    resultText.textContent = lang.vinNoInfo;
-                    decodedVehicleText = `VIN: ${vin}`;
-                } else {
-                    resultText.innerHTML = `<strong>${decodedVehicleText}</strong>`;
-                }
-
-                detailsBox.innerHTML =
-                    displayVinRow("VIN", vin) +
-                    displayVinRow("Year / Año", year) +
-                    displayVinRow("Make / Marca", make) +
-                    displayVinRow("Model / Modelo", model) +
-                    displayVinRow("Trim", trim) +
-                    displayVinRow("Engine / Motor", engineText) +
-                    displayVinRow("Drive / Tracción", drive) +
-                    displayVinRow("Body / Carrocería", body) +
-                    displayVinRow("Transmission / Transmisión", transmission) +
-                    displayVinRow("Fuel / Combustible", fuel) +
-                    displayVinRow("Plant Country / País de planta", plantCountry);
-
-                useBtn.style.display = "inline-block";
-                goScheduleBtn.style.display = "inline-block";
-            } catch (error) {
-                resultText.textContent = lang.vinError;
-                detailsBox.innerHTML = "";
-                useBtn.style.display = "none";
-                goScheduleBtn.style.display = "none";
-            }
-        }
-
-        function useDecodedVehicle() {
-            const lang = trans[currentLang];
-
-            if (!decodedVehicleText) return;
-
-            const vehicleField = document.getElementById("bookingVehicle");
-            const notesField = document.getElementById("bookingNotes");
-
-            vehicleField.value = `${decodedVehicleText} | VIN: ${decodedVinNumber}`;
-
-            if (notesField && decodedVinNumber && !notesField.value.includes(decodedVinNumber)) {
-                notesField.value = notesField.value
-                    ? `${notesField.value}\n\nDecoded VIN: ${decodedVinNumber} — ${decodedVehicleText}`
-                    : `Decoded VIN: ${decodedVinNumber} — ${decodedVehicleText}`;
-            }
-
-            document.getElementById("scheduler").scrollIntoView({ behavior: "smooth" });
-
-            setTimeout(() => {
-                vehicleField.focus();
-            }, 550);
-        }
-
-        function setChatLanguage(lang) {
-            currentLang = lang;
-            applyLanguageWithoutReset();
-            updateChatLanguageButtons();
-
-            const chatWindow = document.getElementById("triadChatWindow");
-            if (chatWindow && chatWindow.classList.contains("open")) {
-                resetChat(false);
-            }
-        }
-
-        function updateChatLanguageButtons() {
-            const enBtn = document.getElementById("chatLangEn");
-            const esBtn = document.getElementById("chatLangEs");
-
-            if (!enBtn || !esBtn) return;
-
-            enBtn.classList.toggle("active", currentLang === "en");
-            esBtn.classList.toggle("active", currentLang === "es");
-        }
-
         function toggleTriadChat() {
             const chat = document.getElementById("triadChatWindow");
             chat.classList.toggle("open");
@@ -2206,7 +2415,11 @@
             if (!body) return;
 
             body.innerHTML = "";
-            if (!clearOnly || document.getElementById("triadChatWindow").classList.contains("open")) {
+            if (!clearOnly) {
+                addBotMessage(chatData[currentLang].welcome);
+                addBotMessage(chatData[currentLang].safetyNote);
+                renderQuickChips();
+            } else if (document.getElementById("triadChatWindow").classList.contains("open")) {
                 addBotMessage(chatData[currentLang].welcome);
                 addBotMessage(chatData[currentLang].safetyNote);
                 renderQuickChips();
@@ -2253,6 +2466,35 @@
             body.scrollTop = body.scrollHeight;
         }
 
+        function renderLeadForm() {
+            const old = document.getElementById("triadLeadForm");
+            if (old) old.remove();
+
+            const body = document.getElementById("chatBody");
+            const data = chatData[currentLang];
+
+            const card = document.createElement("div");
+            card.className = "triad-chat-lead";
+            card.id = "triadLeadForm";
+
+            card.innerHTML = `
+                <div class="lead-title">${data.leadTitle}</div>
+                <div class="lead-grid">
+                    <input class="lead-input" id="leadName" placeholder="${data.name}">
+                    <input class="lead-input" id="leadVehicle" placeholder="${data.vehicle}">
+                    <input class="lead-input" id="leadPhone" placeholder="${data.phone}">
+                    <textarea class="lead-input lead-textarea" id="leadIssue" placeholder="${data.issue}"></textarea>
+                </div>
+                <div class="lead-actions">
+                    <button type="button" class="lead-btn" onclick="sendLeadText()">${data.sendText}</button>
+                    <a class="lead-btn secondary" href="tel:${triadPhone}">${data.callNow}</a>
+                </div>
+            `;
+
+            body.appendChild(card);
+            body.scrollTop = body.scrollHeight;
+        }
+
         function normalizeText(text) {
             return text.toLowerCase()
                 .normalize("NFD")
@@ -2284,6 +2526,46 @@
             }
 
             return chatData[currentLang].fallback;
+        }
+
+        function applyLanguageWithoutReset() {
+            const selectedLanguage = trans[currentLang];
+
+            Object.keys(selectedLanguage).forEach(id => {
+                const element = document.getElementById(id);
+                if (element && id !== 'svcs' && id !== 'chatPlaceholder') {
+                    element.innerHTML = selectedLanguage[id];
+                }
+            });
+
+            const chatInput = document.getElementById("chatInput");
+            if (chatInput) chatInput.placeholder = selectedLanguage.chatPlaceholder;
+
+            populateDropdowns();
+        }
+
+        function detectSafetyUrgency(message) {
+            const msg = normalizeText(message);
+            const dangerWords = [
+                "fire", "flames", "smoke", "burning", "fuel smell", "gas leak",
+                "no brakes", "pedal to floor", "oil pressure", "overheating", "steam",
+                "fuego", "humo", "gasolina", "sin frenos", "pedal al piso",
+                "presion de aceite", "se calienta", "vapor"
+            ];
+
+            return dangerWords.some(word => msg.includes(normalizeText(word)));
+        }
+
+        function detectSafetyUrgency(message) {
+            const msg = normalizeText(message);
+            const dangerWords = [
+                "fire", "flames", "smoke", "burning", "fuel smell", "gas leak",
+                "no brakes", "pedal to floor", "oil pressure", "overheating", "steam",
+                "fuego", "humo", "gasolina", "sin frenos", "pedal al piso",
+                "presion de aceite", "se calienta", "vapor"
+            ];
+
+            return dangerWords.some(word => msg.includes(normalizeText(word)));
         }
 
         function detectSafetyUrgency(message) {
@@ -2331,11 +2613,28 @@
             }
         }
 
+        function sendLeadText() {
+            const name = document.getElementById("leadName").value.trim();
+            const vehicle = document.getElementById("leadVehicle").value.trim();
+            const phone = document.getElementById("leadPhone").value.trim();
+            const issue = document.getElementById("leadIssue").value.trim();
+
+            const data = chatData[currentLang];
+
+            let message = `${data.intentPrefix}
+Name / Nombre: ${name}
+Vehicle / Vehículo: ${vehicle}
+Phone / Teléfono: ${phone}
+Issue / Problema: ${issue}
+Website: ${triadWebsite}`;
+
+            window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             const chatInput = document.getElementById("chatInput");
             if (chatInput) chatInput.placeholder = trans[currentLang].chatPlaceholder;
             populateDropdowns();
-            updateChatLanguageButtons();
         });
     </script>
 </body>
