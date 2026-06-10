@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triad Automotive | Baraboo, WI Auto Service & Diagnostics</title>
-    <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, repair, truck and trailer service, custom parts sourcing, LEDs, audio equipment sourcing, SBC/LS/LT performance parts support, and LS VATS delete support in Baraboo, Wisconsin.">
+    <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, repair, truck and trailer service, custom parts sourcing, LED lighting, audio equipment sourcing, SBC/LS/LT parts support, and LS VATS delete support in Baraboo, Wisconsin.">
     <meta name="theme-color" content="#050608">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Rajdhani:wght@600;700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg-dark: #050608;
-            --bg-soft: #10141d;
-            --card-bg: rgba(13, 16, 24, 0.86);
-            --card-bg-strong: rgba(13, 16, 24, 0.96);
+            --card-bg: rgba(13, 16, 24, 0.88);
+            --card-bg-strong: rgba(13, 16, 24, 0.97);
             --border-color: rgba(255, 255, 255, 0.08);
             --accent-red: #ff3b57;
             --accent-blue: #007aff;
@@ -32,11 +31,13 @@
             scroll-behavior: smooth;
         }
 
-        html { background: var(--bg-dark); }
+        html {
+            background: var(--bg-dark);
+        }
 
         body {
             background:
-                radial-gradient(circle at top left, rgba(255, 59, 87, 0.035), transparent 30%),
+                radial-gradient(circle at top left, rgba(255, 59, 87, 0.04), transparent 30%),
                 radial-gradient(circle at top right, rgba(0, 122, 255, 0.035), transparent 28%),
                 linear-gradient(180deg, #050608 0%, #07080b 45%, #050608 100%);
             color: var(--text-main);
@@ -63,7 +64,9 @@
             z-index: 0;
         }
 
-        a { -webkit-tap-highlight-color: transparent; }
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
 
         .container {
             width: 100%;
@@ -85,7 +88,7 @@
             padding: 7px 12px;
             border-radius: 999px;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -107,23 +110,23 @@
         }
 
         .brand-img {
-            height: 48px;
+            height: 62px;
             width: auto;
             flex-shrink: 0;
-            opacity: 0.78;
+            opacity: 0.84;
             mix-blend-mode: normal;
-            border-radius: 10px;
-            filter: brightness(0.92) contrast(1.05);
+            border-radius: 12px;
+            filter: brightness(1.02) contrast(1.08);
         }
 
         .brand-name {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 17px;
+            font-family: 'Rajdhani', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 0.95;
             white-space: nowrap;
-            letter-spacing: -0.3px;
+            letter-spacing: 0.7px;
         }
 
         .contact-group {
@@ -133,11 +136,11 @@
         }
 
         .contact-btn {
-            font-size: 12px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 900;
             color: #fff;
             text-decoration: none;
-            padding: 9px 12px;
+            padding: 10px 13px;
             background: rgba(255, 255, 255, 0.045);
             border: 1px solid var(--border-color);
             border-radius: 999px;
@@ -165,18 +168,22 @@
         .top-contact-card a {
             color: #fff;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 800;
-            line-height: 1.25;
+            font-family: 'Rajdhani', 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
         }
 
         .top-contact-card span {
-            color: var(--text-soft);
-            font-size: 11px;
-            font-weight: 800;
+            color: var(--accent-red);
+            font-family: 'Teko', 'Rajdhani', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.35px;
-            margin-right: 4px;
+            letter-spacing: 1px;
+            margin-right: 6px;
         }
 
         .hero {
@@ -190,7 +197,8 @@
             overflow: hidden;
         }
 
-        .hero::after, .card::after {
+        .hero::after,
+        .card::after {
             content: "";
             position: absolute;
             right: -72px;
@@ -217,7 +225,9 @@
             z-index: 1;
         }
 
-        .info-red { color: var(--accent-red); }
+        .info-red {
+            color: var(--accent-red);
+        }
 
         .hero-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -265,7 +275,9 @@
             box-shadow: 0 14px 38px rgba(255, 59, 87, 0.18);
         }
 
-        .hero-btn.dark { background: rgba(255, 255, 255, 0.045); }
+        .hero-btn.dark {
+            background: rgba(255, 255, 255, 0.045);
+        }
 
         .info-sub {
             color: var(--text-soft);
@@ -286,7 +298,9 @@
         }
 
         .trust-strip::-webkit-scrollbar,
-        .dept-navigation::-webkit-scrollbar { display: none; }
+        .dept-navigation::-webkit-scrollbar {
+            display: none;
+        }
 
         .trust-pill {
             color: #fff;
@@ -323,7 +337,9 @@
             white-space: nowrap;
         }
 
-        .dept-tab.active { color: var(--accent-red); }
+        .dept-tab.active {
+            color: var(--accent-red);
+        }
 
         .quick-help {
             background: rgba(255, 255, 255, 0.028);
@@ -396,8 +412,13 @@
             letter-spacing: 0.3px;
         }
 
-        .core-badge.blue { background: var(--accent-blue); }
-        .core-badge.dark { background: #1e293b; }
+        .core-badge.blue {
+            background: var(--accent-blue);
+        }
+
+        .core-badge.dark {
+            background: #1e293b;
+        }
 
         .card-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -461,7 +482,9 @@
             line-height: 1.45;
         }
 
-        .promo-box.red .promo-text { color: #ff6478; }
+        .promo-box.red .promo-text {
+            color: #ff6478;
+        }
 
         .card-footer {
             display: flex;
@@ -577,7 +600,9 @@
             display: block;
         }
 
-        .form-group { margin-bottom: 14px; }
+        .form-group {
+            margin-bottom: 14px;
+        }
 
         .form-label {
             display: block;
@@ -648,9 +673,7 @@
             font-weight: 800;
         }
 
-        /* =========================
-           TRIAD SMART CHATBOT
-        ========================= */
+        /* TRIAD SMART CHATBOT */
         .triad-chat-launcher {
             position: fixed;
             right: 16px;
@@ -676,7 +699,6 @@
             height: 10px;
             background: #25d366;
             border-radius: 999px;
-            box-shadow: 0 0 0 rgba(37,211,102,0.6);
             animation: triadPulse 1.8s infinite;
         }
 
@@ -706,7 +728,9 @@
             -webkit-backdrop-filter: blur(18px);
         }
 
-        .triad-chat-window.open { display: flex; }
+        .triad-chat-window.open {
+            display: flex;
+        }
 
         .triad-chat-header {
             padding: 14px;
@@ -737,7 +761,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 14px;
             font-weight: 900;
-            line-height: 1.1;
             color: #fff;
         }
 
@@ -766,15 +789,22 @@
             scrollbar-width: none;
         }
 
-        .triad-chat-body::-webkit-scrollbar { display: none; }
+        .triad-chat-body::-webkit-scrollbar {
+            display: none;
+        }
 
         .chat-row {
             display: flex;
             margin-bottom: 10px;
         }
 
-        .chat-row.bot { justify-content: flex-start; }
-        .chat-row.user { justify-content: flex-end; }
+        .chat-row.bot {
+            justify-content: flex-start;
+        }
+
+        .chat-row.user {
+            justify-content: flex-end;
+        }
 
         .chat-bubble {
             max-width: 88%;
@@ -859,8 +889,6 @@
             width: 100%;
         }
 
-        .lead-input:focus { border-color: rgba(255,59,87,0.55); }
-
         .lead-textarea {
             min-height: 72px;
             resize: vertical;
@@ -935,21 +963,34 @@
 
         @media (max-width: 410px) {
             .brand-img {
-                height: 44px;
-                opacity: 0.74;
+                height: 54px;
+                opacity: 0.8;
             }
 
-            .brand-name { font-size: 14px; }
+            .brand-name {
+                font-size: 20px;
+            }
 
             .contact-btn {
                 padding: 8px 10px;
                 font-size: 11px;
             }
 
-            .hero-title { font-size: 28px; }
-            .card { padding: 23px; }
-            .card-title { font-size: 22px; }
-            .price-value { font-size: 26px; }
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .card {
+                padding: 23px;
+            }
+
+            .card-title {
+                font-size: 22px;
+            }
+
+            .price-value {
+                font-size: 26px;
+            }
 
             body::before {
                 background-size: 290px auto;
@@ -974,14 +1015,26 @@
         }
 
         @media (max-width: 370px) {
-            header { align-items: flex-start; }
+            .brand-img {
+                height: 48px;
+            }
+
+            .brand-name {
+                font-size: 17px;
+            }
+
+            header {
+                align-items: flex-start;
+            }
 
             .contact-group {
                 flex-direction: column;
                 gap: 6px;
             }
 
-            .contact-btn { text-align: center; }
+            .contact-btn {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -1007,7 +1060,7 @@
         <div class="top-contact-card">
             <a href="tel:+16084047360"><span id="topPhoneLabel">Phone</span> (608) 404-7360</a>
             <a href="mailto:triadautomotivellc@gmail.com"><span id="topEmailLabel">Email</span> triadautomotivellc@gmail.com</a>
-            <a href="sms:+16084047360"><span id="topLangLabel">Language</span> Se Habla Español 🇲🇽</a>
+            <a href="sms:+16084047360"><span id="topLangLabel">Language</span> Se Habla Español</a>
         </div>
 
         <section class="hero" id="top">
@@ -1118,7 +1171,7 @@
 
             <div class="promo-box">
                 <p class="promo-text" id="promoTow">
-                    💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location and repair.
+                    Tow to our shop for repairs and ask about tow discounts depending on your location and repair.
                 </p>
             </div>
 
@@ -1139,7 +1192,7 @@
             <div class="core-badge dark" id="bdgParts">Special Order</div>
             <h2 class="card-title" id="ttlParts">Custom Parts by Order</h2>
             <p class="card-desc" id="dscParts">
-                Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds. Ask us about Texas-sourced LEDs, audio gear, lighting upgrades, and custom parts by order.
+                Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds.
             </p>
 
             <div class="mini-list">
@@ -1151,7 +1204,7 @@
 
             <div class="promo-box red">
                 <p class="promo-text" id="promoParts">
-                    Ask us about Texas-sourced LEDs, audio equipment, lighting upgrades, and custom parts by order.
+                    Ask us about LED lighting, audio equipment, lighting upgrades, and custom parts by order.
                 </p>
             </div>
 
@@ -1166,15 +1219,15 @@
 
         <section class="card" id="performance">
             <div class="core-badge" id="bdgPerf">Performance</div>
-            <h2 class="card-title" id="ttlPerf">SBC, LS & LT Performance</h2>
+            <h2 class="card-title" id="ttlPerf">SBC, LS & LT Parts Support</h2>
             <p class="card-desc" id="dscPerf">
-                We offer bolt-on performance work, parts sourcing, and HP Tuners support for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, supporting parts, and LS VATS delete for swap applications, we can help plan the setup and source the right components.
+                We offer parts sourcing and support for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, supporting parts, and LS VATS delete for swap applications, we can help plan the setup and source the right components.
             </p>
 
             <div class="mini-list">
                 <div class="mini-item" id="perfMini1">SBC</div>
                 <div class="mini-item" id="perfMini2">LS Gen 3/4</div>
-                <div class="mini-item" id="perfMini3">LT Bolt-Ons</div>
+                <div class="mini-item" id="perfMini3">LT Parts</div>
                 <div class="mini-item" id="perfMini4">VATS Delete</div>
             </div>
 
@@ -1353,7 +1406,6 @@
         </footer>
     </div>
 
-    <!-- TRIAD SMART CHATBOT -->
     <button class="triad-chat-launcher" id="triadChatLauncher" onclick="toggleTriadChat()">
         <span class="triad-chat-pulse"></span>
         <span id="chatLauncherText">Ask Triad</span>
@@ -1365,7 +1417,7 @@
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive" class="triad-chat-logo">
                 <div>
                     <div class="triad-chat-title" id="chatHeaderTitle">Triad Assistant</div>
-                    <div class="triad-chat-status" id="chatHeaderStatus">Quick answers • Text-ready</div>
+                    <div class="triad-chat-status" id="chatHeaderStatus">Smart help • Safety-first</div>
                 </div>
             </div>
             <button class="triad-chat-close" onclick="toggleTriadChat()" aria-label="Close chat">×</button>
@@ -1379,7 +1431,7 @@
                 <button class="chat-send" onclick="sendChatMessage()">➤</button>
             </div>
             <div class="chat-disclaimer" id="chatDisclaimer">
-                This assistant gives general info. For an exact quote, text Triad with your vehicle and concern.
+                Safety-first help. For emergencies, move to safety and contact emergency services.
             </div>
         </div>
     </aside>
@@ -1387,7 +1439,6 @@
     <script>
         let currentLang = 'en';
         const triadPhone = "+16084047360";
-        const triadEmail = "triadautomotivellc@gmail.com";
         const triadWebsite = "https://www.triadautomotiveusa.com";
 
         const trans = {
@@ -1397,8 +1448,9 @@
                 txtTextBtn: "Text",
                 topPhoneLabel: "Phone",
                 topEmailLabel: "Email",
-                txtInfoArea: "Texas Roots, <span class='info-red'>Wisconsin Tough</span>",
-                heroTitle: "Auto service built for real life.",
+                topLangLabel: "Language",
+                txtInfoArea: "Texas Roots. <span class='info-red'>Wisconsin Built.</span>",
+                heroTitle: "Diagnostics, Maintenance & Repair Done Right.",
                 heroText: "Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and reliable work when your vehicle needs attention. Se habla español.",
                 heroBook: "Schedule Service",
                 heroTextBtn: "Text Us",
@@ -1441,28 +1493,28 @@
                 bdgTow: "Recovery & Transport",
                 ttlTow: "Truck & Trailer Service",
                 dscTow: "Stuck or need a vehicle moved? We can dispatch our truck and trailer to safely transport your vehicle or help coordinate pickup for repair.",
-                promoTow: "💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location and repair.",
+                promoTow: "Tow to our shop for repairs and ask about tow discounts depending on your location and repair.",
                 lblPriceTow: "Transport",
                 valPriceTow: "Quote",
                 btnActionTow: "Get Tow",
                 btnActionMobile: "Schedule",
                 bdgParts: "Special Order",
                 ttlParts: "Custom Parts by Order",
-                dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds. Ask us about Texas-sourced LEDs, audio gear, lighting upgrades, and custom parts by order.",
+                dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds.",
                 partsMini1: "OEM Parts",
                 partsMini2: "Aftermarket",
                 partsMini3: "LED Lighting",
                 partsMini4: "Audio Gear",
-                promoParts: "Ask us about Texas-sourced LEDs, audio equipment, lighting upgrades, and custom parts by order.",
+                promoParts: "Ask us about LED lighting, audio equipment, lighting upgrades, and custom parts by order.",
                 lblPriceParts: "Availability",
                 valPriceParts: "Quote",
                 btnParts: "Request Parts",
                 bdgPerf: "Performance",
-                ttlPerf: "SBC, LS & LT Performance",
-                dscPerf: "We offer bolt-on performance work, parts sourcing, and HP Tuners support for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, supporting parts, and LS VATS delete for swap applications, we can help plan the setup and source the right components.",
+                ttlPerf: "SBC, LS & LT Parts Support",
+                dscPerf: "We offer parts sourcing and support for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, supporting parts, and LS VATS delete for swap applications, we can help plan the setup and source the right components.",
                 perfMini1: "SBC",
                 perfMini2: "LS Gen 3/4",
-                perfMini3: "LT Bolt-Ons",
+                perfMini3: "LT Parts",
                 perfMini4: "VATS Delete",
                 promoPerf: "Tell us your engine, vehicle, and goal. We can help with parts planning, LS swap support, and VATS delete on compatible LS platforms using HP Tuners.",
                 lblPricePerf: "Parts & Support",
@@ -1494,8 +1546,8 @@
                 footerSub: "Automotive service • Diagnostics • Maintenance • LEDs • Audio • Parts sourcing • VATS delete support",
                 chatLauncherText: "Ask Triad",
                 chatHeaderTitle: "Triad Assistant",
-                chatHeaderStatus: "Quick answers • Text-ready",
-                chatDisclaimer: "This assistant gives general info. For an exact quote, text Triad with your vehicle and concern.",
+                chatHeaderStatus: "Smart help • Safety-first",
+                chatDisclaimer: "Safety-first help. For emergencies, move to safety and contact emergency services.",
                 chatPlaceholder: "Ask about service, towing, diagnostics...",
                 svcs: [
                     {v: "Automotive Service & Maintenance", t: "Automotive Service & Maintenance"},
@@ -1504,7 +1556,7 @@
                     {v: "Mobile Repair", t: "Mobile Repair"},
                     {v: "Custom Parts by Order", t: "Custom Parts by Order"},
                     {v: "LED Lighting / Audio Gear", t: "LED Lighting / Audio Gear"},
-                    {v: "SBC, LS & LT Performance", t: "SBC, LS & LT Performance"},
+                    {v: "SBC, LS & LT Parts Support", t: "SBC, LS & LT Parts Support"},
                     {v: "LS VATS Delete / HP Tuners Support", t: "LS VATS Delete / HP Tuners Support"},
                     {v: "Build & Upgrade Consultation", t: "Build & Upgrade Consultation"},
                     {v: "Source Rust-Free Texas Truck/Car", t: "Sourcing: Rust-Free Texas Truck/Car"}
@@ -1562,28 +1614,28 @@
                 bdgTow: "Recuperación y Transporte",
                 ttlTow: "Servicio de Camión y Remolque",
                 dscTow: "¿Quedaste tirado o necesitas mover un vehículo? Podemos enviar nuestro camión y remolque para transportar tu vehículo o coordinar recolección para reparación.",
-                promoTow: "💸 Trae tu vehículo a nuestro taller para reparación y obtén un descuento—¡o incluso la grúa GRATIS dependiendo de tu ubicación y reparación!",
+                promoTow: "Trae tu vehículo a nuestro taller para reparación y pregunta por descuentos de grúa dependiendo de tu ubicación y reparación.",
                 lblPriceTow: "Transporte",
                 valPriceTow: "Cotizar",
                 btnActionTow: "Pedir Grúa",
                 btnActionMobile: "Agendar",
                 bdgParts: "Orden Especial",
                 ttlParts: "Partes Especiales por Pedido",
-                dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces LED, equipo de audio, suspensión, rines, llantas y partes para proyectos personalizados. Pregunta por luces LED de Texas, equipo de audio, upgrades de iluminación y partes especiales por pedido.",
+                dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces LED, equipo de audio, suspensión, rines, llantas y partes para proyectos personalizados.",
                 partsMini1: "Partes OEM",
                 partsMini2: "Aftermarket",
                 partsMini3: "Luces LED",
                 partsMini4: "Audio",
-                promoParts: "Pregunta por luces LED de Texas, equipo de audio, upgrades de iluminación y partes especiales por pedido.",
+                promoParts: "Pregunta por luces LED, equipo de audio, upgrades de iluminación y partes especiales por pedido.",
                 lblPriceParts: "Disponibilidad",
                 valPriceParts: "Cotizar",
                 btnParts: "Pedir Partes",
                 bdgPerf: "Performance",
-                ttlPerf: "Performance SBC, LS y LT",
-                dscPerf: "Ofrecemos trabajo de bolt-ons, búsqueda de partes y soporte con HP Tuners para Small Block Chevy, LS Gen 3, LS Gen 4 y motores LT. Podemos ayudarte con intake, escape, headers, cam, valvetrain, fuel upgrades, partes de soporte y VATS delete en plataformas LS compatibles para swaps.",
+                ttlPerf: "Soporte de Partes SBC, LS y LT",
+                dscPerf: "Ofrecemos búsqueda de partes y soporte para Small Block Chevy, LS Gen 3, LS Gen 4 y motores LT. Podemos ayudarte con intake, escape, headers, cam, valvetrain, fuel upgrades, partes de soporte y VATS delete en plataformas LS compatibles para swaps.",
                 perfMini1: "SBC",
                 perfMini2: "LS Gen 3/4",
-                perfMini3: "LT Bolt-Ons",
+                perfMini3: "Partes LT",
                 perfMini4: "VATS Delete",
                 promoPerf: "Dinos qué motor tienes, qué vehículo es y cuál es tu meta. Podemos ayudarte con planeación de partes, soporte para swaps LS y VATS delete en plataformas LS compatibles usando HP Tuners.",
                 lblPricePerf: "Partes y Soporte",
@@ -1613,10 +1665,10 @@
                 frmNote: "Este formulario abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar en tu teléfono.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • LEDs • Audio • Búsqueda de partes • Soporte VATS Delete",
-                chatLauncherText: "Preguntar",
+                chatLauncherText: "Ask Triad",
                 chatHeaderTitle: "Asistente Triad",
-                chatHeaderStatus: "Respuestas rápidas • Listo para texto",
-                chatDisclaimer: "Este asistente da información general. Para una cotización exacta, manda texto con tu vehículo y problema.",
+                chatHeaderStatus: "Ayuda inteligente • Seguridad primero",
+                chatDisclaimer: "Ayuda con enfoque en seguridad. Para emergencias, aléjate del peligro y contacta servicios de emergencia.",
                 chatPlaceholder: "Pregunta por servicio, grúa, diagnósticos...",
                 svcs: [
                     {v: "Servicio y Mantenimiento Automotriz", t: "Servicio y Mantenimiento Automotriz"},
@@ -1625,7 +1677,7 @@
                     {v: "Reparación Móvil", t: "Reparación Móvil"},
                     {v: "Partes Especiales por Pedido", t: "Partes Especiales por Pedido"},
                     {v: "Luces LED / Equipo de Audio", t: "Luces LED / Equipo de Audio"},
-                    {v: "Performance SBC, LS y LT", t: "Performance SBC, LS y LT"},
+                    {v: "Soporte de Partes SBC, LS y LT", t: "Soporte de Partes SBC, LS y LT"},
                     {v: "VATS Delete LS / Soporte HP Tuners", t: "VATS Delete LS / Soporte HP Tuners"},
                     {v: "Consulta de Modificaciones", t: "Consulta de Modificaciones"},
                     {v: "Búsqueda de Vehículo de Texas", t: "Búsqueda de Vehículo de Texas"}
@@ -1635,73 +1687,254 @@
 
         const chatData = {
             en: {
-                welcome: "Welcome to Triad Automotive. I can help with diagnostics, service, towing, parts, VATS delete, LS/LT/SBC parts, pricing, and scheduling.\n\nWhat do you need help with?",
-                fallback: "I can help with service, diagnostics, towing, parts sourcing, VATS delete, brakes, suspension, no-start issues, check engine lights, LEDs, audio, and scheduling.\n\nFor the fastest help, send your name, vehicle, and what is going on.",
-                quick: ["Schedule service", "Check engine light", "Tow / trailer", "Brakes", "No start", "Parts sourcing", "VATS delete", "Hablo Español"],
-                leadTitle: "Send Triad the details",
-                name: "Your name",
-                vehicle: "Year / Make / Model",
-                phone: "Your phone number",
-                issue: "What is going on?",
-                sendText: "Text Triad",
-                callNow: "Call Now",
-                intentPrefix: "Website chat request",
+                welcome: "Welcome to Ask Triad. I can help triage urgent car problems, warning lights, overheating, no-starts, brakes, leaks, noises, diagnostics, parts, VATS delete, and scheduling.
+
+Tell me what is happening, or tap a quick topic below.",
+                fallback: "I did not catch that perfectly, but I can still help. Tell me:
+1. Year / make / model
+2. What happened
+3. Any warning lights
+4. Noise, smell, smoke, leak, or overheating
+5. Whether it still drives normally
+
+If the vehicle feels unsafe, pull over somewhere safe and shut it off.",
+                quick: ["Overheating", "No brakes", "Smoke / fire smell", "Check engine flashing", "No start", "Fluid leak", "Brake noise", "Parts / VATS"],
+                safetyNote: "Safety note: I can give general guidance, but do not risk driving if the vehicle is overheating, has no brakes, has smoke/fire, has oil pressure warning, or feels unsafe.",
                 answers: [
-                    {keys: ["price", "pricing", "cost", "quote", "estimate", "how much", "charge"], answer: "Pricing depends on the vehicle, the job, parts, and how deep the issue goes. A check engine light scan is $45. Most repairs need a quote after we know the vehicle and concern.\n\nSend your year/make/model and what is going on, and we’ll point you in the right direction."},
-                    {keys: ["diagnostic", "diagnostics", "scan", "scanner", "check engine", "engine light", "cel", "code", "codes", "warning light"], answer: "We offer check engine light scans for $45. We read the fault codes and give honest direction on what may be failing.\n\nImportant: a scan gives a starting point. Some problems need deeper diagnostics, wiring checks, smoke testing, fuel pressure testing, or live data review."},
-                    {keys: ["tow", "towing", "trailer", "transport", "stuck", "pick up", "pickup", "move my car", "haul"], answer: "We can help with truck and trailer transport or coordinate pickup for repair. Pricing depends on location, distance, and the vehicle.\n\nIf you tow the vehicle to us for repair, ask about tow discounts. In some cases the tow may be discounted or covered depending on location and repair."},
-                    {keys: ["mobile", "come to me", "at my house", "roadside", "driveway"], answer: "Some mobile repairs may be possible depending on the issue, location, weather, and tools needed. For safety and quality, bigger jobs may need to come to the shop.\n\nText us your address/general area, vehicle, and what happened."},
-                    {keys: ["brake", "brakes", "rotor", "rotors", "pads", "grinding", "squeak", "squealing"], answer: "We handle brake inspections, pads, rotors, calipers, brake noise, grinding, vibration, and pedal concerns.\n\nIf the brakes are grinding badly or the pedal feels unsafe, avoid driving it and text us right away."},
-                    {keys: ["suspension", "steering", "clunk", "clunking", "shake", "vibration", "ball joint", "control arm", "strut", "shock", "tie rod"], answer: "We inspect suspension and steering issues like clunks, shakes, loose steering, worn ball joints, control arms, tie rods, struts, shocks, and alignment-related concerns.\n\nText us the vehicle and when the noise happens: turning, braking, bumps, or highway speed."},
-                    {keys: ["no start", "won't start", "wont start", "doesn't start", "doesnt start", "crank", "click", "dead battery", "starter", "alternator"], answer: "For no-start issues, tell us if it cranks, clicks, is completely dead, or starts then dies. Common causes include battery, starter, alternator, fuel, ignition, security/VATS, wiring, or sensor issues.\n\nText us the year/make/model and what it does when you turn the key."},
-                    {keys: ["overheat", "overheating", "hot", "coolant", "radiator", "water pump", "thermostat"], answer: "We can inspect overheating and coolant leak issues. Do not keep driving if the temperature gauge is climbing or the vehicle is steaming. That can turn a small repair into engine damage fast.\n\nText us a picture of the leak or temperature warning if possible."},
-                    {keys: ["oil leak", "leaking oil", "fluid leak", "leak", "transmission leak", "coolant leak"], answer: "We inspect oil, coolant, transmission, power steering, and brake fluid leaks. A picture helps a lot.\n\nText us where the leak is under the vehicle, what color the fluid is, and your year/make/model."},
-                    {keys: ["tune up", "tune-up", "spark plug", "spark plugs", "coil", "misfire", "rough idle", "hesitation"], answer: "We handle tune-ups, misfires, rough idle, spark plugs, coils, drivability issues, and hesitation. Misfires can damage catalytic converters if ignored.\n\nSend the code if you have it, or schedule a diagnostic."},
-                    {keys: ["domestic", "foreign", "import", "honda", "toyota", "nissan", "ford", "chevy", "dodge", "ram", "jeep", "bmw", "mercedes", "kia", "hyundai"], answer: "We service domestic and foreign vehicles. That includes daily drivers, trucks, SUVs, and work vehicles.\n\nSend us your year/make/model and what service you need."},
-                    {keys: ["parts", "part", "source", "sourcing", "order", "oem", "aftermarket", "wheels", "tires", "rims"], answer: "We can help source OEM replacement parts, aftermarket parts, wheels, tires, suspension parts, lighting, accessories, and build parts.\n\nFor parts sourcing, send the year/make/model, VIN if you have it, and the exact part you need."},
-                    {keys: ["led", "lights", "lighting", "rock lights", "underglow", "pods", "light bar", "audio", "speaker", "subwoofer", "subs", "amp"], answer: "We can help source LEDs, lighting upgrades, audio equipment, speakers, subs, amps, and accessories by order.\n\nText us what vehicle it is and what style you want: clean daily, show truck, work truck, or full custom."},
-                    {keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "long tubes", "intake", "valvetrain"], answer: "We can help with SBC, LS, and LT parts sourcing, bolt-on planning, swap support, headers, intake, cam/valvetrain parts, and supporting components.\n\nSend your engine, vehicle, current setup, and goal so we can point you toward the right parts."},
-                    {keys: ["vats", "vats delete", "security delete", "anti theft", "hp tuners", "hptuners"], answer: "We offer LS VATS delete support for compatible swap applications using HP Tuners. This is mainly for LS swap projects where the factory security system prevents the engine from running correctly.\n\nText us the PCM/ECM type, engine, vehicle, and what the swap is going into."},
-                    {keys: ["hours", "open", "closed", "schedule", "appointment", "available", "availability"], answer: "Use the schedule form on this page or text us directly. Pick the best date/time and describe what is going on.\n\nIf it is urgent, texting is usually fastest."},
-                    {keys: ["location", "where", "address", "baraboo", "dells", "wisconsin dells", "reedsburg", "portage", "sauk", "lake delton"], answer: "Triad Automotive is based in Baraboo, Wisconsin. We serve Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas."},
-                    {keys: ["spanish", "espanol", "español", "habla", "hablan"], answer: "Yes, we speak English and Spanish. You can text us in either language."},
-                    {keys: ["bring my own parts", "own parts", "customer supplied parts", "i have parts"], answer: "Customer-supplied parts may be accepted depending on the job and part quality. Warranty terms may be different when parts are supplied by the customer.\n\nText us what parts you have and what vehicle they are for."},
-                    {keys: ["rust free", "texas truck", "texas car", "vehicle sourcing", "find me a truck", "find a car"], answer: "Through our licensed partner network, we can help look for rust-free Texas trucks and cars. Availability depends on budget, vehicle type, condition, and transport."}
+                    {priority: 100, keys: ["fire", "flames", "burning wire", "electrical fire", "smoke from wires", "battery fire", "fuel fire", "gas fire", "on fire"], answer: "URGENT SAFETY STEPS:
+1. Pull over as soon as it is safe.
+2. Shut the vehicle off.
+3. Get everyone out and away from the vehicle.
+4. Do not open the hood if there are flames or heavy smoke.
+5. Contact emergency services if there is fire, heavy smoke, or danger to people.
+
+Do not keep driving. Fire, fuel smell, melted battery cables, or electrical smoke can turn serious fast."},
+                    {priority: 98, keys: ["no brakes", "brake pedal to floor", "pedal went to floor", "brakes failed", "can't stop", "cant stop", "lost brakes", "soft brake pedal"], answer: "DO NOT DRIVE IT.
+
+If the brake pedal goes to the floor, the vehicle barely stops, or you lost braking power:
+1. Pull over safely if you are moving.
+2. Use engine braking and the parking brake carefully if needed.
+3. Shut it off once safe.
+4. Have it towed or inspected before driving.
+
+Possible causes include brake fluid leak, failed master cylinder, air in lines, blown brake hose, or hydraulic failure."},
+                    {priority: 96, keys: ["oil pressure", "low oil pressure", "red oil light", "oil light", "stop engine", "engine pressure"], answer: "STOP THE ENGINE.
+
+A red oil pressure light can mean the engine is not getting oil pressure. Driving even a short distance can destroy the engine.
+
+Do this:
+1. Pull over safely.
+2. Shut the engine off.
+3. Check oil level only when safe.
+4. Do not restart if it is knocking, empty on oil, or the warning comes back.
+
+This needs inspection before driving."},
+                    {priority: 95, keys: ["overheat", "overheating", "hot", "temperature", "temp gauge", "steam", "coolant boiling", "boiling", "radiator hot", "car is hot"], answer: "OVERHEATING SAFETY PLAN:
+1. If the temperature gauge is hot, warning light is on, or steam is visible, pull over as soon as it is safe.
+2. Turn the engine off.
+3. Do NOT open the radiator cap or coolant reservoir while hot. Hot pressure can burn you badly.
+4. Let it cool completely.
+5. If you cannot pull over immediately, turn the A/C off and turn the heater on full hot only long enough to reach a safe spot.
+6. Do not keep driving if it keeps getting hot, has no coolant, leaks badly, or steams.
+
+Common causes: low coolant, leak, bad radiator fan, thermostat, water pump, hose, radiator cap, or clogged radiator. Tow it if the gauge rises again."},
+                    {priority: 94, keys: ["fuel smell", "smells like gas", "gas smell", "fuel leak", "gas leak", "raw fuel"], answer: "FUEL SMELL / FUEL LEAK WARNING:
+If you smell strong gasoline or see fuel leaking, do not keep driving.
+
+1. Pull over safely.
+2. Shut the vehicle off.
+3. Avoid sparks, smoking, or open flames.
+4. Keep people away from the leak.
+5. Have it inspected before driving.
+
+A fuel leak is a fire risk."},
+                    {priority: 92, keys: ["check engine flashing", "flashing check engine", "cel flashing", "blinking check engine", "check engine blinking", "flashing engine light"], answer: "A flashing check engine light usually means an active misfire severe enough to damage the catalytic converter.
+
+Best move:
+1. Reduce load immediately.
+2. Avoid hard acceleration.
+3. If it is shaking badly, pull over and shut it off.
+4. Do not keep driving it like normal.
+5. Schedule diagnostics.
+
+Common causes include coil, spark plug, injector, vacuum leak, fuel issue, compression issue, or wiring."},
+                    {priority: 90, keys: ["battery smoking", "battery hot", "battery melted", "sparking battery", "battery sparks", "burnt battery", "battery cable hot"], answer: "BATTERY / ELECTRICAL DANGER:
+If the battery is smoking, melting, sparking, or cables are very hot:
+1. Shut the vehicle off if safe.
+2. Stay clear of the battery area.
+3. Do not touch hot cables with bare hands.
+4. Avoid metal tools around the battery.
+5. If there is fire or heavy smoke, move away and contact emergency services."},
+                    {priority: 85, keys: ["transmission slipping", "won't shift", "wont shift", "stuck in gear", "no reverse", "no drive", "transmission hot", "burnt transmission"], answer: "TRANSMISSION TRIAGE:
+Warning signs include slipping, no reverse, no drive, stuck in gear, burnt smell, or harsh engagement.
+
+Do not keep forcing it. Check if fluid is leaking underneath. If it will not move normally or smells burnt, towing is safer than driving it and causing more damage."},
+                    {priority: 80, keys: ["no start", "won't start", "wont start", "doesn't start", "doesnt start", "crank", "click", "dead battery", "starter", "alternator"], answer: "NO-START TRIAGE:
+Tell me which one it does:
+A. No lights, no power
+B. One click
+C. Rapid clicking
+D. Cranks but does not start
+E. Starts then dies
+
+Common causes: battery, terminals, starter, alternator, fuel pump, crank sensor, ignition, security/VATS, fuse/relay, wiring, or engine mechanical issue."},
+                    {priority: 78, keys: ["coolant leak", "green fluid", "orange fluid", "pink fluid", "antifreeze leak", "sweet smell"], answer: "COOLANT LEAK TRIAGE:
+Coolant leak signs include green/orange/pink fluid, sweet smell, steam, low coolant, or overheating.
+
+Do not open the cooling system hot. If coolant is pouring out or the temp gauge rises, do not drive it. If it is a tiny seep and the gauge stays normal, it still needs inspection before it becomes an overheating problem."},
+                    {priority: 75, keys: ["brake", "brakes", "rotor", "rotors", "pads", "grinding", "squeak", "squealing", "scraping"], answer: "BRAKE NOISE TRIAGE:
+Grinding usually means metal-on-metal and can damage rotors/calipers fast. Squeaking can be pads, hardware, dust, or wear indicators.
+
+If the pedal feels normal and it only squeaks, schedule inspection. If it grinds, pulls, shakes badly, or the pedal feels soft, avoid driving until inspected."},
+                    {priority: 74, keys: ["shake", "vibration", "death wobble", "wheel shaking", "steering shake", "car shakes"], answer: "SHAKE / VIBRATION TRIAGE:
+Possible causes depend on when it happens:
+- Highway speed: tire balance, bent wheel, tire issue, axle, driveline
+- Braking: rotors, caliper, suspension
+- Turning: CV axle, wheel bearing, steering/suspension
+- Acceleration: misfire, axle, mount, driveline
+
+If it feels violent or hard to control, do not keep driving."},
+                    {priority: 72, keys: ["suspension", "steering", "clunk", "clunking", "ball joint", "control arm", "strut", "shock", "tie rod", "wheel bearing"], answer: "SUSPENSION / STEERING TRIAGE:
+Tell me if the noise happens over bumps, while turning, braking, or at highway speed.
+
+Do not keep driving if the wheel feels loose, steering wanders badly, there is a loud metal clunk, or the tire is leaning. Possible causes include ball joint, control arm, tie rod, strut, shock, sway link, or wheel bearing."},
+                    {priority: 70, keys: ["oil leak", "leaking oil", "fluid leak", "leak", "transmission leak", "red fluid", "brown fluid"], answer: "LEAK TRIAGE:
+Color helps:
+- Green/orange/pink: coolant
+- Brown/black: engine oil
+- Red/pink: transmission or power steering
+- Clear: water from A/C is usually normal
+- Yellow/clear oily: brake fluid can be dangerous
+
+If it is brake fluid, fuel, coolant pouring out, or oil pressure light is on, do not drive it."},
+                    {priority: 65, keys: ["diagnostic", "diagnostics", "scan", "scanner", "check engine", "engine light", "cel", "code", "codes", "warning light"], answer: "We offer check engine light scans for $45. A scan reads fault codes and gives direction, but it does not always prove the failed part by itself.
+
+Real diagnostics may require live data, wiring checks, smoke testing, fuel pressure testing, compression testing, or inspection."},
+                    {priority: 60, keys: ["parts", "part", "source", "sourcing", "order", "oem", "aftermarket", "wheels", "tires", "rims"], answer: "We can help source OEM replacement parts, aftermarket parts, wheels, tires, suspension parts, lighting, accessories, and build parts.
+
+Best info to provide: year/make/model, engine size, VIN if available, and the exact part needed."},
+                    {priority: 58, keys: ["led", "lights", "lighting", "rock lights", "underglow", "pods", "light bar", "audio", "speaker", "subwoofer", "subs", "amp"], answer: "We can help source LED lighting, lighting upgrades, audio equipment, speakers, subs, amps, and accessories by order.
+
+Tell me the vehicle and the style: daily clean, work truck, show truck, or full custom."},
+                    {priority: 55, keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "long tubes", "intake", "valvetrain"], answer: "We can help with SBC, LS, and LT parts sourcing, bolt-on planning, swap support, headers, intake, cam/valvetrain parts, and supporting components.
+
+For good advice, include engine, vehicle, current setup, transmission, fuel system, and goal."},
+                    {priority: 54, keys: ["vats", "vats delete", "security delete", "anti theft", "hp tuners", "hptuners"], answer: "We offer LS VATS delete support for compatible swap applications using HP Tuners. This is mainly for LS swap projects where the factory security system prevents the engine from running correctly.
+
+Useful info: PCM/ECM type, engine, donor vehicle, swap vehicle, and whether it currently cranks/starts/dies."},
+                    {priority: 50, keys: ["price", "pricing", "cost", "quote", "estimate", "how much", "charge"], answer: "Pricing depends on the vehicle, job, parts, and diagnostic time. Check engine light scans start at $45. Repairs require details before quoting.
+
+Best info to provide: year/make/model, engine, symptoms, codes, location, and whether the vehicle drives."},
+                    {priority: 48, keys: ["hours", "open", "closed", "schedule", "appointment", "available", "availability"], answer: "Use the schedule form on this page to request service. Include your vehicle, issue, city, preferred date/time, and any warning lights or safety concerns."},
+                    {priority: 45, keys: ["location", "where", "address", "baraboo", "dells", "wisconsin dells", "reedsburg", "portage", "sauk", "lake delton"], answer: "Triad Automotive is based in Baraboo, Wisconsin. We serve Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas."},
+                    {priority: 40, keys: ["spanish", "espanol", "español", "habla", "hablan"], answer: "Yes, se habla español. You can use the website in English or Spanish."}
                 ]
             },
+
             es: {
-                welcome: "Bienvenido a Triad Automotive. Te puedo ayudar con diagnóstico, servicio, grúa/remolque, partes, VATS delete, partes LS/LT/SBC, precios y citas.\n\n¿En qué te puedo ayudar?",
-                fallback: "Te puedo ayudar con servicio, diagnóstico, grúa, búsqueda de partes, VATS delete, frenos, suspensión, problemas de no prende, luces del tablero, LEDs, audio y citas.\n\nPara ayuda rápida, manda tu nombre, vehículo y qué está pasando.",
-                quick: ["Agendar servicio", "Check engine", "Grúa / remolque", "Frenos", "No prende", "Pedir partes", "VATS delete", "English"],
-                leadTitle: "Manda los detalles a Triad",
-                name: "Tu nombre",
-                vehicle: "Año / Marca / Modelo",
-                phone: "Tu número",
-                issue: "¿Qué está pasando?",
-                sendText: "Mandar texto",
-                callNow: "Llamar",
-                intentPrefix: "Solicitud desde la página",
+                welcome: "Bienvenido a Ask Triad. Te puedo ayudar a revisar problemas urgentes, calentamiento, no prende, frenos, fugas, ruidos, diagnóstico, partes, VATS delete y citas.
+
+Dime qué está pasando o toca un tema rápido.",
+                fallback: "No entendí perfecto, pero sí te puedo ayudar. Dime:
+1. Año / marca / modelo
+2. Qué pasó
+3. Luces en el tablero
+4. Ruido, olor, humo, fuga o calentamiento
+5. Si todavía maneja normal
+
+Si el vehículo se siente inseguro, oríllate en un lugar seguro y apágalo.",
+                quick: ["Se calienta", "Sin frenos", "Humo / olor quemado", "Check engine parpadea", "No prende", "Fuga de líquido", "Ruido de frenos", "Partes / VATS"],
+                safetyNote: "Nota de seguridad: puedo dar guía general, pero no arriesgues manejar si se está calentando, no tiene frenos, hay humo/fuego, luz de presión de aceite, o se siente inseguro.",
                 answers: [
-                    {keys: ["precio", "precios", "cuanto", "cuánto", "cotizar", "cotizacion", "cotización", "cobran", "costo"], answer: "El precio depende del vehículo, el trabajo, las partes y qué tan profundo sea el problema. El escaneo de check engine empieza en $45. La mayoría de reparaciones necesitan cotización después de saber el vehículo y el problema.\n\nManda año/marca/modelo y qué está pasando."},
-                    {keys: ["diagnostico", "diagnóstico", "scan", "scanner", "check engine", "luz", "codigo", "código", "codigos", "códigos", "tablero"], answer: "Ofrecemos escaneo de check engine por $45. Leemos los códigos y te damos dirección honesta sobre lo que puede estar fallando.\n\nImportante: el escaneo es el punto de inicio. Algunos problemas necesitan diagnóstico más profundo, revisión de cableado, smoke test, presión de gasolina o datos en vivo."},
-                    {keys: ["grua", "grúa", "remolque", "trailer", "transporte", "tirado", "recoger", "mover"], answer: "Podemos ayudar con transporte en camión y remolque o coordinar recolección para reparación. El precio depende de ubicación, distancia y vehículo.\n\nSi el vehículo viene a reparación con nosotros, pregunta por descuento de grúa."},
-                    {keys: ["movil", "móvil", "casa", "venir", "domicilio", "driveway"], answer: "Algunas reparaciones móviles pueden ser posibles dependiendo del problema, ubicación, clima y herramientas necesarias. Trabajos grandes pueden necesitar hacerse en el taller.\n\nManda tu área, vehículo y qué pasó."},
-                    {keys: ["freno", "frenos", "balata", "balatas", "rotor", "disco", "caliper", "rechinan", "grindan"], answer: "Hacemos inspección y servicio de frenos: balatas, rotores, calipers, ruidos, rechinidos, vibración y pedal raro.\n\nSi los frenos están moliendo fuerte o el pedal se siente inseguro, evita manejarlo."},
-                    {keys: ["suspension", "suspensión", "direccion", "dirección", "ruido", "golpe", "tiembla", "vibra", "rotula", "rótula", "terminal", "shock", "strut"], answer: "Revisamos suspensión y dirección: ruidos, golpes, vibración, dirección floja, rótulas, brazos, terminales, struts, shocks y problemas relacionados.\n\nManda cuándo hace el ruido: al girar, frenar, en baches o en carretera."},
-                    {keys: ["no prende", "no enciende", "no arranca", "bateria", "batería", "marcha", "starter", "alternador", "click"], answer: "Para un problema de no prende, dinos si da marcha, hace click, está totalmente muerto, o prende y se apaga. Puede ser batería, marcha, alternador, gasolina, chispa, seguridad/VATS, cableado o sensores.\n\nManda año/marca/modelo y qué hace al girar la llave."},
-                    {keys: ["calienta", "calentando", "sobrecalienta", "temperatura", "coolant", "anticongelante", "radiador", "termostato", "bomba de agua"], answer: "Podemos revisar problemas de calentamiento y fugas de anticongelante. No sigas manejando si la temperatura sube o sale vapor. Eso puede causar daño de motor rápido.\n\nManda foto de la fuga o alerta si puedes."},
-                    {keys: ["fuga", "tira aceite", "aceite", "anticongelante", "transmision", "transmisión", "liquido", "líquido"], answer: "Revisamos fugas de aceite, anticongelante, transmisión, dirección hidráulica y líquido de frenos. Una foto ayuda mucho.\n\nManda dónde gotea, color del líquido y año/marca/modelo."},
-                    {keys: ["tune up", "afinacion", "afinación", "bujias", "bujías", "bobina", "misfire", "falla", "tiembla"], answer: "Hacemos tune-ups, misfires, marcha mínima irregular, bujías, bobinas, fallas y problemas de manejo. Un misfire ignorado puede dañar catalizadores.\n\nManda el código si lo tienes o agenda diagnóstico."},
-                    {keys: ["domestico", "doméstico", "extranjero", "importado", "honda", "toyota", "nissan", "ford", "chevy", "dodge", "ram", "jeep", "bmw", "mercedes", "kia", "hyundai"], answer: "Trabajamos vehículos domésticos y extranjeros. Incluye carros diarios, camionetas, SUVs y vehículos de trabajo.\n\nManda año/marca/modelo y qué servicio necesitas."},
-                    {keys: ["parte", "partes", "pedido", "ordenar", "oem", "aftermarket", "rines", "llantas"], answer: "Podemos ayudarte a buscar partes OEM, aftermarket, rines, llantas, suspensión, luces, accesorios y partes para proyectos.\n\nPara buscar partes, manda año/marca/modelo, VIN si lo tienes y la parte exacta."},
-                    {keys: ["led", "luces", "lighting", "rock lights", "underglow", "barra", "audio", "bocina", "subwoofer", "amplificador"], answer: "Podemos ayudar a conseguir LEDs, luces, audio, bocinas, subwoofers, amplificadores y accesorios por pedido.\n\nManda el vehículo y qué estilo quieres: daily clean, troca show, work truck o full custom."},
-                    {keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "intake", "valvetrain"], answer: "Podemos ayudar con partes SBC, LS y LT, planeación de bolt-ons, soporte para swaps, headers, intake, cam/valvetrain y partes de soporte.\n\nManda motor, vehículo, setup actual y meta."},
-                    {keys: ["vats", "vats delete", "security delete", "anti theft", "hp tuners", "hptuners"], answer: "Ofrecemos soporte de VATS delete LS para aplicaciones compatibles de swap usando HP Tuners. Es principalmente para swaps LS donde la seguridad de fábrica impide que el motor funcione bien.\n\nManda tipo de PCM/ECM, motor, vehículo y a qué lo estás swapando."},
-                    {keys: ["horario", "abren", "cierran", "cita", "agendar", "disponible"], answer: "Puedes usar la forma de la página o mandar texto directo. Escoge fecha/hora y explica qué está pasando.\n\nSi es urgente, mandar texto normalmente es más rápido."},
-                    {keys: ["ubicacion", "ubicación", "donde", "baraboo", "dells", "wisconsin dells", "reedsburg", "portage", "sauk", "lake delton"], answer: "Triad Automotive está basado en Baraboo, Wisconsin. Servimos Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas."},
-                    {keys: ["ingles", "inglés", "english"], answer: "Yes, we speak English and Spanish. You can text us in either language."},
-                    {keys: ["mis partes", "yo tengo partes", "traer partes", "partes propias"], answer: "Podemos aceptar partes del cliente dependiendo del trabajo y calidad de la parte. La garantía puede ser diferente cuando el cliente trae sus propias partes.\n\nManda qué partes tienes y para qué vehículo son."},
-                    {keys: ["texas", "sin oxido", "sin óxido", "buscar troca", "buscar carro", "vehiculo", "vehículo"], answer: "A través de nuestra red de socios autorizados, podemos ayudar a buscar carros y camionetas de Texas libres de óxido. Depende de presupuesto, tipo de vehículo, condición y transporte."}
+                    {priority: 100, keys: ["fuego", "llamas", "cables quemados", "humo de cables", "bateria quemada", "batería quemada", "se quema", "incendio"], answer: "PASOS URGENTES DE SEGURIDAD:
+1. Oríllate cuando sea seguro.
+2. Apaga el vehículo.
+3. Saca a todos y aléjense.
+4. No abras el cofre si hay llamas o humo fuerte.
+5. Contacta emergencias si hay fuego, humo fuerte o peligro.
+
+No sigas manejando."},
+                    {priority: 98, keys: ["sin frenos", "no frena", "pedal al piso", "pedal se fue al piso", "perdi frenos", "perdí frenos", "freno aguado"], answer: "NO LO MANEJES.
+
+Si el pedal se va al piso, casi no frena, o perdiste frenos:
+1. Oríllate de forma segura si vas manejando.
+2. Usa freno de motor y freno de mano con cuidado si es necesario.
+3. Apágalo cuando estés seguro.
+4. Que lo remolquen o revisen antes de manejar.
+
+Puede ser fuga de líquido de frenos, master cylinder, aire en líneas, manguera reventada o falla hidráulica."},
+                    {priority: 96, keys: ["presion de aceite", "presión de aceite", "luz de aceite", "aceite rojo", "stop engine"], answer: "APAGA EL MOTOR.
+
+Una luz roja de presión de aceite puede significar que el motor no tiene presión de aceite. Manejarlo puede destruir el motor.
+
+Oríllate seguro, apaga el motor, revisa nivel de aceite solo cuando sea seguro, y no lo vuelvas a prender si golpea o la luz vuelve."},
+                    {priority: 95, keys: ["calienta", "calentando", "se calienta", "sobrecalienta", "temperatura", "vapor", "hierve", "anticongelante hirviendo", "radiador caliente"], answer: "PLAN DE SEGURIDAD SI SE CALIENTA:
+1. Si la aguja sube, prende luz de temperatura o sale vapor, oríllate cuando sea seguro.
+2. Apaga el motor.
+3. NO abras el tapón del radiador o depósito estando caliente. La presión puede quemarte fuerte.
+4. Deja que se enfríe completamente.
+5. Si no puedes orillarte de inmediato, apaga el A/C y prende la calefacción al máximo solo para llegar a un lugar seguro.
+6. No sigas manejando si se vuelve a calentar, no tiene coolant, fuga mucho o sale vapor.
+
+Causas comunes: bajo coolant, fuga, abanico, termostato, bomba de agua, manguera, tapón o radiador."},
+                    {priority: 94, keys: ["olor a gasolina", "huele a gas", "fuga de gasolina", "tira gasolina", "gasolina"], answer: "ALERTA DE GASOLINA:
+Si huele fuerte a gasolina o ves fuga, no lo sigas manejando.
+
+Oríllate seguro, apaga el vehículo, evita chispas/cigarros/llamas, mantén gente lejos, y que lo revisen antes de manejar."},
+                    {priority: 92, keys: ["check engine parpadea", "check engine flashing", "luz parpadea", "parpadeando", "engine parpadeando"], answer: "Una luz de check engine parpadeando normalmente indica misfire activo que puede dañar el catalizador.
+
+Baja la carga del motor, no aceleres fuerte, y si tiembla mucho, oríllate y apágalo. No lo manejes normal."},
+                    {priority: 90, keys: ["bateria humeando", "batería humeando", "bateria caliente", "batería caliente", "bateria derretida", "chispas bateria", "cable caliente"], answer: "PELIGRO DE BATERÍA / ELÉCTRICO:
+Si la batería humea, se derrite, saca chispas o los cables están muy calientes: apaga el vehículo si es seguro, aléjate del área, no toques cables calientes, evita herramientas metálicas, y si hay fuego o humo fuerte, aléjate y contacta emergencias."},
+                    {priority: 85, keys: ["transmision patina", "transmisión patina", "no cambia", "no reversa", "no drive", "huele quemado transmision", "trans caliente"], answer: "Señales de transmisión: patina, no entra reversa, no avanza, se queda en una velocidad, huele quemado o golpea fuerte.
+
+No la fuerces. Si no se mueve normal o huele quemado, remolcar es más seguro."},
+                    {priority: 80, keys: ["no prende", "no enciende", "no arranca", "bateria", "batería", "marcha", "starter", "alternador", "click"], answer: "TRIAGE DE NO PRENDE:
+Dime cuál hace:
+A. Sin luces, sin poder
+B. Un click
+C. Click rápido
+D. Da marcha pero no prende
+E. Prende y se apaga
+
+Causas comunes: batería, terminales, marcha, alternador, bomba de gasolina, sensor crank, ignición, seguridad/VATS, fusible/relevador, cableado o problema mecánico."},
+                    {priority: 78, keys: ["fuga anticongelante", "tira coolant", "coolant", "anticongelante", "olor dulce", "liquido verde", "líquido verde", "liquido naranja"], answer: "Señales de fuga de coolant: líquido verde/naranja/rosa, olor dulce, vapor, coolant bajo o calentamiento.
+
+No abras el sistema caliente. Si tira mucho coolant o sube la temperatura, no lo manejes."},
+                    {priority: 75, keys: ["freno", "frenos", "balata", "balatas", "rotor", "disco", "rechinan", "grindan", "raspa"], answer: "TRIAGE DE FRENOS:
+Grinding normalmente significa metal con metal y puede dañar rotores/calipers rápido. Si raspa fuerte, jala, vibra mucho o el pedal está aguado, evita manejarlo."},
+                    {priority: 74, keys: ["tiembla", "vibra", "vibracion", "vibración", "volante tiembla", "death wobble"], answer: "TRIAGE DE VIBRACIÓN:
+- En carretera: balance, rin doblado, llanta, axle, driveline
+- Frenando: rotores, caliper, suspensión
+- Girando: CV axle, wheel bearing, dirección/suspensión
+- Acelerando: misfire, axle, mount, driveline
+
+Si se siente violento o difícil de controlar, no lo sigas manejando."},
+                    {priority: 72, keys: ["suspension", "suspensión", "direccion", "dirección", "ruido", "golpe", "rotula", "rótula", "terminal", "shock", "strut", "bearing"], answer: "TRIAGE DE SUSPENSIÓN / DIRECCIÓN:
+Dime si el ruido pasa en baches, al girar, al frenar o en carretera.
+
+No sigas manejando si la llanta se ve chueca, el volante se siente flojo, se va de lado fuerte o hay un golpe metálico fuerte."},
+                    {priority: 70, keys: ["fuga", "tira aceite", "aceite", "transmision", "transmisión", "liquido", "líquido", "rojo", "cafe", "café"], answer: "TRIAGE DE FUGAS:
+- Verde/naranja/rosa: coolant
+- Café/negro: aceite de motor
+- Rojo/rosa: transmisión o power steering
+- Transparente: agua del A/C puede ser normal
+- Amarillo/transparente aceitoso: líquido de frenos puede ser peligroso
+
+Si es frenos, gasolina, coolant tirando mucho o luz de aceite, no manejes."},
+                    {priority: 65, keys: ["diagnostico", "diagnóstico", "scan", "scanner", "check engine", "luz", "codigo", "código", "codigos", "códigos"], answer: "Ofrecemos escaneo de check engine por $45. El scan lee códigos y da dirección, pero no siempre prueba la parte mala por sí solo.
+
+Diagnóstico real puede requerir datos en vivo, cableado, smoke test, presión de gasolina, compresión o inspección."},
+                    {priority: 60, keys: ["parte", "partes", "pedido", "ordenar", "oem", "aftermarket", "rines", "llantas"], answer: "Podemos ayudarte a buscar partes OEM, aftermarket, rines, llantas, suspensión, luces, accesorios y partes para proyectos.
+
+Mejor info: año/marca/modelo, motor, VIN si lo tienes y la parte exacta."},
+                    {priority: 55, keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "intake", "valvetrain"], answer: "Podemos ayudar con partes SBC, LS y LT, planeación de bolt-ons, soporte para swaps, headers, intake, cam/valvetrain y partes de soporte.
+
+Incluye motor, vehículo, setup actual, transmisión, fuel system y meta."},
+                    {priority: 54, keys: ["vats", "vats delete", "security delete", "anti theft", "hp tuners", "hptuners"], answer: "Ofrecemos soporte de VATS delete LS para aplicaciones compatibles de swap usando HP Tuners. Es principalmente para swaps LS donde la seguridad de fábrica impide que el motor funcione bien."},
+                    {priority: 50, keys: ["precio", "precios", "cuanto", "cuánto", "cotizar", "cotizacion", "cotización", "cobran", "costo"], answer: "El precio depende del vehículo, el trabajo, las partes y tiempo de diagnóstico. El escaneo de check engine empieza en $45. Reparaciones necesitan detalles antes de cotizar."},
+                    {priority: 45, keys: ["ubicacion", "ubicación", "donde", "baraboo", "dells", "wisconsin dells", "reedsburg", "portage", "sauk", "lake delton"], answer: "Triad Automotive está basado en Baraboo, Wisconsin. Servimos Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas."},
+                    {priority: 40, keys: ["ingles", "inglés", "english"], answer: "Yes, se habla español and English. You can use the website in either language."}
                 ]
             }
         };
@@ -1776,12 +2009,12 @@
             body.innerHTML = "";
             if (!clearOnly) {
                 addBotMessage(chatData[currentLang].welcome);
+                addBotMessage(chatData[currentLang].safetyNote);
                 renderQuickChips();
-                renderLeadForm();
             } else if (document.getElementById("triadChatWindow").classList.contains("open")) {
                 addBotMessage(chatData[currentLang].welcome);
+                addBotMessage(chatData[currentLang].safetyNote);
                 renderQuickChips();
-                renderLeadForm();
             }
         }
 
@@ -1862,7 +2095,7 @@
 
         function findChatAnswer(message) {
             const msg = normalizeText(message);
-            const answers = chatData[currentLang].answers;
+            const answers = [...chatData[currentLang].answers].sort((a, b) => (b.priority || 0) - (a.priority || 0));
 
             for (const item of answers) {
                 for (const key of item.keys) {
@@ -1878,7 +2111,7 @@
                 return chatData.es.welcome;
             }
 
-            if (msg.includes("hello") || msg.includes("hi ")) {
+            if (msg.includes("hello") || msg.includes("hi")) {
                 currentLang = "en";
                 applyLanguageWithoutReset();
                 return chatData.en.welcome;
@@ -1903,10 +2136,30 @@
             populateDropdowns();
         }
 
+        function detectSafetyUrgency(message) {
+            const msg = normalizeText(message);
+            const dangerWords = [
+                "fire", "flames", "smoke", "burning", "fuel smell", "gas leak",
+                "no brakes", "pedal to floor", "oil pressure", "overheating", "steam",
+                "fuego", "humo", "gasolina", "sin frenos", "pedal al piso",
+                "presion de aceite", "se calienta", "vapor"
+            ];
+
+            return dangerWords.some(word => msg.includes(normalizeText(word)));
+        }
+
         function askChat(text) {
             addUserMessage(text);
             setTimeout(() => {
                 addBotMessage(findChatAnswer(text));
+
+                if (detectSafetyUrgency(text)) {
+                    addBotMessage(currentLang === "es"
+                        ? "Si hay peligro inmediato para personas, aléjate del vehículo y contacta emergencias. La seguridad va primero."
+                        : "If there is immediate danger to people, move away from the vehicle and contact emergency services. Safety comes first."
+                    );
+                }
+
                 renderQuickChips();
             }, 220);
         }
@@ -1950,14 +2203,6 @@ Website: ${triadWebsite}`;
             const chatInput = document.getElementById("chatInput");
             if (chatInput) chatInput.placeholder = trans[currentLang].chatPlaceholder;
             populateDropdowns();
-
-            setTimeout(() => {
-                const launcher = document.getElementById("triadChatLauncher");
-                if (launcher && !document.getElementById("triadChatWindow").classList.contains("open")) {
-                    launcher.style.transform = "scale(1.03)";
-                    setTimeout(() => launcher.style.transform = "scale(1)", 350);
-                }
-            }, 2200);
         });
     </script>
 </body>
