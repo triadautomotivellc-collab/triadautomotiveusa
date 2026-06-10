@@ -105,15 +105,21 @@
             color: #fff;
         }
 
+        .contact-group {
+            display: flex;
+            gap: 6px;
+        }
+
         .contact-btn {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-main);
             text-decoration: none;
-            padding: 8px 14px;
+            padding: 8px 12px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 20px;
+            white-space: nowrap;
         }
 
         /* --- Info Bar --- */
@@ -379,7 +385,10 @@
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="brand-img">
                 <h1 class="brand-name">Triad Automotive</h1>
             </div>
-            <a href="sms:+19564757053" class="contact-btn" id="callBtn">Call / Text</a>
+            <div class="contact-group">
+                <a href="mailto:triadautomotivellc@gmail.com" class="contact-btn" id="emailBtn">Email Us</a>
+                <a href="sms:+19564757053" class="contact-btn" id="callBtn">Text</a>
+            </div>
         </header>
 
         <!-- Info Bar -->
@@ -499,7 +508,8 @@
         const translations = {
             en: {
                 langBtn: "Español",
-                callBtn: "Call / Text",
+                emailBtn: "Email Us",
+                callBtn: "Text",
                 infoBar: "Service Area: <strong>Baraboo 53913</strong>",
                 tabAll: "All Services",
                 tabDiag: "Diagnostics",
@@ -538,7 +548,8 @@
             },
             es: {
                 langBtn: "English",
-                callBtn: "Llamar / Texto",
+                emailBtn: "Correo",
+                callBtn: "Texto",
                 infoBar: "Área de Servicio: <strong>Baraboo 53913</strong>",
                 tabAll: "Todos los Servicios",
                 tabDiag: "Diagnósticos",
@@ -591,6 +602,7 @@
         function updateDOM() {
             const t = translations[currentLang];
             document.getElementById('langBtnText').textContent = t.langBtn;
+            document.getElementById('emailBtn').textContent = t.emailBtn;
             document.getElementById('callBtn').textContent = t.callBtn;
             document.getElementById('infoBarText').innerHTML = t.infoBar;
             document.getElementById('tabAll').textContent = t.tabAll;
