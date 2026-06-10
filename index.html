@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- TRIAD FINAL PLUS PROGRAMS V7 - rewards fleet pickup Spanish Wawa Bot -->
     <!-- TRIAD REORGANIZED PRO WATERMARK V6 -->
     <!-- TRIAD UPDATE: PICKUP DROPOFF + SHO EXACT FILE V5 CLEAN -->
     <!-- TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 -->
@@ -11,7 +12,7 @@
     <title>Triad Automotive | Baraboo, WI Auto Service & Diagnostics</title>
     <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, repair, truck and trailer service, custom parts sourcing, LED lighting, audio equipment sourcing, SBC/LS/LT parts support, and LS VATS delete support in Baraboo, Wisconsin.">
     <meta name="theme-color" content="#050608">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Rajdhani:wght@600;700&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Rajdhani:wght@600;700&family=Teko:wght@600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -263,7 +264,7 @@
 
         .slogan {
             color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Rajdhani', 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
             font-size: 13px;
             letter-spacing: 0.5px;
@@ -278,7 +279,7 @@
         }
 
         .hero-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
             font-size: 31px;
             line-height: 1.02;
             letter-spacing: -1.4px;
@@ -497,7 +498,7 @@
         }
 
         .card-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
             font-size: 24px;
             line-height: 1.1;
@@ -539,6 +540,70 @@
 
         .service-note strong {
             color: #8ec5ff;
+        }
+
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+            margin-top: 16px;
+        }
+
+        .program-card {
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.085);
+            border-radius: 16px;
+            padding: 14px;
+            color: #e5e7eb;
+            line-height: 1.45;
+        }
+
+        .program-card strong {
+            color: #fff;
+            display: block;
+            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
+            font-size: 17px;
+            letter-spacing: 0.15px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .program-card span {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .oil-reward-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            margin: 14px 0 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reward-step {
+            min-height: 42px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.045);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Rajdhani', 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 12px;
+        }
+
+        .reward-step.final {
+            background: rgba(255,59,87,0.18);
+            border-color: rgba(255,59,87,0.34);
+            color: #fff;
         }
 
         .mini-list {
@@ -880,6 +945,29 @@
             color: var(--text-muted);
             font-weight: 700;
             margin-top: 3px;
+        }
+
+        .chat-lang-toggle {
+            display: flex;
+            gap: 5px;
+            margin-left: auto;
+            margin-right: 8px;
+        }
+
+        .chat-lang-btn {
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            border-radius: 999px;
+            padding: 7px 9px;
+            font-size: 10px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .chat-lang-btn.active {
+            background: var(--accent-red);
+            border-color: rgba(255,255,255,0.18);
         }
 
         .triad-chat-close {
@@ -1311,7 +1399,7 @@
             <h2 class="hero-title" id="heroTitle">Diagnostics, Maintenance & Repair Done Right.</h2>
 
             <p class="hero-text" id="heroText">
-                Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and convenient pickup/drop-off options when available. Se habla español.
+                Diagnostics, maintenance, repair, pickup & return service, fleet maintenance options, tire sourcing, and parts support for domestic and foreign vehicles in Baraboo, WI. Se habla español.
             </p>
 
             <div class="hero-actions">
@@ -1330,6 +1418,8 @@
             <span class="trust-pill" id="pillDiag">Diagnostics</span>
             <span class="trust-pill" id="pillMobile">Mobile Repair</span>
             <span class="trust-pill" id="pillPickup">Pickup & Drop-Off</span>
+            <span class="trust-pill" id="pillFleet">Fleet Accounts</span>
+            <span class="trust-pill" id="pillRewards">Oil Change Rewards</span>
             <span class="trust-pill" id="pillTow">Truck & Trailer</span>
             <span class="trust-pill" id="pillParts">LEDs & Audio</span>
             <span class="trust-pill" id="pillPerformance">SBC / LS / LT</span>
@@ -1339,6 +1429,7 @@
 
         <nav class="dept-navigation">
             <a href="#service" class="dept-tab active" id="tabService">Service</a>
+            <a href="#triad-plus" class="dept-tab" id="tabTriadPlus">Triad Plus</a>
             <a href="#about" class="dept-tab" id="tabAbout">About Us</a>
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
@@ -1386,6 +1477,55 @@
                     <span class="price-value" id="valPriceService">Quote</span>
                 </div>
                 <a href="#scheduler" class="book-btn" id="btnService">Request Service</a>
+            </div>
+        </section>
+
+
+
+        <section class="card" id="triad-plus">
+            <div class="core-badge blue" id="bdgTriadPlus">Triad Plus</div>
+            <h2 class="card-title" id="ttlTriadPlus">Convenience Programs & Business Services</h2>
+            <p class="card-desc" id="dscTriadPlus">
+                Triad Automotive is built for real life. Ask about pickup and return service, fleet maintenance, oil change rewards, and business service options designed to keep you moving.
+            </p>
+
+            <div class="mini-list">
+                <div class="mini-item" id="plusMini1">Pickup & Return</div>
+                <div class="mini-item" id="plusMini2">Fleet Maintenance</div>
+                <div class="mini-item" id="plusMini3">Oil Change Rewards</div>
+                <div class="mini-item" id="plusMini4">Business Accounts</div>
+            </div>
+
+            <div class="oil-reward-strip" aria-label="Oil change rewards">
+                <div class="reward-step">1</div>
+                <div class="reward-step">2</div>
+                <div class="reward-step">3</div>
+                <div class="reward-step">4</div>
+                <div class="reward-step">5</div>
+                <div class="reward-step final" id="rewardFinal">6th</div>
+            </div>
+
+            <div class="promo-box">
+                <p class="promo-text" id="promoTriadPlus">
+                    Ask about Triad Maintenance Rewards: after 5 completed oil change services, returning customers may qualify for a 6th oil change labor reward. Oil and filter still apply unless otherwise stated.
+                </p>
+            </div>
+
+            <div class="program-grid">
+                <div class="program-card">
+                    <strong id="plusCard1Title">Pickup & Return Service</strong>
+                    <span id="plusCard1Text">Busy at work? Within our service area and schedule, we may be able to pick up your vehicle, complete approved service, and return it when finished.</span>
+                </div>
+
+                <div class="program-card">
+                    <strong id="plusCard2Title">Fleet & Business Maintenance</strong>
+                    <span id="plusCard2Text">Local contractors, landscapers, delivery vehicles, work trucks, and small businesses can ask about maintenance scheduling and service coordination.</span>
+                </div>
+
+                <div class="program-card">
+                    <strong id="plusCard3Title">Oil Change Club</strong>
+                    <span id="plusCard3Text">Keep up with maintenance and build rewards over time. Perfect for families, commuters, and work vehicles.</span>
+                </div>
             </div>
         </section>
 
@@ -1788,10 +1928,15 @@
             <div class="triad-chat-brand">
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive" class="triad-chat-logo">
                 <div>
-                    <div class="triad-chat-title" id="chatHeaderTitle">Triad Assistant</div>
+                    <div class="triad-chat-title" id="chatHeaderTitle">Wawa Bot</div>
                     <div class="triad-chat-status" id="chatHeaderStatus">Smart help • Safety-first</div>
                 </div>
             </div>
+            <div class="chat-lang-toggle">
+                <button type="button" class="chat-lang-btn active" id="chatLangEn" onclick="setChatLanguage('en')">EN</button>
+                <button type="button" class="chat-lang-btn" id="chatLangEs" onclick="setChatLanguage('es')">ES</button>
+            </div>
+
             <button class="triad-chat-close" onclick="toggleTriadChat()" aria-label="Close chat">×</button>
         </div>
 
@@ -1822,7 +1967,7 @@
                 topEmailLabel: "Email",
                 txtInfoArea: "Texas Roots. <span class='info-red'>Wisconsin Built.</span>",
                 heroTitle: "Diagnostics, Maintenance & Repair Done Right.",
-                heroText: "Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and convenient pickup/drop-off options when available. Se habla español.",
+                heroText: "Diagnostics, maintenance, repair, pickup & return service, fleet maintenance options, tire sourcing, and parts support for domestic and foreign vehicles in Baraboo, WI. Se habla español.",
                 heroBook: "Schedule Service",
                 heroTextBtn: "Text Us",
                 txtInfoSub: "Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.",
@@ -1831,12 +1976,15 @@
                 pillDiag: "Diagnostics",
                 pillMobile: "Mobile Repair",
                 pillPickup: "Pickup & Drop-Off",
+                pillFleet: "Fleet Accounts",
+                pillRewards: "Oil Change Rewards",
                 pillTow: "Truck & Trailer",
                 pillParts: "LEDs & Audio",
                 pillPerformance: "SBC / LS / LT",
                 pillVats: "LS VATS Delete",
                 pillTires: "Tire Sourcing",
                 tabService: "Service",
+                tabTriadPlus: "Triad Plus",
                 tabAbout: "About Us",
                 tabDiag: "Diagnostics",
                 tabTow: "Truck & Trailer",
@@ -1864,7 +2012,22 @@
                 lblPriceService: "General Repair",
                 valPriceService: "Quote",
                 btnService: "Request Service",
-                bdgDiag: "Core Evaluation",
+                bdgDiag: "Core Evaluation",                bdgTriadPlus: "Triad Plus",
+                ttlTriadPlus: "Convenience Programs & Business Services",
+                dscTriadPlus: "Triad Automotive is built for real life. Ask about pickup and return service, fleet maintenance, oil change rewards, and business service options designed to keep you moving.",
+                plusMini1: "Pickup & Return",
+                plusMini2: "Fleet Maintenance",
+                plusMini3: "Oil Change Rewards",
+                plusMini4: "Business Accounts",
+                rewardFinal: "6th",
+                promoTriadPlus: "Ask about Triad Maintenance Rewards: after 5 completed oil change services, returning customers may qualify for a 6th oil change labor reward. Oil and filter still apply unless otherwise stated.",
+                plusCard1Title: "Pickup & Return Service",
+                plusCard1Text: "Busy at work? Within our service area and schedule, we may be able to pick up your vehicle, complete approved service, and return it when finished.",
+                plusCard2Title: "Fleet & Business Maintenance",
+                plusCard2Text: "Local contractors, landscapers, delivery vehicles, work trucks, and small businesses can ask about maintenance scheduling and service coordination.",
+                plusCard3Title: "Oil Change Club",
+                plusCard3Text: "Keep up with maintenance and build rewards over time. Perfect for families, commuters, and work vehicles.",
+
                 ttlDiag: "Check Engine Light Scan",
                 dscDiag: "We plug the scanner into your vehicle’s system, read the fault codes, and give you honest direction on what may be failing before you start throwing parts at it.",
                 promoDiag: "A scan is a starting point. Real diagnostics may require additional inspection depending on the issue.",
@@ -1945,8 +2108,8 @@
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Automotive service • Diagnostics • Maintenance • Tire sourcing • LEDs • Audio • Parts sourcing • VATS delete support",
                 chatLauncherText: "Wawa Bot",
-                chatHeaderTitle: "Triad Assistant",
-                chatHeaderStatus: "Smart help • Safety-first",
+                chatHeaderTitle: "Wawa Bot",
+                chatHeaderStatus: "Bilingual help • Safety-first",
                 chatDisclaimer: "Safety-first help. For emergencies, move to safety and contact emergency services.",
                 chatPlaceholder: "Ask about service, towing, diagnostics...",
                 svcs: [
@@ -1955,6 +2118,8 @@
                     {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
                     {v: "Mobile Repair", t: "Mobile Repair"},
                     {v: "Workday Pickup & Drop-Off", t: "Workday Pickup & Drop-Off"},
+                    {v: "Oil Change / Maintenance Rewards", t: "Oil Change / Maintenance Rewards"},
+                    {v: "Fleet Maintenance / Business Account", t: "Fleet Maintenance / Business Account"},
                     {v: "Custom Parts by Order", t: "Custom Parts by Order"},
                     {v: "LED Lighting / Audio Gear", t: "LED Lighting / Audio Gear"},
                     {v: "SBC, LS & LT Parts Support", t: "SBC, LS & LT Parts Support"},
@@ -1972,7 +2137,7 @@
                 topEmailLabel: "Correo",
                 txtInfoArea: "Raíces de Texas. <span class='info-red'>Construido en Wisconsin.</span>",
                 heroTitle: "Diagnóstico, Mantenimiento y Reparación Bien Hechos.",
-                heroText: "Diagnóstico, mantenimiento y reparación para vehículos domésticos y extranjeros en Baraboo, WI. Respuestas directas, dirección honesta y opciones de pickup/entrega cuando estén disponibles. Se habla español.",
+                heroText: "Diagnóstico, mantenimiento, reparación, pickup y entrega, opciones de mantenimiento para flotas, búsqueda de llantas y soporte de partes para vehículos domésticos y extranjeros en Baraboo, WI. Se habla español.",
                 heroBook: "Agendar Servicio",
                 heroTextBtn: "Mandar Texto",
                 txtInfoSub: "Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.",
@@ -1981,6 +2146,8 @@
                 pillDiag: "Diagnósticos",
                 pillMobile: "Reparación Móvil",
                 pillPickup: "Pickup y Entrega",
+                pillFleet: "Cuentas de Flota",
+                pillRewards: "Recompensas de Aceite",
                 pillTow: "Camión y Remolque",
                 pillParts: "LEDs y Audio",
                 pillPerformance: "SBC / LS / LT",
@@ -2014,7 +2181,22 @@
                 lblPriceService: "Reparación General",
                 valPriceService: "Cotizar",
                 btnService: "Pedir Servicio",
-                bdgDiag: "Evaluación Central",
+                bdgDiag: "Evaluación Central",                bdgTriadPlus: "Triad Plus",
+                ttlTriadPlus: "Programas de Conveniencia y Servicios para Negocios",
+                dscTriadPlus: "Triad Automotive está hecho para la vida real. Pregunta por pickup y entrega, mantenimiento de flotas, recompensas de cambio de aceite y opciones de servicio para negocios.",
+                plusMini1: "Pickup y Entrega",
+                plusMini2: "Mantenimiento de Flota",
+                plusMini3: "Recompensas de Aceite",
+                plusMini4: "Cuentas de Negocio",
+                rewardFinal: "6to",
+                promoTriadPlus: "Pregunta por Triad Maintenance Rewards: después de 5 cambios de aceite completados, clientes frecuentes pueden calificar para recompensa de labor en el 6to cambio. Aceite y filtro aplican salvo que se indique lo contrario.",
+                plusCard1Title: "Servicio de Pickup y Entrega",
+                plusCard1Text: "¿Ocupado en el trabajo? Dentro de nuestra área y horario, podemos recoger tu vehículo, completar servicio aprobado y regresarlo cuando esté listo.",
+                plusCard2Title: "Mantenimiento de Flotas y Negocios",
+                plusCard2Text: "Contratistas, jardineros, vehículos de reparto, camionetas de trabajo y negocios pequeños pueden preguntar por coordinación de mantenimiento.",
+                plusCard3Title: "Club de Cambios de Aceite",
+                plusCard3Text: "Mantén tu vehículo al día y acumula recompensas con el tiempo. Perfecto para familias, commuters y vehículos de trabajo.",
+
                 ttlDiag: "Diagnóstico por Computadora",
                 dscDiag: "Conectamos el escáner al sistema de tu vehículo, leemos los códigos y te damos una dirección honesta sobre lo que puede estar fallando antes de gastar dinero en partes.",
                 promoDiag: "El escaneo es el punto de inicio. Un diagnóstico real puede requerir inspección adicional dependiendo del problema.",
@@ -2095,8 +2277,8 @@
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • Búsqueda de llantas • LEDs • Audio • Búsqueda de partes • Soporte VATS Delete",
                 chatLauncherText: "Wawa Bot",
-                chatHeaderTitle: "Asistente Triad",
-                chatHeaderStatus: "Ayuda inteligente • Seguridad primero",
+                chatHeaderTitle: "Wawa Bot",
+                chatHeaderStatus: "Ayuda bilingüe • Seguridad primero",
                 chatDisclaimer: "Ayuda con enfoque en seguridad. Para emergencias, aléjate del peligro y contacta servicios de emergencia.",
                 chatPlaceholder: "Pregunta por servicio, grúa, diagnósticos...",
                 svcs: [
@@ -2655,6 +2837,28 @@
             window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
         }
 
+
+        function setChatLanguage(lang) {
+            currentLang = lang;
+            applyLanguageWithoutReset();
+            updateChatLanguageButtons();
+
+            const chatWindow = document.getElementById("triadChatWindow");
+            if (chatWindow && chatWindow.classList.contains("open")) {
+                resetChat(false);
+            }
+        }
+
+        function updateChatLanguageButtons() {
+            const enBtn = document.getElementById("chatLangEn");
+            const esBtn = document.getElementById("chatLangEs");
+
+            if (!enBtn || !esBtn) return;
+
+            enBtn.classList.toggle("active", currentLang === "en");
+            esBtn.classList.toggle("active", currentLang === "es");
+        }
+
         function toggleTriadChat() {
             const chat = document.getElementById("triadChatWindow");
             chat.classList.toggle("open");
@@ -2857,6 +3061,7 @@ Website: ${triadWebsite}`;
             const chatInput = document.getElementById("chatInput");
             if (chatInput) chatInput.placeholder = trans[currentLang].chatPlaceholder;
             populateDropdowns();
+            if (typeof updateChatLanguageButtons === 'function') updateChatLanguageButtons();
         });
     </script>
 </body>
