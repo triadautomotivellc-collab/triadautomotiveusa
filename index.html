@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triad Automotive | Baraboo, WI Auto Service & Diagnostics</title>
-    <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, mobile repair, truck and trailer service, custom parts sourcing, SBC/LS/LT performance support, and LS VATS delete support in Baraboo, Wisconsin.">
+    <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, mobile repair, truck and trailer service, custom parts sourcing, Texas-sourced LEDs, audio equipment sourcing, SBC/LS/LT performance support, and LS VATS delete support in Baraboo, Wisconsin.">
     <meta name="theme-color" content="#050608">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <style>
@@ -14,7 +14,6 @@
             --card-bg: rgba(13, 16, 24, 0.86);
             --card-bg-strong: rgba(13, 16, 24, 0.96);
             --border-color: rgba(255, 255, 255, 0.08);
-            --border-strong: rgba(255, 255, 255, 0.14);
             --accent-red: #ff3b57;
             --accent-blue: #007aff;
             --accent-green: #25d366;
@@ -353,11 +352,6 @@
         .core-badge.dark {
             background: #1e293b;
         }
-        .core-badge.green {
-            background: rgba(37, 211, 102, 0.18);
-            color: var(--accent-green);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-        }
         .card-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
@@ -640,6 +634,7 @@
             <span class="trust-pill" id="pillDiag">Diagnostics</span>
             <span class="trust-pill" id="pillMobile">Mobile Repair</span>
             <span class="trust-pill" id="pillTow">Truck & Trailer</span>
+            <span class="trust-pill" id="pillParts">LEDs & Audio</span>
             <span class="trust-pill" id="pillPerformance">SBC / LS / LT</span>
             <span class="trust-pill" id="pillVats">LS VATS Delete</span>
             <span class="trust-pill" id="pillSpanish">English / Español</span>
@@ -727,17 +722,17 @@
             <div class="core-badge dark" id="bdgParts">Special Order</div>
             <h2 class="card-title" id="ttlParts">Custom Parts by Order</h2>
             <p class="card-desc" id="dscParts">
-                Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, lighting, suspension, wheels, tires, and parts for custom builds.
+                Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds. Ask us about Texas-sourced LEDs, audio gear, lighting upgrades, and custom parts by order.
             </p>
             <div class="mini-list">
                 <div class="mini-item" id="partsMini1">OEM Parts</div>
                 <div class="mini-item" id="partsMini2">Aftermarket</div>
-                <div class="mini-item" id="partsMini3">Accessories</div>
-                <div class="mini-item" id="partsMini4">Suspension</div>
+                <div class="mini-item" id="partsMini3">LED Lighting</div>
+                <div class="mini-item" id="partsMini4">Audio Gear</div>
             </div>
             <div class="promo-box red">
                 <p class="promo-text" id="promoParts">
-                    Tell us what vehicle you have and what you’re looking for. We’ll help find the right part before you waste money on the wrong one.
+                    Ask us about Texas-sourced LEDs, audio equipment, lighting upgrades, and custom parts by order.
                 </p>
             </div>
             <div class="card-footer">
@@ -777,7 +772,7 @@
             <div class="core-badge dark" id="bdgBuilds">Build Planning</div>
             <h2 class="card-title" id="ttlBuilds">Build & Upgrade Consultation</h2>
             <p class="card-desc" id="dscBuilds">
-                Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, and custom upgrades before you spend money on the wrong parts.
+                Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, audio upgrades, LEDs, and custom upgrades before you spend money on the wrong parts.
             </p>
             <div class="promo-box red">
                 <p class="promo-text" id="promoBuilds">
@@ -907,7 +902,7 @@
         </section>
         <footer>
             <p id="footerText">Triad Automotive LLC • Baraboo, Wisconsin</p>
-            <p id="footerSub">Automotive service • Diagnostics • Maintenance • Parts sourcing • HP Tuners support</p>
+            <p id="footerSub">Automotive service • Diagnostics • Maintenance • LEDs • Audio • Parts sourcing • HP Tuners support</p>
         </footer>
     </div>
     <script>
@@ -928,6 +923,7 @@
                 pillDiag: "Diagnostics",
                 pillMobile: "Mobile Repair",
                 pillTow: "Truck & Trailer",
+                pillParts: "LEDs & Audio",
                 pillPerformance: "SBC / LS / LT",
                 pillVats: "LS VATS Delete",
                 pillSpanish: "English / Español",
@@ -967,12 +963,12 @@
                 btnActionMobile: "Schedule",
                 bdgParts: "Special Order",
                 ttlParts: "Custom Parts by Order",
-                dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, lighting, suspension, wheels, tires, and parts for custom builds.",
+                dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds. Ask us about Texas-sourced LEDs, audio gear, lighting upgrades, and custom parts by order.",
                 partsMini1: "OEM Parts",
                 partsMini2: "Aftermarket",
-                partsMini3: "Accessories",
-                partsMini4: "Suspension",
-                promoParts: "Tell us what vehicle you have and what you’re looking for. We’ll help find the right part before you waste money on the wrong one.",
+                partsMini3: "LED Lighting",
+                partsMini4: "Audio Gear",
+                promoParts: "Ask us about Texas-sourced LEDs, audio equipment, lighting upgrades, and custom parts by order.",
                 lblPriceParts: "Availability",
                 valPriceParts: "Quote",
                 btnParts: "Request Parts",
@@ -989,7 +985,7 @@
                 btnPerf: "Start Build",
                 bdgBuilds: "Build Planning",
                 ttlBuilds: "Build & Upgrade Consultation",
-                dscBuilds: "Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, and custom upgrades before you spend money on the wrong parts.",
+                dscBuilds: "Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, audio upgrades, LEDs, and custom upgrades before you spend money on the wrong parts.",
                 promoBuilds: "Text us your vehicle and your goal. We’ll help you build a parts plan that makes sense.",
                 lblPriceBuilds: "Starting At",
                 valPriceBuilds: "$25",
@@ -1010,13 +1006,14 @@
                 btnFrmSubmit: "Confirm & Text Request",
                 frmNote: "This form opens your text messages. Your request is not sent until you press send on your phone.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
-                footerSub: "Automotive service • Diagnostics • Maintenance • Parts sourcing • HP Tuners support",
+                footerSub: "Automotive service • Diagnostics • Maintenance • LEDs • Audio • Parts sourcing • HP Tuners support",
                 svcs: [
                     {v: "Automotive Service & Maintenance", t: "Automotive Service & Maintenance"},
                     {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
                     {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
                     {v: "Mobile Repair", t: "Mobile Repair"},
                     {v: "Custom Parts by Order", t: "Custom Parts by Order"},
+                    {v: "LED Lighting / Audio Gear", t: "LED Lighting / Audio Gear"},
                     {v: "SBC, LS & LT Performance", t: "SBC, LS & LT Performance"},
                     {v: "LS VATS Delete / HP Tuners Support", t: "LS VATS Delete / HP Tuners Support"},
                     {v: "Build & Upgrade Consultation", t: "Build & Upgrade Consultation"},
@@ -1038,6 +1035,7 @@
                 pillDiag: "Diagnósticos",
                 pillMobile: "Reparación Móvil",
                 pillTow: "Camión y Remolque",
+                pillParts: "LEDs y Audio",
                 pillPerformance: "SBC / LS / LT",
                 pillVats: "VATS Delete LS",
                 pillSpanish: "English / Español",
@@ -1077,12 +1075,12 @@
                 btnActionMobile: "Agendar",
                 bdgParts: "Orden Especial",
                 ttlParts: "Partes Especiales por Pedido",
-                dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces, suspensión, rines, llantas y partes para proyectos personalizados.",
+                dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces LED, equipo de audio, suspensión, rines, llantas y partes para proyectos personalizados. Pregunta por luces LED de Texas, equipo de audio, upgrades de iluminación y partes especiales por pedido.",
                 partsMini1: "Partes OEM",
                 partsMini2: "Aftermarket",
-                partsMini3: "Accesorios",
-                partsMini4: "Suspensión",
-                promoParts: "Dinos qué vehículo tienes y qué estás buscando. Te ayudamos a encontrar la parte correcta antes de que gastes dinero en la equivocada.",
+                partsMini3: "Luces LED",
+                partsMini4: "Audio",
+                promoParts: "Pregunta por luces LED de Texas, equipo de audio, upgrades de iluminación y partes especiales por pedido.",
                 lblPriceParts: "Disponibilidad",
                 valPriceParts: "Cotizar",
                 btnParts: "Pedir Partes",
@@ -1099,7 +1097,7 @@
                 btnPerf: "Empezar Build",
                 bdgBuilds: "Plan de Proyecto",
                 ttlBuilds: "Consulta de Modificaciones",
-                dscBuilds: "¿Quieres modificar tu troca, carro o SUV pero no sabes por dónde empezar? Te ayudamos a planear rines, llantas, suspensión, luces, performance, accesorios y upgrades antes de gastar dinero en partes equivocadas.",
+                dscBuilds: "¿Quieres modificar tu troca, carro o SUV pero no sabes por dónde empezar? Te ayudamos a planear rines, llantas, suspensión, luces, performance, accesorios, audio, LEDs y upgrades antes de gastar dinero en partes equivocadas.",
                 promoBuilds: "Mándanos tu vehículo y tu meta. Te ayudamos a armar un plan de partes que tenga sentido.",
                 lblPriceBuilds: "Desde",
                 valPriceBuilds: "$25",
@@ -1120,13 +1118,14 @@
                 btnFrmSubmit: "Confirmar y Enviar Texto",
                 frmNote: "Este formulario abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar en tu teléfono.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
-                footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • Búsqueda de partes • Soporte HP Tuners",
+                footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • LEDs • Audio • Búsqueda de partes • Soporte HP Tuners",
                 svcs: [
                     {v: "Servicio y Mantenimiento Automotriz", t: "Servicio y Mantenimiento Automotriz"},
                     {v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"},
                     {v: "Servicio de Camión y Remolque", t: "Servicio de Camión y Remolque"},
                     {v: "Reparación Móvil", t: "Reparación Móvil"},
                     {v: "Partes Especiales por Pedido", t: "Partes Especiales por Pedido"},
+                    {v: "Luces LED / Equipo de Audio", t: "Luces LED / Equipo de Audio"},
                     {v: "Performance SBC, LS y LT", t: "Performance SBC, LS y LT"},
                     {v: "VATS Delete LS / Soporte HP Tuners", t: "VATS Delete LS / Soporte HP Tuners"},
                     {v: "Consulta de Modificaciones", t: "Consulta de Modificaciones"},
