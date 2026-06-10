@@ -116,7 +116,7 @@
         }
 
         .main-logo {
-            height: 154px;
+            height: 185px;
             max-width: 94%;
             border-radius: 26px;
             opacity: 0.98;
@@ -955,7 +955,7 @@
 
         @media (max-width: 410px) {
             .logo-header { margin-top: 0; margin-bottom: 12px; }
-            .main-logo { height: 132px; max-width: 92%; }
+            .main-logo { height: 155px; max-width: 96%; }
             .brand-img { height: 64px; opacity: 0.84; }
             .hero-title { font-size: 28px; }
             .card { padding: 23px; }
@@ -982,7 +982,7 @@
         }
 
         @media (max-width: 370px) {
-            .main-logo { height: 118px; max-width: 94%; }
+            .main-logo { height: 138px; max-width: 96%; }
         }
     </style>
 </head>
@@ -1042,6 +1042,7 @@
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
             <a href="#parts" class="dept-tab" id="tabParts">Parts</a>
             <a href="#performance" class="dept-tab" id="tabPerf">Performance</a>
+            <a href="#tire-request" class="dept-tab" id="tabTireRequest">Tire Request</a>
             <a href="#vin-decoder" class="dept-tab" id="tabVin">VIN Decoder</a>
             <a href="#scheduler" class="dept-tab" id="tabSchedule">Schedule</a>
         </nav>
@@ -1286,6 +1287,126 @@
             </div>
         </section>
 
+
+        <section class="card" id="tire-request" style="background: var(--card-bg-strong);">
+            <div class="core-badge dark" id="bdgTireRequest">Tire Request</div>
+            <h2 class="card-title" id="ttlTireRequest">Need Tires?</h2>
+            <p class="card-desc" id="dscTireRequest">
+                Send us your tire size and we’ll check availability for new or used tires. Mounting and balancing is not available yet, but we can help source tires by size, vehicle, and budget.
+            </p>
+
+            <form onsubmit="event.preventDefault(); sendTireRequestSMS();">
+                <div class="form-group">
+                    <label class="form-label" id="lblTireName">1. Your Name</label>
+                    <input type="text" id="tireName" class="form-input" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="lblTireSize">2. Tire Size</label>
+                    <select id="tireSize" class="form-input" onchange="toggleCustomTireSize()" required>
+                        <option value="">Select tire size</option>
+
+                        <option value="195/65R15">195/65R15</option>
+                        <option value="205/55R16">205/55R16</option>
+                        <option value="205/60R16">205/60R16</option>
+                        <option value="215/55R16">215/55R16</option>
+                        <option value="215/60R16">215/60R16</option>
+                        <option value="215/65R16">215/65R16</option>
+
+                        <option value="215/55R17">215/55R17</option>
+                        <option value="225/45R17">225/45R17</option>
+                        <option value="225/50R17">225/50R17</option>
+                        <option value="225/55R17">225/55R17</option>
+                        <option value="225/60R17">225/60R17</option>
+                        <option value="225/65R17">225/65R17</option>
+                        <option value="235/55R17">235/55R17</option>
+                        <option value="235/65R17">235/65R17</option>
+                        <option value="245/65R17">245/65R17</option>
+                        <option value="265/70R17">265/70R17</option>
+                        <option value="285/70R17">285/70R17</option>
+                        <option value="33x12.50R17">33x12.50R17</option>
+                        <option value="35x12.50R17">35x12.50R17</option>
+
+                        <option value="225/60R18">225/60R18</option>
+                        <option value="235/45R18">235/45R18</option>
+                        <option value="235/50R18">235/50R18</option>
+                        <option value="235/55R18">235/55R18</option>
+                        <option value="235/60R18">235/60R18</option>
+                        <option value="245/45R18">245/45R18</option>
+                        <option value="255/55R18">255/55R18</option>
+                        <option value="265/60R18">265/60R18</option>
+                        <option value="265/65R18">265/65R18</option>
+                        <option value="275/65R18">275/65R18</option>
+                        <option value="285/65R18">285/65R18</option>
+                        <option value="33x12.50R18">33x12.50R18</option>
+                        <option value="35x12.50R18">35x12.50R18</option>
+
+                        <option value="245/45R19">245/45R19</option>
+                        <option value="255/50R19">255/50R19</option>
+                        <option value="255/55R19">255/55R19</option>
+
+                        <option value="245/50R20">245/50R20</option>
+                        <option value="255/50R20">255/50R20</option>
+                        <option value="265/50R20">265/50R20</option>
+                        <option value="275/55R20">275/55R20</option>
+                        <option value="275/60R20">275/60R20</option>
+                        <option value="285/50R20">285/50R20</option>
+                        <option value="285/55R20">285/55R20</option>
+                        <option value="295/55R20">295/55R20</option>
+                        <option value="305/55R20">305/55R20</option>
+                        <option value="33x12.50R20">33x12.50R20</option>
+                        <option value="35x12.50R20">35x12.50R20</option>
+                        <option value="37x12.50R20">37x12.50R20</option>
+
+                        <option value="275/45R22">275/45R22</option>
+                        <option value="285/45R22">285/45R22</option>
+                        <option value="305/40R22">305/40R22</option>
+                        <option value="33x12.50R22">33x12.50R22</option>
+                        <option value="35x12.50R22">35x12.50R22</option>
+                        <option value="37x12.50R22">37x12.50R22</option>
+
+                        <option value="Other / Not listed">Other / Not listed</option>
+                    </select>
+
+                    <input type="text" id="customTireSize" class="form-input" placeholder="Type tire size if not listed" style="display:none; margin-top:10px;">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="lblTireCondition">3. New or Used?</label>
+                    <select id="tireCondition" class="form-input">
+                        <option value="New">New</option>
+                        <option value="Used">Used</option>
+                        <option value="Either new or used">Either new or used</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="lblTireQty">4. Quantity</label>
+                    <select id="tireQty" class="form-input">
+                        <option value="1 tire">1 tire</option>
+                        <option value="2 tires">2 tires</option>
+                        <option value="4 tires">4 tires</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="lblTireVehicle">5. Vehicle</label>
+                    <input type="text" id="tireVehicle" class="form-input" placeholder="Year / Make / Model">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="lblTireNotes">6. Budget or Notes</label>
+                    <textarea id="tireNotes" class="form-input" placeholder="Example: cheapest used pair, all seasons, highway tires, etc."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn red" id="btnTireSubmit">Check Tire Availability</button>
+
+                <p class="small-note" id="tireNote">
+                    This opens your text messages. Your request is not sent until you press send.
+                </p>
+            </form>
+        </section>
+
         <!-- VIN DECODER: placed right by the scheduling area -->
         <section class="card" id="vin-decoder" style="background: var(--card-bg-strong);">
             <div class="core-badge blue" id="bdgVin">Free Vehicle Tool</div>
@@ -1487,6 +1608,7 @@
                 tabTow: "Truck & Trailer",
                 tabParts: "Parts",
                 tabPerf: "Performance",
+                tabTireRequest: "Tire Request",
                 tabVin: "VIN Decoder",
                 tabSchedule: "Schedule",
                 quickTitle: "Not sure what you need?",
@@ -1562,6 +1684,17 @@
                 tiresMini3: "Tire Sourcing",
                 tiresMini4: "Mount & Balance Soon",
                 promoTires: "Send us your tire size or vehicle info and we can help source options. Mounting and balancing will be added soon.",
+                bdgTireRequest: "Tire Request",
+                ttlTireRequest: "Need Tires?",
+                dscTireRequest: "Send us your tire size and we’ll check availability for new or used tires. Mounting and balancing is not available yet, but we can help source tires by size, vehicle, and budget.",
+                lblTireName: "1. Your Name",
+                lblTireSize: "2. Select Tire Size",
+                lblTireCondition: "3. New or Used?",
+                lblTireQty: "4. Quantity",
+                lblTireVehicle: "5. Vehicle",
+                lblTireNotes: "6. Budget or Notes",
+                btnTireSubmit: "Check Tire Availability",
+                tireNote: "This opens your text messages. Your request is not sent until you press send.",
                 bdgVin: "Free Vehicle Tool",
                 ttlVin: "VIN Decoder",
                 dscVin: "Enter your 17-character VIN and we’ll decode the vehicle info. Then you can use it in your service request so you don’t have to type the year, make, model, or engine by hand.",
@@ -1634,6 +1767,7 @@
                 tabTow: "Camión y Remolque",
                 tabParts: "Partes",
                 tabPerf: "Performance",
+                tabTireRequest: "Pedir Llantas",
                 tabVin: "VIN Decoder",
                 tabSchedule: "Agendar",
                 quickTitle: "¿No sabes qué necesitas?",
@@ -1709,6 +1843,17 @@
                 tiresMini3: "Búsqueda de Llantas",
                 tiresMini4: "Montaje y Balanceo Pronto",
                 promoTires: "Mándanos la medida de tu llanta o la información del vehículo y podemos ayudarte a buscar opciones. Montaje y balanceo viene pronto.",
+                bdgTireRequest: "Pedido de Llantas",
+                ttlTireRequest: "¿Necesitas Llantas?",
+                dscTireRequest: "Mándanos la medida de tu llanta y revisamos disponibilidad de llantas nuevas o usadas. Montaje y balanceo todavía no está disponible, pero podemos ayudarte a conseguir llantas por medida, vehículo y presupuesto.",
+                lblTireName: "1. Tu Nombre",
+                lblTireSize: "2. Selecciona Medida",
+                lblTireCondition: "3. ¿Nueva o Usada?",
+                lblTireQty: "4. Cantidad",
+                lblTireVehicle: "5. Vehículo",
+                lblTireNotes: "6. Presupuesto o Notas",
+                btnTireSubmit: "Revisar Disponibilidad",
+                tireNote: "Esto abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar.",
                 bdgVin: "Herramienta Gratis",
                 ttlVin: "VIN Decoder",
                 dscVin: "Ingresa el VIN de 17 caracteres y vamos a decodificar la información del vehículo. Luego puedes usarlo en la solicitud de servicio para no escribir año, marca, modelo o motor a mano.",
@@ -1858,6 +2003,43 @@
                 ". Preferred date: " + date +
                 ". Preferred time: " + time +
                 ". Notes: " + notes;
+
+            window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
+        }
+
+
+        function toggleCustomTireSize() {
+            const tireSize = document.getElementById('tireSize').value;
+            const customTireSize = document.getElementById('customTireSize');
+
+            if (tireSize === "Other / Not listed") {
+                customTireSize.style.display = "block";
+                customTireSize.required = true;
+            } else {
+                customTireSize.style.display = "none";
+                customTireSize.required = false;
+                customTireSize.value = "";
+            }
+        }
+
+        function sendTireRequestSMS() {
+            const name = document.getElementById('tireName').value;
+            const selectedSize = document.getElementById('tireSize').value;
+            const customSize = document.getElementById('customTireSize').value;
+            const size = selectedSize === "Other / Not listed" ? customSize : selectedSize;
+            const condition = document.getElementById('tireCondition').value;
+            const qty = document.getElementById('tireQty').value;
+            const vehicle = document.getElementById('tireVehicle').value;
+            const notes = document.getElementById('tireNotes').value;
+
+            const message =
+                "Hi Triad, my name is " + name +
+                ". I am looking for tires. Size: " + size +
+                ". Condition: " + condition +
+                ". Quantity: " + qty +
+                ". Vehicle: " + vehicle +
+                ". Notes/Budget: " + notes +
+                ". I understand mounting and balancing is not available yet.";
 
             window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
         }
