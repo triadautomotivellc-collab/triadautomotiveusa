@@ -58,6 +58,7 @@
         /* Gallery */
         .gallery-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 8px; }
         .gallery-sub { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 20px; line-height: 1.4; }
+        .gallery-sub strong { color: #fff; } /* Makes the bold text stand out more in white */
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
         .image-card { 
             border-radius: 16px; 
@@ -150,7 +151,7 @@
         <!-- GALLERY & VEHICLE SOURCING -->
         <section>
             <h3 class="gallery-title" id="galTitle">Shop Operations & Sourcing</h3>
-            <p class="gallery-sub" id="galSub">Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source rust-free Texas trucks.</p>
+            <p class="gallery-sub" id="galSub">Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>Rust free Texas trucks and cars</strong>.</p>
             <div class="grid-container">
                 <div class="image-card"><img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck Build" class="grid-img"></div>
                 <div class="image-card"><img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Car" class="grid-img"></div>
@@ -222,12 +223,12 @@
                 bdgTow: "Recovery & Transport", ttlTow: "Truck & Trailer Service", dscTow: "Stuck? We dispatch our truck and trailer to safely transport your vehicle or perform on-site mobile repairs.",
                 promoTow: "💸 Tow to our shop for repairs and get a tow discount—up to a FREE tow depending on your location!",
                 lblPriceTow: "Urgent", valPriceTow: "Quote", btnActionTow: "Get Tow", btnActionMobile: "Schedule Pickup",
-                galTitle: "Shop Operations & Sourcing", galSub: "Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source rust-free Texas trucks.",
+                galTitle: "Shop Operations & Sourcing", galSub: "Looking for your next ride? Through our licensed partner network, we can help you find the perfect vehicle or source <strong>Rust free Texas trucks and cars</strong>.",
                 frmTitle: "📅 Schedule Service", frmDesc: "Fill out the details to request your service via text message.",
                 lblFrmSvc: "1. Select Service", lblFrmCity: "2. City / Area", lblFrmLoc: "3. Detailed Address / Location", lblFrmDate: "4. Date", lblFrmTime: "5. Time",
                 btnFrmSubmit: "💬 Confirm & Text Request", txtLegal: "*By submitting, you certify you are the owner or authorized agent of the vehicle.",
                 sms: "Hi Triad, I need: {svc}\n📍 City: {city}\n🏠 Loc: {loc}\n📅 Date: {date}\n⏰ Time: {time}",
-                svcs: [{v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"}, {v: "Truck & Trailer Service", t: "Truck & Trailer Service"}, {v: "Mobile Repair", t: "Mobile Repair"}, {v: "Vehicle Sourcing / Find a Car", t: "Vehicle Sourcing (Find a Car)"}]
+                svcs: [{v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"}, {v: "Truck & Trailer Service", t: "Truck & Trailer Service"}, {v: "Mobile Repair", t: "Mobile Repair"}, {v: "Source Rust Free Texas Truck/Car", t: "Sourcing: Rust Free Texas Truck/Car"}]
             },
             es: {
                 txtLangBtn: "English", txtEmailBtn: "Correo", txtTextBtn: "Texto", txtInfoArea: "Área de Servicio: <strong>Baraboo 53913</strong>",
@@ -236,12 +237,12 @@
                 bdgTow: "Recuperación y Transporte", ttlTow: "Servicio de Camión y Remolque", dscTow: "¿Quedaste tirado? Enviamos nuestro camión y remolque para transportar tu vehículo o realizar reparaciones móviles.",
                 promoTow: "💸 Trae tu vehículo a nuestro taller para reparación y obtén un descuento—¡o incluso la grúa GRATIS dependiendo de tu ubicación!",
                 lblPriceTow: "Urgencias", valPriceTow: "Cotizar", btnActionTow: "Pedir Grúa", btnActionMobile: "Agendar Recolección",
-                galTitle: "Operaciones y Búsqueda", galSub: "¿Buscas tu próximo auto? A través de nuestra red de socios autorizados, te ayudamos a encontrar el vehículo perfecto o camionetas de Texas sin óxido.",
+                galTitle: "Operaciones y Búsqueda", galSub: "¿Buscas tu próximo auto? A través de nuestra red de socios autorizados, te ayudamos a encontrar el vehículo perfecto o conseguir <strong>autos y camionetas de Texas libres de óxido</strong>.",
                 frmTitle: "📅 Agendar Servicio", frmDesc: "Completa los detalles para solicitar tu servicio por mensaje de texto.",
                 lblFrmSvc: "1. Selecciona Servicio", lblFrmCity: "2. Ciudad / Área", lblFrmLoc: "3. Dirección Detallada", lblFrmDate: "4. Fecha", lblFrmTime: "5. Hora",
                 btnFrmSubmit: "💬 Confirmar y Enviar SMS", txtLegal: "*Al enviar, certificas que eres el propietario o agente autorizado del vehículo.",
                 sms: "Hola Triad, necesito: {svc}\n📍 Ciudad: {city}\n🏠 Ubic: {loc}\n📅 Fecha: {date}\n⏰ Hora: {time}",
-                svcs: [{v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"}, {v: "Servicio de Remolque", t: "Servicio de Remolque"}, {v: "Reparación Móvil", t: "Reparación Móvil"}, {v: "Búsqueda de Vehículo", t: "Búsqueda de Vehículo (Encontrar Auto)"}]
+                svcs: [{v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"}, {v: "Servicio de Remolque", t: "Servicio de Remolque"}, {v: "Reparación Móvil", t: "Reparación Móvil"}, {v: "Búsqueda de Vehículo Texas", t: "Búsqueda de Vehículo (De Texas)"}]
             }
         };
 
@@ -267,8 +268,8 @@
             Object.keys(t).forEach(id => {
                 const el = document.getElementById(id);
                 if(el && id !== 'sms' && id !== 'svcs') {
-                    if(id === 'txtInfoArea') el.innerHTML = t[id];
-                    else el.textContent = t[id];
+                    // Update innerHTML so <strong> tags render properly
+                    el.innerHTML = t[id];
                 }
             });
             populateDropdowns();
