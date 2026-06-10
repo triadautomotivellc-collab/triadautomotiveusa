@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Triad Automotive LLC | Baraboo, WI Auto Repair</title>
-  <meta name="description" content="Triad Automotive LLC provides diagnostics, repair, exhaust, brakes, suspension, and mobile automotive services in Baraboo, Wisconsin and surrounding areas." />
+  <meta name="description" content="Triad Automotive LLC provides diagnostics, repair, exhaust, brakes, suspension, and mobile automotive services in Baraboo, Wisconsin." />
 
   <style>
     * {
@@ -19,8 +18,8 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #050505;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #030303;
       color: #f4f4f4;
       line-height: 1.6;
       overflow-x: hidden;
@@ -32,23 +31,38 @@
     }
 
     :root {
-      --red: #b00000;
-      --bright-red: #e00000;
-      --dark: #050505;
-      --card: #111;
-      --gray: #bdbdbd;
-      --white: #fff;
-      --border: #2b2b2b;
+      --neon-red: #ff003c;
+      --dark-red: #80001c;
+      --bg-black: #050507;
+      --panel-dark: #0d0d11;
+      --panel-border: #1f1f26;
+      --text-gray: #a0a0aa;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-black);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--neon-red);
     }
 
     nav {
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(5, 5, 5, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid #222;
-      padding: 14px 22px;
+      background: rgba(5, 5, 7, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--panel-border);
+      padding: 16px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -56,321 +70,438 @@
 
     .nav-brand {
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      font-size: .95rem;
+      font-size: 1.1rem;
+      background: linear-gradient(45deg, #fff, var(--neon-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 24px;
     }
 
     .nav-links a {
-      color: #ccc;
+      color: var(--text-gray);
       font-size: .9rem;
-      transition: .25s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color .25s ease;
     }
 
     .nav-links a:hover {
-      color: var(--bright-red);
+      color: var(--neon-red);
     }
 
     .language-switch {
       display: flex;
-      gap: 6px;
-      margin-left: 10px;
+      gap: 8px;
+      margin-left: 15px;
+      border: 1px solid var(--panel-border);
+      padding: 3px;
+      border-radius: 30px;
+      background: rgba(0,0,0,0.2);
     }
 
     .language-switch button {
-      background: #111;
-      color: white;
-      border: 1px solid #444;
+      background: transparent;
+      color: var(--text-gray);
+      border: none;
       border-radius: 20px;
-      padding: 7px 11px;
+      padding: 6px 14px;
       cursor: pointer;
-      font-size: .78rem;
-      transition: .25s ease;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .language-switch button:hover,
     .language-switch button.active {
-      background: var(--red);
-      border-color: var(--red);
+      background: var(--neon-red);
+      color: white;
+      box-shadow: 0 0 12px rgba(255, 0, 60, 0.4);
     }
 
     header {
-      min-height: 92vh;
+      min-height: 95vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 65px 18px;
+      padding: 80px 24px;
       background:
-        radial-gradient(circle at top, rgba(180, 0, 0, .32), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(120, 120, 120, .08), transparent 32%),
-        linear-gradient(to bottom, #101010, #000 70%);
+        radial-gradient(circle at 50% 10%, rgba(255, 0, 60, 0.15), transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(32, 32, 42, 0.3), transparent 40%),
+        linear-gradient(to bottom, #0a0a0f, #020204);
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
+    header::after {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: 50%;
-      top: 10%;
-      right: -160px;
-      box-shadow: 0 0 80px rgba(176,0,0,.15);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 0, 60, 0.03) 0%, transparent 70%);
+      bottom: -200px;
+      left: -200px;
+      pointer-events: none;
     }
 
     .hero {
-      max-width: 920px;
-      position: relative;
+      max-width: 1000px;
       z-index: 2;
-      animation: fadeUp .8s ease forwards;
+      animation: engineStart 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .logo {
-      width: 70%;
-      max-width: 385px;
-      margin-bottom: 26px;
-      filter: drop-shadow(0 0 24px rgba(255,0,0,.22));
+      width: 80%;
+      max-width: 420px;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 0 35px rgba(255, 0, 60, 0.3));
     }
 
     .eyebrow {
       display: inline-block;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.04);
-      color: #ddd;
-      padding: 8px 14px;
+      border: 1px solid rgba(255, 0, 60, 0.3);
+      background: rgba(255, 0, 60, 0.06);
+      color: #ff4a75;
+      padding: 6px 18px;
       border-radius: 999px;
-      font-size: .85rem;
-      margin-bottom: 18px;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      box-shadow: inset 0 0 10px rgba(255, 0, 60, 0.1);
     }
 
     h1 {
-      font-size: clamp(2.4rem, 8vw, 5.6rem);
-      letter-spacing: 5px;
+      font-size: clamp(2.8rem, 9vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -2px;
       text-transform: uppercase;
-      background: linear-gradient(#fff, #777);
+      line-height: 0.95;
+      background: linear-gradient(to bottom, #ffffff 40%, #858593);
       -webkit-background-clip: text;
-      color: transparent;
-      line-height: 1.05;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
     }
 
     .tagline {
-      color: var(--bright-red);
-      font-size: 1.1rem;
-      font-weight: 900;
-      margin: 20px 0 12px;
+      color: var(--neon-red);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 800;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
     }
 
     .sub {
-      color: #cfcfcf;
-      font-size: 1.1rem;
-      max-width: 720px;
-      margin: 0 auto 32px;
+      color: #d1d1d6;
+      font-size: 1.15rem;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .buttons a {
-      display: inline-block;
-      margin: 8px;
-      padding: 15px 24px;
-      border-radius: 12px;
-      font-weight: 900;
+      padding: 18px 36px;
+      border-radius: 8px;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .7px;
-      transition: .25s ease;
+      letter-spacing: 1px;
+      font-size: .95rem;
+      transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .btn-red {
-      background: var(--red);
+      background: var(--neon-red);
       color: white;
-      box-shadow: 0 0 22px rgba(255,0,0,.28);
+      box-shadow: 0 4px 20px rgba(255, 0, 60, 0.35);
     }
 
     .btn-red:hover {
-      transform: translateY(-2px);
-      background: #d00000;
+      transform: translateY(-3px);
+      background: #ff1a51;
+      box-shadow: 0 6px 28px rgba(255, 0, 60, 0.5);
     }
 
     .btn-dark {
-      border: 1px solid #555;
-      background: #111;
+      border: 1px solid var(--panel-border);
+      background: rgba(20, 20, 25, 0.6);
       color: white;
+      backdrop-filter: blur(10px);
     }
 
     .btn-dark:hover {
-      transform: translateY(-2px);
-      border-color: var(--bright-red);
+      transform: translateY(-3px);
+      border-color: var(--neon-red);
+      background: rgba(255, 0, 60, 0.05);
     }
 
     .trust-row {
       display: flex;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 26px;
+      margin-top: 45px;
     }
 
     .trust-pill {
-      border: 1px solid #2f2f2f;
-      background: rgba(255,255,255,.04);
-      padding: 9px 13px;
-      border-radius: 999px;
-      color: #ccc;
-      font-size: .9rem;
+      border: 1px solid var(--panel-border);
+      background: var(--panel-dark);
+      padding: 10px 18px;
+      border-radius: 6px;
+      color: var(--text-gray);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     section {
-      padding: 78px 20px;
-      max-width: 1120px;
+      padding: 100px 24px;
+      max-width: 1200px;
       margin: auto;
     }
 
     h2 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 14px;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 16px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: -1px;
     }
 
     .section-sub {
       text-align: center;
-      color: #aaa;
-      margin-bottom: 40px;
-      max-width: 720px;
+      color: var(--text-gray);
+      margin-bottom: 60px;
+      max-width: 650px;
       margin-left: auto;
       margin-right: auto;
+      font-size: 1.05rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
 
     .card {
-      background: linear-gradient(145deg, rgba(22,22,22,.95), rgba(7,7,7,.95));
-      border: 1px solid var(--border);
-      border-top: 4px solid var(--red);
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 0 28px rgba(0,0,0,.55);
-      transition: .25s ease;
+      background: var(--panel-dark);
+      border: 1px solid var(--panel-border);
+      padding: 40px 30px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--panel-border);
+      transition: background 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      border-color: #4a4a4a;
+      transform: translateY(-5px);
+      border-color: rgba(255, 0, 60, 0.2);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .card:hover::before {
+      background: var(--neon-red);
     }
 
     .card h3 {
       color: #fff;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .card p,
-    .card li {
-      color: #bdbdbd;
-      font-size: 1rem;
-    }
-
-    .icon {
-      font-size: 2rem;
+      font-size: 1.25rem;
+      font-weight: 800;
       margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .about-box {
-      background:
-        linear-gradient(145deg, rgba(18,18,18,.95), rgba(5,5,5,.95));
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 36px;
-    }
-
-    .about-box p {
-      color: #cfcfcf;
-      margin-bottom: 14px;
-    }
-
-    .highlight {
-      color: var(--bright-red);
-      font-weight: 900;
-    }
-
-    .owners-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .owner {
-      border: 1px solid #2d2d2d;
-      background: #0c0c0c;
-      border-radius: 14px;
-      padding: 18px;
-    }
-
-    .owner strong {
-      color: white;
-      display: block;
-      font-size: 1.1rem;
-    }
-
-    .owner span {
-      color: #aaa;
+    .card p {
+      color: var(--text-gray);
       font-size: .95rem;
     }
 
-    .resource-card {
-      max-width: 790px;
-      margin: auto;
+    .icon {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    /* Diagnostics UI Center */
+    .diagnostic-panel {
+      background: #09090d;
+      border: 2px solid #1c1c24;
+      border-radius: 16px;
+      padding: 36px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+    }
+
+    .scanner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1c1c24;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .scanner-title {
+      font-family: monospace;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #555566;
+      font-size: .85rem;
+      letter-spacing: 2px;
+    }
+
+    .scanner-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8rem;
+      font-family: monospace;
+      color: #00ff66;
+      text-transform: uppercase;
+    }
+
+    .blink-dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff66;
+      border-radius: 50%;
+      animation: heartbeat 1.5s infinite;
     }
 
     select {
       width: 100%;
-      padding: 15px;
-      margin-top: 15px;
-      border-radius: 12px;
-      background: #111;
+      padding: 16px;
+      border-radius: 8px;
+      background: #111116;
       color: white;
-      border: 1px solid #555;
+      border: 1px solid var(--panel-border);
       font-size: 1rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff003c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    select:focus {
+      border-color: var(--neon-red);
     }
 
     #helpResult {
-      margin-top: 18px;
-      color: #ddd;
-      padding: 18px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid #272727;
+      margin-top: 24px;
+      color: #e4e4e7;
+      padding: 24px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 4px solid var(--neon-red);
+      font-size: 1rem;
       display: none;
+      animation: panelSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: var(--panel-dark);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 45px;
+    }
+
+    .about-box p {
+      color: #d1d1d6;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .highlight {
+      color: white;
+      font-weight: 800;
+      border-bottom: 2px solid var(--neon-red);
+      padding-bottom: 4px;
+    }
+
+    .owners-list {
+      display: grid;
+      gap: 16px;
+      align-content: center;
+    }
+
+    .owner {
+      border: 1px solid var(--panel-border);
+      background: rgba(13, 13, 17, 0.5);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .owner strong {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .owner span {
+      color: var(--neon-red);
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: rgba(255, 0, 60, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
     }
 
     .service-area {
       background:
-        radial-gradient(circle at center, rgba(176,0,0,.12), transparent 45%),
-        linear-gradient(145deg, #0b0b0b, #050505);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 36px;
+        radial-gradient(circle at center, rgba(255, 0, 60, 0.08), transparent 55%),
+        linear-gradient(145deg, #0b0b11, #050508);
+      border: 1px solid var(--panel-border);
+      border-radius: 20px;
+      padding: 50px 30px;
       text-align: center;
     }
 
@@ -378,78 +509,130 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
+      gap: 12px;
+      margin-top: 32px;
     }
 
     .area-tags span {
-      background: #111;
-      border: 1px solid #333;
-      color: #ddd;
-      padding: 9px 13px;
-      border-radius: 999px;
+      background: #121218;
+      border: 1px solid var(--panel-border);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: all 0.2s ease;
+    }
+
+    .area-tags span:hover {
+      border-color: var(--neon-red);
+      background: rgba(255, 0, 60, 0.05);
     }
 
     .faq {
-      max-width: 860px;
+      max-width: 900px;
       margin: auto;
       display: grid;
-      gap: 14px;
+      gap: 16px;
     }
 
     details {
-      background: #101010;
-      border: 1px solid #2b2b2b;
-      border-radius: 14px;
-      padding: 18px 20px;
+      background: var(--panel-dark);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 22px 28px;
+      transition: border-color 0.2s ease;
+    }
+
+    details[open] {
+      border-color: rgba(255, 0, 60, 0.3);
     }
 
     summary {
       cursor: pointer;
-      font-weight: 900;
+      font-weight: 800;
       color: white;
+      font-size: 1.1rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--neon-red);
+      font-size: 1.4rem;
+      font-weight: 400;
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
     }
 
     details p {
-      color: #bdbdbd;
-      margin-top: 12px;
+      color: var(--text-gray);
+      margin-top: 16px;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     .contact-card a {
       color: white;
       font-weight: 800;
+      font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .contact-card a:hover {
+      color: var(--neon-red);
     }
 
     footer {
       text-align: center;
-      padding: 42px 20px;
-      background: #030303;
-      border-top: 1px solid #222;
-      color: #aaa;
+      padding: 50px 24px;
+      background: #020204;
+      border-top: 1px solid var(--panel-border);
+      color: var(--text-gray);
+      font-size: .9rem;
     }
 
     footer p {
-      margin: 6px 0;
+      margin: 8px 0;
     }
 
     .floating-call {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
+      right: 24px;
+      bottom: 24px;
       z-index: 999;
-      background: var(--red);
+      background: var(--neon-red);
       color: white;
-      padding: 14px 18px;
-      border-radius: 999px;
-      font-weight: 900;
-      box-shadow: 0 0 25px rgba(255,0,0,.35);
+      padding: 16px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 30px rgba(255, 0, 60, 0.4);
       display: none;
+      font-size: .9rem;
+      transition: transform 0.2s ease;
     }
 
-    @keyframes fadeUp {
+    .floating-call:active {
+      transform: scale(0.95);
+    }
+
+    /* Keyframe Animations */
+    @keyframes engineStart {
       from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -457,17 +640,29 @@
       }
     }
 
-    @media (max-width: 820px) {
+    @keyframes heartbeat {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.4; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes panelSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Viewports */
+    @media (max-width: 900px) {
       nav {
-        display: block;
-        text-align: center;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
       }
 
       .nav-links {
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 10px;
-        gap: 11px;
+        gap: 16px;
       }
 
       .language-switch {
@@ -479,7 +674,7 @@
       }
 
       .logo {
-        width: 84%;
+        width: 90%;
       }
 
       .floating-call {
@@ -488,21 +683,20 @@
     }
 
     @media (max-width: 480px) {
-      h1 {
-        letter-spacing: 2px;
-      }
-
       section {
-        padding: 62px 16px;
+        padding: 70px 16px;
       }
 
       .card {
-        padding: 24px;
+        padding: 30px 20px;
+      }
+
+      .about-box {
+        padding: 30px 20px;
       }
 
       .buttons a {
         width: 100%;
-        max-width: 310px;
       }
     }
   </style>
@@ -515,21 +709,21 @@
 
     <div class="nav-links">
       <a href="#services" data-en="Services" data-es="Servicios">Services</a>
-      <a href="#resources" data-en="Help" data-es="Ayuda">Help</a>
+      <a href="#resources" data-en="Help Scanner" data-es="Escáner de Ayuda">Help Scanner</a>
       <a href="#about" data-en="About" data-es="Nosotros">About</a>
       <a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
 
       <div class="language-switch">
-        <button id="btn-en" class="active" onclick="setLanguage('en')">English</button>
-        <button id="btn-es" onclick="setLanguage('es')">Español</button>
+        <button id="btn-en" class="active" onclick="setLanguage('en')">EN</button>
+        <button id="btn-es" onclick="setLanguage('es')">ES</button>
       </div>
     </div>
   </nav>
 
   <header id="home">
     <div class="hero">
-      <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="logo" />
+      <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="logo" data-en="Triad Automotive Logo" data-es="Logotipo de Triad Automotive" />
 
       <div class="eyebrow" data-en="Family Owned • English & Spanish • Mobile Service Available" data-es="Negocio Familiar • Inglés y Español • Servicio Móvil Disponible">
         Family Owned • English & Spanish • Mobile Service Available
@@ -559,7 +753,7 @@
   </header>
 
   <section id="services">
-    <h2 data-en="Services" data-es="Servicios">Services</h2>
+    <h2 data-en="Pro Capabilities" data-es="Capacidades Profesionales">Pro Capabilities</h2>
     <p class="section-sub" data-en="Reliable repair for daily drivers, family vehicles, and work vehicles." data-es="Reparación confiable para carros de diario, vehículos familiares y vehículos de trabajo.">
       Reliable repair for daily drivers, family vehicles, and work vehicles.
     </p>
@@ -616,21 +810,27 @@
   </section>
 
   <section id="resources">
-    <h2 data-en="Vehicle Owner Help" data-es="Ayuda Para Tu Vehículo">Vehicle Owner Help</h2>
-    <p class="section-sub" data-en="Quick answers for common vehicle problems." data-es="Respuestas rápidas para problemas comunes de vehículos.">
-      Quick answers for common vehicle problems.
+    <h2 data-en="Symptom Fault Scanner" data-es="Escáner de Síntomas y Fallas">Symptom Fault Scanner</h2>
+    <p class="section-sub" data-en="Select a vehicle dynamic symptom below to evaluate potential system faults." data-es="Seleccione un síntoma de su vehículo a continuación para evaluar posibles fallas del sistema.">
+      Select a vehicle dynamic symptom below to evaluate potential system faults.
     </p>
 
-    <div class="card resource-card">
-      <h3 data-en="What do you need help with?" data-es="¿Con qué necesitas ayuda?">What do you need help with?</h3>
+    <div class="diagnostic-panel">
+      <div class="scanner-header">
+        <span class="scanner-title">OBD-II SYSTEM MATRIX</span>
+        <div class="scanner-status">
+          <div class="blink-dot"></div>
+          <span data-en="Ecu Connected" data-es="Ecu Conectado">Ecu Connected</span>
+        </div>
+      </div>
 
       <select id="helpGuide" onchange="showHelpInfo()">
-        <option value="" data-en="Choose a topic" data-es="Escoge un tema">Choose a topic</option>
-        <option value="oil" data-en="What oil does my car take?" data-es="¿Qué aceite usa mi carro?">What oil does my car take?</option>
-        <option value="engine" data-en="Check engine light" data-es="Luz de check engine">Check engine light</option>
-        <option value="brakes" data-en="Brake noise" data-es="Ruido en los frenos">Brake noise</option>
-        <option value="battery" data-en="Car won’t start" data-es="El carro no prende">Car won’t start</option>
-        <option value="exhaust" data-en="Exhaust leak symptoms" data-es="Síntomas de fuga de escape">Exhaust leak symptoms</option>
+        <option value="" data-en="Select System Symptom..." data-es="Seleccione Síntoma del Sistema...">Select System Symptom...</option>
+        <option value="oil" data-en="Fluid Verification: Engine Lubrication Weight" data-es="Verificación de Fluido: Peso de Lubricación del Motor">Fluid Verification: Engine Lubrication Weight</option>
+        <option value="engine" data-en="MIL Active: Check Engine Light Diagnostic" data-es="MIL Activo: Diagnóstico de Luz Check Engine">MIL Active: Check Engine Light Diagnostic</option>
+        <option value="brakes" data-en="Acoustic Anomalies: Brake Friction Noise" data-es="Anomalías Acústicas: Ruido de Fricción en Frenos">Acoustic Anomalies: Brake Friction Noise</option>
+        <option value="battery" data-en="Critical No-Start: Cranking & Ignition Failure" data-es="Falla Crítica de Encendido: Marcha e Ignición">Critical No-Start: Cranking & Ignition Failure</option>
+        <option value="exhaust" data-en="Emissions Leak: Structural Exhaust Integrity" data-es="Fuga de Emisiones: Integridad Estructural del Escape">Emissions Leak: Structural Exhaust Integrity</option>
       </select>
 
       <p id="helpResult"></p>
@@ -641,15 +841,12 @@
     <div class="split">
       <div class="about-box">
         <h2 data-en="Local. Honest. Reliable." data-es="Local. Honesto. Confiable.">Local. Honest. Reliable.</h2>
-
         <p data-en="Triad Automotive LLC is a local family-owned automotive repair business built by Pepe, Javy, and Mickey." data-es="Triad Automotive LLC es un negocio familiar de reparación automotriz creado por Pepe, Javy y Mickey.">
           Triad Automotive LLC is a local family-owned automotive repair business built by Pepe, Javy, and Mickey.
         </p>
-
         <p data-en="We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities." data-es="Nos enfocamos en diagnóstico honesto, reparaciones confiables y servicio práctico para clientes en Baraboo y comunidades cercanas.">
           We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities.
         </p>
-
         <p>
           <span class="highlight" data-en="Family owned. Local service. English and Spanish." data-es="Negocio familiar. Servicio local. Inglés y Español.">
             Family owned. Local service. English and Spanish.
@@ -676,7 +873,7 @@
 
   <section>
     <div class="service-area">
-      <h2 data-en="Service Area" data-es="Área de Servicio">Service Area</h2>
+      <h2 data-en="Operational Radius" data-es="Radio de Operación">Operational Radius</h2>
       <p class="section-sub" data-en="Based in Baraboo, Wisconsin. Mobile service may be available depending on location and repair type." data-es="Basados en Baraboo, Wisconsin. Servicio móvil puede estar disponible dependiendo de la ubicación y el tipo de reparación.">
         Based in Baraboo, Wisconsin. Mobile service may be available depending on location and repair type.
       </p>
@@ -730,7 +927,7 @@
   </section>
 
   <section id="contact">
-    <h2 data-en="Contact" data-es="Contacto">Contact</h2>
+    <h2 data-en="Dispatch Control" data-es="Control de Despacho">Dispatch Control</h2>
     <p class="section-sub" data-en="Call, text, or email to request service." data-es="Llame, mande texto o email para pedir servicio.">
       Call, text, or email to request service.
     </p>
@@ -749,9 +946,7 @@
         <div class="icon">✉️</div>
         <h3>Email</h3>
         <p>
-          <a href="mailto:triadautomotivellc@gmail.com">
-            triadautomotivellc@gmail.com
-          </a>
+          <a href="mailto:triadautomotivellc@gmail.com">triadautomotivellc@gmail.com</a>
         </p>
       </div>
 
@@ -779,17 +974,20 @@
 
     function setLanguage(language) {
       currentLanguage = language;
-
       document.documentElement.lang = language;
 
-      document.querySelectorAll("[data-en]").forEach(element => {
-        if (element.dataset[language]) {
-          element.textContent = element.dataset[language];
+      // Clean translation engine: loops elements once, checks tag types, swaps values
+      document.querySelectorAll("[data-en]").forEach(el => {
+        const translation = el.dataset[language];
+        if (translation) {
+          if (el.tagName === "IMG") {
+            el.alt = translation;
+          } else if (el.tagName === "OPTION") {
+            el.textContent = translation;
+          } else {
+            el.textContent = translation;
+          }
         }
-      });
-
-      document.querySelectorAll("option[data-en]").forEach(option => {
-        option.textContent = option.dataset[language];
       });
 
       document.getElementById("btn-en").classList.toggle("active", language === "en");
@@ -804,18 +1002,18 @@
 
       const info = {
         en: {
-          oil: "Oil type depends on year, make, model, engine, and manufacturer spec. Many modern vehicles use full synthetic oil, but the exact weight and capacity should be verified before service.",
-          engine: "A check engine light can be caused by sensors, misfires, EVAP leaks, fuel issues, or electrical problems. A proper diagnostic scan helps avoid guessing and replacing unnecessary parts.",
-          brakes: "Squeaking, grinding, vibration, or a soft brake pedal should be checked quickly. Brake issues can involve pads, rotors, calipers, lines, or wheel bearings.",
-          battery: "A no-start can be caused by the battery, starter, alternator, wiring, fuel delivery, ignition, or security system. Testing first saves money.",
-          exhaust: "Exhaust leaks can sound loud, smell like fumes, reduce performance, and become unsafe if fumes enter the cabin. Mufflers, pipes, flex sections, and hangers should be inspected."
+          oil: "SYSTEM LOG // Oil type depends on year, make, model, engine, and manufacturer spec. Many modern vehicles use full synthetic oil, but the exact weight and capacity should be verified before service.",
+          engine: "SYSTEM LOG // A check engine light can be caused by faulty sensors, engine misfires, EVAP leaks, fuel delivery issues, or electrical bugs. A proper diagnostic scan prevents throwing random components at the problem.",
+          brakes: "SYSTEM LOG // Squeaking, grinding mechanical feedback, violent steering vibrations, or structural pedal softening should be investigated instantly. Systems include pads, rotors, calipers, or lines.",
+          battery: "SYSTEM LOG // Hard failure to turn over is linked directly to battery degradation, starter motor decay, alternator failure, high-resistance wiring, or ignition security flags.",
+          exhaust: "SYSTEM LOG // Structural exhaust leaks generate disruptive acoustics, harmful ambient fumes, reduced engine backpressure, and terminal cabin safety risks. Inspect piping, mufflers, and flex joints."
         },
         es: {
-          oil: "El tipo de aceite depende del año, marca, modelo, motor y especificación del fabricante. Muchos vehículos modernos usan aceite full synthetic, pero se debe verificar el peso y la capacidad exacta antes del servicio.",
-          engine: "La luz de check engine puede ser causada por sensores, misfires, fugas EVAP, problemas de combustible o fallas eléctricas. Un diagnóstico correcto ayuda a no gastar en piezas innecesarias.",
-          brakes: "Chillidos, rechinidos, vibración o pedal suave se deben revisar pronto. Los problemas pueden ser balatas, discos, cálipers, líneas o baleros.",
-          battery: "Si el carro no prende, puede ser batería, starter, alternador, cableado, combustible, ignición o sistema de seguridad. Probar primero ahorra dinero.",
-          exhaust: "Una fuga de escape puede sonar fuerte, oler a gases, bajar rendimiento y ser peligrosa si los gases entran a la cabina. Se deben revisar mofles, tubos, flex pipe y soportes."
+          oil: "REGISTRO DEL SISTEMA // El tipo de aceite depende del año, marca, modelo, motor y especificación del fabricante. Muchos vehículos modernos usan aceite sintético, pero se debe verificar la viscosidad exacta antes del servicio.",
+          engine: "REGISTRO DEL SISTEMA // La luz check engine es activada por fallas en sensores, fallas de encendido (misfires), fugas de EVAP o problemas de combustible. Un escaneo detiene el reemplazo innecesario de piezas.",
+          brakes: "REGISTRO DEL SISTEMA // Rechinidos, fricción de metal, vibración del volante o pedal esponjoso requieren atención inmediata. Involucra balatas, discos de freno, calipers o líneas de presión.",
+          battery: "REGISTRO DEL SISTEMA // La pérdida crítica de arranque proviene de baterías degradadas, fallas del motor de arranque (starter), alternador inestable o interrupciones del sistema de seguridad.",
+          exhaust: "REGISTRO DEL SISTEMA // Las fugas en la tubería de escape merman el rendimiento, alteran el sonido del motor y filtran monóxido de carbono peligroso a la cabina. Requiere inspección de mofles y uniones flexibles."
         }
       };
 
@@ -829,6 +1027,5 @@
       result.textContent = info[currentLanguage][value];
     }
   </script>
-
 </body>
 </html>
