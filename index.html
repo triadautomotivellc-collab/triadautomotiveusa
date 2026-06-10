@@ -1,1834 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Triad Automotive Enterprise | Professional Auto Care Portal</title>
-  <meta name="description" content="Premium automotive repair portal. Enterprise diagnostics, parts integration, and service matching for Baraboo, WI." />
-  <style>
-    /* ==========================================================================
-       01. GLOBAL BRAND PRESETS & STRUCTURAL RESET
-       ========================================================================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
-
-    :root {
-      --amazon-orange: #ff9900;
-      --walmart-blue: #0071dc;
-      --neon-red: #ff003c;
-      --dark-red: #990024;
-      --surface-black: #0a0a0f;
-      --panel-dark: #12121a;
-      --panel-light: #1c1c27;
-      --border-gray: #2a2a3a;
-      --text-white: #ffffff;
-      --text-muted: #9ca3af;
-      --text-gold: #ffb703;
-      --success-green: #00e676;
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 16px;
-      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--surface-black);
-      color: var(--text-white);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, select, input, textarea {
-      background: none;
-      border: none;
-      color: inherit;
-      font: inherit;
-      outline: none;
-    }
-
-    /* Custom Premium Scrollbar Grid */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--surface-black);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--border-gray);
-      border-radius: var(--radius-md);
-      border: 2px solid var(--surface-black);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--neon-red);
-    }
-
-    /* Utility Grid Helpers */
-    .container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .badge-red { background: var(--neon-red); color: white; }
-    .badge-gold { background: var(--text-gold); color: #000; }
-    .badge-green { background: var(--success-green); color: #000; }
-    .badge-outline { border: 1px solid var(--border-gray); color: var(--text-muted); }
-
-    /* ==========================================================================
-       02. ENTERPRISE NAVBAR (WALMART/AMAZON INSPIRED)
-       ========================================================================== */
-    .mega-header {
-      background-color: #050508;
-      border-bottom: 1px solid var(--border-gray);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 24px;
-      background: #000;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-bottom: 1px solid #111;
-    }
-
-    .top-bar-left {
-      display: flex;
-      gap: 16px;
-    }
-
-    .top-bar-right {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-belt {
-      display: flex;
-      align-items: center;
-      padding: 14px 24px;
-      gap: 32px;
-    }
-
-    .brand-block {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-logo-img {
-      height: 48px;
-      mix-blend-mode: screen;
-      filter: drop-shadow(0 0 8px var(--neon-red));
-    }
-
-    .brand-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(45deg, #fff, var(--neon-red));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .delivery-locator {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition-smooth);
-    }
-
-    .delivery-locator:hover {
-      background: rgba(255,255,255,0.05);
-    }
-
-    .locator-icon {
-      font-size: 1.3rem;
-      color: var(--neon-red);
-    }
-
-    .locator-text div:first-child {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .locator-text div:last-child {
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .search-container {
-      flex: 1;
-      display: flex;
-      position: relative;
-    }
-
-    .search-bar-wrapper {
-      width: 100%;
-      display: flex;
-      background: var(--panel-dark);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: var(--transition-smooth);
-    }
-
-    .search-bar-wrapper:focus-within {
-      border-color: var(--neon-red);
-      box-shadow: 0 0 15px rgba(255, 0, 61, 0.2);
-    }
-
-    .search-category-select {
-      background: #1a1a26;
-      padding: 0 16px;
-      font-size: 0.85rem;
-      border-right: 1px solid var(--border-gray);
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .main-search-input {
-      flex: 1;
-      padding: 12px 16px;
-      font-size: 0.95rem;
-      background: transparent;
-    }
-
-    .search-submit-btn {
-      background: var(--neon-red);
-      color: white;
-      padding: 0 24px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .search-submit-btn:hover {
-      background: var(--dark-red);
-    }
-
-    .action-belt {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-action-item {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      transition: var(--transition-smooth);
-    }
-
-    .nav-action-item:hover {
-      background: rgba(255,255,255,0.05);
-    }
-
-    .nav-action-item span:first-child {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .nav-action-item span:last-child {
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .cart-pill-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 0, 61, 0.1);
-      border: 1px solid rgba(255, 0, 61, 0.2);
-      padding: 8px 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .cart-counter {
-      background: var(--neon-red);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 900;
-      padding: 2px 7px;
-      border-radius: 50%;
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      box-shadow: 0 4px 10px rgba(255,0,0,0.4);
-    }
-
-    .department-belt {
-      display: flex;
-      background: #0d0d14;
-      padding: 10px 24px;
-      gap: 20px;
-      border-top: 1px solid #171722;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .dept-link {
-      color: #cbd5e1;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dept-link:hover, .dept-link.active {
-      color: var(--neon-red);
-    }
-
-    .lang-toggle-wrap {
-      margin-left: auto;
-      display: flex;
-      gap: 4px;
-      background: #000;
-      padding: 2px;
-      border-radius: 20px;
-      border: 1px solid var(--border-gray);
-    }
-
-    .lang-btn {
-      padding: 2px 10px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .lang-btn.active {
-      background: var(--neon-red);
-      color: white;
-    }
-
-    /* ==========================================================================
-       03. MASTER ADVERTISING HERO LAYOUT
-       ========================================================================== */
-    .hero-carousel-space {
-      position: relative;
-      background: linear-gradient(180deg, #09090e 0%, #020204 100%);
-      padding: 60px 0;
-      overflow: hidden;
-    }
-
-    .hero-grid-showcase {
-      display: grid;
-      grid-template-columns: 7fr 5fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .hero-promo-billboard {
-      z-index: 5;
-    }
-
-    .hero-headline-large {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      background: linear-gradient(to right, #ffffff, #9ca3af);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtext {
-      font-size: 1.15rem;
-      color: #d1d5db;
-      margin-bottom: 36px;
-      max-width: 600px;
-    }
-
-    .hero-action-cluster {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-prime {
-      background: var(--neon-red);
-      color: white;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
-      padding: 16px 36px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      box-shadow: 0 4px 25px rgba(255, 0, 61, 0.35);
-      transition: var(--transition-smooth);
-    }
-
-    .btn-prime:hover {
-      background: #ff1a51;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(255, 0, 61, 0.5);
-    }
-
-    .btn-secondary-outline {
-      border: 1px solid var(--border-gray);
-      background: rgba(255,255,255,0.02);
-      color: white;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      padding: 16px 36px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secondary-outline:hover {
-      border-color: var(--neon-red);
-      background: rgba(255, 0, 61, 0.05);
-      transform: translateY(-2px);
-    }
-
-    .hero-graphic-display {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-graphic-display::before {
-      content: '';
-      position: absolute;
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(255,0,61,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .master-billboard-img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: var(--radius-lg);
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.7));
-      animation: smoothFloat 4s ease-in-out infinite;
-    }
-
-    @keyframes smoothFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    .trust-strip {
-      background: #09090e;
-      border-top: 1px solid var(--border-gray);
-      border-bottom: 1px solid var(--border-gray);
-      padding: 20px 0;
-      margin-top: 40px;
-    }
-
-    .trust-strip-flex {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .trust-unit {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .trust-unit-icon {
-      font-size: 1.8rem;
-      color: var(--neon-red);
-    }
-
-    .trust-unit-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .trust-unit-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* ==========================================================================
-       04. THE VIRTUAL MECHANIC (SYMPTOM QUESTIONNAIRE CORE)
-       ========================================================================== */
-    .virtual-mechanic-section {
-      background: #07070b;
-      border-top: 1px solid var(--border-gray);
-      border-bottom: 1px solid var(--border-gray);
-      padding: 90px 0;
-    }
-
-    .questionnaire-dashboard {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: var(--panel-dark);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    }
-
-    .dashboard-tabs-belt {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid var(--border-gray);
-      background: #0d0d14;
-    }
-
-    .dashboard-tab-btn {
-      padding: 20px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: var(--transition-smooth);
-      border-right: 1px solid var(--border-gray);
-    }
-
-    .dashboard-tab-btn:last-child {
-      border-right: none;
-    }
-
-    .dashboard-tab-btn.active {
-      background: var(--panel-dark);
-      color: var(--neon-red);
-      border-bottom: 2px solid var(--neon-red);
-    }
-
-    .dashboard-content-pane {
-      padding: 40px;
-      display: none;
-    }
-
-    .dashboard-content-pane.active {
-      display: block;
-    }
-
-    .symptom-cards-matrix {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .symptom-interactive-card {
-      background: #171724;
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .symptom-interactive-card:hover {
-      border-color: var(--neon-red);
-      background: #1c1c2b;
-      transform: translateY(-2px);
-    }
-
-    .symptom-card-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .symptom-card-title {
-      font-weight: 800;
-      font-size: 1rem;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .symptom-card-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .mechanic-analysis-terminal {
-      margin-top: 40px;
-      background: #050508;
-      border-left: 4px solid var(--neon-red);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-      display: none;
-    }
-
-    .analysis-header {
-      font-family: monospace;
-      color: var(--neon-red);
-      font-weight: 800;
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-
-    .analysis-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #e5e7eb;
-    }
-
-    /* ==========================================================================
-       05. SERVICE CATALOG MAIN HUB
-       ========================================================================== */
-    .main-hub-layout {
-      padding: 80px 0;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 40px;
-    }
-
-    .hub-sidebar {
-      background: var(--panel-dark);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      height: fit-content;
-      position: sticky;
-      top: 110px;
-    }
-
-    .sidebar-section {
-      margin-bottom: 32px;
-    }
-
-    .sidebar-heading {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-white);
-      margin-bottom: 16px;
-      font-weight: 800;
-      border-left: 3px solid var(--neon-red);
-      padding-left: 10px;
-    }
-
-    .filter-link-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .filter-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .filter-checkbox {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--neon-red);
-      cursor: pointer;
-    }
-
-    .system-status-marquee {
-      background: #050508;
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: monospace;
-      font-size: 0.85rem;
-      margin-bottom: 24px;
-    }
-
-    .status-indicator-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--success-green);
-    }
-
-    .center-showcase-heading {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-    }
-
-    .product-matrix-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .product-commercial-card {
-      background: var(--panel-dark);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: var(--transition-smooth);
-    }
-
-    .product-commercial-card:hover {
-      border-color: rgba(255,0,61,0.3);
-      transform: translateY(-4px);
-    }
-
-    .card-graphic-hdr {
-      height: 140px;
-      background: linear-gradient(135deg, #161622 0%, #0d0d14 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      position: relative;
-    }
-
-    .card-absolute-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-    }
-
-    .card-body-content {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .card-product-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text-white);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
-    .rating-stars-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .star-unit { color: var(--text-gold); font-size: 0.9rem; }
-    .rating-numerical-count { font-size: 0.75rem; color: var(--text-muted); }
-
-    .card-product-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      flex: 1;
-    }
-
-    .card-pricing-engine-wrap {
-      border-top: 1px solid #1f1f2e;
-      padding-top: 16px;
-      margin-top: auto;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-
-    .price-starting-prefix { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); }
-    .price-numerical-value { font-size: 1.8rem; font-weight: 900; color: var(--text-white); }
-
-    .add-to-cart-action-btn {
-      background: rgba(255, 0, 61, 0.1);
-      border: 1px solid var(--neon-red);
-      color: var(--text-white);
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      padding: 10px 16px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .add-to-cart-action-btn:hover {
-      background: var(--neon-red);
-    }
-
-    /* ==========================================================================
-       06. COST MATRIX ESTIMATOR CORE
-       ========================================================================== */
-    .matrix-builder-section { padding: 90px 0; }
-    .checkout-matrix-container {
-      display: grid;
-      grid-template-columns: 7fr 5fr;
-      gap: 40px;
-      background: var(--panel-dark);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .matrix-configurator-column { padding: 48px; border-right: 1px solid var(--border-gray); }
-    .matrix-summary-column { padding: 48px; background: rgba(0,0,0,0.15); display: flex; flex-direction: column; }
-    .config-step-wrapper { margin-bottom: 36px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triad Auto | Premium Diagnostics & Custom Builds</title>
     
-    .step-indicator-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
+    <!-- Premium Google Fonts Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
-    .step-number-bubble {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--neon-red);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 900;
-    }
+    <style>
+        /* Modern Design Tokens & Variables */
+        :root {
+            --bg-dark: #0a0c10;
+            --card-bg: rgba(18, 22, 31, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-red: #ff3b57;
+            --accent-glow: rgba(255, 59, 87, 0.15);
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-sans: 'Inter', sans-serif;
+        }
 
-    .vehicle-input-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
 
-    .premium-custom-select {
-      width: 100%;
-      padding: 16px;
-      background: #151522;
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-md);
-      color: white;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff003c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-      background-repeat: no-repeat;
-      background-position: right 20px center;
-      background-size: 16px;
-    }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .options-custom-flex-grid { display: flex; flex-direction: column; gap: 14px; }
+        .container {
+            width: 100%;
+            max-width: 480px; /* Perfect mobile-first view matching original design constraints */
+        }
 
-    .custom-checkbox-card-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #171724;
-      border: 1px solid var(--border-gray);
-      padding: 16px 24px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
+        /* --- Streamlined Navigation Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding: 0 4px;
+        }
 
-    .custom-checkbox-card-wrapper.selected {
-      border-color: var(--neon-red);
-      background: rgba(255,0,61,0.04);
-    }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .checkbox-meta-left { display: flex; align-items: center; gap: 14px; }
-    .native-hidden-input { width: 20px; height: 20px; accent-color: var(--neon-red); }
-    .checkbox-text-label { font-weight: 700; font-size: 0.95rem; }
-    .checkbox-price-modifier { font-family: monospace; font-weight: 700; color: var(--neon-red); }
+        .brand-logo {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--accent-red), #1e293b);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%); /* Sharp, modern geometric custom triad logo */
+        }
 
-    .summary-heading-box { border-bottom: 1px solid var(--border-gray); padding-bottom: 16px; margin-bottom: 24px; }
-    .summary-title { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
-    .live-manifest-scroller { flex: 1; display: flex; flex-direction: column; gap: 14px; }
-    .manifest-item-line { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
-    .pricing-ledger-total-box { border-top: 2px dashed var(--border-gray); padding-top: 24px; margin-top: 32px; text-align: center; }
-    .ledger-final-numerical-display { font-size: 3.5rem; font-weight: 900; color: var(--text-white); margin: 8px 0; }
-    .disclaimer-caption-fine { font-size: 0.75rem; color: #555566; }
+        .brand-name {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /* ==========================================================================
-       07. INTERACTIVE BOOKING ENGINE LAYOUT
-       ========================================================================== */
-    .booking-engine-section {
-      background: #050508;
-      border-top: 1px solid var(--border-gray);
-      border-bottom: 1px solid var(--border-gray);
-      padding: 90px 0;
-    }
+        .contact-btn {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
 
-    .booking-grid-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      background: var(--panel-dark);
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-    }
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
 
-    .calendar-matrix-container {
-      background: #0d0d14;
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-md);
-      padding: 24px;
-    }
+        /* --- Straight-Shooting Service Card --- */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    .calendar-month-hdr {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
+        /* Subtle Ambient Back-Glow */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--accent-glow);
+            filter: blur(50px);
+            border-radius: 50%;
+            pointer-events: none;
+        }
 
-    .calendar-days-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      text-align: center;
-    }
+        .badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-    .calendar-day-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      padding-bottom: 8px;
-    }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 30px;
+        }
 
-    .calendar-date-node {
-      padding: 12px 0;
-      background: #171724;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: var(--transition-smooth);
-    }
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-red);
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(255, 59, 87, 0.7);
+            animation: pulse 1.6s infinite;
+        }
 
-    .calendar-date-node:hover:not(.muted) {
-      background: var(--border-gray);
-      color: white;
-    }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 87, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 59, 87, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 87, 0); }
+        }
 
-    .calendar-date-node.active {
-      background: var(--neon-red) !important;
-      color: white !important;
-    }
+        .card-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
 
-    .calendar-date-node.muted {
-      color: #3f3f56;
-      cursor: not-allowed;
-      background: rgba(0,0,0,0.1);
-    }
+        .card-description {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
 
-    .time-slots-flex-box {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
 
-    .time-slot-pill {
-      padding: 12px;
-      background: #0d0d14;
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-sm);
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
+        .price-container {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .time-slot-pill:hover {
-      border-color: var(--neon-red);
-    }
+        .price-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
 
-    .time-slot-pill.active {
-      background: var(--neon-red);
-      border-color: var(--neon-red);
-      color: white;
-    }
+        .price-value {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 28px;
+            color: #fff;
+        }
 
-    .booking-summary-receipt {
-      background: #0d0d14;
-      border: 1px solid var(--border-gray);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        .book-now-btn {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            background: var(--accent-red);
+            padding: 12px 24px;
+            border-radius: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(255, 59, 87, 0.3);
+            transition: all 0.2s ease;
+        }
 
-    /* ==========================================================================
-       08. REVIEWS & ACCORDIONS ARCHITECTURE
-       ========================================================================== */
-    .reviews-hub-section { padding: 90px 0; background: #050508; }
-    .reviews-matrix-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
-    .enterprise-review-card { background: var(--panel-dark); border: 1px solid var(--border-gray); border-radius: var(--radius-md); padding: 32px; }
-    .review-user-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    
-    .avatar-placeholder {
-      width: 40px;
-      height: 40px;
-      background: #232335;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: var(--neon-red);
-    }
+        .book-now-btn:hover {
+            background: #ff526c;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(255, 59, 87, 0.4);
+        }
 
-    .user-meta-info div:first-child { font-weight: 700; font-size: 0.9rem; }
-    .user-meta-info div:last-child { font-size: 0.75rem; color: var(--text-muted); }
+        /* --- Featured Shop Builds Gallery Section --- */
+        .gallery-section {
+            margin-top: 40px;
+            width: 100%;
+        }
 
-    .faq-accordion-section { padding: 90px 0; }
-    .accordion-stack-container { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-    .accordion-unit-item { background: var(--panel-dark); border: 1px solid var(--border-gray); border-radius: var(--radius-md); overflow: hidden; }
-    
-    .accordion-trigger-header {
-      width: 100%;
-      padding: 24px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
+        .gallery-title {
+            font-family: var(--font-display);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-align: center;
+        }
 
-    .accordion-icon-toggle { color: var(--neon-red); transition: var(--transition-smooth); }
-    .accordion-unit-item.open .accordion-icon-toggle { transform: rotate(45deg); }
-    .accordion-hidden-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(0,0,0,0.1); }
-    .accordion-inner-body { padding: 24px 32px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; border-top: 1px solid var(--border-gray); }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
 
-    /* ==========================================================================
-       09. CONTACT & FOOTER MATRIX
-       ========================================================================== */
-    .industrial-dispatch-section { padding: 90px 0; background: radial-gradient(circle at 50% 50%, rgba(255,0,61,0.04), transparent 70%); }
-    .dispatch-center-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-    .dispatch-contact-card { background: var(--panel-dark); border: 1px solid var(--border-gray); border-radius: var(--radius-lg); padding: 40px; text-align: center; }
-    .dispatch-card-icon { font-size: 2.5rem; margin-bottom: 20px; }
-    .dispatch-card-title { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; }
-    .dispatch-anchor-link { font-size: 1.3rem; font-weight: 900; color: var(--text-white); }
-    .dispatch-anchor-link:hover { color: var(--neon-red); }
+        .image-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            aspect-ratio: 4 / 5;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
 
-    .enterprise-footer-block { background: #030305; border-top: 1px solid var(--border-gray); padding: 80px 0 40px; font-size: 0.88rem; }
-    .footer-top-links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; }
-    .footer-links-col h4 { color: var(--text-white); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 20px; }
-    .footer-links-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-links-col a { color: var(--text-muted); }
-    .footer-links-col a:hover { color: var(--neon-red); }
-    .footer-bottom-legal-strip { border-top: 1px solid var(--border-gray); padding-top: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; color: var(--text-muted); }
+        .grid-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
 
-    @media (max-width: 1200px) { .main-hub-layout { grid-template-columns: 1fr; } .hub-sidebar { position: static; } }
-    @media (max-width: 992px) { .nav-belt { flex-wrap: wrap; } .search-container { order: 3; min-width: 100%; } .hero-grid-showcase, .booking-grid-wrapper, .checkout-matrix-container { grid-template-columns: 1fr; } .matrix-configurator-column { border-right: none; border-bottom: 1px solid var(--border-gray); } }
-    @media (max-width: 768px) { .department-belt { overflow-x: auto; white-space: nowrap; } .vehicle-input-row, .dashboard-tabs-belt { grid-template-columns: 1fr; } }
-  </style>
+        .image-card:hover .grid-img {
+            transform: scale(1.04);
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+            padding: 14px 12px 12px 12px;
+        }
+
+        .img-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.2px;
+        }
+
+        /* --- Target Scheduling Section --- */
+        .scheduler-section {
+            margin-top: 40px;
+            width: 100%;
+            border: 2px dashed var(--border-color);
+            border-radius: 24px;
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.01);
+        }
+    </style>
 </head>
 <body>
 
-  <header class="mega-header">
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <span data-en="Enterprise Automotive Portal Suite" data-es="Suite del Portal de Automoción Empresarial">Enterprise Automotive Portal Suite</span>
-        <span>•</span>
-        <span data-en="Baraboo Regional Center" data-es="Centro Regional de Baraboo">Baraboo Regional Center</span>
-      </div>
-      <div class="top-bar-right">
-        <span>Support Hotline: 956-475-7834</span>
-      </div>
-    </div>
-
-    <div class="nav-belt">
-      <div class="brand-block">
-        <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="brand-logo-img" />
-        <span class="brand-title">Triad</span>
-      </div>
-
-      <div class="delivery-locator">
-        <div class="locator-icon">📍</div>
-        <div class="locator-text">
-          <div data-en="Service Area" data-es="Área de Servicio">Service Area</div>
-          <div>Baraboo 53913</div>
-        </div>
-      </div>
-
-      <div class="search-container">
-        <div class="search-bar-wrapper">
-          <select class="search-category-select" id="searchDeptSelect">
-            <option value="all" data-en="All Depts" data-es="Todos Deptos">All Depts</option>
-            <option value="diag" data-en="Diagnostics" data-es="Diagnósticos">Diagnostics</option>
-            <option value="repair" data-en="Repairs" data-es="Reparaciones">Reparaciones</option>
-          </select>
-          <input type="text" class="main-search-input" id="globalSearchInput" placeholder="Search services, fault symptoms..." onkeyup="executeGlobalSearch()" />
-          <button class="search-submit-btn">🔍</button>
-        </div>
-      </div>
-
-      <div class="action-belt">
-        <div class="nav-action-item" onclick="scrollToSection('about')">
-          <span data-en="Company Profile" data-es="Perfil de la Empresa">Company Profile</span>
-          <span data-en="About Us" data-es="Nosotros">About Us</span>
-        </div>
-        <div class="nav-action-item" onclick="scrollToSection('matrixSection')">
-          <span data-en="Instant Rates" data-es="Tarifas Instantáneas">Instant Rates</span>
-          <span data-en="Quote Builder" data-es="Constructor">Quote Builder</span>
-        </div>
-        <div class="cart-pill-box" onclick="scrollToSection('matrixSection')">
-          🛒 <span class="cart-counter" id="globalCartCounter">0</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="department-belt">
-      <div class="dept-link active" onclick="filterCategory('all', this)" data-en="All Services" data-es="Todos los Servicios">All Services</div>
-      <div class="dept-link" onclick="filterCategory('diag', this)" data-en="System Diagnostics" data-es="Diagnósticos del Sistema">System Diagnostics</div>
-      <div class="dept-link" onclick="filterCategory('exhaust', this)" data-en="Exhaust Systems" data-es="Sistemas de Escape">Exhaust Systems</div>
-      <div class="dept-link" onclick="filterCategory('brakes', this)" data-en="Braking Systems" data-es="Sistemas de Frenos">Braking Systems</div>
-      <div class="dept-link" onclick="filterCategory('suspension', this)" data-en="Suspension Assemblies" data-es="Ensambles de Suspensión">Suspension Assemblies</div>
-      
-      <div class="lang-toggle-wrap">
-        <button id="lang-btn-en" class="lang-btn active" onclick="globalSwitchLanguage('en')">EN</button>
-        <button id="lang-btn-es" class="lang-btn" onclick="globalSwitchLanguage('es')">ES</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero-carousel-space">
-      <div class="container hero-grid-showcase">
-        <div class="hero-promo-billboard">
-          <div class="badge badge-red" style="margin-bottom: 16px;" data-en="Enterprise Service Framework" data-es="Marco de Servicio Empresarial">Enterprise Service Framework</div>
-          <h1 class="hero-headline-large" data-en="Next-Gen Auto Repair Delivery" data-es="Entrega Automotriz de Próxima Generación">Next-Gen Auto Repair Delivery</h1>
-          <p class="hero-subtext" data-en="Deploying advanced field diagnostics, specialized exhaust fabrications, and responsive mobile repair architectures across Baraboo." data-es="Desplegando diagnósticos de campo avanzados, fabricaciones especializadas de escape y arquitecturas de reparación móvil en Baraboo.">
-            Deploying advanced field diagnostics, specialized exhaust fabrications, and responsive mobile repair architectures across Baraboo.
-          </p>
-          <div class="hero-action-cluster">
-            <button class="btn-prime" onclick="scrollToSection('matrixSection')" data-en="Initialize Quote Matrix" data-es="Inicializar Matriz de Cotización">Initialize Quote Matrix</button>
-            <button class="btn-secondary-outline" onclick="scrollToSection('virtualMechanic')" data-en="Launch Virtual Mechanic" data-es="Iniciar Mecánico Virtual">Launch Virtual Mechanic</button>
-          </div>
-        </div>
-        <div class="hero-graphic-display">
-          <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Core Imagery" class="master-billboard-img" />
-        </div>
-      </div>
-    </section>
-
-    <section class="trust-strip">
-      <div class="container trust-strip-flex">
-        <div class="trust-unit">
-          <div class="trust-unit-icon">🛡️</div>
-          <div>
-            <div class="trust-unit-title" data-en="Family Owned & Operated" data-es="Propiedad y Operación Familiar">Family Owned & Operated</div>
-            <div class="trust-unit-desc" data-en="Local community accountability" data-es="Responsabilidad comunitaria local">Local community accountability</div>
-          </div>
-        </div>
-        <div class="trust-unit">
-          <div class="trust-unit-icon">🌐</div>
-          <div>
-            <div class="trust-unit-title" data-en="Bilingual Interface Core" data-es="Núcleo de Interfaz Bilingüe">Bilingual Interface Core</div>
-            <div class="trust-unit-desc" data-en="Complete English & Spanish service" data-es="Servicio completo en inglés y español">Complete English & Spanish service</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="virtual-mechanic-section" id="virtualMechanic">
-      <div class="container">
-        <h2 style="text-align:center; font-size:2.2rem; font-weight:900; text-transform:uppercase; margin-bottom:12px;" data-en="The Virtual Mechanic Portal" data-es="El Portal del Mecánico Virtual">The Virtual Mechanic Portal</h2>
-        <p style="text-align:center; color:var(--text-muted); max-width:650px; margin:0 auto 40px;" data-en="Isolate systemic auto issues instantly. Select an architectural zone below to run automated system symptom tracking." data-es="Aísle problemas del automóvil al instante. Seleccione una zona arquitectónica abajo para ejecutar el rastreo automatizado de síntomas.">
-          Isolate systemic auto issues instantly. Select an architectural zone below to run automated system symptom tracking.
-        </p>
-
-        <div class="questionnaire-dashboard">
-          <div class="dashboard-tabs-belt">
-            <div class="dashboard-tab-btn active" onclick="switchMechanicTab('vm-brakes', this)" data-en="Brake Systems" data-es="Sistemas de Frenos">Brake Systems</div>
-            <div class="dashboard-tab-btn" onclick="switchMechanicTab('vm-exhaust', this)" data-en="Exhaust Path" data-es="Ruta de Escape">Exhaust Path</div>
-            <div class="dashboard-tab-btn" onclick="switchMechanicTab('vm-suspension', this)" data-en="Suspension Loop" data-es="Bucle de Suspensión">Suspension Loop</div>
-            <div class="dashboard-tab-btn" onclick="switchMechanicTab('vm-diagnostics', this)" data-en="ECU Diagnostics" data-es="Diagnósticos ECU">ECU Diagnostics</div>
-          </div>
-
-          <div class="dashboard-content-pane active" id="vm-brakes">
-            <h3 data-en="Identify Braking System Symptoms:" data-es="Identifique los Síntomas del Sistema de Frenos:">Identify Braking System Symptoms:</h3>
-            <div class="symptom-cards-matrix">
-              <div class="symptom-interactive-card" onclick="runMechanicAnalysis('brakes-grind')">
-                <div class="symptom-card-icon">🔊</div>
-                <div class="symptom-card-title" data-en="Metallic Grinding" data-es="Raspado Metálico">Metallic Grinding</div>
-                <div class="symptom-card-desc" data-en="Loud friction scratching occurring during deceleration loops." data-es="Fricción ruidosa durante los bucles de desaceleración.">Loud friction scratching occurring during deceleration loops.</div>
-              </div>
-              <div class="symptom-interactive-card" onclick="runMechanicAnalysis('brakes-squeak')">
-                <div class="symptom-card-icon">🫨</div>
-                <div class="symptom-card-title" data-en="High Pitch Squeak" data-es="Chirrido Agudo">High Pitch Squeak</div>
-                <div class="symptom-card-desc" data-en="Continuous sharp audio signal when pedal force is applied." data-es="Señal de audio continua al aplicar fuerza al pedal.">Continuous sharp audio signal when pedal force is applied.</div>
-              </div>
+    <div class="container">
+        
+        <!-- Header with Custom Built-In Logo -->
+        <header>
+            <div class="brand">
+                <div class="brand-logo"></div>
+                <h1 class="brand-name">Triad Auto</h1>
             </div>
-          </div>
+            <a href="tel:9564757834" class="contact-btn">Call Shop</a>
+        </header>
 
-          <div class="dashboard-content-pane" id="vm-exhaust">
-            <h3 data-en="Identify Exhaust Structural Faults:" data-es="Identifique Fallas Estructura de Escape:">Identify Exhaust Structural Faults:</h3>
-            <div class="symptom-cards-matrix">
-              <div class="symptom-interactive-card" onclick="runMechanicAnalysis('exhaust-roar')">
-                <div class="symptom-card-icon">💨</div>
-                <div class="symptom-card-title" data-en="Deep Roaring Acoustic" data-es="Acústica de Rugido Profundo">Deep Roaring Acoustic</div>
-                <div class="symptom-card-desc" data-en="Intense low frequency noise coming from underside of the automobile." data-es="Ruido de baja frecuencia debajo de la estructura del automóvil.">Intense low frequency noise coming from underside of the automobile.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dashboard-content-pane" id="vm-suspension">
-            <h3 data-en="Identify Stability & Steering Faults:" data-es="Identifique Fallas de Estabilidad y Dirección:">Identify Stability & Steering Faults:</h3>
-            <div class="symptom-cards-matrix">
-              <div class="symptom-interactive-card" onclick="runMechanicAnalysis('suspension-clunk')">
-                <div class="symptom-card-icon">🛞</div>
-                <div class="symptom-card-title" data-en="Structural Clunking" data-es="Golpeteo Estructural">Structural Clunking</div>
-                <div class="symptom-card-desc" data-en="Heavy metallic impact sounds when processing road bumps." data-es="Sonidos de impacto metálico al procesar baches en el camino.">Heavy metallic impact sounds when processing road bumps.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dashboard-content-pane" id="vm-diagnostics">
-            <h3 data-en="Identify Computer Log Signatures:" data-es="Identifique Firmas de Registro de Computadora:">Identify Computer Log Signatures:</h3>
-            <div class="symptom-cards-matrix">
-              <div class="symptom-interactive-card" onclick="runMechanicAnalysis('diag-cel')">
-                <div class="symptom-card-icon">🔎</div>
-                <div class="symptom-card-title" data-en="Active Check Engine Flag" data-es="Bandera de Check Engine Activa">Active Check Engine Flag</div>
-                <div class="symptom-card-desc" data-en="Dashboard notification light illumination indicator." data-es="Indicador luminoso de advertencia activo en el tablero de control.">Dashboard notification light illumination indicator.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mechanic-analysis-terminal" id="vmTerminalOutput">
-            <div class="analysis-header">[SYS LOG // ARCHITECTURAL EVALUATION ENGINE]</div>
-            <div class="analysis-text" id="vmAnalysisText"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container main-hub-layout">
-      <aside class="hub-sidebar">
-        <div class="sidebar-section">
-          <h3 class="sidebar-heading" data-en="System Status" data-es="Estado del Sistema">System Status</h3>
-          <div style="font-family: monospace; font-size: 0.85rem; color: var(--success-green); display: flex; align-items: center; gap: 8px;">
-            <div class="status-indicator-dot"></div>
-            <span>PORTAL: ONLINE</span>
-          </div>
-        </div>
-        <div class="sidebar-section">
-          <h3 class="sidebar-heading" data-en="Service Filters" data-es="Filtros de Servicio">Service Filters</h3>
-          <div class="filter-link-list">
-            <label class="filter-item"><input type="checkbox" class="filter-checkbox" checked value="diag" onchange="runSidebarFiltering()"/> <span data-en="Diagnostics" data-es="Diagnósticos">Diagnostics</span></label>
-            <label class="filter-item"><input type="checkbox" class="filter-checkbox" checked value="exhaust" onchange="runSidebarFiltering()"/> <span data-en="Exhaust Systems" data-es="Sistemas de Escape">Exhaust Systems</span></label>
-            <label class="filter-item"><input type="checkbox" class="filter-checkbox" checked value="brakes" onchange="runSidebarFiltering()"/> <span data-en="Brake Systems" data-es="Sistemas de Frenos">Brake Systems</span></label>
-            <label class="filter-item"><input type="checkbox" class="filter-checkbox" checked value="suspension" onchange="runSidebarFiltering()"/> <span data-en="Suspension" data-es="Suspensión">Suspension</span></label>
-          </div>
-        </div>
-      </aside>
-
-      <div class="hub-center-display">
-        <div class="system-status-marquee">
-          <div>LOG: INCOMING_SECURE_CONNECTION_CONFIRMED</div>
-          <div style="color: var(--neon-red);">TIMESTAMP: 2026-06-09</div>
-        </div>
-
-        <h2 class="center-showcase-heading" id="catalogHeading" data-en="Available Fleet Services" data-es="Servicios de Flota Disponibles">Available Fleet Services</h2>
-
-        <div class="product-matrix-grid" id="masterCatalogGrid">
-          <div class="product-commercial-card" data-category="diag">
-            <div class="card-graphic-hdr">🔎
-              <div class="card-absolute-badge"><span class="badge badge-red" data-en="Core Evaluation" data-es="Evaluación Núcleo">Core Evaluation</span></div>
-            </div>
-            <div class="card-body-content">
-              <h3 class="card-product-title" data-en="Computer Diagnostics Array Scan" data-es="Escaneo de Matriz de Diagnóstico por Computadora">Computer Diagnostics Array Scan</h3>
-              <div class="rating-stars-row">
-                <span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span>
-                <span class="rating-numerical-count">5.0 (48)</span>
-              </div>
-              <p class="card-product-desc" data-en="Complete scanning array mapping engine warning flags and electronic module layers inside the automobile processing unit." data-es="Matriz de escaneo completo que mapea luces de advertencia y capas de módulos electrónicos dentro de la unidad de procesamiento del automóvil.">
-                Complete scanning array mapping engine warning flags and electronic module layers inside the automobile processing unit.
-              </p>
-              <div class="card-pricing-engine-wrap">
-                <div>
-                  <span class="price-starting-prefix" data-en="STARTING AT" data-es="EMPEZANDO DESDE">STARTING AT</span>
-                  <span class="price-numerical-value">$45.00</span>
+        <!-- Service Options Area -->
+        <main class="card">
+            <div class="badge-row">
+                <div class="status-badge">
+                    <span class="pulse-dot"></span>
+                    Honest Diagnostics
                 </div>
-                <button class="add-to-cart-action-btn" onclick="directInjectIntoMatrix(45, 'diag')" data-en="Configure" data-es="Configurar">Configure</button>
-              </div>
             </div>
-          </div>
 
-          <div class="product-commercial-card" data-category="exhaust">
-            <div class="card-graphic-hdr">💨
-              <div class="card-absolute-badge"><span class="badge badge-gold" data-en="Precision Weld" data-es="Soldadura Precisión">Precision Weld</span></div>
-            </div>
-            <div class="card-body-content">
-              <h3 class="card-product-title" data-en="Exhaust / Muffler Structural Weld Repair" data-es="Reparación Estructural y Soldadura de Escape / Mofle">Exhaust / Muffler Structural Weld Repair</h3>
-              <div class="rating-stars-row">
-                <span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span>
-                <span class="rating-numerical-count">4.9 (62)</span>
-              </div>
-              <p class="card-product-desc" data-en="Remediation of pipe leaks, manifold containment loops, and application of premium structural welding." data-es="Remediación de fugas de tubería, bucles de contención en múltiples y aplicación de soldadura estructural premium.">
-                Remediation of pipe leaks, manifold containment loops, and application of premium structural welding.
-              </p>
-              <div class="card-pricing-engine-wrap">
-                <div>
-                  <span class="price-starting-prefix" data-en="STARTING AT" data-es="EMPEZANDO DESDE">STARTING AT</span>
-                  <span class="price-numerical-value">$100.00</span>
+            <h2 class="card-title">Check Engine Light Scan</h2>
+            <p class="card-description">
+                No guesswork, no corporate runaround. We plug directly into your vehicle’s computer system, pull your exact engine trouble codes, and tell you exactly what’s causing the fault.
+            </p>
+
+            <div class="card-footer">
+                <div class="price-container">
+                    <span class="price-label">Flat Rate</span>
+                    <span class="price-value">$45.00</span>
                 </div>
-                <button class="add-to-cart-action-btn" onclick="directInjectIntoMatrix(100, 'exhaust')" data-en="Configure" data-es="Configurar">Configure</button>
-              </div>
+                <!-- Links smoothly directly down to your scheduling block -->
+                <a href="#scheduler" class="book-now-btn">Book A Bay</a>
             </div>
-          </div>
+        </main>
 
-          <div class="product-commercial-card" data-category="brakes">
-            <div class="card-graphic-hdr">🛑
-              <div class="card-absolute-badge"><span class="badge badge-green" data-en="Safety Standard" data-es="Estándar Seguridad">Safety Standard</span></div>
-            </div>
-            <div class="card-body-content">
-              <h3 class="card-product-title" data-en="Brake Pads & Rotors Replacement Suite" data-es="Suite de Reemplazo de Balatas y Discos de Freno">Brake Pads & Rotors Replacement Suite</h3>
-              <div class="rating-stars-row">
-                <span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span>
-                <span class="rating-numerical-count">5.0 (54)</span>
-              </div>
-              <p class="card-product-desc" data-en="Premium component swapping per axle assembly including hardware tracking tolerance and balancing." data-es="Cambio de componentes premium por ensamble de eje, incluyendo tolerancias de hardware y balanceo del sistema.">
-                Premium component swapping per axle assembly including hardware tracking tolerance and balancing.
-              </p>
-              <div class="card-pricing-engine-wrap">
-                <div>
-                  <span class="price-starting-prefix" data-en="STARTING AT" data-es="EMPEZANDO DESDE">STARTING AT</span>
-                  <span class="price-numerical-value">$60.00</span>
-                </div>
-                <button class="add-to-cart-action-btn" onclick="directInjectIntoMatrix(60, 'brakes')" data-en="Configure" data-es="Configurar">Configure</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-commercial-card" data-category="suspension">
-            <div class="card-graphic-hdr">🛞
-              <div class="card-absolute-badge"><span class="badge badge-outline" data-en="Heavy Duty" data-es="Servicio Pesado">Heavy Duty</span></div>
-            </div>
-            <div class="card-body-content">
-              <h3 class="card-product-title" data-en="Suspension Component Structural Realignment" data-es="Realineación Estructural de Componentes de Suspensión">Suspension Component Structural Realignment</h3>
-              <div class="rating-stars-row">
-                <span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span><span class="star-unit">★</span>
-                <span class="rating-numerical-count">4.8 (39)</span>
-              </div>
-              <p class="card-product-desc" data-en="Isolating mechanics related to stabilizing struts, control arm integrations, and joint assemblies." data-es="Aislamiento de mecánicas relacionadas con struts estabilizadores, integración de brazos de control y ensambles de juntas.">
-                Isolating mechanics related to stabilizing struts, control arm integrations, and joint assemblies.
-              </p>
-              <div class="card-pricing-engine-wrap">
-                <div>
-                  <span class="price-starting-prefix" data-en="STARTING AT" data-es="EMPEZANDO DESDE">STARTING AT</span>
-                  <span class="price-numerical-value">$80.00</span>
-                </div>
-                <button class="add-to-cart-action-btn" onclick="directInjectIntoMatrix(80, 'suspension')" data-en="Configure" data-es="Configurar">Configure</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="matrix-builder-section" id="matrixSection">
-      <div class="container">
-        <h2 style="text-align:center; font-size:2.2rem; font-weight:900; text-transform:uppercase; margin-bottom:12px;" data-en="Cost Matrix Configurator" data-es="Configurador de la Matriz de Costos">Cost Matrix Configurator</h2>
-        <p style="text-align:center; color:var(--text-muted); max-width:650px; margin:0 auto 60px;" data-en="Layer automotive services dynamically. Build your baseline cost metrics before initiating field dispatch." data-es="Agregue capas de servicios automotrices de manera dinámica. Construya sus métricas de costo base antes de iniciar el despacho de campo.">
-          Layer automotive services dynamically. Build your baseline cost metrics before initiating field dispatch.
-        </p>
-
-        <div class="checkout-matrix-container">
-          <div class="matrix-configurator-column">
+        <!-- Real Proof: In The Shop Gallery -->
+        <section class="gallery-section">
+            <h3 class="gallery-title">In The Shop</h3>
             
-            <div class="config-step-wrapper">
-              <div class="step-indicator-title">
-                <div class="step-number-bubble">1</div>
-                <span data-en="Automobile Initialization Parameters" data-es="Parámetros de Inicialización del Automóvil">Automobile Initialization Parameters</span>
-              </div>
-              <div class="vehicle-input-row">
-                <select class="premium-custom-select" id="matrixYear" onchange="processMatrixCalculations()">
-                  <option value="">Year</option>
-                  <option value="2026">2026</option>
-                  <option value="2025">2025</option>
-                  <option value="2024">2024</option>
-                  <option value="2023">2023</option>
-                  <option value="legacy" data-en="Pre-2023" data-es="Antes de 2023">Pre-2023</option>
-                </select>
-                <select class="premium-custom-select" id="matrixMake" onchange="processMatrixCalculations()">
-                  <option value="">Make</option>
-                  <option value="ford">Ford</option>
-                  <option value="chevy">Chevrolet</option>
-                  <option value="toyota">Toyota</option>
-                </select>
-                <input type="text" class="premium-custom-select" style="background-image:none; padding-right:16px;" id="matrixModel" placeholder="Model (e.g. F-150)" onkeyup="processMatrixCalculations()" />
-              </div>
-            </div>
-
-            <div class="config-step-wrapper">
-              <div class="step-indicator-title">
-                <div class="step-number-bubble">2</div>
-                <span data-en="Service Allocation Layers" data-es="Capas de Asignación de Servicio">Service Allocation Layers</span>
-              </div>
-              <div class="options-custom-flex-grid">
-                <div class="custom-checkbox-card-wrapper" id="layerRowDiag" onclick="toggleOptionLayer('diag')">
-                  <div class="checkbox-meta-left">
-                    <input type="checkbox" class="native-hidden-input" id="layerCheckDiag" onchange="event.stopPropagation(); processMatrixCalculations();" />
-                    <span class="checkbox-text-label" data-en="Computer Diagnostics Array Scan" data-es="Escaneo de Matriz de Diagnóstico por Computadora">Computer Diagnostics Array Scan</span>
-                  </div>
-                  <span class="checkbox-price-modifier">+$45.00</span>
+            <div class="grid-container">
+                <!-- Card 1: Javy's Truck -->
+                <div class="image-card">
+                    <img src="IMG_7602.jpeg" alt="Javy's Cateye Chevy" class="grid-img">
+                    <div class="img-overlay">
+                        <p class="img-label">Late Model Performance</p>
+                    </div>
                 </div>
-                <div class="custom-checkbox-card-wrapper" id="layerRowExhaust" onclick="toggleOptionLayer('exhaust')">
-                  <div class="checkbox-meta-left">
-                    <input type="checkbox" class="native-hidden-input" id="layerCheckExhaust" onchange="event.stopPropagation(); processMatrixCalculations();" />
-                    <span class="checkbox-text-label" data-en="Exhaust / Muffler Structural Weld Repair" data-es="Reparación Estructural y Soldadura de Escape / Mofle">Exhaust / Muffler Structural Weld Repair</span>
-                  </div>
-                  <span class="checkbox-price-modifier">+$100.00</span>
+
+                <!-- Card 2: Uncle's Car -->
+                <div class="image-card">
+                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic '64 Impala" class="grid-img">
+                    <div class="img-overlay">
+                        <p class="img-label">Classic Custom Wiring</p>
+                    </div>
                 </div>
-                <div class="custom-checkbox-card-wrapper" id="layerRowBrakes" onclick="toggleOptionLayer('brakes')">
-                  <div class="checkbox-meta-left">
-                    <input type="checkbox" class="native-hidden-input" id="layerCheckBrakes" onchange="event.stopPropagation(); processMatrixCalculations();" />
-                    <span class="checkbox-text-label" data-en="Brake Pads & Rotors Replacement Suite" data-es="Suite de Reemplazo de Balatas y Discos de Freno">Brake Pads & Rotors Replacement Suite</span>
-                  </div>
-                  <span class="checkbox-price-modifier">+$60.00</span>
-                </div>
-                <div class="custom-checkbox-card-wrapper" id="layerRowSuspension" onclick="toggleOptionLayer('suspension')">
-                  <div class="checkbox-meta-left">
-                    <input type="checkbox" class="native-hidden-input" id="layerCheckSuspension" onchange="event.stopPropagation(); processMatrixCalculations();" />
-                    <span class="checkbox-text-label" data-en="Suspension Component Structural Realignment" data-es="Realineación Estructural de Componentes de Suspensión">Suspension Component Structural Realignment</span>
-                  </div>
-                  <span class="checkbox-price-modifier">+$80.00</span>
-                </div>
-              </div>
             </div>
+        </section>
 
-            <div class="config-step-wrapper">
-              <div class="step-indicator-title">
-                <div class="step-number-bubble">3</div>
-                <span data-en="Logistics Routing Allocation" data-es="Asignación de Enrutamiento Logístico">Logistics Routing Allocation</span>
-              </div>
-              <div class="custom-checkbox-card-wrapper" id="layerRowMobile" onclick="toggleOptionLayer('mobile')">
-                <div class="checkbox-meta-left">
-                  <input type="checkbox" class="native-hidden-input" id="layerCheckMobile" onchange="event.stopPropagation(); processMatrixCalculations();" />
-                  <div>
-                    <span class="checkbox-text-label" style="display:block;" data-en="Request Mobile Field Dispatch" data-es="Solicitar Despacho de Campo Móvil">Request Mobile Field Dispatch</span>
-                    <small style="color:var(--text-muted); font-size:0.75rem;">Assets deploy directly to your structural coordinates</small>
-                  </div>
-                </div>
-                <span class="checkbox-price-modifier">+$50.00</span>
-              </div>
-            </div>
-          </div>
+        <!-- Your Existing Scheduling Tool Target Anchor -->
+        <section id="scheduler" class="scheduler-section">
+            <h3>📅 Your Scheduling Tool Loads Here</h3>
+            <p style="font-size: 14px; margin-top: 8px;">Embed your existing scheduler calendar plugin or script right inside this container block!</p>
+        </section>
 
-          <div class="matrix-summary-column">
-            <div class="summary-heading-box"><h3 class="summary-title" data-en="Configuration Ledger" data-es="Registro de Configuración">Configuration Ledger</h3></div>
-            <div class="live-manifest-scroller">
-              <div class="manifest-item-line">
-                <span data-en="Target Automobile:" data-es="Automóvil Objetivo:">Target Automobile:</span>
-                <span id="manifestVehicleVal" style="font-weight:700;">--</span>
-              </div>
-              <div class="manifest-item-line" id="manifestLineDiag" style="display:none;"><span>• Diagnostics Scan Array</span><span>$45.00</span></div>
-              <div class="manifest-item-line" id="manifestLineExhaust" style="display:none;"><span>• Exhaust Weld Matrix</span><span>$100.00</span></div>
-              <div class="manifest-item-line" id="manifestLineBrakes" style="display:none;"><span>• Brake Replacement Suite</span><span>$60.00</span></div>
-              <div class="manifest-item-line" id="manifestLineSuspension" style="display:none;"><span>• Suspension Component Loop</span><span>$80.00</span></div>
-              <div class="manifest-item-line" id="manifestLineMobile" style="display:none;"><span>• Mobile Dispatch Routing</span><span>$50.00</span></div>
-            </div>
-            <div class="pricing-ledger-total-box">
-              <span style="font-size:0.85rem; font-weight:800; color:var(--text-muted);" data-en="ESTIMATED BASE RATE" data-es="TARIFA BASE ESTIMADA">ESTIMATED BASE RATE</span>
-              <div class="ledger-final-numerical-display" id="matrixPriceTotalBox">$0.00</div>
-              <p class="disclaimer-caption-fine">*Excludes hardware components and dynamic structural local taxes.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="booking-engine-section" id="bookingSection">
-      <div class="container">
-        <h2 style="text-align:center; font-size:2.2rem; font-weight:900; text-transform:uppercase; margin-bottom:12px;" data-en="Interactive Dispatch Scheduler" data-es="Programador de Despacho Interactivo">Interactive Dispatch Scheduler</h2>
-        <p style="text-align:center; color:var(--text-muted); max-width:650px; margin:0 auto 60px;" data-en="Secure an open structural repair window inside our master operations processing dashboard instantly." data-es="Asegure un espacio de reparación en nuestro panel de procesamiento de operaciones al instante.">
-          Secure an open structural repair window inside our master operations processing dashboard instantly.
-        </p>
-
-        <div class="booking-grid-wrapper">
-          <div class="calendar-matrix-container">
-            <div class="calendar-month-hdr">
-              <span id="calendarMonthLabel">June 2026</span>
-              <span style="color:var(--neon-red); font-size:0.8rem; font-family:monospace;">AUTO_SYNC: OK</span>
-            </div>
-            <div class="calendar-days-grid" id="calendarDaysGrid">
-              <div class="calendar-day-label">Su</div><div class="calendar-day-label">Mo</div><div class="calendar-day-label">Tu</div>
-              <div class="calendar-day-label">We</div><div class="calendar-day-label">Th</div><div class="calendar-day-label">Fr</div>
-              <div class="calendar-day-label">Sa</div>
-              
-              <div class="calendar-date-node muted">31</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(1, this)">1</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(2, this)">2</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(3, this)">3</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(4, this)">4</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(5, this)">5</div>
-              <div class="calendar-date-node muted">6</div><div class="calendar-date-node muted">7</div>
-              <div class="calendar-date-node active" onclick="selectBookingDate(8, this)">8</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(9, this)">9</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(10, this)">10</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(11, this)">11</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(12, this)">12</div>
-              <div class="calendar-date-node muted">13</div><div class="calendar-date-node muted">14</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(15, this)">15</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(16, this)">16</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(17, this)">17</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(18, this)">18</div>
-              <div class="calendar-date-node" onclick="selectBookingDate(19, this)">19</div>
-              <div class="calendar-date-node muted">20</div>
-            </div>
-
-            <div style="margin-top:24px; border-top:1px solid var(--border-gray); padding-top:20px;">
-              <h4 style="font-size:0.85rem; text-transform:uppercase; font-weight:800; color:var(--text-muted); margin-bottom:12px;">Available Processing Time Windows:</h4>
-              <div class="time-slots-flex-box">
-                <div class="time-slot-pill active" onclick="selectBookingTime('08:00 AM', this)">08:00 AM</div>
-                <div class="time-slot-pill" onclick="selectBookingTime('10:30 AM', this)">10:30 AM</div>
-                <div class="time-slot-pill" onclick="selectBookingTime('01:00 PM', this)">01:00 PM</div>
-                <div class="time-slot-pill" onclick="selectBookingTime('03:30 PM', this)">03:30 PM</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-summary-receipt">
-            <div>
-              <h3 style="text-transform:uppercase; font-weight:900; margin-bottom:16px; border-bottom:1px solid var(--border-gray); padding-bottom:12px;" data-en="Secure Dispatch Verification" data-es="Verificación de Despacho Seguro">Secure Dispatch Verification</h3>
-              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:12px;">
-                <strong style="color:white;" data-en="Allocated Target Date:" data-es="Fecha Asignada Objetivo:">Allocated Target Date:</strong> <span id="bookingTargetDateManifest">June 8, 2026</span>
-              </p>
-              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:24px;">
-                <strong style="color:white;" data-en="Allocated Time Window:" data-es="Ventana de Tiempo Asignada:">Allocated Time Window:</strong> <span id="bookingTargetTimeManifest">08:00 AM</span>
-              </p>
-              <input type="text" class="premium-custom-select" style="background:#050508; background-image:none; margin-bottom:16px;" id="bookingClientName" placeholder="Client Owner Name" data-en-placeholder="Client Owner Name" data-es-placeholder="Nombre del Propietario Cliente" onkeyup="syncBookingSMSAnchor()" />
-              <input type="tel" class="premium-custom-select" style="background:#050508; background-image:none;" id="bookingClientPhone" placeholder="Contact Mobile Sequence" data-en-placeholder="Contact Mobile Sequence" data-es-placeholder="Secuencia de Teléfono Móvil" onkeyup="syncBookingSMSAnchor()" />
-            </div>
-
-            <div style="margin-top:32px;">
-              <a href="#" id="finalBookingSMSAnchor" class="btn-prime" style="display:block; text-align:center;" data-en="Dispatch Secure Schedule Request" data-es="Despachar Solicitud de Agenda">Dispatch Secure Schedule Request</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="reviews-hub-section" id="reviewsSection">
-      <div class="container">
-        <h2 style="text-align:center; font-size:2.2rem; font-weight:900; text-transform:uppercase; margin-bottom:40px;" data-en="Verified Operational Logs" data-es="Registros Operativos Verificados">Verified Operational Logs</h2>
-        <div class="reviews-matrix-row">
-          <div class="enterprise-review-card">
-            <div class="review-user-row">
-              <div class="avatar-placeholder">AM</div>
-              <div class="user-meta-info">
-                <div>Aaron McDaniels</div>
-                <div data-en="Verified Automobile Owner" data-es="Propietario de Automóvil Verificado">Verified Automobile Owner</div>
-              </div>
-              <div style="margin-left:auto; color:var(--text-gold);">★★★★★</div>
-            </div>
-            <p style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">
-              "Triad deployed structural diagnostics directly to my yard when my automobile had an active starter failure. Communication was clear, execution was precise."
-            </p>
-          </div>
-          <div class="enterprise-review-card">
-            <div class="review-user-row">
-              <div class="avatar-placeholder">CL</div>
-              <div class="user-meta-info">
-                <div>Carlos Lopez</div>
-                <div data-en="Fleet Logistics Specialist" data-es="Especialista en Logística de Flotas">Fleet Logistics Specialist</div>
-              </div>
-              <div style="margin-left:auto; color:var(--text-gold);">★★★★★</div>
-            </div>
-            <p style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">
-              "Highly efficient exhaust system reconstruction. They processed our commercial platform, executed clean structural welds, and bypassed long dealer wait matrices."
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container" id="about" style="padding: 90px 24px;">
-      <div style="background:var(--panel-dark); border:1px solid var(--border-gray); padding: 60px; border-radius: var(--radius-lg); text-align:center;">
-        <h2 style="margin-bottom:20px; text-transform:uppercase; font-weight:900;" data-en="Corporate Architectural Identity" data-es="Identidad de la Arquitectura Corporativa">Corporate Architectural Identity</h2>
-        <p style="color:var(--text-muted); max-width:800px; margin: 0 auto 24px; font-size:1.1rem; line-height:1.7;" data-en="Triad Automotive LLC operates as a local family-owned automotive enterprise centered around elite technical accountability and accessible multilingual client routing." data-es="Triad Automotive LLC opera como una empresa automotriz familiar local centrada en la alta responsabilidad técnica y un enrutamiento accesible para clientes multilingües.">
-          Triad Automotive LLC operates as a local family-owned automotive enterprise centered around elite technical accountability and accessible multilingual client routing.
-        </p>
-        <p style="color:var(--text-muted); max-width:800px; margin: 0 auto; font-size:1.1rem; line-height:1.7;" data-en="Our engineering vectors optimize vehicular stability loops across braking systems, custom exhaust geometries, and advanced structural alignment parameters." data-es="Nuestros vectores de ingeniería optimizan los bucles de estabilidad vehicular en sistemas de frenos, geometrías de escape personalizadas y parámetros de alineación estructural avanzadas.">
-          Our engineering vectors optimize vehicular stability loops across braking systems, custom exhaust geometries, and advanced structural alignment parameters.
-        </p>
-      </div>
-    </section>
-
-    <section class="faq-accordion-section" id="faq">
-      <div class="container">
-        <h2 style="text-align:center; font-size:2.2rem; font-weight:900; text-transform:uppercase; margin-bottom:40px;" data-en="Knowledge Base Matrix Registry" data-es="Registro de la Matriz de Base de Conocimientos">Knowledge Base Matrix Registry</h2>
-        <div class="accordion-stack-container">
-          <div class="accordion-unit-item">
-            <button class="accordion-trigger-header" onclick="toggleAccordionComponent(this)">
-              <span data-en="What structural validation occurs during a computer diagnostics scan?" data-es="¿Qué validación de estructura ocurre durante un escaneo de diagnóstico?">What structural validation occurs during a computer diagnostics scan?</span>
-              <span class="accordion-icon-toggle">+</span>
-            </button>
-            <div class="accordion-hidden-panel">
-              <div class="accordion-inner-body" data-en="Our systems intercept internal diagnostic codes stored within your automobile electronic processing computers to map fault roots." data-es="Nuestros sistemas interceptan los códigos de diagnóstico almacenados dentro de las computadoras de procesamiento electrónico de su automóvil para mapear fallas.">
-                Our systems intercept internal diagnostic codes stored within your automobile electronic processing computers to map fault roots.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="industrial-dispatch-section" id="contact">
-      <div class="container">
-        <h2 style="text-align:center; font-size:2.2rem; font-weight:900; text-transform:uppercase; margin-bottom:40px;" data-en="Command Interface Links" data-es="Enlaces de Interfaz de Comando">Command Interface Links</h2>
-        <div class="dispatch-center-grid">
-          <div class="dispatch-contact-card">
-            <div class="dispatch-card-icon">🖨️</div>
-            <div class="dispatch-card-title">Digital Text Routing</div>
-            <a href="sms:+19564757834" class="dispatch-anchor-link">956-475-7834</a>
-          </div>
-          <div class="dispatch-contact-card">
-            <div class="dispatch-card-icon">📞</div>
-            <div class="dispatch-card-title">Secondary Voice Stream</div>
-            <a href="tel:9564757053" class="dispatch-anchor-link">956-475-7053</a>
-          </div>
-          <div class="dispatch-contact-card">
-            <div class="dispatch-card-icon">📥</div>
-            <div class="dispatch-card-title">Document Processing Base</div>
-            <a href="mailto:triadautomotivellc@gmail.com" class="dispatch-anchor-link" style="font-size:1.05rem;">triadautomotivellc@gmail.com</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="enterprise-footer-block">
-    <div class="container footer-top-links-grid">
-      <div class="footer-links-col">
-        <h4 data-en="Service Groups" data-es="Grupos de Servicio">Service Groups</h4>
-        <ul>
-          <li><a href="#virtualMechanic">Automobile Scanners</a></li>
-          <li><a href="#matrixSection">Exhaust Welding Matrix</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-col">
-        <h4 data-en="Corporate Radius" data-es="Radio Corporativo">Corporate Radius</h4>
-        <ul>
-          <li><a href="javascript:void(0)">Baraboo Hub [53913]</a></li>
-        </ul>
-      </div>
     </div>
-    <div class="container footer-bottom-legal-strip">
-      <p>© 2026 Triad Automotive LLC. Built to corporate data framework specifications. All rights reserved.</p>
-    </div>
-  </footer>
 
-  <script>
-    const appState = {
-      language: "en",
-      activeCategoryFilter: "all",
-      selectedServices: new Set(),
-      servicePricingMatrix: { diag: 45.00, exhaust: 100.00, brakes: 60.00, suspension: 80.00, mobile: 50.00 },
-      bookingDate: "June 8, 2026",
-      bookingTime: "08:00 AM"
-    };
-
-    window.addEventListener('DOMContentLoaded', () => {
-      processMatrixCalculations();
-      syncBookingSMSAnchor();
-    });
-
-    function globalSwitchLanguage(lang) {
-      appState.language = lang;
-      document.documentElement.lang = lang;
-      document.getElementById('lang-btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('lang-btn-es').classList.toggle('active', lang === 'es');
-
-      document.querySelectorAll('[data-en]').forEach(node => {
-        const structuralValue = node.getAttribute(`data-${lang}`);
-        if(structuralValue) node.textContent = structuralValue;
-      });
-
-      document.querySelectorAll('[data-en-placeholder]').forEach(inputNode => {
-        const localPlaceholder = inputNode.getAttribute(`data-${lang}-placeholder`);
-        if(localPlaceholder) inputNode.setAttribute('placeholder', localPlaceholder);
-      });
-    }
-
-    function switchMechanicTab(paneId, buttonRef) {
-      document.querySelectorAll('.dashboard-tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.dashboard-content-pane').forEach(pane => pane.classList.remove('active'));
-      buttonRef.classList.add('active');
-      document.getElementById(paneId).classList.add('active');
-    }
-
-    function runMechanicAnalysis(symptomKey) {
-      const terminal = document.getElementById('vmTerminalOutput');
-      const textNode = document.getElementById('vmAnalysisText');
-      
-      const library = {
-        'brakes-grind': "ANALYSIS ACTIVE: Metal-on-metal kinematic grinding detected. Your automobile brake pads have fully breached past safer tracking depths. Rotors require structural thickness checks. Suggest booking a $60 Brake Replacement suite.",
-        'brakes-squeak': "ANALYSIS ACTIVE: High-frequency friction audio loop. Minor heat glazing or structural sensor contact wear verified. Safe operational thresholds warning. Suggest locking in a standard inspection loop.",
-        'exhaust-roar': "ANALYSIS ACTIVE: Acoustic chamber shell compromise. Systemic low backpressure can trigger dropouts in engine fuel metrics. Structural welding procedure required on exhaust path.",
-        'suspension-clunk': "ANALYSIS ACTIVE: Strut dampening core or control arm bushings missing structural elasticity. Impact parameters passing directly into vehicle chassis. Suggest immediate $80 Realignment tracking.",
-        'diag-cel': "ANALYSIS ACTIVE: Active diagnostic code logged inside processing module memory loop. Real-time parameters operating outside base metrics. Trigger $45 array scan to verify error logs."
-      };
-
-      terminal.style.display = 'block';
-      textNode.textContent = library[symptomKey];
-    }
-
-    function selectBookingDate(day, elementRef) {
-      document.querySelectorAll('.calendar-date-node').forEach(node => node.classList.remove('active'));
-      elementRef.classList.add('active');
-      appState.bookingDate = `June ${day}, 2026`;
-      document.getElementById('bookingTargetDateManifest').textContent = appState.bookingDate;
-      syncBookingSMSAnchor();
-    }
-
-    function selectBookingTime(timeString, elementRef) {
-      document.querySelectorAll('.time-slot-pill').forEach(pill => pill.classList.remove('active'));
-      elementRef.classList.add('active');
-      appState.bookingTime = timeString;
-      document.getElementById('bookingTargetTimeManifest').textContent = appState.bookingTime;
-      syncBookingSMSAnchor();
-    }
-
-    function syncBookingSMSAnchor() {
-      const name = document.getElementById('bookingClientName').value.trim();
-      const phone = document.getElementById('bookingClientPhone').value.trim();
-      const payload = `Triad Dispatch Request: Schedule appointment for client [${name || 'Client'}] on [${appState.bookingDate}] at [${appState.bookingTime}]. Phone contact: [${phone || 'Not provided'}].`;
-      document.getElementById('finalBookingSMSAnchor').setAttribute('href', `sms:+19564757834?&body=${encodeURIComponent(payload)}`);
-    }
-
-    function toggleOptionLayer(key) {
-      const checkboxNode = document.getElementById(`layerCheck${key.charAt(0).toUpperCase() + key.slice(1)}`);
-      if(checkboxNode) {
-        checkboxNode.checked = !checkboxNode.checked;
-        if(checkboxNode.checked) appState.selectedServices.add(key);
-        else appState.selectedServices.delete(key);
-      }
-      processMatrixCalculations();
-    }
-
-    function directInjectIntoMatrix(cost, key) {
-      const checkbox = document.getElementById(`layerCheck${key.charAt(0).toUpperCase() + key.slice(1)}`);
-      if(checkbox) checkbox.checked = true;
-      processMatrixCalculations();
-      scrollToSection('matrixSection');
-    }
-
-    function processMatrixCalculations() {
-      let total = 0;
-      let count = 0;
-      const keys = ['diag', 'exhaust', 'brakes', 'suspension'];
-
-      keys.forEach(k => {
-        const box = document.getElementById(`layerCheck${k.charAt(0).toUpperCase() + k.slice(1)}`);
-        const line = document.getElementById(`manifestLine${k.charAt(0).toUpperCase() + k.slice(1)}`);
-        const wrap = document.getElementById(`layerRow${k.charAt(0).toUpperCase() + k.slice(1)}`);
-
-        if(box && box.checked) {
-          total += appState.servicePricingMatrix[k];
-          count++;
-          if(line) line.style.display = 'flex';
-          if(wrap) wrap.classList.add('selected');
-        } else {
-          if(line) line.style.display = 'none';
-          if(wrap) wrap.classList.remove('selected');
-        }
-      });
-
-      const mobileBox = document.getElementById('layerCheckMobile');
-      const mobileLine = document.getElementById('manifestLineMobile');
-      const mobileWrap = document.getElementById('layerRowMobile');
-      if(mobileBox && mobileBox.checked) {
-        total += appState.servicePricingMatrix.mobile;
-        if(mobileLine) mobileLine.style.display = 'flex';
-        if(mobileWrap) mobileWrap.classList.add('selected');
-      } else {
-        if(mobileLine) mobileLine.style.display = 'none';
-        if(mobileWrap) mobileWrap.classList.remove('selected');
-      }
-
-      document.getElementById('matrixPriceTotalBox').textContent = `$${total.toFixed(2)}`;
-      document.getElementById('globalCartCounter').textContent = count;
-
-      const yr = document.getElementById('matrixYear').value;
-      const mk = document.getElementById('matrixMake').value;
-      const md = document.getElementById('matrixModel').value.trim();
-      document.getElementById('manifestVehicleVal').textContent = (yr || mk || md) ? `${yr} ${mk.toUpperCase()} ${md.toUpperCase()}` : "--";
-    }
-
-    function filterCategory(cat, elementRef) {
-      appState.activeCategoryFilter = cat;
-      document.querySelectorAll('.dept-link').forEach(l => l.classList.remove('active'));
-      if(elementRef) elementRef.classList.add('active');
-      runSidebarFiltering();
-    }
-
-    function runSidebarFiltering() {
-      const checkedFilters = Array.from(document.querySelectorAll('.filter-checkbox:checked')).map(b => b.value);
-      document.querySelectorAll('.product-commercial-card').forEach(card => {
-        const c = card.getAttribute('data-category');
-        const matchesActive = (appState.activeCategoryFilter === 'all' || c === appState.activeCategoryFilter);
-        card.style.display = (matchesActive && checkedFilters.includes(c)) ? 'flex' : 'none';
-      });
-    }
-
-    function executeGlobalSearch() {
-      const terms = document.getElementById('globalSearchInput').value.toLowerCase().trim();
-      document.querySelectorAll('.product-commercial-card').forEach(card => {
-        const t = card.querySelector('.card-product-title').textContent.toLowerCase();
-        card.style.display = t.includes(terms) ? 'flex' : 'none';
-      });
-    }
-
-    function scrollToSection(id) {
-      const node = document.getElementById(id);
-      if(node) window.scrollTo({ top: node.getBoundingClientRect().top + window.pageYOffset - 100, behavior: "smooth" });
-    }
-  </script>
 </body>
 </html>
