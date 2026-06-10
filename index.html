@@ -31,10 +31,26 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
+            background-repeat: no-repeat;
+            background-position: center 120px;
+            background-size: 360px auto;
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: -1;
         }
         .container {
             width: 100%;
             max-width: 480px;
+            position: relative;
+            z-index: 1;
         }
         .utility-bar {
             display: flex;
@@ -56,24 +72,31 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
+            gap: 12px;
         }
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            min-width: 0;
         }
         .brand-img {
-            height: 36px;
+            height: 52px;
+            width: auto;
+            flex-shrink: 0;
         }
         .brand-name {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            font-size: 18px;
+            font-size: 17px;
             text-transform: uppercase;
+            line-height: 1;
+            white-space: nowrap;
         }
         .contact-group {
             display: flex;
             gap: 8px;
+            flex-shrink: 0;
         }
         .contact-btn {
             font-size: 12px;
@@ -152,10 +175,27 @@
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 28px;
             margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            right: -70px;
+            bottom: -70px;
+            width: 180px;
+            height: 180px;
+            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: 0.025;
+            pointer-events: none;
         }
         .core-badge {
             display: inline-block;
@@ -168,6 +208,8 @@
             padding: 6px 12px;
             border-radius: 6px;
             margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
         }
         .core-badge.blue {
             background: var(--accent-blue);
@@ -181,12 +223,16 @@
             font-size: 24px;
             margin-bottom: 12px;
             color: #fff;
+            position: relative;
+            z-index: 1;
         }
         .card-desc {
             color: var(--text-muted);
             font-size: 15px;
             line-height: 1.5;
             margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
         .promo-box {
             background: rgba(37, 211, 102, 0.1);
@@ -194,6 +240,8 @@
             border-radius: 12px;
             padding: 14px;
             margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
         .promo-text {
             font-size: 13px;
@@ -208,6 +256,8 @@
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
             gap: 12px;
+            position: relative;
+            z-index: 1;
         }
         .price-label {
             font-size: 11px;
@@ -243,23 +293,45 @@
             padding: 18px;
             border-radius: 18px;
             margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .quick-help::after {
+            content: "";
+            position: absolute;
+            right: -50px;
+            bottom: -60px;
+            width: 150px;
+            height: 150px;
+            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: 0.025;
+            pointer-events: none;
         }
         .quick-help-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 17px;
             font-weight: 800;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
         .quick-help-text {
             color: var(--text-muted);
             font-size: 14px;
             line-height: 1.5;
             margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
         }
         .quick-help a {
             color: #fff;
             text-decoration: none;
             font-weight: 800;
+            position: relative;
+            z-index: 1;
         }
         .review-card {
             background: rgba(255, 255, 255, 0.03);
@@ -352,11 +424,15 @@
             padding: 12px 0 24px;
         }
         @media (max-width: 390px) {
+            .brand-img {
+                height: 46px;
+            }
             .brand-name {
-                font-size: 15px;
+                font-size: 14px;
             }
             .contact-btn {
                 padding: 7px 10px;
+                font-size: 11px;
             }
             .card {
                 padding: 24px;
@@ -366,6 +442,11 @@
             }
             .price-value {
                 font-size: 26px;
+            }
+            body::before {
+                background-size: 300px auto;
+                background-position: center 130px;
+                opacity: 0.03;
             }
         }
     </style>
@@ -394,6 +475,7 @@
             <span class="trust-pill" id="pillMobile">Mobile Repair</span>
             <span class="trust-pill" id="pillTow">Truck & Trailer</span>
             <span class="trust-pill" id="pillParts">Custom Parts</span>
+            <span class="trust-pill" id="pillPerformance">SBC / LS / LT</span>
             <span class="trust-pill" id="pillSpanish">English / Español</span>
         </div>
         <nav class="dept-navigation">
@@ -401,6 +483,7 @@
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
             <a href="#parts" class="dept-tab" id="tabParts">Custom Parts</a>
+            <a href="#performance" class="dept-tab" id="tabPerf">Performance</a>
             <a href="#builds" class="dept-tab" id="tabBuilds">Build Planning</a>
         </nav>
         <div class="quick-help">
@@ -463,6 +546,25 @@
                     <span class="price-value" id="valPriceParts">Quote</span>
                 </div>
                 <a href="#scheduler" class="book-btn" id="btnParts">Request Parts</a>
+            </div>
+        </section>
+        <section class="card" id="performance">
+            <div class="core-badge" id="bdgPerf">Performance</div>
+            <h2 class="card-title" id="ttlPerf">SBC, LS & LT Performance</h2>
+            <p class="card-desc" id="dscPerf">
+                We offer bolt-on performance work and parts sourcing for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, and supporting parts, we can help plan the setup and source the right components.
+            </p>
+            <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
+                <p class="promo-text" style="color: var(--accent-red);" id="promoPerf">
+                    Tell us your engine, vehicle, and goal. We’ll help point you toward a setup that makes sense.
+                </p>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <span class="price-label" id="lblPricePerf">Parts & Labor</span>
+                    <span class="price-value" id="valPricePerf">Quote</span>
+                </div>
+                <a href="#scheduler" class="book-btn" id="btnPerf">Start Build</a>
             </div>
         </section>
         <section class="card" id="builds">
@@ -595,11 +697,13 @@
                 pillMobile: "Mobile Repair",
                 pillTow: "Truck & Trailer",
                 pillParts: "Custom Parts",
+                pillPerformance: "SBC / LS / LT",
                 pillSpanish: "English / Español",
                 tabAll: "All Services",
                 tabDiag: "Diagnostics",
                 tabTow: "Truck & Trailer",
                 tabParts: "Custom Parts",
+                tabPerf: "Performance",
                 tabBuilds: "Build Planning",
                 quickTitle: "Not sure what you need?",
                 quickText: "Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.",
@@ -624,6 +728,13 @@
                 lblPriceParts: "Availability",
                 valPriceParts: "Quote",
                 btnParts: "Request Parts",
+                bdgPerf: "Performance",
+                ttlPerf: "SBC, LS & LT Performance",
+                dscPerf: "We offer bolt-on performance work and parts sourcing for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, and supporting parts, we can help plan the setup and source the right components.",
+                promoPerf: "Tell us your engine, vehicle, and goal. We’ll help point you toward a setup that makes sense.",
+                lblPricePerf: "Parts & Labor",
+                valPricePerf: "Quote",
+                btnPerf: "Start Build",
                 bdgBuilds: "Build Planning",
                 ttlBuilds: "Build & Upgrade Consultation",
                 dscBuilds: "Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, and custom upgrades before you spend money on the wrong parts.",
@@ -646,6 +757,7 @@
                     {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
                     {v: "Mobile Repair", t: "Mobile Repair"},
                     {v: "Custom Parts by Order", t: "Custom Parts by Order"},
+                    {v: "SBC, LS & LT Performance", t: "SBC, LS & LT Performance"},
                     {v: "Build & Upgrade Consultation", t: "Build & Upgrade Consultation"},
                     {v: "Source Rust-Free Texas Truck/Car", t: "Sourcing: Rust-Free Texas Truck/Car"}
                 ]
@@ -660,11 +772,13 @@
                 pillMobile: "Reparación Móvil",
                 pillTow: "Camión y Remolque",
                 pillParts: "Partes Especiales",
+                pillPerformance: "SBC / LS / LT",
                 pillSpanish: "English / Español",
                 tabAll: "Servicios",
                 tabDiag: "Diagnósticos",
                 tabTow: "Camión y Remolque",
                 tabParts: "Partes Especiales",
+                tabPerf: "Performance",
                 tabBuilds: "Plan de Proyecto",
                 quickTitle: "¿No sabes qué necesitas?",
                 quickText: "Mándanos una foto de la luz del tablero, fuga, daño, ruido o parte que quieres instalar. Te ayudamos a saber por dónde empezar.",
@@ -689,6 +803,13 @@
                 lblPriceParts: "Disponibilidad",
                 valPriceParts: "Cotizar",
                 btnParts: "Pedir Partes",
+                bdgPerf: "Performance",
+                ttlPerf: "Performance SBC, LS y LT",
+                dscPerf: "Ofrecemos trabajo de bolt-ons y búsqueda de partes para Small Block Chevy, LS Gen 3, LS Gen 4 y motores LT. Podemos ayudarte con intake, escape, headers, cam, valvetrain, fuel upgrades y partes de soporte para armar una combinación que tenga sentido.",
+                promoPerf: "Dinos qué motor tienes, qué vehículo es y cuál es tu meta. Te ayudamos a encontrar una combinación que tenga sentido.",
+                lblPricePerf: "Partes y Labor",
+                valPricePerf: "Cotizar",
+                btnPerf: "Empezar Build",
                 bdgBuilds: "Plan de Proyecto",
                 ttlBuilds: "Consulta de Modificaciones",
                 dscBuilds: "¿Quieres modificar tu troca, carro o SUV pero no sabes por dónde empezar? Te ayudamos a planear rines, llantas, suspensión, luces, performance, accesorios y upgrades antes de gastar dinero en partes equivocadas.",
@@ -711,6 +832,7 @@
                     {v: "Servicio de Camión y Remolque", t: "Servicio de Camión y Remolque"},
                     {v: "Reparación Móvil", t: "Reparación Móvil"},
                     {v: "Partes Especiales por Pedido", t: "Partes Especiales por Pedido"},
+                    {v: "Performance SBC, LS y LT", t: "Performance SBC, LS y LT"},
                     {v: "Consulta de Modificaciones", t: "Consulta de Modificaciones"},
                     {v: "Búsqueda de Vehículo de Texas", t: "Búsqueda de Vehículo de Texas"}
                 ]
