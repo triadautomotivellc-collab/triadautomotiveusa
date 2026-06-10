@@ -39,7 +39,7 @@
       --text-gray: #a0a0aa;
     }
 
-    /* Custom Chrome/Metallic & Neon Scrollbar */
+    /* Custom Chrome & Neon Red Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -162,7 +162,8 @@
       width: 80%;
       max-width: 420px;
       margin-bottom: 32px;
-      filter: drop-shadow(0 0 35px rgba(255, 0, 60, 0.3));
+      filter: drop-shadow(0 0 35px rgba(255, 0, 60, 0.4));
+      mix-blend-mode: screen; 
     }
 
     .eyebrow {
@@ -352,7 +353,6 @@
       display: inline-block;
     }
 
-    /* System Control Display Sub-Panels */
     .diagnostic-panel {
       background: #09090d;
       border: 2px solid #1c1c24;
@@ -435,9 +435,35 @@
       animation: panelSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    .review-carousel {
+      max-width: 750px;
+      margin: 40px auto 0;
+      background: var(--panel-dark);
+      border: 1px solid var(--panel-border);
+      padding: 30px;
+      border-radius: 12px;
+      position: relative;
+      text-align: center;
+    }
+
+    .review-text {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #e4e4e7;
+      margin-bottom: 12px;
+    }
+
+    .review-author {
+      color: var(--neon-red);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
     .split {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1fr;
       gap: 40px;
       align-items: center;
     }
@@ -447,6 +473,7 @@
       border: 1px solid var(--panel-border);
       border-radius: 16px;
       padding: 45px;
+      text-align: center;
     }
 
     .about-box p {
@@ -460,39 +487,6 @@
       font-weight: 800;
       border-bottom: 2px solid var(--neon-red);
       padding-bottom: 4px;
-    }
-
-    .owners-list {
-      display: grid;
-      gap: 16px;
-      align-content: center;
-    }
-
-    .owner {
-      border: 1px solid var(--panel-border);
-      background: rgba(13, 13, 17, 0.5);
-      border-radius: 8px;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .owner strong {
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 800;
-    }
-
-    .owner span {
-      color: var(--neon-red);
-      font-size: .85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background: rgba(255, 0, 60, 0.1);
-      padding: 4px 10px;
-      border-radius: 4px;
     }
 
     .service-area {
@@ -645,7 +639,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive Viewports */
+    /* Responsive Design Triggers */
     @media (max-width: 900px) {
       nav {
         flex-direction: column;
@@ -661,10 +655,6 @@
 
       .language-switch {
         margin-left: 0;
-      }
-
-      .split {
-        grid-template-columns: 1fr;
       }
 
       .logo {
@@ -718,7 +708,7 @@
 
   <header id="home">
     <div class="hero">
-      <img src="image.png" alt="Triad Automotive Logo" class="logo" data-en="Triad Automotive Logo" data-es="Logotipo de Triad Automotive" />
+      <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="logo" data-en="Triad Automotive Logo" data-es="Logotipo de Triad Automotive" />
 
       <div class="eyebrow" data-en="Family Owned • English & Spanish • Mobile Service Available" data-es="Negocio Familiar • Inglés y Español • Servicio Móvil Disponible">
         Family Owned • English & Spanish • Mobile Service Available
@@ -754,7 +744,7 @@
 
   <section id="services">
     <h2 data-en="Pro Capabilities" data-es="Capacidades Profesionales">Pro Capabilities</h2>
-    <p class="section-sub" data-en="Reliable repair for daily drivers, family vehicles, and work vehicles." data-es="Reparación confiable para carros de diario, vehículos familiares y vehículos de trabajo.">
+    <p class="section-sub" data-en="Reliable repair for daily drivers, family vehicles, and work vehicles." data-es="Reparación confiable para autos de diario, automóviles familiares y vehículos de trabajo.">
       Reliable repair for daily drivers, family vehicles, and work vehicles.
     </p>
 
@@ -770,7 +760,7 @@
       <div class="card">
         <div class="icon">🔧</div>
         <h3 data-en="General Repair" data-es="Reparación General">General Repair</h3>
-        <p data-en="Maintenance and repair work for cars, SUVs, trucks, and everyday vehicles." data-es="Mantenimiento y reparación para carros, SUVs, camionetas y vehículos de uso diario.">
+        <p data-en="Maintenance and repair work for cars, SUVs, trucks, and everyday vehicles." data-es="Mantenimiento y reparación para automóviles, SUVs, camionetas y vehículos de uso diario.">
           Maintenance and repair work for cars, SUVs, trucks, and everyday vehicles.
         </p>
       </div>
@@ -811,8 +801,8 @@
 
   <section id="resources">
     <h2 data-en="Symptom Fault Scanner" data-es="Escáner de Síntomas y Fallas">Symptom Fault Scanner</h2>
-    <p class="section-sub" data-en="Select a vehicle dynamic symptom below to evaluate potential system faults." data-es="Seleccione un síntoma de su vehículo a continuación para evaluar posibles fallas del sistema.">
-      Select a vehicle dynamic symptom below to evaluate potential system faults.
+    <p class="section-sub" data-en="Select a common vehicle problem below to evaluate potential system faults." data-es="Seleccione un problema común del automóvil a continuación para evaluar posibles fallas.">
+      Select a common vehicle problem below to evaluate potential system faults.
     </p>
 
     <div class="diagnostic-panel">
@@ -825,12 +815,12 @@
       </div>
 
       <select id="helpGuide" onchange="showHelpInfo()">
-        <option value="" data-en="Select System Symptom..." data-es="Seleccione Síntoma del Sistema...">Select System Symptom...</option>
-        <option value="oil" data-en="Fluid Verification: Engine Lubrication Weight" data-es="Verificación de Fluido: Peso de Lubricación del Motor">Fluid Verification: Engine Lubrication Weight</option>
-        <option value="engine" data-en="MIL Active: Check Engine Light Diagnostic" data-es="MIL Activo: Diagnóstico de Luz Check Engine">MIL Active: Check Engine Light Diagnostic</option>
-        <option value="brakes" data-en="Acoustic Anomalies: Brake Friction Noise" data-es="Anomalías Acústicas: Ruido de Fricción en Frenos">Acoustic Anomalies: Brake Friction Noise</option>
-        <option value="battery" data-en="Critical No-Start: Cranking & Ignition Failure" data-es="Falla Crítica de Encendido: Marcha e Ignición">Critical No-Start: Cranking & Ignition Failure</option>
-        <option value="exhaust" data-en="Emissions Leak: Structural Exhaust Integrity" data-es="Fuga de Emisiones: Integridad Estructural del Escape">Emissions Leak: Structural Exhaust Integrity</option>
+        <option value="" data-en="Select Vehicle Issue..." data-es="Seleccione Problema del Automóvil...">Select Vehicle Issue...</option>
+        <option value="oil" data-en="Oil & Fluid Questions" data-es="Preguntas de Aceite y Fluidos">Oil & Fluid Questions</option>
+        <option value="engine" data-en="Check Engine Light Is On" data-es="Luz Check Engine Encendida">Check Engine Light Is On</option>
+        <option value="brakes" data-en="Squeaking or Grinding Brakes" data-es="Frenos Rechinan o Raspan">Squeaking or Grinding Brakes</option>
+        <option value="battery" data-en="Car Will Not Start / Dead Battery" data-es="El Auto No Enciende / Batería Muerta">Car Will Not Start / Dead Battery</option>
+        <option value="exhaust" data-en="Loud Exhaust / Muffler Leaks" data-es="Escape Ruidoso / Fugas en Mofle">Loud Exhaust / Muffler Leaks</option>
       </select>
 
       <p id="helpResult"></p>
@@ -839,8 +829,8 @@
 
   <section id="estimator">
     <h2 data-en="Instant Cost Estimator" data-es="Estimador de Costo Instantáneo">Instant Cost Estimator</h2>
-    <p class="section-sub" data-en="Select your repair metrics below to generate a transparent base calculation." data-es="Seleccione sus métricas de reparación a continuación para generar un cálculo base transparente.">
-      Select your repair metrics below to generate a transparent base calculation.
+    <p class="section-sub" data-en="Select your service parameters below to generate a real-time base quote calculation." data-es="Seleccione sus parámetros de servicio a continuación para calcular una cotización base.">
+      Select your service parameters below to generate a real-time base quote calculation.
     </p>
 
     <div class="diagnostic-panel" style="max-width: 630px;">
@@ -849,7 +839,7 @@
         <span style="color: var(--neon-red); font-family: monospace; font-weight: 800;">v2.6</span>
       </div>
       
-      <label style="display:block; margin-bottom: 8px; font-weight:700;" data-en="Select Service Layer:" data-es="Seleccione Capa de Servicio:">Select Service Layer:</label>
+      <label style="display:block; margin-bottom: 8px; font-weight:700;" data-en="Select Service Type:" data-es="Seleccione Tipo de Servicio:">Select Service Type:</label>
       <select id="calcService" onchange="calculateEstimate()">
         <option value="0" data-en="-- Select Repair Type --" data-es="-- Seleccione Tipo de Reparación --">-- Select Repair Type --</option>
         <option value="85" data-en="Computer Diagnostics & Sensor Scan" data-es="Diagnóstico por Computadora y Escaneo">Computer Diagnostics & Sensor Scan</option>
@@ -861,15 +851,20 @@
       <div style="margin-top:24px;">
         <label style="display:inline-flex; align-items:center; gap:12px; cursor:pointer;">
           <input type="checkbox" id="calcMobile" onchange="calculateEstimate()" style="accent-color: var(--neon-red); width:18px; height:18px;">
-          <span style="font-weight:700;" data-en="Request Mobile / On-Site Service? (+$50 dispatch)" data-es="¿Solicita Servicio Móvil / A Domicilio? (+$50 despacho)">Request Mobile Work? (+$50 dispatch)</span>
+          <span style="font-weight:700;" data-en="Request Mobile Work? (+$50 dispatch fee)" data-es="¿Solicita Servicio Móvil? (+$50 tarifa de despacho)">Request Mobile Work? (+$50 dispatch fee)</span>
         </label>
       </div>
 
       <div id="estimateDisplay" style="margin-top: 25px; padding: 24px; background: rgba(255,255,255,0.01); border-radius: 8px; text-align: center; border: 1px dashed var(--panel-border);">
-        <h3 style="color: var(--text-gray); font-size: 0.85rem; letter-spacing: 1px;" data-en="ESTIMATED BASE TOTAL" data-es="TOTAL BASE ESTIMADO">ESTIMATED BASE TOTAL</h3>
-        <div id="estimatePrice" style="font-size: 3.2rem; font-weight: 900; color: #fff; margin: 10px 0; transition: color 0.15s ease;">$0.00</div>
-        <p style="font-size: 0.8rem; color: #555;" data-en="*Excludes parts and taxes. Exact quote provided upon vehicle inspection." data-es="*Excluye refacciones e impuestos. Cotización exacta dada al inspeccionar el vehículo.">*Excludes parts and taxes. Exact quote provided upon vehicle inspection.</p>
+        <h3 id="startingAtLabel" style="color: var(--text-gray); font-size: 0.9rem; letter-spacing: 1.5px; font-weight: 800;" data-en="STARTING AT" data-es="EMPEZANDO DESDE">STARTING AT</h3>
+        <div id="estimatePrice" style="font-size: 3.5rem; font-weight: 900; color: #fff; margin: 5px 0; transition: color 0.15s ease;">$0.00</div>
+        <p style="font-size: 0.8rem; color: #555;" data-en="*Excludes parts and taxes. Exact quote provided upon vehicle inspection." data-es="*Excluye refacciones e impuestos. Cotización exacta dada al inspeccionar el automóvil.">*Excludes parts and taxes. Exact quote provided upon vehicle inspection.</p>
       </div>
+    </div>
+
+    <div class="review-carousel">
+      <div id="reviewText" class="review-text">"Great communication, honest repair recommendations, and fixed my loud broken exhaust fast. Highly recommended automotive shop in Baraboo!"</div>
+      <div id="reviewAuthor" class="review-author">- Satisfied Customer</div>
     </div>
   </section>
 
@@ -877,8 +872,8 @@
     <div class="split">
       <div class="about-box">
         <h2 data-en="Local. Honest. Reliable." data-es="Local. Honesto. Confiable.">Local. Honest. Reliable.</h2>
-        <p data-en="Triad Automotive LLC is a local family-owned automotive repair business built by Pepe, Javy, and Mickey." data-es="Triad Automotive LLC es un negocio familiar de reparación automotriz creado por Pepe, Javy y Mickey.">
-          Triad Automotive LLC is a local family-owned automotive repair business built by Pepe, Javy, and Mickey.
+        <p data-en="Triad Automotive LLC is a local family-owned automotive repair business serving our community with pride." data-es="Triad Automotive LLC es un negocio familiar local de reparación automotriz que sirve a nuestra comunidad con orgullo.">
+          Triad Automotive LLC is a local family-owned automotive repair business serving our community with pride.
         </p>
         <p data-en="We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities." data-es="Nos enfocamos en diagnóstico honesto, reparaciones confiables y servicio práctico para clientes en Baraboo y comunidades cercanas.">
           We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities.
@@ -888,21 +883,6 @@
             Family owned. Local service. English and Spanish.
           </span>
         </p>
-      </div>
-
-      <div class="owners-list">
-        <div class="owner">
-          <strong>Pepe</strong>
-          <span data-en="Owner" data-es="Dueño">Owner</span>
-        </div>
-        <div class="owner">
-          <strong>Javy</strong>
-          <span data-en="Owner" data-es="Dueño">Owner</span>
-        </div>
-        <div class="owner">
-          <strong>Mickey</strong>
-          <span data-en="Owner" data-es="Dueño">Owner</span>
-        </div>
       </div>
     </div>
   </section>
@@ -941,14 +921,14 @@
 
       <details>
         <summary data-en="Do I need an appointment?" data-es="¿Necesito cita?">Do I need an appointment?</summary>
-        <p data-en="Appointments are recommended. Call or text to check availability and describe the vehicle issue." data-es="Se recomienda hacer cita. Llame o mande texto para revisar disponibilidad y explicar el problema del vehículo.">
+        <p data-en="Appointments are recommended. Call or text to check availability and describe the vehicle issue." data-es="Se recomienda hacer cita. Llame o mande texto para revisar disponibilidad y explicar el problema del automóvil.">
           Appointments are recommended. Call or text to check availability and describe the vehicle issue.
         </p>
       </details>
 
       <details>
         <summary data-en="Can you diagnose check engine lights?" data-es="¿Pueden diagnosticar luces de check engine?">Can you diagnose check engine lights?</summary>
-        <p data-en="Yes. We can help diagnose check engine lights, drivability issues, no-start problems, and other vehicle concerns." data-es="Sí. Podemos ayudar a diagnosticar luces de check engine, fallas al manejar, problemas de encendido y otros problemas del vehículo.">
+        <p data-en="Yes. We can help diagnose check engine lights, drivability issues, no-start problems, and other vehicle concerns." data-es="Sí. Podemos ayudar a diagnosticar luces de check engine, fallas al manejar, problemas de encendido y otros problemas del automóvil.">
           Yes. We can help diagnose check engine lights, drivability issues, no-start problems, and other vehicle concerns.
         </p>
       </details>
@@ -1012,7 +992,6 @@
       currentLanguage = language;
       document.documentElement.lang = language;
 
-      // Smart DOM translation loop interface
       document.querySelectorAll("[data-en]").forEach(el => {
         const translation = el.dataset[language];
         if (translation) {
@@ -1030,6 +1009,7 @@
       showHelpInfo();
       updateLiveStatus();
       calculateEstimate();
+      cycleReviews();
     }
 
     function showHelpInfo() {
@@ -1038,18 +1018,18 @@
 
       const info = {
         en: {
-          oil: "SYSTEM LOG // Oil type depends on year, make, model, engine, and manufacturer spec. Many modern vehicles use full synthetic oil, but the exact weight and capacity should be verified before service.",
-          engine: "SYSTEM LOG // A check engine light can be caused by faulty sensors, engine misfires, EVAP leaks, fuel delivery issues, or electrical bugs. A proper diagnostic scan prevents throwing random components at the problem.",
-          brakes: "SYSTEM LOG // Squeaking, grinding mechanical feedback, violent steering vibrations, or structural pedal softening should be investigated instantly. Systems include pads, rotors, calipers, or lines.",
-          battery: "SYSTEM LOG // Hard failure to turn over is linked directly to battery degradation, starter motor decay, alternator failure, high-resistance wiring, or ignition security flags.",
-          exhaust: "SYSTEM LOG // Structural exhaust leaks generate disruptive acoustics, harmful ambient fumes, reduced engine backpressure, and terminal cabin safety risks. Inspect piping, mufflers, and flex joints."
+          oil: "SYSTEM LOG // Oil weight parameters depend directly on manufacturing spec thresholds. Many modern platforms mandate premium synthetic composites. Always confirm reservoir capacity limits before filling.",
+          engine: "SYSTEM LOG // Activating a check engine warning flag points to a registered system anomaly—ranging from standard oxygen sensor failures to complex intake leaks. Scanning the ECU prevents unneeded repairs.",
+          brakes: "SYSTEM LOG // High pitch noises or structural grinding feedback indicate dangerous friction wear on brake assemblies. Inspection should check pads, cross-cut rotors, and pressure line fluid stability.",
+          battery: "SYSTEM LOG // Cranking failures are linked directly to power drop-offs in the battery cells, broken starter solenoids, unstable alternator outputs, or electrical grounding loops.",
+          exhaust: "SYSTEM LOG // Structural exhaust compromises introduce noise, reduce engine backpressure efficiency, and allow carbon monoxide fumes to escape. Joints, mufflers, and welds must be evaluated."
         },
         es: {
-          oil: "REGISTRO DEL SISTEMA // El tipo de aceite depende del año, marca, modelo, motor y especificación del fabricante. Muchos vehículos modernos usan aceite sintético, pero se debe verificar la viscosidad exacta antes del servicio.",
-          engine: "REGISTRO DEL SISTEMA // La luz check engine es activada por fallas en sensores, fallas de encendido (misfires), fugas de EVAP o problemas de combustible. Un escaneo detiene el reemplazo innecesario de piezas.",
-          brakes: "REGISTRO DEL SISTEMA // Rechinidos, fricción de metal, vibración del volante o pedal esponjoso requieren atención inmediata. Involucra balatas, discos de freno, calipers o líneas de presión.",
-          battery: "REGISTRO DEL SISTEMA // La pérdida crítica de arranque proviene de baterías degradadas, fallas del motor de arranque (starter), alternador inestable o interrupciones del sistema de seguridad.",
-          exhaust: "REGISTRO DEL SISTEMA // Las fugas en la tubería de escape merman el rendimiento, alteran el sonido del motor y filtran monóxido de carbono peligroso a la cabina. Requiere inspección de mofles y uniones flexibles."
+          oil: "REGISTRO DEL SISTEMA // Las especificaciones de viscosidad dependen de los límites de fábrica. Los motores modernos exigen compuestos sintéticos premium. Valide capacidades antes de rellenar.",
+          engine: "REGISTRO DEL SISTEMA // La luz check engine indica una anomalía registrada, desde un sensor de oxígeno inestable hasta fugas en la admisión. Escanear la ECU evita gastos innecesarios.",
+          brakes: "REGISTRO DEL SISTEMA // Los chillidos o roces de metal indican un desgaste peligroso en las balatas. Las revisiones deben incluir balatas, rectificado de discos y líneas de presión.",
+          battery: "REGISTRO DEL SISTEMA // Las fallas de arranque provienen de celdas degradadas en la batería, solenoides dañados en la marcha, alternadores inestables o tierras sueltas.",
+          exhaust: "REGISTRO DEL SISTEMA // Las rupturas en el escape provocan ruido excesivo, bajan la potencia del motor y filtran gases nocivos hacia la cabina. Se deben revisar uniones, mofles y soldaduras."
         }
       };
 
@@ -1101,8 +1081,28 @@
       statusText.textContent = statusText.getAttribute(`data-${currentLanguage}`);
     }
 
-    // Initialize scripts on runtime load
+    let reviewIdx = 0;
+    function cycleReviews() {
+      const texts = {
+        en: [
+          { t: `"Great communication, honest repair recommendations, and fixed my loud broken exhaust fast. Highly recommended automotive shop in Baraboo!"`, a: "- Satisfied Customer" },
+          { t: `"They found a sensor issue that another shop missed. Honest diagnostics and fair pricing on brake replacement."`, a: "- Local Driver" }
+        ],
+        es: [
+          { t: `"¡Excelente comunicación, recomendaciones honestas y arreglaron mi escape roto muy rápido! Muy recomendados en Baraboo."`, a: "- Cliente Satisfecho" },
+          { t: `"Encontraron un problema de sensor que otro taller no vio. Diagnóstico muy honesto y precios justos en mis frenos."`, a: "- Conductor Local" }
+        ]
+      };
+      
+      const targetList = texts[currentLanguage];
+      reviewIdx = (reviewIdx + 1) % targetList.length;
+      
+      document.getElementById('reviewText').textContent = targetList[reviewIdx].t;
+      document.getElementById('reviewAuthor').textContent = targetList[reviewIdx].a;
+    }
+
     updateLiveStatus();
+    setInterval(cycleReviews, 6000);
   </script>
 </body>
 </html>
