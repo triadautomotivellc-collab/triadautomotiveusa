@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Automotive | Premium Diagnostics & Service</title>
+    <title>Triad Automotive | Service, Maintenance & Diagnostics</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -468,18 +468,19 @@
         </header>
         <div class="info-bar">
             <span class="info-main" id="txtInfoArea">Texas Roots, <span class="info-red">Wisconsin Tough</span></span>
-            <span class="info-sub" id="txtInfoSub">Serving Baraboo, WI 53913 and surrounding areas</span>
+            <span class="info-sub" id="txtInfoSub">Automotive service, maintenance, diagnostics, and repair in Baraboo, WI</span>
         </div>
         <div class="trust-strip">
+            <span class="trust-pill" id="pillService">Service & Maintenance</span>
+            <span class="trust-pill" id="pillDomestic">Domestic & Foreign</span>
             <span class="trust-pill" id="pillDiag">Diagnostics</span>
             <span class="trust-pill" id="pillMobile">Mobile Repair</span>
             <span class="trust-pill" id="pillTow">Truck & Trailer</span>
-            <span class="trust-pill" id="pillParts">Custom Parts</span>
             <span class="trust-pill" id="pillPerformance">SBC / LS / LT</span>
             <span class="trust-pill" id="pillSpanish">English / Español</span>
         </div>
         <nav class="dept-navigation">
-            <a href="#" class="dept-tab active" id="tabAll">All Services</a>
+            <a href="#service" class="dept-tab active" id="tabService">Service</a>
             <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
             <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
             <a href="#parts" class="dept-tab" id="tabParts">Custom Parts</a>
@@ -493,6 +494,25 @@
             </p>
             <a href="sms:+19564757053" id="quickBtn">Text a Picture →</a>
         </div>
+        <section class="card" id="service">
+            <div class="core-badge" id="bdgService">General Service</div>
+            <h2 class="card-title" id="ttlService">Automotive Service & Maintenance</h2>
+            <p class="card-desc" id="dscService">
+                Triad Automotive provides service, maintenance, diagnostics, and repair for domestic and foreign vehicles. From daily drivers to work trucks and family SUVs, we help keep your vehicle reliable and road-ready.
+            </p>
+            <div class="promo-box">
+                <p class="promo-text" id="promoService">
+                    Oil leaks, brakes, suspension, tune-ups, warning lights, no-starts, and general repair—text us what’s going on and we’ll point you in the right direction.
+                </p>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <span class="price-label" id="lblPriceService">General Repair</span>
+                    <span class="price-value" id="valPriceService">Quote</span>
+                </div>
+                <a href="#scheduler" class="book-btn" id="btnService">Request Service</a>
+            </div>
+        </section>
         <main class="card" id="diagnostics">
             <div class="core-badge" id="bdgDiag">Core Evaluation</div>
             <h2 class="card-title" id="ttlDiag">Check Engine Light Scan</h2>
@@ -533,11 +553,11 @@
             <div class="core-badge dark" id="bdgParts">Special Order</div>
             <h2 class="card-title" id="ttlParts">Custom Parts by Order</h2>
             <p class="card-desc" id="dscParts">
-                Building something different? We can help source and order custom parts for daily drivers, lowered trucks, lifted trucks, performance builds, lighting, accessories, suspension, wheels, tires, and OEM replacement parts.
+                Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, lighting, suspension, wheels, tires, and parts for custom builds.
             </p>
             <div class="promo-box" style="background: rgba(255, 59, 87, 0.1); border-color: rgba(255, 59, 87, 0.3);">
                 <p class="promo-text" style="color: var(--accent-red);" id="promoParts">
-                    Tell us what you're building and we'll help you find the right parts for your vehicle.
+                    Tell us what vehicle you have and what you’re looking for. We’ll help find the right part before you waste money on the wrong one.
                 </p>
             </div>
             <div class="card-footer">
@@ -692,14 +712,15 @@
                 txtEmailBtn: "Email",
                 txtTextBtn: "Text",
                 txtInfoArea: "Texas Roots, <span class='info-red'>Wisconsin Tough</span>",
-                txtInfoSub: "Serving Baraboo, WI 53913 and surrounding areas",
+                txtInfoSub: "Automotive service, maintenance, diagnostics, and repair in Baraboo, WI",
+                pillService: "Service & Maintenance",
+                pillDomestic: "Domestic & Foreign",
                 pillDiag: "Diagnostics",
                 pillMobile: "Mobile Repair",
                 pillTow: "Truck & Trailer",
-                pillParts: "Custom Parts",
                 pillPerformance: "SBC / LS / LT",
                 pillSpanish: "English / Español",
-                tabAll: "All Services",
+                tabService: "Service",
                 tabDiag: "Diagnostics",
                 tabTow: "Truck & Trailer",
                 tabParts: "Custom Parts",
@@ -708,6 +729,13 @@
                 quickTitle: "Not sure what you need?",
                 quickText: "Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.",
                 quickBtn: "Text a Picture →",
+                bdgService: "General Service",
+                ttlService: "Automotive Service & Maintenance",
+                dscService: "Triad Automotive provides service, maintenance, diagnostics, and repair for domestic and foreign vehicles. From daily drivers to work trucks and family SUVs, we help keep your vehicle reliable and road-ready.",
+                promoService: "Oil leaks, brakes, suspension, tune-ups, warning lights, no-starts, and general repair—text us what’s going on and we’ll point you in the right direction.",
+                lblPriceService: "General Repair",
+                valPriceService: "Quote",
+                btnService: "Request Service",
                 bdgDiag: "Core Evaluation",
                 ttlDiag: "Check Engine Light Scan",
                 dscDiag: "No corporate runarounds. We plug the scanner straight into your vehicle's system to read fault codes and give you an honest direction on what may be failing.",
@@ -723,8 +751,8 @@
                 btnActionMobile: "Schedule Pickup",
                 bdgParts: "Special Order",
                 ttlParts: "Custom Parts by Order",
-                dscParts: "Building something different? We can help source and order custom parts for daily drivers, lowered trucks, lifted trucks, performance builds, lighting, accessories, suspension, wheels, tires, and OEM replacement parts.",
-                promoParts: "Tell us what you're building and we'll help you find the right parts for your vehicle.",
+                dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, lighting, suspension, wheels, tires, and parts for custom builds.",
+                promoParts: "Tell us what vehicle you have and what you’re looking for. We’ll help find the right part before you waste money on the wrong one.",
                 lblPriceParts: "Availability",
                 valPriceParts: "Quote",
                 btnParts: "Request Parts",
@@ -753,6 +781,7 @@
                 btnFrmSubmit: "💬 Confirm & Text Request",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 svcs: [
+                    {v: "Automotive Service & Maintenance", t: "Automotive Service & Maintenance"},
                     {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
                     {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
                     {v: "Mobile Repair", t: "Mobile Repair"},
@@ -767,14 +796,15 @@
                 txtEmailBtn: "Correo",
                 txtTextBtn: "Texto",
                 txtInfoArea: "Raíces de Texas, <span class='info-red'>Fuerza de Wisconsin</span>",
-                txtInfoSub: "Sirviendo Baraboo, WI 53913 y áreas cercanas",
+                txtInfoSub: "Servicio, mantenimiento, diagnóstico y reparación automotriz en Baraboo, WI",
+                pillService: "Servicio y Mantenimiento",
+                pillDomestic: "Domésticos y Extranjeros",
                 pillDiag: "Diagnósticos",
                 pillMobile: "Reparación Móvil",
                 pillTow: "Camión y Remolque",
-                pillParts: "Partes Especiales",
                 pillPerformance: "SBC / LS / LT",
                 pillSpanish: "English / Español",
-                tabAll: "Servicios",
+                tabService: "Servicio",
                 tabDiag: "Diagnósticos",
                 tabTow: "Camión y Remolque",
                 tabParts: "Partes Especiales",
@@ -783,6 +813,13 @@
                 quickTitle: "¿No sabes qué necesitas?",
                 quickText: "Mándanos una foto de la luz del tablero, fuga, daño, ruido o parte que quieres instalar. Te ayudamos a saber por dónde empezar.",
                 quickBtn: "Mandar Foto →",
+                bdgService: "Servicio General",
+                ttlService: "Servicio y Mantenimiento Automotriz",
+                dscService: "Triad Automotive ofrece servicio, mantenimiento, diagnóstico y reparación para vehículos domésticos y extranjeros. Desde carros diarios hasta camionetas de trabajo y SUVs familiares, ayudamos a mantener tu vehículo confiable y listo para el camino.",
+                promoService: "Fugas de aceite, frenos, suspensión, tune-ups, luces del tablero, no-starts y reparación general—mándanos qué está pasando y te decimos por dónde empezar.",
+                lblPriceService: "Reparación General",
+                valPriceService: "Cotizar",
+                btnService: "Pedir Servicio",
                 bdgDiag: "Evaluación Central",
                 ttlDiag: "Diagnóstico por Computadora",
                 dscDiag: "Sin rodeos corporativos. Conectamos el escáner al sistema de tu vehículo para leer los códigos y darte una dirección honesta sobre lo que puede estar fallando.",
@@ -798,8 +835,8 @@
                 btnActionMobile: "Agendar Recolección",
                 bdgParts: "Orden Especial",
                 ttlParts: "Partes Especiales por Pedido",
-                dscParts: "¿Estás armando algo diferente? Podemos ayudarte a buscar y ordenar partes especiales para tu troca, carro diario, camioneta levantada, troca bajada, proyecto de performance, luces, accesorios, suspensión, rines, llantas y partes OEM.",
-                promoParts: "Dinos qué estás armando y te ayudamos a encontrar las partes correctas para tu vehículo.",
+                dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces, suspensión, rines, llantas y partes para proyectos personalizados.",
+                promoParts: "Dinos qué vehículo tienes y qué estás buscando. Te ayudamos a encontrar la parte correcta antes de que gastes dinero en la equivocada.",
                 lblPriceParts: "Disponibilidad",
                 valPriceParts: "Cotizar",
                 btnParts: "Pedir Partes",
@@ -828,6 +865,7 @@
                 btnFrmSubmit: "💬 Confirmar y Enviar SMS",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 svcs: [
+                    {v: "Servicio y Mantenimiento Automotriz", t: "Servicio y Mantenimiento Automotriz"},
                     {v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"},
                     {v: "Servicio de Camión y Remolque", t: "Servicio de Camión y Remolque"},
                     {v: "Reparación Móvil", t: "Reparación Móvil"},
