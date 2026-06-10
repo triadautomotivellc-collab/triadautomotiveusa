@@ -810,6 +810,29 @@
             margin-top: 3px;
         }
 
+        .chat-lang-toggle {
+            display: flex;
+            gap: 5px;
+            margin-left: auto;
+            margin-right: 8px;
+        }
+
+        .chat-lang-btn {
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            border-radius: 999px;
+            padding: 7px 9px;
+            font-size: 10px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .chat-lang-btn.active {
+            background: var(--accent-red);
+            border-color: rgba(255,255,255,0.18);
+        }
+
         .triad-chat-close {
             width: 34px;
             height: 34px;
@@ -1396,7 +1419,7 @@
 
     <button class="triad-chat-launcher" id="triadChatLauncher" onclick="toggleTriadChat()">
         <span class="triad-chat-pulse"></span>
-        <span id="chatLauncherText">Ask Triad</span>
+        <span id="chatLauncherText">Wawa Bot</span>
     </button>
 
     <aside class="triad-chat-window" id="triadChatWindow" aria-label="Triad Automotive chat assistant">
@@ -1404,10 +1427,16 @@
             <div class="triad-chat-brand">
                 <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive" class="triad-chat-logo">
                 <div>
-                    <div class="triad-chat-title" id="chatHeaderTitle">Triad Assistant</div>
-                    <div class="triad-chat-status" id="chatHeaderStatus">Smart help • Safety-first</div>
+                    <div class="triad-chat-title" id="chatHeaderTitle">Wawa Bot</div>
+                    <div class="triad-chat-status" id="chatHeaderStatus">Bilingual help • Safety-first</div>
                 </div>
             </div>
+
+            <div class="chat-lang-toggle">
+                <button type="button" class="chat-lang-btn active" id="chatLangEn" onclick="setChatLanguage('en')">EN</button>
+                <button type="button" class="chat-lang-btn" id="chatLangEs" onclick="setChatLanguage('es')">ES</button>
+            </div>
+
             <button class="triad-chat-close" onclick="toggleTriadChat()" aria-label="Close chat">×</button>
         </div>
 
@@ -1556,9 +1585,9 @@
                 frmNote: "This form opens your text messages. Your request is not sent until you press send on your phone.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Automotive service • Diagnostics • Maintenance • Tire sourcing • LEDs • Audio • Parts sourcing • VATS delete support",
-                chatLauncherText: "Ask Triad",
-                chatHeaderTitle: "Triad Assistant",
-                chatHeaderStatus: "Smart help • Safety-first",
+                chatLauncherText: "Wawa Bot",
+                chatHeaderTitle: "Wawa Bot",
+                chatHeaderStatus: "Bilingual help • Safety-first",
                 chatDisclaimer: "Safety-first help. For emergencies, move to safety and contact emergency services.",
                 chatPlaceholder: "Ask about service, towing, diagnostics...",
                 vinLengthError: "Please enter a valid 17-character VIN.",
@@ -1703,9 +1732,9 @@
                 frmNote: "Este formulario abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar en tu teléfono.",
                 footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
                 footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • Búsqueda de llantas • LEDs • Audio • Búsqueda de partes • Soporte VATS Delete",
-                chatLauncherText: "Ask Triad",
-                chatHeaderTitle: "Asistente Triad",
-                chatHeaderStatus: "Ayuda inteligente • Seguridad primero",
+                chatLauncherText: "Wawa Bot",
+                chatHeaderTitle: "Wawa Bot",
+                chatHeaderStatus: "Ayuda bilingüe • Seguridad primero",
                 chatDisclaimer: "Ayuda con enfoque en seguridad. Para emergencias, aléjate del peligro y contacta servicios de emergencia.",
                 chatPlaceholder: "Pregunta por servicio, grúa, diagnósticos...",
                 vinLengthError: "Ingresa un VIN válido de 17 caracteres.",
@@ -1730,7 +1759,7 @@
 
         const chatData = {
             en: {
-                welcome: "Welcome to Ask Triad. I can help you figure out if it is safe to drive, if you should stop, or if Triad should come your way.\n\nTell me what is happening, or tap a quick topic below.",
+                welcome: "Welcome to Wawa Bot. I can help you figure out if it is safe to drive, if you should stop, or if Triad should come your way.\n\nTell me what is happening, or tap a quick topic below.\n\nNeed Spanish? Tap ES above.",
                 fallback: "I want to point you the right way without guessing. Tell me:\n1. Year / make / model\n2. What happened\n3. Any warning lights\n4. Noise, smell, smoke, leak, or overheating\n5. Your city/area\n\nIf it does not feel safe to move, stay parked and use the service form so Triad can come your way or help coordinate pickup.",
                 quick: ["Overheating", "No brakes", "Smoke / fire smell", "Check engine flashing", "No start", "Fluid leak", "Tires", "Parts / VATS"],
                 safetyNote: "Safety-first help. If the vehicle feels unsafe, do not force it home. Park safely and request service so Triad can come your way or help coordinate transport.",
@@ -1752,7 +1781,7 @@
                 ]
             },
             es: {
-                welcome: "Bienvenido a Ask Triad. Te puedo ayudar a saber si es seguro mover el vehículo, si debes apagarlo, o si Triad puede ir hacia ti.\n\nDime qué está pasando o toca un tema rápido.",
+                welcome: "Bienvenido a Wawa Bot. Te puedo ayudar a saber si es seguro mover el vehículo, si debes apagarlo, o si Triad puede ir hacia ti.\n\nDime qué está pasando o toca un tema rápido.\n\n¿Prefieres inglés? Toca EN arriba.",
                 fallback: "No quiero adivinar mal. Dime:\n1. Año / marca / modelo\n2. Qué pasó\n3. Luces en el tablero\n4. Ruido, olor, humo, fuga o calentamiento\n5. Tu ciudad/área\n\nSi no se siente seguro moverlo, déjalo estacionado y usa la forma de servicio para que Triad pueda ir hacia ti o coordinar transporte.",
                 quick: ["Se calienta", "Sin frenos", "Humo / olor quemado", "Check engine parpadea", "No prende", "Fuga de líquido", "Llantas", "Partes / VATS"],
                 safetyNote: "Seguridad primero. Si el vehículo se siente inseguro, no lo fuerces a llegar a casa. Estaciónate seguro y pide servicio para que Triad pueda ir hacia ti o ayudar con transporte.",
@@ -1789,6 +1818,7 @@
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
             applyLanguageWithoutReset();
+            updateChatLanguageButtons();
             resetChat(true);
         }
 
@@ -1959,6 +1989,27 @@
             }, 550);
         }
 
+        function setChatLanguage(lang) {
+            currentLang = lang;
+            applyLanguageWithoutReset();
+            updateChatLanguageButtons();
+
+            const chatWindow = document.getElementById("triadChatWindow");
+            if (chatWindow && chatWindow.classList.contains("open")) {
+                resetChat(false);
+            }
+        }
+
+        function updateChatLanguageButtons() {
+            const enBtn = document.getElementById("chatLangEn");
+            const esBtn = document.getElementById("chatLangEs");
+
+            if (!enBtn || !esBtn) return;
+
+            enBtn.classList.toggle("active", currentLang === "en");
+            esBtn.classList.toggle("active", currentLang === "es");
+        }
+
         function toggleTriadChat() {
             const chat = document.getElementById("triadChatWindow");
             chat.classList.toggle("open");
@@ -2102,6 +2153,7 @@
             const chatInput = document.getElementById("chatInput");
             if (chatInput) chatInput.placeholder = trans[currentLang].chatPlaceholder;
             populateDropdowns();
+            updateChatLanguageButtons();
         });
     </script>
 </body>
