@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- TRIAD FIX: GALLERY INLINE THUMBNAILS V3 - hard inline sizing -->
     <!-- TRIAD VERSION: COMPACT GALLERY V2 - images reduced hard -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1128,6 +1129,87 @@
                 text-align: center;
             }
         }
+    
+        /* TRIAD FIX: GALLERY INLINE THUMBNAILS V3 */
+        .project-gallery {
+            width: 100%;
+            max-width: 490px;
+            margin: 0 auto 28px;
+            overflow: hidden;
+        }
+
+        .project-grid {
+            width: 100% !important;
+            max-width: 100% !important;
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px !important;
+            margin-top: 14px !important;
+        }
+
+        .project-card,
+        .project-card.tall {
+            width: 100% !important;
+            height: 128px !important;
+            max-height: 128px !important;
+            min-height: 0 !important;
+            display: block !important;
+            position: relative !important;
+            overflow: hidden !important;
+            border-radius: 15px !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            background: #10141c !important;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.28) !important;
+        }
+
+        .project-card img {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 128px !important;
+            max-height: 128px !important;
+            min-height: 0 !important;
+            display: block !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            border: 0 !important;
+        }
+
+        .project-caption {
+            position: absolute !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            padding: 26px 8px 8px !important;
+            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.86)) !important;
+            color: #fff !important;
+            font-size: 10px !important;
+            line-height: 1.12 !important;
+            font-weight: 900 !important;
+            z-index: 2 !important;
+        }
+
+        .project-caption span {
+            display: none !important;
+        }
+
+        @media (max-width: 410px) {
+            .project-grid {
+                gap: 8px !important;
+            }
+
+            .project-card,
+            .project-card.tall,
+            .project-card img {
+                height: 112px !important;
+                max-height: 112px !important;
+            }
+
+            .project-caption {
+                font-size: 9px !important;
+                padding: 22px 7px 7px !important;
+            }
+        }
+
     </style>
 </head>
 
@@ -1393,44 +1475,44 @@
                 From daily drivers and family SUVs to work trucks, classics, performance builds, and engine repairs, Triad Automotive delivers real-world automotive service backed by hands-on experience.
             </p>
 
-            <div class="project-grid">
-                <div class="project-card tall">
-                    <img src="IMG_7602.jpeg" alt="Dually truck at Triad Automotive">
+            <div class="project-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:100%;margin-top:14px;">
+                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="IMG_7602.jpeg" alt="Dually truck at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Truck & Work Vehicle Service<span>Diesel, gas, trailers, and daily-use rigs</span></div>
                 </div>
 
-                <div class="project-card tall">
-                    <img src="82DA2A2C-0BC8-4B41-9AE8-0957E52F55A0.png" alt="Classic Chevrolet truck at Triad Automotive">
+                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="82DA2A2C-0BC8-4B41-9AE8-0957E52F55A0.png" alt="Classic Chevrolet truck at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Classic Truck Service<span>Older vehicles, clean builds, and repairs</span></div>
                 </div>
 
-                <div class="project-card">
-                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette serviced by Triad Automotive">
+                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette serviced by Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Performance & Enthusiast Vehicles<span>Parts support, upgrades, and direction</span></div>
                 </div>
 
-                <div class="project-card">
-                    <img src="014F6546-DD28-487F-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive">
+                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="014F6546-DD28-487F-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Diagnostics & Maintenance<span>Modern vehicles, no-starts, leaks, and warning lights</span></div>
                 </div>
 
-                <div class="project-card tall">
-                    <img src="5455C887-3C5F-4383-884E-F6934B8291F5.png" alt="Timing chain repair at Triad Automotive">
+                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="5455C887-3C5F-4383-884E-F6934B8291F5.png" alt="Timing chain repair at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Timing & Internal Engine Work<span>Real repair work, not guesswork</span></div>
                 </div>
 
-                <div class="project-card tall">
-                    <img src="89F51DBD-F1A4-4C18-B528-432AEA699051.png" alt="LS engine work at Triad Automotive">
+                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="89F51DBD-F1A4-4C18-B528-432AEA699051.png" alt="LS engine work at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">LS / SBC / LT Support<span>Valvetrain, swap parts, and build planning</span></div>
                 </div>
 
-                <div class="project-card">
-                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck build at Triad Automotive">
+                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck build at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Custom Parts & Upgrades<span>Wheels, lighting, audio, accessories, and more</span></div>
                 </div>
 
-                <div class="project-card">
-                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic car at Triad Automotive">
+                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
+                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic car at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
                     <div class="project-caption">Domestic & Foreign Vehicles<span>Daily drivers, classics, SUVs, trucks, and cars</span></div>
                 </div>
             </div>
