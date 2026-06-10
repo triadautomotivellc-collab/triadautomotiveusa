@@ -3,28 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Triad Automotive LLC | Baraboo, WI</title>
+
+  <title>Triad Automotive LLC | Baraboo, WI Auto Repair</title>
+  <meta name="description" content="Triad Automotive LLC provides diagnostics, repair, exhaust, brakes, suspension, and mobile automotive services in Baraboo, Wisconsin and surrounding areas." />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #050505;
       color: #f4f4f4;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :root {
+      --red: #b00000;
+      --bright-red: #e00000;
+      --dark: #050505;
+      --card: #111;
+      --gray: #bdbdbd;
+      --white: #fff;
+      --border: #2b2b2b;
+    }
 
     nav {
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(5,5,5,.88);
-      backdrop-filter: blur(12px);
+      background: rgba(5, 5, 5, 0.9);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid #222;
       padding: 14px 22px;
       display: flex;
@@ -32,16 +54,50 @@
       align-items: center;
     }
 
-    nav strong {
+    .nav-brand {
+      font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-size: .95rem;
     }
 
-    nav .links a {
-      margin-left: 18px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-links a {
       color: #ccc;
       font-size: .9rem;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--bright-red);
+    }
+
+    .language-switch {
+      display: flex;
+      gap: 6px;
+      margin-left: 10px;
+    }
+
+    .language-switch button {
+      background: #111;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 20px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-size: .78rem;
+      transition: .25s ease;
+    }
+
+    .language-switch button:hover,
+    .language-switch button.active {
+      background: var(--red);
+      border-color: var(--red);
     }
 
     header {
@@ -50,33 +106,64 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 55px 18px;
+      padding: 65px 18px;
       background:
-        radial-gradient(circle at top, rgba(160,0,0,.32), transparent 34%),
-        linear-gradient(to bottom, #111, #000 70%);
+        radial-gradient(circle at top, rgba(180, 0, 0, .32), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(120, 120, 120, .08), transparent 32%),
+        linear-gradient(to bottom, #101010, #000 70%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero { max-width: 900px; }
+    header::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,.05);
+      border-radius: 50%;
+      top: 10%;
+      right: -160px;
+      box-shadow: 0 0 80px rgba(176,0,0,.15);
+    }
+
+    .hero {
+      max-width: 920px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp .8s ease forwards;
+    }
 
     .logo {
-      width: 72%;
-      max-width: 390px;
+      width: 70%;
+      max-width: 385px;
       margin-bottom: 26px;
       filter: drop-shadow(0 0 24px rgba(255,0,0,.22));
     }
 
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      color: #ddd;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .85rem;
+      margin-bottom: 18px;
+    }
+
     h1 {
-      font-size: clamp(2.4rem, 8vw, 5.5rem);
+      font-size: clamp(2.4rem, 8vw, 5.6rem);
       letter-spacing: 5px;
       text-transform: uppercase;
-      background: linear-gradient(#fff, #7d7d7d);
+      background: linear-gradient(#fff, #777);
       -webkit-background-clip: text;
       color: transparent;
       line-height: 1.05;
     }
 
     .tagline {
-      color: #e00000;
+      color: var(--bright-red);
       font-size: 1.1rem;
       font-weight: 900;
       margin: 20px 0 12px;
@@ -87,7 +174,7 @@
     .sub {
       color: #cfcfcf;
       font-size: 1.1rem;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 32px;
     }
 
@@ -95,16 +182,22 @@
       display: inline-block;
       margin: 8px;
       padding: 15px 24px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .7px;
+      transition: .25s ease;
     }
 
     .btn-red {
-      background: #b00000;
+      background: var(--red);
       color: white;
       box-shadow: 0 0 22px rgba(255,0,0,.28);
+    }
+
+    .btn-red:hover {
+      transform: translateY(-2px);
+      background: #d00000;
     }
 
     .btn-dark {
@@ -113,8 +206,30 @@
       color: white;
     }
 
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      border-color: var(--bright-red);
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .trust-pill {
+      border: 1px solid #2f2f2f;
+      background: rgba(255,255,255,.04);
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #ccc;
+      font-size: .9rem;
+    }
+
     section {
-      padding: 75px 20px;
+      padding: 78px 20px;
       max-width: 1120px;
       margin: auto;
     }
@@ -130,7 +245,10 @@
     .section-sub {
       text-align: center;
       color: #aaa;
-      margin-bottom: 38px;
+      margin-bottom: 40px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .grid {
@@ -141,11 +259,17 @@
 
     .card {
       background: linear-gradient(145deg, rgba(22,22,22,.95), rgba(7,7,7,.95));
-      border: 1px solid #2d2d2d;
-      border-top: 4px solid #b00000;
-      padding: 27px;
-      border-radius: 16px;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--red);
+      padding: 28px;
+      border-radius: 18px;
       box-shadow: 0 0 28px rgba(0,0,0,.55);
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #4a4a4a;
     }
 
     .card h3 {
@@ -155,31 +279,75 @@
       letter-spacing: 1px;
     }
 
-    .card p, .card li {
+    .card p,
+    .card li {
       color: #bdbdbd;
       font-size: 1rem;
     }
 
-    .card ul { padding-left: 18px; }
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
 
-    .about {
-      max-width: 860px;
-      margin: auto;
-      text-align: center;
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .about-box {
+      background:
+        linear-gradient(145deg, rgba(18,18,18,.95), rgba(5,5,5,.95));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 36px;
+    }
+
+    .about-box p {
       color: #cfcfcf;
-      font-size: 1.1rem;
+      margin-bottom: 14px;
     }
 
     .highlight {
-      color: #e00000;
+      color: var(--bright-red);
       font-weight: 900;
+    }
+
+    .owners-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .owner {
+      border: 1px solid #2d2d2d;
+      background: #0c0c0c;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .owner strong {
+      color: white;
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .owner span {
+      color: #aaa;
+      font-size: .95rem;
+    }
+
+    .resource-card {
+      max-width: 790px;
+      margin: auto;
     }
 
     select {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       margin-top: 15px;
-      border-radius: 10px;
+      border-radius: 12px;
       background: #111;
       color: white;
       border: 1px solid #555;
@@ -189,6 +357,67 @@
     #helpResult {
       margin-top: 18px;
       color: #ddd;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid #272727;
+      display: none;
+    }
+
+    .service-area {
+      background:
+        radial-gradient(circle at center, rgba(176,0,0,.12), transparent 45%),
+        linear-gradient(145deg, #0b0b0b, #050505);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      text-align: center;
+    }
+
+    .area-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .area-tags span {
+      background: #111;
+      border: 1px solid #333;
+      color: #ddd;
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+
+    .faq {
+      max-width: 860px;
+      margin: auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      background: #101010;
+      border: 1px solid #2b2b2b;
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: white;
+    }
+
+    details p {
+      color: #bdbdbd;
+      margin-top: 12px;
+    }
+
+    .contact-card a {
+      color: white;
+      font-weight: 800;
     }
 
     footer {
@@ -199,13 +428,82 @@
       color: #aaa;
     }
 
-    footer p { margin: 6px 0; }
+    footer p {
+      margin: 6px 0;
+    }
 
-    @media (max-width: 650px) {
-      nav { display: block; text-align: center; }
-      nav .links { margin-top: 8px; }
-      nav .links a { margin: 0 7px; font-size: .82rem; }
-      .logo { width: 82%; }
+    .floating-call {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 999;
+      background: var(--red);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 0 25px rgba(255,0,0,.35);
+      display: none;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 820px) {
+      nav {
+        display: block;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        gap: 11px;
+      }
+
+      .language-switch {
+        margin-left: 0;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .logo {
+        width: 84%;
+      }
+
+      .floating-call {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        letter-spacing: 2px;
+      }
+
+      section {
+        padding: 62px 16px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .buttons a {
+        width: 100%;
+        max-width: 310px;
+      }
     }
   </style>
 </head>
@@ -213,81 +511,126 @@
 <body>
 
   <nav>
-    <strong>Triad Automotive LLC</strong>
-    <div class="links">
-      <a href="#services">Services</a>
-      <a href="#resources">Help</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-brand">Triad Automotive LLC</div>
+
+    <div class="nav-links">
+      <a href="#services" data-en="Services" data-es="Servicios">Services</a>
+      <a href="#resources" data-en="Help" data-es="Ayuda">Help</a>
+      <a href="#about" data-en="About" data-es="Nosotros">About</a>
+      <a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
+      <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+
+      <div class="language-switch">
+        <button id="btn-en" class="active" onclick="setLanguage('en')">English</button>
+        <button id="btn-es" onclick="setLanguage('es')">Español</button>
+      </div>
     </div>
   </nav>
 
-  <header>
+  <header id="home">
     <div class="hero">
       <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="logo" />
 
+      <div class="eyebrow" data-en="Family Owned • English & Spanish • Mobile Service Available" data-es="Negocio Familiar • Inglés y Español • Servicio Móvil Disponible">
+        Family Owned • English & Spanish • Mobile Service Available
+      </div>
+
       <h1>Triad Automotive</h1>
-      <p class="tagline">Diagnostics • Repair • Exhaust • Mobile Service</p>
-      <p class="sub">Local automotive repair serving Baraboo, Wisconsin and surrounding communities with honest work and dependable service.</p>
+
+      <p class="tagline" data-en="Diagnostics • Repair • Exhaust • Mobile Service" data-es="Diagnóstico • Reparación • Escape • Servicio Móvil">
+        Diagnostics • Repair • Exhaust • Mobile Service
+      </p>
+
+      <p class="sub" data-en="Local automotive repair serving Baraboo, Wisconsin and surrounding communities with honest work and dependable service." data-es="Servicio automotriz local en Baraboo, Wisconsin y comunidades cercanas con trabajo honesto y servicio confiable.">
+        Local automotive repair serving Baraboo, Wisconsin and surrounding communities with honest work and dependable service.
+      </p>
 
       <div class="buttons">
-        <a href="#contact" class="btn-red">Request Service</a>
-        <a href="#services" class="btn-dark">View Services</a>
+        <a href="#contact" class="btn-red" data-en="Request Service" data-es="Pedir Servicio">Request Service</a>
+        <a href="#services" class="btn-dark" data-en="View Services" data-es="Ver Servicios">View Services</a>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-pill" data-en="Local Baraboo Service" data-es="Servicio Local en Baraboo">Local Baraboo Service</div>
+        <div class="trust-pill" data-en="Mobile Work Available" data-es="Servicio Móvil Disponible">Mobile Work Available</div>
+        <div class="trust-pill" data-en="Honest Diagnostics" data-es="Diagnóstico Honesto">Honest Diagnostics</div>
       </div>
     </div>
   </header>
 
   <section id="services">
-    <h2>Services</h2>
-    <p class="section-sub">Reliable repair for daily drivers, family vehicles, and work vehicles.</p>
+    <h2 data-en="Services" data-es="Servicios">Services</h2>
+    <p class="section-sub" data-en="Reliable repair for daily drivers, family vehicles, and work vehicles." data-es="Reparación confiable para carros de diario, vehículos familiares y vehículos de trabajo.">
+      Reliable repair for daily drivers, family vehicles, and work vehicles.
+    </p>
 
     <div class="grid">
       <div class="card">
-        <h3>Diagnostics</h3>
-        <p>Check engine lights, no-start issues, drivability problems, sensors, and troubleshooting.</p>
+        <div class="icon">🔎</div>
+        <h3 data-en="Diagnostics" data-es="Diagnóstico">Diagnostics</h3>
+        <p data-en="Check engine lights, no-start issues, drivability problems, sensors, and troubleshooting." data-es="Luces de check engine, problemas de encendido, fallas al manejar, sensores y diagnóstico de problemas.">
+          Check engine lights, no-start issues, drivability problems, sensors, and troubleshooting.
+        </p>
       </div>
 
       <div class="card">
-        <h3>General Repair</h3>
-        <p>Maintenance and repair work for cars, SUVs, trucks, and everyday vehicles.</p>
+        <div class="icon">🔧</div>
+        <h3 data-en="General Repair" data-es="Reparación General">General Repair</h3>
+        <p data-en="Maintenance and repair work for cars, SUVs, trucks, and everyday vehicles." data-es="Mantenimiento y reparación para carros, SUVs, camionetas y vehículos de uso diario.">
+          Maintenance and repair work for cars, SUVs, trucks, and everyday vehicles.
+        </p>
       </div>
 
       <div class="card">
-        <h3>Exhaust & Muffler</h3>
-        <p>Muffler repair, exhaust leaks, broken hangers, pipe repair, and exhaust replacement.</p>
+        <div class="icon">💨</div>
+        <h3 data-en="Exhaust & Muffler" data-es="Escape y Silenciador">Exhaust & Muffler</h3>
+        <p data-en="Muffler repair, exhaust leaks, broken hangers, pipe repair, and exhaust replacement." data-es="Reparación de mofles, fugas de escape, soportes rotos, tubería y reemplazo de escape.">
+          Muffler repair, exhaust leaks, broken hangers, pipe repair, and exhaust replacement.
+        </p>
       </div>
 
       <div class="card">
-        <h3>Brakes</h3>
-        <p>Brake pads, rotors, calipers, brake noise, leaks, and safety inspections.</p>
+        <div class="icon">🛑</div>
+        <h3 data-en="Brakes" data-es="Frenos">Brakes</h3>
+        <p data-en="Brake pads, rotors, calipers, brake noise, leaks, and safety inspections." data-es="Balatas, discos, cálipers, ruidos de freno, fugas e inspecciones de seguridad.">
+          Brake pads, rotors, calipers, brake noise, leaks, and safety inspections.
+        </p>
       </div>
 
       <div class="card">
-        <h3>Suspension</h3>
-        <p>Struts, shocks, control arms, ball joints, tie rods, wheel bearings, and steering issues.</p>
+        <div class="icon">🛞</div>
+        <h3 data-en="Suspension" data-es="Suspensión">Suspension</h3>
+        <p data-en="Struts, shocks, control arms, ball joints, tie rods, wheel bearings, and steering issues." data-es="Amortiguadores, struts, brazos de control, rótulas, terminales, baleros y problemas de dirección.">
+          Struts, shocks, control arms, ball joints, tie rods, wheel bearings, and steering issues.
+        </p>
       </div>
 
       <div class="card">
-        <h3>Mobile Service</h3>
-        <p>Select mobile diagnostic and repair services available. Call or text for availability.</p>
+        <div class="icon">🚗</div>
+        <h3 data-en="Mobile Service" data-es="Servicio Móvil">Mobile Service</h3>
+        <p data-en="Select mobile diagnostic and repair services available. Call or text for availability." data-es="Servicios móviles de diagnóstico y reparación disponibles según el trabajo. Llame o mande texto para disponibilidad.">
+          Select mobile diagnostic and repair services available. Call or text for availability.
+        </p>
       </div>
     </div>
   </section>
 
   <section id="resources">
-    <h2>Vehicle Owner Help</h2>
-    <p class="section-sub">Quick answers for common vehicle problems.</p>
+    <h2 data-en="Vehicle Owner Help" data-es="Ayuda Para Tu Vehículo">Vehicle Owner Help</h2>
+    <p class="section-sub" data-en="Quick answers for common vehicle problems." data-es="Respuestas rápidas para problemas comunes de vehículos.">
+      Quick answers for common vehicle problems.
+    </p>
 
-    <div class="card" style="max-width: 760px; margin: auto;">
-      <h3>What do you need help with?</h3>
+    <div class="card resource-card">
+      <h3 data-en="What do you need help with?" data-es="¿Con qué necesitas ayuda?">What do you need help with?</h3>
 
       <select id="helpGuide" onchange="showHelpInfo()">
-        <option value="">Choose a topic</option>
-        <option value="oil">What oil does my car take?</option>
-        <option value="engine">Check engine light</option>
-        <option value="brakes">Brake noise</option>
-        <option value="battery">Car won’t start</option>
-        <option value="exhaust">Exhaust leak symptoms</option>
+        <option value="" data-en="Choose a topic" data-es="Escoge un tema">Choose a topic</option>
+        <option value="oil" data-en="What oil does my car take?" data-es="¿Qué aceite usa mi carro?">What oil does my car take?</option>
+        <option value="engine" data-en="Check engine light" data-es="Luz de check engine">Check engine light</option>
+        <option value="brakes" data-en="Brake noise" data-es="Ruido en los frenos">Brake noise</option>
+        <option value="battery" data-en="Car won’t start" data-es="El carro no prende">Car won’t start</option>
+        <option value="exhaust" data-en="Exhaust leak symptoms" data-es="Síntomas de fuga de escape">Exhaust leak symptoms</option>
       </select>
 
       <p id="helpResult"></p>
@@ -295,49 +638,115 @@
   </section>
 
   <section id="about">
-    <h2>Local. Honest. Reliable.</h2>
-    <p class="about">
-      <span class="highlight">Triad Automotive LLC</span> is a local family-owned automotive repair business built by Pepe, Javy, and Mickey.
-      We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities.
-    </p>
-  </section>
+    <div class="split">
+      <div class="about-box">
+        <h2 data-en="Local. Honest. Reliable." data-es="Local. Honesto. Confiable.">Local. Honest. Reliable.</h2>
 
-  <section>
-    <h2>Service Area</h2>
-    <p class="section-sub">Based in Baraboo, Wisconsin.</p>
+        <p data-en="Triad Automotive LLC is a local family-owned automotive repair business built by Pepe, Javy, and Mickey." data-es="Triad Automotive LLC es un negocio familiar de reparación automotriz creado por Pepe, Javy y Mickey.">
+          Triad Automotive LLC is a local family-owned automotive repair business built by Pepe, Javy, and Mickey.
+        </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Areas Served</h3>
-        <p>Baraboo, Wisconsin Dells, Reedsburg, Portage, Sauk City, and surrounding areas.</p>
+        <p data-en="We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities." data-es="Nos enfocamos en diagnóstico honesto, reparaciones confiables y servicio práctico para clientes en Baraboo y comunidades cercanas.">
+          We focus on honest diagnostics, dependable repairs, and practical service for customers in Baraboo and nearby communities.
+        </p>
+
+        <p>
+          <span class="highlight" data-en="Family owned. Local service. English and Spanish." data-es="Negocio familiar. Servicio local. Inglés y Español.">
+            Family owned. Local service. English and Spanish.
+          </span>
+        </p>
       </div>
 
-      <div class="card">
-        <h3>Mobile Work</h3>
-        <p>Mobile service may be available depending on the repair, location, and schedule.</p>
-      </div>
-
-      <div class="card">
-        <h3>Languages</h3>
-        <p>English and Spanish service available.</p>
+      <div class="owners-list">
+        <div class="owner">
+          <strong>Pepe</strong>
+          <span data-en="Owner" data-es="Dueño">Owner</span>
+        </div>
+        <div class="owner">
+          <strong>Javy</strong>
+          <span data-en="Owner" data-es="Dueño">Owner</span>
+        </div>
+        <div class="owner">
+          <strong>Mickey</strong>
+          <span data-en="Owner" data-es="Dueño">Owner</span>
+        </div>
       </div>
     </div>
   </section>
 
+  <section>
+    <div class="service-area">
+      <h2 data-en="Service Area" data-es="Área de Servicio">Service Area</h2>
+      <p class="section-sub" data-en="Based in Baraboo, Wisconsin. Mobile service may be available depending on location and repair type." data-es="Basados en Baraboo, Wisconsin. Servicio móvil puede estar disponible dependiendo de la ubicación y el tipo de reparación.">
+        Based in Baraboo, Wisconsin. Mobile service may be available depending on location and repair type.
+      </p>
+
+      <div class="area-tags">
+        <span>Baraboo</span>
+        <span>Wisconsin Dells</span>
+        <span>Reedsburg</span>
+        <span>Portage</span>
+        <span>Sauk City</span>
+        <span data-en="Surrounding Areas" data-es="Áreas Cercanas">Surrounding Areas</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2 data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Frequently Asked Questions</h2>
+    <p class="section-sub" data-en="Common questions before scheduling service." data-es="Preguntas comunes antes de pedir servicio.">
+      Common questions before scheduling service.
+    </p>
+
+    <div class="faq">
+      <details>
+        <summary data-en="Do you offer mobile service?" data-es="¿Ofrecen servicio móvil?">Do you offer mobile service?</summary>
+        <p data-en="Yes, select mobile diagnostic and repair services may be available depending on the job, location, and schedule." data-es="Sí, algunos servicios móviles de diagnóstico y reparación pueden estar disponibles dependiendo del trabajo, ubicación y horario.">
+          Yes, select mobile diagnostic and repair services may be available depending on the job, location, and schedule.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="Do I need an appointment?" data-es="¿Necesito cita?">Do I need an appointment?</summary>
+        <p data-en="Appointments are recommended. Call or text to check availability and describe the vehicle issue." data-es="Se recomienda hacer cita. Llame o mande texto para revisar disponibilidad y explicar el problema del vehículo.">
+          Appointments are recommended. Call or text to check availability and describe the vehicle issue.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="Can you diagnose check engine lights?" data-es="¿Pueden diagnosticar luces de check engine?">Can you diagnose check engine lights?</summary>
+        <p data-en="Yes. We can help diagnose check engine lights, drivability issues, no-start problems, and other vehicle concerns." data-es="Sí. Podemos ayudar a diagnosticar luces de check engine, fallas al manejar, problemas de encendido y otros problemas del vehículo.">
+          Yes. We can help diagnose check engine lights, drivability issues, no-start problems, and other vehicle concerns.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="Do you speak Spanish?" data-es="¿Hablan Español?">Do you speak Spanish?</summary>
+        <p data-en="Yes. English and Spanish service is available." data-es="Sí. Servicio en Inglés y Español disponible.">
+          Yes. English and Spanish service is available.
+        </p>
+      </details>
+    </div>
+  </section>
+
   <section id="contact">
-    <h2>Contact</h2>
-    <p class="section-sub">Call, text, or email to request service.</p>
+    <h2 data-en="Contact" data-es="Contacto">Contact</h2>
+    <p class="section-sub" data-en="Call, text, or email to request service." data-es="Llame, mande texto o email para pedir servicio.">
+      Call, text, or email to request service.
+    </p>
 
     <div class="grid">
-      <div class="card">
-        <h3>Call or Text</h3>
+      <div class="card contact-card">
+        <div class="icon">📞</div>
+        <h3 data-en="Call or Text" data-es="Llame o Mande Texto">Call or Text</h3>
         <p>
           <a href="tel:9564757834">956-475-7834</a><br>
           <a href="tel:9564757053">956-475-7053</a>
         </p>
       </div>
 
-      <div class="card">
+      <div class="card contact-card">
+        <div class="icon">✉️</div>
         <h3>Email</h3>
         <p>
           <a href="mailto:triadautomotivellc@gmail.com">
@@ -347,31 +756,77 @@
       </div>
 
       <div class="card">
-        <h3>Hours</h3>
-        <p>By appointment. Contact us for availability.</p>
+        <div class="icon">🕒</div>
+        <h3 data-en="Hours" data-es="Horario">Hours</h3>
+        <p data-en="By appointment. Contact us for availability." data-es="Por cita. Contáctenos para disponibilidad.">
+          By appointment. Contact us for availability.
+        </p>
       </div>
     </div>
   </section>
 
+  <a class="floating-call" href="tel:9564757834" data-en="Call Now" data-es="Llamar">Call Now</a>
+
   <footer>
     <p>© 2026 Triad Automotive LLC. All Rights Reserved.</p>
-    <p>Baraboo, WI • Diagnostics • Repair • Exhaust • Mobile Service</p>
+    <p data-en="Baraboo, WI • Diagnostics • Repair • Exhaust • Mobile Service" data-es="Baraboo, WI • Diagnóstico • Reparación • Escape • Servicio Móvil">
+      Baraboo, WI • Diagnostics • Repair • Exhaust • Mobile Service
+    </p>
   </footer>
 
   <script>
+    let currentLanguage = "en";
+
+    function setLanguage(language) {
+      currentLanguage = language;
+
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en]").forEach(element => {
+        if (element.dataset[language]) {
+          element.textContent = element.dataset[language];
+        }
+      });
+
+      document.querySelectorAll("option[data-en]").forEach(option => {
+        option.textContent = option.dataset[language];
+      });
+
+      document.getElementById("btn-en").classList.toggle("active", language === "en");
+      document.getElementById("btn-es").classList.toggle("active", language === "es");
+
+      showHelpInfo();
+    }
+
     function showHelpInfo() {
       const value = document.getElementById("helpGuide").value;
       const result = document.getElementById("helpResult");
 
       const info = {
-        oil: "Oil type depends on year, make, model, engine, and manufacturer spec. Many modern vehicles use full synthetic oil, but the exact weight and capacity should be verified before service.",
-        engine: "A check engine light can be caused by sensors, misfires, EVAP leaks, fuel issues, or electrical problems. A proper diagnostic scan helps avoid guessing and replacing unnecessary parts.",
-        brakes: "Squeaking, grinding, vibration, or a soft brake pedal should be checked quickly. Brake issues can involve pads, rotors, calipers, lines, or wheel bearings.",
-        battery: "A no-start can be caused by the battery, starter, alternator, wiring, fuel delivery, ignition, or security system. Testing first saves money.",
-        exhaust: "Exhaust leaks can sound loud, smell like fumes, reduce performance, and become unsafe if fumes enter the cabin. Mufflers, pipes, flex sections, and hangers should be inspected."
+        en: {
+          oil: "Oil type depends on year, make, model, engine, and manufacturer spec. Many modern vehicles use full synthetic oil, but the exact weight and capacity should be verified before service.",
+          engine: "A check engine light can be caused by sensors, misfires, EVAP leaks, fuel issues, or electrical problems. A proper diagnostic scan helps avoid guessing and replacing unnecessary parts.",
+          brakes: "Squeaking, grinding, vibration, or a soft brake pedal should be checked quickly. Brake issues can involve pads, rotors, calipers, lines, or wheel bearings.",
+          battery: "A no-start can be caused by the battery, starter, alternator, wiring, fuel delivery, ignition, or security system. Testing first saves money.",
+          exhaust: "Exhaust leaks can sound loud, smell like fumes, reduce performance, and become unsafe if fumes enter the cabin. Mufflers, pipes, flex sections, and hangers should be inspected."
+        },
+        es: {
+          oil: "El tipo de aceite depende del año, marca, modelo, motor y especificación del fabricante. Muchos vehículos modernos usan aceite full synthetic, pero se debe verificar el peso y la capacidad exacta antes del servicio.",
+          engine: "La luz de check engine puede ser causada por sensores, misfires, fugas EVAP, problemas de combustible o fallas eléctricas. Un diagnóstico correcto ayuda a no gastar en piezas innecesarias.",
+          brakes: "Chillidos, rechinidos, vibración o pedal suave se deben revisar pronto. Los problemas pueden ser balatas, discos, cálipers, líneas o baleros.",
+          battery: "Si el carro no prende, puede ser batería, starter, alternador, cableado, combustible, ignición o sistema de seguridad. Probar primero ahorra dinero.",
+          exhaust: "Una fuga de escape puede sonar fuerte, oler a gases, bajar rendimiento y ser peligrosa si los gases entran a la cabina. Se deben revisar mofles, tubos, flex pipe y soportes."
+        }
       };
 
-      result.innerHTML = info[value] || "";
+      if (!value) {
+        result.style.display = "none";
+        result.textContent = "";
+        return;
+      }
+
+      result.style.display = "block";
+      result.textContent = info[currentLanguage][value];
     }
   </script>
 
