@@ -682,14 +682,16 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #ff3b57, #b8142e);
+            background: rgba(5, 6, 8, 0.72);
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 999px;
             padding: 12px 16px;
             font-weight: 900;
             font-size: 13px;
-            box-shadow: 0 18px 50px rgba(255,59,87,0.26), 0 18px 70px rgba(0,0,0,0.42);
+            box-shadow: 0 18px 55px rgba(0,0,0,0.58), inset 0 1px 0 rgba(255,255,255,0.08);
             cursor: pointer;
             font-family: 'Inter', sans-serif;
         }
@@ -823,8 +825,9 @@
         }
 
         .chat-row.user .chat-bubble {
-            background: var(--accent-red);
+            background: rgba(255,255,255,0.12);
             color: #fff;
+            border: 1px solid rgba(255,255,255,0.12);
             border-bottom-right-radius: 6px;
             font-weight: 700;
         }
@@ -848,8 +851,8 @@
         }
 
         .chat-chip.red {
-            background: rgba(255,59,87,0.15);
-            border-color: rgba(255,59,87,0.32);
+            background: rgba(255,255,255,0.075);
+            border-color: rgba(255,255,255,0.16);
         }
 
         .chat-chip.blue {
@@ -944,9 +947,9 @@
 
         .chat-send {
             width: 46px;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.14);
             border-radius: 14px;
-            background: var(--accent-red);
+            background: rgba(255,255,255,0.08);
             color: #fff;
             font-size: 17px;
             cursor: pointer;
@@ -1686,258 +1689,652 @@
         };
 
         const chatData = {
-            en: {
-                welcome: "Welcome to Ask Triad. I can help triage urgent car problems, warning lights, overheating, no-starts, brakes, leaks, noises, diagnostics, parts, VATS delete, and scheduling.
-
-Tell me what is happening, or tap a quick topic below.",
-                fallback: "I did not catch that perfectly, but I can still help. Tell me:
-1. Year / make / model
-2. What happened
-3. Any warning lights
-4. Noise, smell, smoke, leak, or overheating
-5. Whether it still drives normally
-
-If the vehicle feels unsafe, pull over somewhere safe and shut it off.",
-                quick: ["Overheating", "No brakes", "Smoke / fire smell", "Check engine flashing", "No start", "Fluid leak", "Brake noise", "Parts / VATS"],
-                safetyNote: "Safety note: I can give general guidance, but do not risk driving if the vehicle is overheating, has no brakes, has smoke/fire, has oil pressure warning, or feels unsafe.",
-                answers: [
-                    {priority: 100, keys: ["fire", "flames", "burning wire", "electrical fire", "smoke from wires", "battery fire", "fuel fire", "gas fire", "on fire"], answer: "URGENT SAFETY STEPS:
-1. Pull over as soon as it is safe.
-2. Shut the vehicle off.
-3. Get everyone out and away from the vehicle.
-4. Do not open the hood if there are flames or heavy smoke.
-5. Contact emergency services if there is fire, heavy smoke, or danger to people.
-
-Do not keep driving. Fire, fuel smell, melted battery cables, or electrical smoke can turn serious fast."},
-                    {priority: 98, keys: ["no brakes", "brake pedal to floor", "pedal went to floor", "brakes failed", "can't stop", "cant stop", "lost brakes", "soft brake pedal"], answer: "DO NOT DRIVE IT.
-
-If the brake pedal goes to the floor, the vehicle barely stops, or you lost braking power:
-1. Pull over safely if you are moving.
-2. Use engine braking and the parking brake carefully if needed.
-3. Shut it off once safe.
-4. Have it towed or inspected before driving.
-
-Possible causes include brake fluid leak, failed master cylinder, air in lines, blown brake hose, or hydraulic failure."},
-                    {priority: 96, keys: ["oil pressure", "low oil pressure", "red oil light", "oil light", "stop engine", "engine pressure"], answer: "STOP THE ENGINE.
-
-A red oil pressure light can mean the engine is not getting oil pressure. Driving even a short distance can destroy the engine.
-
-Do this:
-1. Pull over safely.
-2. Shut the engine off.
-3. Check oil level only when safe.
-4. Do not restart if it is knocking, empty on oil, or the warning comes back.
-
-This needs inspection before driving."},
-                    {priority: 95, keys: ["overheat", "overheating", "hot", "temperature", "temp gauge", "steam", "coolant boiling", "boiling", "radiator hot", "car is hot"], answer: "OVERHEATING SAFETY PLAN:
-1. If the temperature gauge is hot, warning light is on, or steam is visible, pull over as soon as it is safe.
-2. Turn the engine off.
-3. Do NOT open the radiator cap or coolant reservoir while hot. Hot pressure can burn you badly.
-4. Let it cool completely.
-5. If you cannot pull over immediately, turn the A/C off and turn the heater on full hot only long enough to reach a safe spot.
-6. Do not keep driving if it keeps getting hot, has no coolant, leaks badly, or steams.
-
-Common causes: low coolant, leak, bad radiator fan, thermostat, water pump, hose, radiator cap, or clogged radiator. Tow it if the gauge rises again."},
-                    {priority: 94, keys: ["fuel smell", "smells like gas", "gas smell", "fuel leak", "gas leak", "raw fuel"], answer: "FUEL SMELL / FUEL LEAK WARNING:
-If you smell strong gasoline or see fuel leaking, do not keep driving.
-
-1. Pull over safely.
-2. Shut the vehicle off.
-3. Avoid sparks, smoking, or open flames.
-4. Keep people away from the leak.
-5. Have it inspected before driving.
-
-A fuel leak is a fire risk."},
-                    {priority: 92, keys: ["check engine flashing", "flashing check engine", "cel flashing", "blinking check engine", "check engine blinking", "flashing engine light"], answer: "A flashing check engine light usually means an active misfire severe enough to damage the catalytic converter.
-
-Best move:
-1. Reduce load immediately.
-2. Avoid hard acceleration.
-3. If it is shaking badly, pull over and shut it off.
-4. Do not keep driving it like normal.
-5. Schedule diagnostics.
-
-Common causes include coil, spark plug, injector, vacuum leak, fuel issue, compression issue, or wiring."},
-                    {priority: 90, keys: ["battery smoking", "battery hot", "battery melted", "sparking battery", "battery sparks", "burnt battery", "battery cable hot"], answer: "BATTERY / ELECTRICAL DANGER:
-If the battery is smoking, melting, sparking, or cables are very hot:
-1. Shut the vehicle off if safe.
-2. Stay clear of the battery area.
-3. Do not touch hot cables with bare hands.
-4. Avoid metal tools around the battery.
-5. If there is fire or heavy smoke, move away and contact emergency services."},
-                    {priority: 85, keys: ["transmission slipping", "won't shift", "wont shift", "stuck in gear", "no reverse", "no drive", "transmission hot", "burnt transmission"], answer: "TRANSMISSION TRIAGE:
-Warning signs include slipping, no reverse, no drive, stuck in gear, burnt smell, or harsh engagement.
-
-Do not keep forcing it. Check if fluid is leaking underneath. If it will not move normally or smells burnt, towing is safer than driving it and causing more damage."},
-                    {priority: 80, keys: ["no start", "won't start", "wont start", "doesn't start", "doesnt start", "crank", "click", "dead battery", "starter", "alternator"], answer: "NO-START TRIAGE:
-Tell me which one it does:
-A. No lights, no power
-B. One click
-C. Rapid clicking
-D. Cranks but does not start
-E. Starts then dies
-
-Common causes: battery, terminals, starter, alternator, fuel pump, crank sensor, ignition, security/VATS, fuse/relay, wiring, or engine mechanical issue."},
-                    {priority: 78, keys: ["coolant leak", "green fluid", "orange fluid", "pink fluid", "antifreeze leak", "sweet smell"], answer: "COOLANT LEAK TRIAGE:
-Coolant leak signs include green/orange/pink fluid, sweet smell, steam, low coolant, or overheating.
-
-Do not open the cooling system hot. If coolant is pouring out or the temp gauge rises, do not drive it. If it is a tiny seep and the gauge stays normal, it still needs inspection before it becomes an overheating problem."},
-                    {priority: 75, keys: ["brake", "brakes", "rotor", "rotors", "pads", "grinding", "squeak", "squealing", "scraping"], answer: "BRAKE NOISE TRIAGE:
-Grinding usually means metal-on-metal and can damage rotors/calipers fast. Squeaking can be pads, hardware, dust, or wear indicators.
-
-If the pedal feels normal and it only squeaks, schedule inspection. If it grinds, pulls, shakes badly, or the pedal feels soft, avoid driving until inspected."},
-                    {priority: 74, keys: ["shake", "vibration", "death wobble", "wheel shaking", "steering shake", "car shakes"], answer: "SHAKE / VIBRATION TRIAGE:
-Possible causes depend on when it happens:
-- Highway speed: tire balance, bent wheel, tire issue, axle, driveline
-- Braking: rotors, caliper, suspension
-- Turning: CV axle, wheel bearing, steering/suspension
-- Acceleration: misfire, axle, mount, driveline
-
-If it feels violent or hard to control, do not keep driving."},
-                    {priority: 72, keys: ["suspension", "steering", "clunk", "clunking", "ball joint", "control arm", "strut", "shock", "tie rod", "wheel bearing"], answer: "SUSPENSION / STEERING TRIAGE:
-Tell me if the noise happens over bumps, while turning, braking, or at highway speed.
-
-Do not keep driving if the wheel feels loose, steering wanders badly, there is a loud metal clunk, or the tire is leaning. Possible causes include ball joint, control arm, tie rod, strut, shock, sway link, or wheel bearing."},
-                    {priority: 70, keys: ["oil leak", "leaking oil", "fluid leak", "leak", "transmission leak", "red fluid", "brown fluid"], answer: "LEAK TRIAGE:
-Color helps:
-- Green/orange/pink: coolant
-- Brown/black: engine oil
-- Red/pink: transmission or power steering
-- Clear: water from A/C is usually normal
-- Yellow/clear oily: brake fluid can be dangerous
-
-If it is brake fluid, fuel, coolant pouring out, or oil pressure light is on, do not drive it."},
-                    {priority: 65, keys: ["diagnostic", "diagnostics", "scan", "scanner", "check engine", "engine light", "cel", "code", "codes", "warning light"], answer: "We offer check engine light scans for $45. A scan reads fault codes and gives direction, but it does not always prove the failed part by itself.
-
-Real diagnostics may require live data, wiring checks, smoke testing, fuel pressure testing, compression testing, or inspection."},
-                    {priority: 60, keys: ["parts", "part", "source", "sourcing", "order", "oem", "aftermarket", "wheels", "tires", "rims"], answer: "We can help source OEM replacement parts, aftermarket parts, wheels, tires, suspension parts, lighting, accessories, and build parts.
-
-Best info to provide: year/make/model, engine size, VIN if available, and the exact part needed."},
-                    {priority: 58, keys: ["led", "lights", "lighting", "rock lights", "underglow", "pods", "light bar", "audio", "speaker", "subwoofer", "subs", "amp"], answer: "We can help source LED lighting, lighting upgrades, audio equipment, speakers, subs, amps, and accessories by order.
-
-Tell me the vehicle and the style: daily clean, work truck, show truck, or full custom."},
-                    {priority: 55, keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "long tubes", "intake", "valvetrain"], answer: "We can help with SBC, LS, and LT parts sourcing, bolt-on planning, swap support, headers, intake, cam/valvetrain parts, and supporting components.
-
-For good advice, include engine, vehicle, current setup, transmission, fuel system, and goal."},
-                    {priority: 54, keys: ["vats", "vats delete", "security delete", "anti theft", "hp tuners", "hptuners"], answer: "We offer LS VATS delete support for compatible swap applications using HP Tuners. This is mainly for LS swap projects where the factory security system prevents the engine from running correctly.
-
-Useful info: PCM/ECM type, engine, donor vehicle, swap vehicle, and whether it currently cranks/starts/dies."},
-                    {priority: 50, keys: ["price", "pricing", "cost", "quote", "estimate", "how much", "charge"], answer: "Pricing depends on the vehicle, job, parts, and diagnostic time. Check engine light scans start at $45. Repairs require details before quoting.
-
-Best info to provide: year/make/model, engine, symptoms, codes, location, and whether the vehicle drives."},
-                    {priority: 48, keys: ["hours", "open", "closed", "schedule", "appointment", "available", "availability"], answer: "Use the schedule form on this page to request service. Include your vehicle, issue, city, preferred date/time, and any warning lights or safety concerns."},
-                    {priority: 45, keys: ["location", "where", "address", "baraboo", "dells", "wisconsin dells", "reedsburg", "portage", "sauk", "lake delton"], answer: "Triad Automotive is based in Baraboo, Wisconsin. We serve Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas."},
-                    {priority: 40, keys: ["spanish", "espanol", "español", "habla", "hablan"], answer: "Yes, se habla español. You can use the website in English or Spanish."}
-                ]
+            "en": {
+                        "welcome": "Welcome to Ask Triad. I can help triage urgent car problems, warning lights, overheating, no-starts, brakes, leaks, noises, diagnostics, parts, VATS delete, and scheduling.\n\nTell me what is happening, or tap a quick topic below.",
+                        "fallback": "I did not catch that perfectly, but I can still help. Tell me:\n1. Year / make / model\n2. What happened\n3. Any warning lights\n4. Noise, smell, smoke, leak, or overheating\n5. Whether it still drives normally\n\nIf the vehicle feels unsafe, pull over somewhere safe and shut it off.",
+                        "quick": [
+                                    "Overheating",
+                                    "No brakes",
+                                    "Smoke / fire smell",
+                                    "Check engine flashing",
+                                    "No start",
+                                    "Fluid leak",
+                                    "Brake noise",
+                                    "Parts / VATS"
+                        ],
+                        "safetyNote": "Safety note: I can give general guidance, but do not risk driving if the vehicle is overheating, has no brakes, has smoke/fire, has oil pressure warning, or feels unsafe.",
+                        "answers": [
+                                    {
+                                                "priority": 100,
+                                                "keys": [
+                                                            "fire",
+                                                            "flames",
+                                                            "burning wire",
+                                                            "electrical fire",
+                                                            "smoke from wires",
+                                                            "battery fire",
+                                                            "fuel fire",
+                                                            "gas fire",
+                                                            "on fire"
+                                                ],
+                                                "answer": "URGENT SAFETY STEPS:\n1. Pull over as soon as it is safe.\n2. Shut the vehicle off.\n3. Get everyone out and away from the vehicle.\n4. Do not open the hood if there are flames or heavy smoke.\n5. Contact emergency services if there is fire, heavy smoke, or danger to people.\n\nDo not keep driving. Fire, fuel smell, melted battery cables, or electrical smoke can turn serious fast."
+                                    },
+                                    {
+                                                "priority": 98,
+                                                "keys": [
+                                                            "no brakes",
+                                                            "brake pedal to floor",
+                                                            "pedal went to floor",
+                                                            "brakes failed",
+                                                            "can't stop",
+                                                            "cant stop",
+                                                            "lost brakes",
+                                                            "soft brake pedal"
+                                                ],
+                                                "answer": "DO NOT DRIVE IT.\n\nIf the brake pedal goes to the floor, the vehicle barely stops, or you lost braking power:\n1. Pull over safely if you are moving.\n2. Use engine braking and the parking brake carefully if needed.\n3. Shut it off once safe.\n4. Have it towed or inspected before driving.\n\nPossible causes include brake fluid leak, failed master cylinder, air in lines, blown brake hose, or hydraulic failure."
+                                    },
+                                    {
+                                                "priority": 96,
+                                                "keys": [
+                                                            "oil pressure",
+                                                            "low oil pressure",
+                                                            "red oil light",
+                                                            "oil light",
+                                                            "stop engine",
+                                                            "engine pressure"
+                                                ],
+                                                "answer": "STOP THE ENGINE.\n\nA red oil pressure light can mean the engine is not getting oil pressure. Driving even a short distance can destroy the engine.\n\nDo this:\n1. Pull over safely.\n2. Shut the engine off.\n3. Check oil level only when safe.\n4. Do not restart if it is knocking, empty on oil, or the warning comes back.\n\nThis needs inspection before driving."
+                                    },
+                                    {
+                                                "priority": 95,
+                                                "keys": [
+                                                            "overheat",
+                                                            "overheating",
+                                                            "hot",
+                                                            "temperature",
+                                                            "temp gauge",
+                                                            "steam",
+                                                            "coolant boiling",
+                                                            "boiling",
+                                                            "radiator hot",
+                                                            "car is hot"
+                                                ],
+                                                "answer": "OVERHEATING SAFETY PLAN:\n1. If the temperature gauge is hot, warning light is on, or steam is visible, pull over as soon as it is safe.\n2. Turn the engine off.\n3. Do NOT open the radiator cap or coolant reservoir while hot. Hot pressure can burn you badly.\n4. Let it cool completely.\n5. If you cannot pull over immediately, turn the A/C off and turn the heater on full hot only long enough to reach a safe spot.\n6. Do not keep driving if it keeps getting hot, has no coolant, leaks badly, or steams.\n\nCommon causes: low coolant, leak, bad radiator fan, thermostat, water pump, hose, radiator cap, or clogged radiator. Tow it if the gauge rises again."
+                                    },
+                                    {
+                                                "priority": 94,
+                                                "keys": [
+                                                            "fuel smell",
+                                                            "smells like gas",
+                                                            "gas smell",
+                                                            "fuel leak",
+                                                            "gas leak",
+                                                            "raw fuel"
+                                                ],
+                                                "answer": "FUEL SMELL / FUEL LEAK WARNING:\nIf you smell strong gasoline or see fuel leaking, do not keep driving.\n\n1. Pull over safely.\n2. Shut the vehicle off.\n3. Avoid sparks, smoking, or open flames.\n4. Keep people away from the leak.\n5. Have it inspected before driving.\n\nA fuel leak is a fire risk."
+                                    },
+                                    {
+                                                "priority": 92,
+                                                "keys": [
+                                                            "check engine flashing",
+                                                            "flashing check engine",
+                                                            "cel flashing",
+                                                            "blinking check engine",
+                                                            "check engine blinking",
+                                                            "flashing engine light"
+                                                ],
+                                                "answer": "A flashing check engine light usually means an active misfire severe enough to damage the catalytic converter.\n\nBest move:\n1. Reduce load immediately.\n2. Avoid hard acceleration.\n3. If it is shaking badly, pull over and shut it off.\n4. Do not keep driving it like normal.\n5. Schedule diagnostics.\n\nCommon causes include coil, spark plug, injector, vacuum leak, fuel issue, compression issue, or wiring."
+                                    },
+                                    {
+                                                "priority": 90,
+                                                "keys": [
+                                                            "battery smoking",
+                                                            "battery hot",
+                                                            "battery melted",
+                                                            "sparking battery",
+                                                            "battery sparks",
+                                                            "burnt battery",
+                                                            "battery cable hot"
+                                                ],
+                                                "answer": "BATTERY / ELECTRICAL DANGER:\nIf the battery is smoking, melting, sparking, or cables are very hot:\n1. Shut the vehicle off if safe.\n2. Stay clear of the battery area.\n3. Do not touch hot cables with bare hands.\n4. Avoid metal tools around the battery.\n5. If there is fire or heavy smoke, move away and contact emergency services."
+                                    },
+                                    {
+                                                "priority": 85,
+                                                "keys": [
+                                                            "transmission slipping",
+                                                            "won't shift",
+                                                            "wont shift",
+                                                            "stuck in gear",
+                                                            "no reverse",
+                                                            "no drive",
+                                                            "transmission hot",
+                                                            "burnt transmission"
+                                                ],
+                                                "answer": "TRANSMISSION TRIAGE:\nWarning signs include slipping, no reverse, no drive, stuck in gear, burnt smell, or harsh engagement.\n\nDo not keep forcing it. Check if fluid is leaking underneath. If it will not move normally or smells burnt, towing is safer than driving it and causing more damage."
+                                    },
+                                    {
+                                                "priority": 80,
+                                                "keys": [
+                                                            "no start",
+                                                            "won't start",
+                                                            "wont start",
+                                                            "doesn't start",
+                                                            "doesnt start",
+                                                            "crank",
+                                                            "click",
+                                                            "dead battery",
+                                                            "starter",
+                                                            "alternator"
+                                                ],
+                                                "answer": "NO-START TRIAGE:\nTell me which one it does:\nA. No lights, no power\nB. One click\nC. Rapid clicking\nD. Cranks but does not start\nE. Starts then dies\n\nCommon causes: battery, terminals, starter, alternator, fuel pump, crank sensor, ignition, security/VATS, fuse/relay, wiring, or engine mechanical issue."
+                                    },
+                                    {
+                                                "priority": 78,
+                                                "keys": [
+                                                            "coolant leak",
+                                                            "green fluid",
+                                                            "orange fluid",
+                                                            "pink fluid",
+                                                            "antifreeze leak",
+                                                            "sweet smell"
+                                                ],
+                                                "answer": "COOLANT LEAK TRIAGE:\nCoolant leak signs include green/orange/pink fluid, sweet smell, steam, low coolant, or overheating.\n\nDo not open the cooling system hot. If coolant is pouring out or the temp gauge rises, do not drive it. If it is a tiny seep and the gauge stays normal, it still needs inspection before it becomes an overheating problem."
+                                    },
+                                    {
+                                                "priority": 75,
+                                                "keys": [
+                                                            "brake",
+                                                            "brakes",
+                                                            "rotor",
+                                                            "rotors",
+                                                            "pads",
+                                                            "grinding",
+                                                            "squeak",
+                                                            "squealing",
+                                                            "scraping"
+                                                ],
+                                                "answer": "BRAKE NOISE TRIAGE:\nGrinding usually means metal-on-metal and can damage rotors/calipers fast. Squeaking can be pads, hardware, dust, or wear indicators.\n\nIf the pedal feels normal and it only squeaks, schedule inspection. If it grinds, pulls, shakes badly, or the pedal feels soft, avoid driving until inspected."
+                                    },
+                                    {
+                                                "priority": 74,
+                                                "keys": [
+                                                            "shake",
+                                                            "vibration",
+                                                            "death wobble",
+                                                            "wheel shaking",
+                                                            "steering shake",
+                                                            "car shakes"
+                                                ],
+                                                "answer": "SHAKE / VIBRATION TRIAGE:\nPossible causes depend on when it happens:\n- Highway speed: tire balance, bent wheel, tire issue, axle, driveline\n- Braking: rotors, caliper, suspension\n- Turning: CV axle, wheel bearing, steering/suspension\n- Acceleration: misfire, axle, mount, driveline\n\nIf it feels violent or hard to control, do not keep driving."
+                                    },
+                                    {
+                                                "priority": 72,
+                                                "keys": [
+                                                            "suspension",
+                                                            "steering",
+                                                            "clunk",
+                                                            "clunking",
+                                                            "ball joint",
+                                                            "control arm",
+                                                            "strut",
+                                                            "shock",
+                                                            "tie rod",
+                                                            "wheel bearing"
+                                                ],
+                                                "answer": "SUSPENSION / STEERING TRIAGE:\nTell me if the noise happens over bumps, while turning, braking, or at highway speed.\n\nDo not keep driving if the wheel feels loose, steering wanders badly, there is a loud metal clunk, or the tire is leaning. Possible causes include ball joint, control arm, tie rod, strut, shock, sway link, or wheel bearing."
+                                    },
+                                    {
+                                                "priority": 70,
+                                                "keys": [
+                                                            "oil leak",
+                                                            "leaking oil",
+                                                            "fluid leak",
+                                                            "leak",
+                                                            "transmission leak",
+                                                            "red fluid",
+                                                            "brown fluid"
+                                                ],
+                                                "answer": "LEAK TRIAGE:\nColor helps:\n- Green/orange/pink: coolant\n- Brown/black: engine oil\n- Red/pink: transmission or power steering\n- Clear: water from A/C is usually normal\n- Yellow/clear oily: brake fluid can be dangerous\n\nIf it is brake fluid, fuel, coolant pouring out, or oil pressure light is on, do not drive it."
+                                    },
+                                    {
+                                                "priority": 65,
+                                                "keys": [
+                                                            "diagnostic",
+                                                            "diagnostics",
+                                                            "scan",
+                                                            "scanner",
+                                                            "check engine",
+                                                            "engine light",
+                                                            "cel",
+                                                            "code",
+                                                            "codes",
+                                                            "warning light"
+                                                ],
+                                                "answer": "We offer check engine light scans for $45. A scan reads fault codes and gives direction, but it does not always prove the failed part by itself.\n\nReal diagnostics may require live data, wiring checks, smoke testing, fuel pressure testing, compression testing, or inspection."
+                                    },
+                                    {
+                                                "priority": 60,
+                                                "keys": [
+                                                            "parts",
+                                                            "part",
+                                                            "source",
+                                                            "sourcing",
+                                                            "order",
+                                                            "oem",
+                                                            "aftermarket",
+                                                            "wheels",
+                                                            "tires",
+                                                            "rims"
+                                                ],
+                                                "answer": "We can help source OEM replacement parts, aftermarket parts, wheels, tires, suspension parts, lighting, accessories, and build parts.\n\nBest info to provide: year/make/model, engine size, VIN if available, and the exact part needed."
+                                    },
+                                    {
+                                                "priority": 58,
+                                                "keys": [
+                                                            "led",
+                                                            "lights",
+                                                            "lighting",
+                                                            "rock lights",
+                                                            "underglow",
+                                                            "pods",
+                                                            "light bar",
+                                                            "audio",
+                                                            "speaker",
+                                                            "subwoofer",
+                                                            "subs",
+                                                            "amp"
+                                                ],
+                                                "answer": "We can help source LED lighting, lighting upgrades, audio equipment, speakers, subs, amps, and accessories by order.\n\nTell me the vehicle and the style: daily clean, work truck, show truck, or full custom."
+                                    },
+                                    {
+                                                "priority": 55,
+                                                "keys": [
+                                                            "ls",
+                                                            "lt",
+                                                            "sbc",
+                                                            "small block",
+                                                            "swap",
+                                                            "cam",
+                                                            "headers",
+                                                            "long tubes",
+                                                            "intake",
+                                                            "valvetrain"
+                                                ],
+                                                "answer": "We can help with SBC, LS, and LT parts sourcing, bolt-on planning, swap support, headers, intake, cam/valvetrain parts, and supporting components.\n\nFor good advice, include engine, vehicle, current setup, transmission, fuel system, and goal."
+                                    },
+                                    {
+                                                "priority": 54,
+                                                "keys": [
+                                                            "vats",
+                                                            "vats delete",
+                                                            "security delete",
+                                                            "anti theft",
+                                                            "hp tuners",
+                                                            "hptuners"
+                                                ],
+                                                "answer": "We offer LS VATS delete support for compatible swap applications using HP Tuners. This is mainly for LS swap projects where the factory security system prevents the engine from running correctly.\n\nUseful info: PCM/ECM type, engine, donor vehicle, swap vehicle, and whether it currently cranks/starts/dies."
+                                    },
+                                    {
+                                                "priority": 50,
+                                                "keys": [
+                                                            "price",
+                                                            "pricing",
+                                                            "cost",
+                                                            "quote",
+                                                            "estimate",
+                                                            "how much",
+                                                            "charge"
+                                                ],
+                                                "answer": "Pricing depends on the vehicle, job, parts, and diagnostic time. Check engine light scans start at $45. Repairs require details before quoting.\n\nBest info to provide: year/make/model, engine, symptoms, codes, location, and whether the vehicle drives."
+                                    },
+                                    {
+                                                "priority": 48,
+                                                "keys": [
+                                                            "hours",
+                                                            "open",
+                                                            "closed",
+                                                            "schedule",
+                                                            "appointment",
+                                                            "available",
+                                                            "availability"
+                                                ],
+                                                "answer": "Use the schedule form on this page to request service. Include your vehicle, issue, city, preferred date/time, and any warning lights or safety concerns."
+                                    },
+                                    {
+                                                "priority": 45,
+                                                "keys": [
+                                                            "location",
+                                                            "where",
+                                                            "address",
+                                                            "baraboo",
+                                                            "dells",
+                                                            "wisconsin dells",
+                                                            "reedsburg",
+                                                            "portage",
+                                                            "sauk",
+                                                            "lake delton"
+                                                ],
+                                                "answer": "Triad Automotive is based in Baraboo, Wisconsin. We serve Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas."
+                                    },
+                                    {
+                                                "priority": 40,
+                                                "keys": [
+                                                            "spanish",
+                                                            "espanol",
+                                                            "español",
+                                                            "habla",
+                                                            "hablan"
+                                                ],
+                                                "answer": "Yes, se habla español. You can use the website in English or Spanish."
+                                    }
+                        ]
             },
-
-            es: {
-                welcome: "Bienvenido a Ask Triad. Te puedo ayudar a revisar problemas urgentes, calentamiento, no prende, frenos, fugas, ruidos, diagnóstico, partes, VATS delete y citas.
-
-Dime qué está pasando o toca un tema rápido.",
-                fallback: "No entendí perfecto, pero sí te puedo ayudar. Dime:
-1. Año / marca / modelo
-2. Qué pasó
-3. Luces en el tablero
-4. Ruido, olor, humo, fuga o calentamiento
-5. Si todavía maneja normal
-
-Si el vehículo se siente inseguro, oríllate en un lugar seguro y apágalo.",
-                quick: ["Se calienta", "Sin frenos", "Humo / olor quemado", "Check engine parpadea", "No prende", "Fuga de líquido", "Ruido de frenos", "Partes / VATS"],
-                safetyNote: "Nota de seguridad: puedo dar guía general, pero no arriesgues manejar si se está calentando, no tiene frenos, hay humo/fuego, luz de presión de aceite, o se siente inseguro.",
-                answers: [
-                    {priority: 100, keys: ["fuego", "llamas", "cables quemados", "humo de cables", "bateria quemada", "batería quemada", "se quema", "incendio"], answer: "PASOS URGENTES DE SEGURIDAD:
-1. Oríllate cuando sea seguro.
-2. Apaga el vehículo.
-3. Saca a todos y aléjense.
-4. No abras el cofre si hay llamas o humo fuerte.
-5. Contacta emergencias si hay fuego, humo fuerte o peligro.
-
-No sigas manejando."},
-                    {priority: 98, keys: ["sin frenos", "no frena", "pedal al piso", "pedal se fue al piso", "perdi frenos", "perdí frenos", "freno aguado"], answer: "NO LO MANEJES.
-
-Si el pedal se va al piso, casi no frena, o perdiste frenos:
-1. Oríllate de forma segura si vas manejando.
-2. Usa freno de motor y freno de mano con cuidado si es necesario.
-3. Apágalo cuando estés seguro.
-4. Que lo remolquen o revisen antes de manejar.
-
-Puede ser fuga de líquido de frenos, master cylinder, aire en líneas, manguera reventada o falla hidráulica."},
-                    {priority: 96, keys: ["presion de aceite", "presión de aceite", "luz de aceite", "aceite rojo", "stop engine"], answer: "APAGA EL MOTOR.
-
-Una luz roja de presión de aceite puede significar que el motor no tiene presión de aceite. Manejarlo puede destruir el motor.
-
-Oríllate seguro, apaga el motor, revisa nivel de aceite solo cuando sea seguro, y no lo vuelvas a prender si golpea o la luz vuelve."},
-                    {priority: 95, keys: ["calienta", "calentando", "se calienta", "sobrecalienta", "temperatura", "vapor", "hierve", "anticongelante hirviendo", "radiador caliente"], answer: "PLAN DE SEGURIDAD SI SE CALIENTA:
-1. Si la aguja sube, prende luz de temperatura o sale vapor, oríllate cuando sea seguro.
-2. Apaga el motor.
-3. NO abras el tapón del radiador o depósito estando caliente. La presión puede quemarte fuerte.
-4. Deja que se enfríe completamente.
-5. Si no puedes orillarte de inmediato, apaga el A/C y prende la calefacción al máximo solo para llegar a un lugar seguro.
-6. No sigas manejando si se vuelve a calentar, no tiene coolant, fuga mucho o sale vapor.
-
-Causas comunes: bajo coolant, fuga, abanico, termostato, bomba de agua, manguera, tapón o radiador."},
-                    {priority: 94, keys: ["olor a gasolina", "huele a gas", "fuga de gasolina", "tira gasolina", "gasolina"], answer: "ALERTA DE GASOLINA:
-Si huele fuerte a gasolina o ves fuga, no lo sigas manejando.
-
-Oríllate seguro, apaga el vehículo, evita chispas/cigarros/llamas, mantén gente lejos, y que lo revisen antes de manejar."},
-                    {priority: 92, keys: ["check engine parpadea", "check engine flashing", "luz parpadea", "parpadeando", "engine parpadeando"], answer: "Una luz de check engine parpadeando normalmente indica misfire activo que puede dañar el catalizador.
-
-Baja la carga del motor, no aceleres fuerte, y si tiembla mucho, oríllate y apágalo. No lo manejes normal."},
-                    {priority: 90, keys: ["bateria humeando", "batería humeando", "bateria caliente", "batería caliente", "bateria derretida", "chispas bateria", "cable caliente"], answer: "PELIGRO DE BATERÍA / ELÉCTRICO:
-Si la batería humea, se derrite, saca chispas o los cables están muy calientes: apaga el vehículo si es seguro, aléjate del área, no toques cables calientes, evita herramientas metálicas, y si hay fuego o humo fuerte, aléjate y contacta emergencias."},
-                    {priority: 85, keys: ["transmision patina", "transmisión patina", "no cambia", "no reversa", "no drive", "huele quemado transmision", "trans caliente"], answer: "Señales de transmisión: patina, no entra reversa, no avanza, se queda en una velocidad, huele quemado o golpea fuerte.
-
-No la fuerces. Si no se mueve normal o huele quemado, remolcar es más seguro."},
-                    {priority: 80, keys: ["no prende", "no enciende", "no arranca", "bateria", "batería", "marcha", "starter", "alternador", "click"], answer: "TRIAGE DE NO PRENDE:
-Dime cuál hace:
-A. Sin luces, sin poder
-B. Un click
-C. Click rápido
-D. Da marcha pero no prende
-E. Prende y se apaga
-
-Causas comunes: batería, terminales, marcha, alternador, bomba de gasolina, sensor crank, ignición, seguridad/VATS, fusible/relevador, cableado o problema mecánico."},
-                    {priority: 78, keys: ["fuga anticongelante", "tira coolant", "coolant", "anticongelante", "olor dulce", "liquido verde", "líquido verde", "liquido naranja"], answer: "Señales de fuga de coolant: líquido verde/naranja/rosa, olor dulce, vapor, coolant bajo o calentamiento.
-
-No abras el sistema caliente. Si tira mucho coolant o sube la temperatura, no lo manejes."},
-                    {priority: 75, keys: ["freno", "frenos", "balata", "balatas", "rotor", "disco", "rechinan", "grindan", "raspa"], answer: "TRIAGE DE FRENOS:
-Grinding normalmente significa metal con metal y puede dañar rotores/calipers rápido. Si raspa fuerte, jala, vibra mucho o el pedal está aguado, evita manejarlo."},
-                    {priority: 74, keys: ["tiembla", "vibra", "vibracion", "vibración", "volante tiembla", "death wobble"], answer: "TRIAGE DE VIBRACIÓN:
-- En carretera: balance, rin doblado, llanta, axle, driveline
-- Frenando: rotores, caliper, suspensión
-- Girando: CV axle, wheel bearing, dirección/suspensión
-- Acelerando: misfire, axle, mount, driveline
-
-Si se siente violento o difícil de controlar, no lo sigas manejando."},
-                    {priority: 72, keys: ["suspension", "suspensión", "direccion", "dirección", "ruido", "golpe", "rotula", "rótula", "terminal", "shock", "strut", "bearing"], answer: "TRIAGE DE SUSPENSIÓN / DIRECCIÓN:
-Dime si el ruido pasa en baches, al girar, al frenar o en carretera.
-
-No sigas manejando si la llanta se ve chueca, el volante se siente flojo, se va de lado fuerte o hay un golpe metálico fuerte."},
-                    {priority: 70, keys: ["fuga", "tira aceite", "aceite", "transmision", "transmisión", "liquido", "líquido", "rojo", "cafe", "café"], answer: "TRIAGE DE FUGAS:
-- Verde/naranja/rosa: coolant
-- Café/negro: aceite de motor
-- Rojo/rosa: transmisión o power steering
-- Transparente: agua del A/C puede ser normal
-- Amarillo/transparente aceitoso: líquido de frenos puede ser peligroso
-
-Si es frenos, gasolina, coolant tirando mucho o luz de aceite, no manejes."},
-                    {priority: 65, keys: ["diagnostico", "diagnóstico", "scan", "scanner", "check engine", "luz", "codigo", "código", "codigos", "códigos"], answer: "Ofrecemos escaneo de check engine por $45. El scan lee códigos y da dirección, pero no siempre prueba la parte mala por sí solo.
-
-Diagnóstico real puede requerir datos en vivo, cableado, smoke test, presión de gasolina, compresión o inspección."},
-                    {priority: 60, keys: ["parte", "partes", "pedido", "ordenar", "oem", "aftermarket", "rines", "llantas"], answer: "Podemos ayudarte a buscar partes OEM, aftermarket, rines, llantas, suspensión, luces, accesorios y partes para proyectos.
-
-Mejor info: año/marca/modelo, motor, VIN si lo tienes y la parte exacta."},
-                    {priority: 55, keys: ["ls", "lt", "sbc", "small block", "swap", "cam", "headers", "intake", "valvetrain"], answer: "Podemos ayudar con partes SBC, LS y LT, planeación de bolt-ons, soporte para swaps, headers, intake, cam/valvetrain y partes de soporte.
-
-Incluye motor, vehículo, setup actual, transmisión, fuel system y meta."},
-                    {priority: 54, keys: ["vats", "vats delete", "security delete", "anti theft", "hp tuners", "hptuners"], answer: "Ofrecemos soporte de VATS delete LS para aplicaciones compatibles de swap usando HP Tuners. Es principalmente para swaps LS donde la seguridad de fábrica impide que el motor funcione bien."},
-                    {priority: 50, keys: ["precio", "precios", "cuanto", "cuánto", "cotizar", "cotizacion", "cotización", "cobran", "costo"], answer: "El precio depende del vehículo, el trabajo, las partes y tiempo de diagnóstico. El escaneo de check engine empieza en $45. Reparaciones necesitan detalles antes de cotizar."},
-                    {priority: 45, keys: ["ubicacion", "ubicación", "donde", "baraboo", "dells", "wisconsin dells", "reedsburg", "portage", "sauk", "lake delton"], answer: "Triad Automotive está basado en Baraboo, Wisconsin. Servimos Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas."},
-                    {priority: 40, keys: ["ingles", "inglés", "english"], answer: "Yes, se habla español and English. You can use the website in either language."}
-                ]
+            "es": {
+                        "welcome": "Bienvenido a Ask Triad. Te puedo ayudar a revisar problemas urgentes, calentamiento, no prende, frenos, fugas, ruidos, diagnóstico, partes, VATS delete y citas.\n\nDime qué está pasando o toca un tema rápido.",
+                        "fallback": "No entendí perfecto, pero sí te puedo ayudar. Dime:\n1. Año / marca / modelo\n2. Qué pasó\n3. Luces en el tablero\n4. Ruido, olor, humo, fuga o calentamiento\n5. Si todavía maneja normal\n\nSi el vehículo se siente inseguro, oríllate en un lugar seguro y apágalo.",
+                        "quick": [
+                                    "Se calienta",
+                                    "Sin frenos",
+                                    "Humo / olor quemado",
+                                    "Check engine parpadea",
+                                    "No prende",
+                                    "Fuga de líquido",
+                                    "Ruido de frenos",
+                                    "Partes / VATS"
+                        ],
+                        "safetyNote": "Nota de seguridad: puedo dar guía general, pero no arriesgues manejar si se está calentando, no tiene frenos, hay humo/fuego, luz de presión de aceite, o se siente inseguro.",
+                        "answers": [
+                                    {
+                                                "priority": 100,
+                                                "keys": [
+                                                            "fuego",
+                                                            "llamas",
+                                                            "cables quemados",
+                                                            "humo de cables",
+                                                            "bateria quemada",
+                                                            "batería quemada",
+                                                            "se quema",
+                                                            "incendio"
+                                                ],
+                                                "answer": "PASOS URGENTES DE SEGURIDAD:\n1. Oríllate cuando sea seguro.\n2. Apaga el vehículo.\n3. Saca a todos y aléjense.\n4. No abras el cofre si hay llamas o humo fuerte.\n5. Contacta emergencias si hay fuego, humo fuerte o peligro.\n\nNo sigas manejando."
+                                    },
+                                    {
+                                                "priority": 98,
+                                                "keys": [
+                                                            "sin frenos",
+                                                            "no frena",
+                                                            "pedal al piso",
+                                                            "pedal se fue al piso",
+                                                            "perdi frenos",
+                                                            "perdí frenos",
+                                                            "freno aguado"
+                                                ],
+                                                "answer": "NO LO MANEJES.\n\nSi el pedal se va al piso, casi no frena, o perdiste frenos:\n1. Oríllate de forma segura si vas manejando.\n2. Usa freno de motor y freno de mano con cuidado si es necesario.\n3. Apágalo cuando estés seguro.\n4. Que lo remolquen o revisen antes de manejar.\n\nPuede ser fuga de líquido de frenos, master cylinder, aire en líneas, manguera reventada o falla hidráulica."
+                                    },
+                                    {
+                                                "priority": 96,
+                                                "keys": [
+                                                            "presion de aceite",
+                                                            "presión de aceite",
+                                                            "luz de aceite",
+                                                            "aceite rojo",
+                                                            "stop engine"
+                                                ],
+                                                "answer": "APAGA EL MOTOR.\n\nUna luz roja de presión de aceite puede significar que el motor no tiene presión de aceite. Manejarlo puede destruir el motor.\n\nOríllate seguro, apaga el motor, revisa nivel de aceite solo cuando sea seguro, y no lo vuelvas a prender si golpea o la luz vuelve."
+                                    },
+                                    {
+                                                "priority": 95,
+                                                "keys": [
+                                                            "calienta",
+                                                            "calentando",
+                                                            "se calienta",
+                                                            "sobrecalienta",
+                                                            "temperatura",
+                                                            "vapor",
+                                                            "hierve",
+                                                            "anticongelante hirviendo",
+                                                            "radiador caliente"
+                                                ],
+                                                "answer": "PLAN DE SEGURIDAD SI SE CALIENTA:\n1. Si la aguja sube, prende luz de temperatura o sale vapor, oríllate cuando sea seguro.\n2. Apaga el motor.\n3. NO abras el tapón del radiador o depósito estando caliente. La presión puede quemarte fuerte.\n4. Deja que se enfríe completamente.\n5. Si no puedes orillarte de inmediato, apaga el A/C y prende la calefacción al máximo solo para llegar a un lugar seguro.\n6. No sigas manejando si se vuelve a calentar, no tiene coolant, fuga mucho o sale vapor.\n\nCausas comunes: bajo coolant, fuga, abanico, termostato, bomba de agua, manguera, tapón o radiador."
+                                    },
+                                    {
+                                                "priority": 94,
+                                                "keys": [
+                                                            "olor a gasolina",
+                                                            "huele a gas",
+                                                            "fuga de gasolina",
+                                                            "tira gasolina",
+                                                            "gasolina"
+                                                ],
+                                                "answer": "ALERTA DE GASOLINA:\nSi huele fuerte a gasolina o ves fuga, no lo sigas manejando.\n\nOríllate seguro, apaga el vehículo, evita chispas/cigarros/llamas, mantén gente lejos, y que lo revisen antes de manejar."
+                                    },
+                                    {
+                                                "priority": 92,
+                                                "keys": [
+                                                            "check engine parpadea",
+                                                            "check engine flashing",
+                                                            "luz parpadea",
+                                                            "parpadeando",
+                                                            "engine parpadeando"
+                                                ],
+                                                "answer": "Una luz de check engine parpadeando normalmente indica misfire activo que puede dañar el catalizador.\n\nBaja la carga del motor, no aceleres fuerte, y si tiembla mucho, oríllate y apágalo. No lo manejes normal."
+                                    },
+                                    {
+                                                "priority": 90,
+                                                "keys": [
+                                                            "bateria humeando",
+                                                            "batería humeando",
+                                                            "bateria caliente",
+                                                            "batería caliente",
+                                                            "bateria derretida",
+                                                            "chispas bateria",
+                                                            "cable caliente"
+                                                ],
+                                                "answer": "PELIGRO DE BATERÍA / ELÉCTRICO:\nSi la batería humea, se derrite, saca chispas o los cables están muy calientes: apaga el vehículo si es seguro, aléjate del área, no toques cables calientes, evita herramientas metálicas, y si hay fuego o humo fuerte, aléjate y contacta emergencias."
+                                    },
+                                    {
+                                                "priority": 85,
+                                                "keys": [
+                                                            "transmision patina",
+                                                            "transmisión patina",
+                                                            "no cambia",
+                                                            "no reversa",
+                                                            "no drive",
+                                                            "huele quemado transmision",
+                                                            "trans caliente"
+                                                ],
+                                                "answer": "Señales de transmisión: patina, no entra reversa, no avanza, se queda en una velocidad, huele quemado o golpea fuerte.\n\nNo la fuerces. Si no se mueve normal o huele quemado, remolcar es más seguro."
+                                    },
+                                    {
+                                                "priority": 80,
+                                                "keys": [
+                                                            "no prende",
+                                                            "no enciende",
+                                                            "no arranca",
+                                                            "bateria",
+                                                            "batería",
+                                                            "marcha",
+                                                            "starter",
+                                                            "alternador",
+                                                            "click"
+                                                ],
+                                                "answer": "TRIAGE DE NO PRENDE:\nDime cuál hace:\nA. Sin luces, sin poder\nB. Un click\nC. Click rápido\nD. Da marcha pero no prende\nE. Prende y se apaga\n\nCausas comunes: batería, terminales, marcha, alternador, bomba de gasolina, sensor crank, ignición, seguridad/VATS, fusible/relevador, cableado o problema mecánico."
+                                    },
+                                    {
+                                                "priority": 78,
+                                                "keys": [
+                                                            "fuga anticongelante",
+                                                            "tira coolant",
+                                                            "coolant",
+                                                            "anticongelante",
+                                                            "olor dulce",
+                                                            "liquido verde",
+                                                            "líquido verde",
+                                                            "liquido naranja"
+                                                ],
+                                                "answer": "Señales de fuga de coolant: líquido verde/naranja/rosa, olor dulce, vapor, coolant bajo o calentamiento.\n\nNo abras el sistema caliente. Si tira mucho coolant o sube la temperatura, no lo manejes."
+                                    },
+                                    {
+                                                "priority": 75,
+                                                "keys": [
+                                                            "freno",
+                                                            "frenos",
+                                                            "balata",
+                                                            "balatas",
+                                                            "rotor",
+                                                            "disco",
+                                                            "rechinan",
+                                                            "grindan",
+                                                            "raspa"
+                                                ],
+                                                "answer": "TRIAGE DE FRENOS:\nGrinding normalmente significa metal con metal y puede dañar rotores/calipers rápido. Si raspa fuerte, jala, vibra mucho o el pedal está aguado, evita manejarlo."
+                                    },
+                                    {
+                                                "priority": 74,
+                                                "keys": [
+                                                            "tiembla",
+                                                            "vibra",
+                                                            "vibracion",
+                                                            "vibración",
+                                                            "volante tiembla",
+                                                            "death wobble"
+                                                ],
+                                                "answer": "TRIAGE DE VIBRACIÓN:\n- En carretera: balance, rin doblado, llanta, axle, driveline\n- Frenando: rotores, caliper, suspensión\n- Girando: CV axle, wheel bearing, dirección/suspensión\n- Acelerando: misfire, axle, mount, driveline\n\nSi se siente violento o difícil de controlar, no lo sigas manejando."
+                                    },
+                                    {
+                                                "priority": 72,
+                                                "keys": [
+                                                            "suspension",
+                                                            "suspensión",
+                                                            "direccion",
+                                                            "dirección",
+                                                            "ruido",
+                                                            "golpe",
+                                                            "rotula",
+                                                            "rótula",
+                                                            "terminal",
+                                                            "shock",
+                                                            "strut",
+                                                            "bearing"
+                                                ],
+                                                "answer": "TRIAGE DE SUSPENSIÓN / DIRECCIÓN:\nDime si el ruido pasa en baches, al girar, al frenar o en carretera.\n\nNo sigas manejando si la llanta se ve chueca, el volante se siente flojo, se va de lado fuerte o hay un golpe metálico fuerte."
+                                    },
+                                    {
+                                                "priority": 70,
+                                                "keys": [
+                                                            "fuga",
+                                                            "tira aceite",
+                                                            "aceite",
+                                                            "transmision",
+                                                            "transmisión",
+                                                            "liquido",
+                                                            "líquido",
+                                                            "rojo",
+                                                            "cafe",
+                                                            "café"
+                                                ],
+                                                "answer": "TRIAGE DE FUGAS:\n- Verde/naranja/rosa: coolant\n- Café/negro: aceite de motor\n- Rojo/rosa: transmisión o power steering\n- Transparente: agua del A/C puede ser normal\n- Amarillo/transparente aceitoso: líquido de frenos puede ser peligroso\n\nSi es frenos, gasolina, coolant tirando mucho o luz de aceite, no manejes."
+                                    },
+                                    {
+                                                "priority": 65,
+                                                "keys": [
+                                                            "diagnostico",
+                                                            "diagnóstico",
+                                                            "scan",
+                                                            "scanner",
+                                                            "check engine",
+                                                            "luz",
+                                                            "codigo",
+                                                            "código",
+                                                            "codigos",
+                                                            "códigos"
+                                                ],
+                                                "answer": "Ofrecemos escaneo de check engine por $45. El scan lee códigos y da dirección, pero no siempre prueba la parte mala por sí solo.\n\nDiagnóstico real puede requerir datos en vivo, cableado, smoke test, presión de gasolina, compresión o inspección."
+                                    },
+                                    {
+                                                "priority": 60,
+                                                "keys": [
+                                                            "parte",
+                                                            "partes",
+                                                            "pedido",
+                                                            "ordenar",
+                                                            "oem",
+                                                            "aftermarket",
+                                                            "rines",
+                                                            "llantas"
+                                                ],
+                                                "answer": "Podemos ayudarte a buscar partes OEM, aftermarket, rines, llantas, suspensión, luces, accesorios y partes para proyectos.\n\nMejor info: año/marca/modelo, motor, VIN si lo tienes y la parte exacta."
+                                    },
+                                    {
+                                                "priority": 55,
+                                                "keys": [
+                                                            "ls",
+                                                            "lt",
+                                                            "sbc",
+                                                            "small block",
+                                                            "swap",
+                                                            "cam",
+                                                            "headers",
+                                                            "intake",
+                                                            "valvetrain"
+                                                ],
+                                                "answer": "Podemos ayudar con partes SBC, LS y LT, planeación de bolt-ons, soporte para swaps, headers, intake, cam/valvetrain y partes de soporte.\n\nIncluye motor, vehículo, setup actual, transmisión, fuel system y meta."
+                                    },
+                                    {
+                                                "priority": 54,
+                                                "keys": [
+                                                            "vats",
+                                                            "vats delete",
+                                                            "security delete",
+                                                            "anti theft",
+                                                            "hp tuners",
+                                                            "hptuners"
+                                                ],
+                                                "answer": "Ofrecemos soporte de VATS delete LS para aplicaciones compatibles de swap usando HP Tuners. Es principalmente para swaps LS donde la seguridad de fábrica impide que el motor funcione bien."
+                                    },
+                                    {
+                                                "priority": 50,
+                                                "keys": [
+                                                            "precio",
+                                                            "precios",
+                                                            "cuanto",
+                                                            "cuánto",
+                                                            "cotizar",
+                                                            "cotizacion",
+                                                            "cotización",
+                                                            "cobran",
+                                                            "costo"
+                                                ],
+                                                "answer": "El precio depende del vehículo, el trabajo, las partes y tiempo de diagnóstico. El escaneo de check engine empieza en $45. Reparaciones necesitan detalles antes de cotizar."
+                                    },
+                                    {
+                                                "priority": 45,
+                                                "keys": [
+                                                            "ubicacion",
+                                                            "ubicación",
+                                                            "donde",
+                                                            "baraboo",
+                                                            "dells",
+                                                            "wisconsin dells",
+                                                            "reedsburg",
+                                                            "portage",
+                                                            "sauk",
+                                                            "lake delton"
+                                                ],
+                                                "answer": "Triad Automotive está basado en Baraboo, Wisconsin. Servimos Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas."
+                                    },
+                                    {
+                                                "priority": 40,
+                                                "keys": [
+                                                            "ingles",
+                                                            "inglés",
+                                                            "english"
+                                                ],
+                                                "answer": "Yes, se habla español and English. You can use the website in either language."
+                                    }
+                        ]
             }
-        };
+};
 
         function populateDropdowns() {
             const serviceSelect = document.getElementById('bookingService');
