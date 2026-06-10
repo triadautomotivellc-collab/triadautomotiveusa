@@ -27,48 +27,75 @@
         .contact-group { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
         .contact-btn { font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; padding: 8px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 20px; }
         .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 24px; padding: 28px; margin-bottom: 24px; }
+        .card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px; color: #fff; margin-bottom: 12px; }
+        .card-desc { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+        .review-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); padding: 16px; border-radius: 16px; margin-bottom: 12px; }
+        .stars { color: #f59e0b; font-size: 14px; margin-bottom: 8px; }
+        .review-text { font-style: italic; font-size: 14px; margin-bottom: 8px; }
+        .review-name { font-weight: 700; font-size: 12px; color: var(--accent-blue); }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .image-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); aspect-ratio: 4 / 5; display: flex; background: #12161f; }
+        .grid-img { width: 100%; height: 100%; object-fit: cover; }
         .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
         .form-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
-        .form-input { background: #0a0c10; color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); padding: 14px; border-radius: 12px; font-size: 15px; width: 100%; min-height: 48px; appearance: none; -webkit-appearance: none; }
-        .submit-btn { background: var(--accent-blue); color: #fff; padding: 16px; border: none; border-radius: 16px; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; margin-top: 8px; }
+        .form-input { background: #0a0c10; color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); padding: 14px; border-radius: 12px; font-size: 15px; width: 100%; min-height: 48px; }
+        .submit-btn { background: var(--accent-blue); color: #fff; padding: 16px; border: none; border-radius: 16px; font-weight: 700; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <div class="utility-bar"><button class="lang-btn" onclick="toggleLanguage()">🌐 <span id="txtLangBtn">Español</span></button></div>
-
         <header>
             <h1 class="brand-name">Triad Automotive</h1>
             <p class="brand-slogan">Texas Roots, Wisconsin Tough</p>
             <div class="contact-group">
-                <a href="mailto:triadautomotivellc@gmail.com" class="contact-btn">Email</a>
-                <a href="sms:+19564757053" class="contact-btn">Text</a>
+                <a href="mailto:triadautomotivellc@gmail.com" class="contact-btn" id="txtEmail">Email</a>
+                <a href="sms:+19564757053" class="contact-btn" id="txtText">Text</a>
             </div>
         </header>
 
-        <!-- Scheduler -->
+        <main class="card">
+            <h2 class="card-title" id="ttlServices">Services</h2>
+            <p class="card-desc" id="descServices">Check Engine Light Diagnostics ($45) & Truck/Trailer Recovery.</p>
+        </main>
+
+        <section class="card" style="background:transparent; border:none; padding:0;">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Fixed my truck real fast when it died in the trailor park. legit guys, dont go noware else."</p>
+                <div class="review-name">— Dylan Seipp</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"These guys know what there doin. Got me back on the road in no time."</p>
+                <div class="review-name">— Kavik Copus</div>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="card-title" id="galTitle">Shop Operations</h3>
+            <div class="grid-container">
+                <div class="image-card"><img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" class="grid-img"></div>
+                <div class="image-card"><img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" class="grid-img"></div>
+                <div class="image-card"><img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" class="grid-img"></div>
+                <div class="image-card"><img src="IMG_7602.jpeg" class="grid-img"></div>
+            </div>
+        </section>
+
         <section class="card" id="scheduler">
-            <h3 class="card-title" id="frmTitle" style="margin-bottom:20px;">📅 Schedule Service</h3>
+            <h3 class="card-title" id="frmTitle">📅 Schedule Service</h3>
             <form onsubmit="event.preventDefault(); sendBookingSMS();">
-                <div class="form-group"><label class="form-label" id="lblFrmSvc">1. Select Service</label><select id="bookingService" class="form-input"></select></div>
-                <div class="form-group"><label class="form-label" id="lblFrmDate">2. Date</label><input type="date" id="bookingDate" class="form-input" required></div>
-                <div class="form-group"><label class="form-label" id="lblFrmTime">3. Time</label>
+                <div class="form-group"><label class="form-label" id="lblSvc">Service</label><select id="bookingService" class="form-input"></select></div>
+                <div class="form-group"><label class="form-label" id="lblDate">Date</label><input type="date" id="bookingDate" class="form-input" required></div>
+                <div class="form-group"><label class="form-label" id="lblTime">Time</label>
                     <select id="bookingTime" class="form-input">
-                        <option value="ASAP">ASAP (Urgent)</option>
-                        <option value="8:00 AM">8:00 AM</option>
-                        <option value="9:00 AM">9:00 AM</option>
-                        <option value="10:00 AM">10:00 AM</option>
-                        <option value="11:00 AM">11:00 AM</option>
-                        <option value="12:00 PM">12:00 PM</option>
-                        <option value="1:00 PM">1:00 PM</option>
-                        <option value="2:00 PM">2:00 PM</option>
-                        <option value="3:00 PM">3:00 PM</option>
-                        <option value="4:00 PM">4:00 PM</option>
-                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="ASAP">ASAP</option>
+                        <option value="8:00 AM">8:00 AM</option><option value="9:00 AM">9:00 AM</option><option value="10:00 AM">10:00 AM</option>
+                        <option value="11:00 AM">11:00 AM</option><option value="12:00 PM">12:00 PM</option><option value="1:00 PM">1:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option><option value="3:00 PM">3:00 PM</option><option value="4:00 PM">4:00 PM</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn" id="btnFrmSubmit">💬 Confirm & Text Request</button>
+                <button type="submit" class="submit-btn" id="btnSubmit">💬 Confirm & Text</button>
             </form>
         </section>
     </div>
@@ -76,13 +103,28 @@
     <script>
         let currentLang = 'en';
         const trans = {
-            en: { txtLangBtn: "Español", frmTitle: "📅 Schedule Service", lblFrmSvc: "1. Select Service", lblFrmDate: "2. Date", lblFrmTime: "3. Time", btnFrmSubmit: "💬 Confirm & Text Request", svcs: [{v: "Diagnostics ($45)", t: "Diagnostics ($45)"}, {v: "Truck & Trailer Service", t: "Truck & Trailer Service"}] },
-            es: { txtLangBtn: "English", frmTitle: "📅 Agendar Servicio", lblFrmSvc: "1. Selecciona Servicio", lblFrmDate: "2. Fecha", lblFrmTime: "3. Hora", btnFrmSubmit: "💬 Confirmar y Enviar", svcs: [{v: "Diagnóstico ($45)", t: "Diagnóstico ($45)"}, {v: "Servicio de Remolque", t: "Servicio de Remolque"}] }
+            en: { lang: "Español", email: "Email", text: "Text", ttlSvc: "Services", dscSvc: "Check Engine Light Diagnostics ($45) & Truck/Trailer Recovery.", gal: "Shop Operations", frm: "📅 Schedule Service", svc: "Service", date: "Date", time: "Time", btn: "💬 Confirm & Text", svcs: [{v:"Diagnostics ($45)", t:"Diagnostics ($45)"}, {v:"Truck & Trailer", t:"Truck & Trailer"}] },
+            es: { lang: "English", email: "Correo", text: "Texto", ttlSvc: "Servicios", dscSvc: "Diagnósticos ($45) y Recuperación de Camiones.", gal: "Operaciones", frm: "📅 Agendar Servicio", svc: "Servicio", date: "Fecha", time: "Hora", btn: "💬 Confirmar y Enviar", svcs: [{v:"Diagnóstico ($45)", t:"Diagnóstico ($45)"}, {v:"Remolque", t:"Remolque"}] }
         };
-        function toggleLanguage() { currentLang = currentLang === 'en' ? 'es' : 'en'; const t = trans[currentLang]; document.getElementById('txtLangBtn').textContent = t.txtLangBtn; document.getElementById('frmTitle').textContent = t.frmTitle; document.getElementById('lblFrmSvc').textContent = t.lblFrmSvc; document.getElementById('lblFrmDate').textContent = t.lblFrmDate; document.getElementById('lblFrmTime').textContent = t.lblFrmTime; document.getElementById('btnFrmSubmit').textContent = t.btnFrmSubmit; const s = document.getElementById('bookingService'); s.innerHTML = ''; t.svcs.forEach(i => { let o = document.createElement('option'); o.value = i.v; o.textContent = i.t; s.appendChild(o); }); }
-        function sendBookingSMS() { const svc = document.getElementById('bookingService').value; const date = document.getElementById('bookingDate').value; const time = document.getElementById('bookingTime').value; window.location.href = `sms:+19564757053?body=${encodeURIComponent("Hi Triad, I'd like to book: " + svc + " for " + date + " at " + time)}`; }
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            const t = trans[currentLang];
+            document.getElementById('txtLangBtn').textContent = t.lang;
+            document.getElementById('txtEmail').textContent = t.email;
+            document.getElementById('txtText').textContent = t.text;
+            document.getElementById('ttlServices').textContent = t.ttlSvc;
+            document.getElementById('descServices').textContent = t.dscSvc;
+            document.getElementById('galTitle').textContent = t.gal;
+            document.getElementById('frmTitle').textContent = t.frm;
+            document.getElementById('lblSvc').textContent = t.svc;
+            document.getElementById('lblDate').textContent = t.date;
+            document.getElementById('lblTime').textContent = t.time;
+            document.getElementById('btnSubmit').textContent = t.btn;
+            const s = document.getElementById('bookingService'); s.innerHTML = ''; t.svcs.forEach(i => { let o = document.createElement('option'); o.value = i.v; o.textContent = i.t; s.appendChild(o); });
+        }
+        function sendBookingSMS() { const s = document.getElementById('bookingService').value, d = document.getElementById('bookingDate').value, t = document.getElementById('bookingTime').value; window.location.href = `sms:+19564757053?body=${encodeURIComponent("Service: " + s + ", Date: " + d + ", Time: " + t)}`; }
         document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
-        toggleLanguage(); toggleLanguage(); // Init
+        toggleLanguage(); toggleLanguage();
     </script>
 </body>
 </html>
