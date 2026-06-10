@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- TRIAD REORGANIZED PRO WATERMARK V6 -->
     <!-- TRIAD UPDATE: PICKUP DROPOFF + SHO EXACT FILE V5 CLEAN -->
     <!-- TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 -->
     <!-- TRIAD FIX: GALLERY INLINE THUMBNAILS V3 - hard inline sizing -->
@@ -41,8 +42,8 @@
 
         body {
             background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.035), transparent 30%),
-                radial-gradient(circle at top right, rgba(255, 255, 255, 0.025), transparent 28%),
+                radial-gradient(circle at 20% 0%, rgba(255, 59, 87, 0.045), transparent 30%),
+                radial-gradient(circle at 90% 8%, rgba(0, 122, 255, 0.035), transparent 28%),
                 linear-gradient(180deg, #050608 0%, #080a0f 42%, #030405 100%);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
@@ -61,11 +62,12 @@
             inset: 0;
             background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
             background-repeat: no-repeat;
-            background-position: center 160px;
-            background-size: 500px auto;
-            opacity: 0.010;
+            background-position: center 130px;
+            background-size: min(560px, 92vw) auto;
+            opacity: 0.014;
             pointer-events: none;
             z-index: 0;
+            filter: blur(0.2px);
         }
 
         a {
@@ -513,6 +515,30 @@
             margin-bottom: 22px;
             position: relative;
             z-index: 1;
+        }
+
+        .service-note-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin: 14px 0 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-note {
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.085);
+            border-radius: 14px;
+            padding: 11px 12px;
+            color: #e5e7eb;
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .service-note strong {
+            color: #8ec5ff;
         }
 
         .mini-list {
@@ -1285,7 +1311,7 @@
             <h2 class="hero-title" id="heroTitle">Diagnostics, Maintenance & Repair Done Right.</h2>
 
             <p class="hero-text" id="heroText">
-                Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and reliable work when your vehicle needs attention. Se habla español.
+                Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and convenient pickup/drop-off options when available. Se habla español.
             </p>
 
             <div class="hero-actions">
@@ -1322,6 +1348,7 @@
             <a href="#scheduler" class="dept-tab" id="tabSchedule">Schedule</a>
         </nav>
 
+
         <div class="quick-help">
             <h2 class="quick-help-title" id="quickTitle">Not sure what you need?</h2>
             <p class="quick-help-text" id="quickText">
@@ -1331,19 +1358,7 @@
         </div>
 
 
-        <section class="card about-card" id="about">
-            <div class="core-badge dark" id="bdgAbout">About Triad</div>
-            <h2 class="card-title" id="ttlAbout">Three Brothers. South Texas Roots.</h2>
-            <p class="card-desc" id="dscAbout">
-                Triad Automotive was built by three brothers who grew up in South Texas around mechanics, tools, trucks, and real repair work. Automotive work has been part of our upbringing since day one — learning around shops, family projects, daily drivers, and the kind of vehicles people depend on every day.
-            </p>
 
-            <div class="about-grid">
-                <div class="about-point" id="aboutPoint1">Family-owned and built from real hands-on experience.</div>
-                <div class="about-point" id="aboutPoint2">Raised around mechanics, repairs, trucks, and problem solving.</div>
-                <div class="about-point" id="aboutPoint3">Texas roots, Wisconsin built — serving Baraboo and nearby communities.</div>
-            </div>
-        </section>
 
         <section class="card" id="service">
             <div class="core-badge" id="bdgService">General Service</div>
@@ -1374,6 +1389,7 @@
             </div>
         </section>
 
+
         <main class="card" id="diagnostics">
             <div class="core-badge" id="bdgDiag">Core Evaluation</div>
             <h2 class="card-title" id="ttlDiag">Check Engine Light Scan</h2>
@@ -1395,6 +1411,7 @@
                 <a href="#scheduler" class="book-btn" id="btnBookDiag">Book Scan</a>
             </div>
         </main>
+
 
         <section class="card" id="towing">
             <div class="core-badge blue" id="bdgTow">Recovery & Transport</div>
@@ -1427,19 +1444,24 @@
             <div class="core-badge blue" id="bdgPickup">Convenience Service</div>
             <h2 class="card-title" id="ttlPickup">Workday Pickup & Drop-Off</h2>
             <p class="card-desc" id="dscPickup">
-                Busy at work? Schedule with Triad and we can arrange vehicle pickup, service, and drop-off when available. You keep working while your vehicle gets maintenance, diagnostics, parts installs, or approved repairs handled.
+                Busy at work or unable to bring the vehicle to us? Schedule with Triad and we can arrange vehicle pickup, service, and drop-off when available. You keep working while your vehicle gets maintenance, diagnostics, parts installs, or approved repairs handled.
             </p>
 
             <div class="mini-list">
                 <div class="mini-item" id="pickupMini1">At Work</div>
                 <div class="mini-item" id="pickupMini2">At Home</div>
                 <div class="mini-item" id="pickupMini3">Scheduled Only</div>
-                <div class="mini-item" id="pickupMini4">Availability Based</div>
+                <div class="mini-item" id="pickupMini4">Within Range</div>
+            </div>
+
+            <div class="service-note-list">
+                <div class="service-note" id="pickupNote1"><strong>Good for:</strong> maintenance, diagnostics, brakes, parts installs, tire sourcing, and approved repairs.</div>
+                <div class="service-note" id="pickupNote2"><strong>Important:</strong> availability depends on location, schedule, vehicle condition, and job type. Some vehicles may require trailer transport.</div>
             </div>
 
             <div class="promo-box blue">
                 <p class="promo-text" id="promoPickup">
-                    Pickup and drop-off depends on location, schedule, vehicle condition, and job type. Some vehicles may require trailer transport instead.
+                    Inspired by dealership-style convenience: we pick up your vehicle, complete approved work, and return it when finished when schedule and distance allow.
                 </p>
             </div>
 
@@ -1451,6 +1473,8 @@
                 <a href="#scheduler" class="book-btn blue" id="btnPickup">Schedule Pickup</a>
             </div>
         </section>
+
+
 
         <section class="card" id="parts">
             <div class="core-badge dark" id="bdgParts">Special Order</div>
@@ -1481,6 +1505,7 @@
             </div>
         </section>
 
+
         <section class="card" id="performance">
             <div class="core-badge" id="bdgPerf">Performance</div>
             <h2 class="card-title" id="ttlPerf">SBC, LS & LT Parts Support</h2>
@@ -1510,6 +1535,7 @@
             </div>
         </section>
 
+
         <section class="card" id="builds">
             <div class="core-badge dark" id="bdgBuilds">Build Planning</div>
             <h2 class="card-title" id="ttlBuilds">Build & Upgrade Consultation</h2>
@@ -1532,23 +1558,6 @@
             </div>
         </section>
 
-        <section class="card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">
-                    "Fixed my truck real fast when it died in the trailer park. Legit guys, don't go anywhere else."
-                </p>
-                <div class="review-name">— Dylan Seipp</div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">
-                    "These guys know what they're doing. Got me back on the road in no time."
-                </p>
-                <div class="review-name">— Kavik Copus</div>
-            </div>
-        </section>
 
         <section class="project-gallery" id="projects">
             <h3 class="gallery-title" id="galTitle">Real Vehicles. Real Repairs.</h3>
@@ -1602,6 +1611,7 @@
         </section>
 
 
+
         <section class="card" id="tires">
             <div class="core-badge dark" id="bdgTires">Coming Soon</div>
             <h2 class="card-title" id="ttlTires">Tire Sourcing & Tire Services</h2>
@@ -1622,6 +1632,40 @@
                 </p>
             </div>
         </section>
+
+        <section class="card about-card" id="about">
+            <div class="core-badge dark" id="bdgAbout">About Triad</div>
+            <h2 class="card-title" id="ttlAbout">Three Brothers. South Texas Roots.</h2>
+            <p class="card-desc" id="dscAbout">
+                Triad Automotive was built by three brothers who grew up in South Texas around mechanics, tools, trucks, and real repair work. Automotive work has been part of our upbringing since day one — learning around shops, family projects, daily drivers, and the kind of vehicles people depend on every day.
+            </p>
+
+            <div class="about-grid">
+                <div class="about-point" id="aboutPoint1">Family-owned and built from real hands-on experience.</div>
+                <div class="about-point" id="aboutPoint2">Raised around mechanics, repairs, trucks, and problem solving.</div>
+                <div class="about-point" id="aboutPoint3">Texas roots, Wisconsin built — serving Baraboo and nearby communities.</div>
+            </div>
+        </section>
+
+
+        <section class="card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    "Fixed my truck real fast when it died in the trailer park. Legit guys, don't go anywhere else."
+                </p>
+                <div class="review-name">— Dylan Seipp</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">
+                    "These guys know what they're doing. Got me back on the road in no time."
+                </p>
+                <div class="review-name">— Kavik Copus</div>
+            </div>
+        </section>
+
 
         <section class="card" id="scheduler" style="background: var(--card-bg-strong);">
             <div class="core-badge blue" id="bdgSchedule">Service Request</div>
@@ -1723,6 +1767,7 @@
             </form>
         </section>
 
+
         <footer>
             <p id="footerText">Triad Automotive LLC • Baraboo, Wisconsin</p>
             <p>
@@ -1777,7 +1822,7 @@
                 topEmailLabel: "Email",
                 txtInfoArea: "Texas Roots. <span class='info-red'>Wisconsin Built.</span>",
                 heroTitle: "Diagnostics, Maintenance & Repair Done Right.",
-                heroText: "Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and reliable work when your vehicle needs attention. Se habla español.",
+                heroText: "Diagnostics, maintenance, and repair for domestic and foreign vehicles in Baraboo, WI. Straight answers, honest direction, and convenient pickup/drop-off options when available. Se habla español.",
                 heroBook: "Schedule Service",
                 heroTextBtn: "Text Us",
                 txtInfoSub: "Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.",
@@ -1927,7 +1972,7 @@
                 topEmailLabel: "Correo",
                 txtInfoArea: "Raíces de Texas. <span class='info-red'>Construido en Wisconsin.</span>",
                 heroTitle: "Diagnóstico, Mantenimiento y Reparación Bien Hechos.",
-                heroText: "Diagnóstico, mantenimiento y reparación para vehículos domésticos y extranjeros en Baraboo, WI. Respuestas directas, dirección honesta y trabajo confiable cuando tu vehículo necesita atención. Se habla español.",
+                heroText: "Diagnóstico, mantenimiento y reparación para vehículos domésticos y extranjeros en Baraboo, WI. Respuestas directas, dirección honesta y opciones de pickup/entrega cuando estén disponibles. Se habla español.",
                 heroBook: "Agendar Servicio",
                 heroTextBtn: "Mandar Texto",
                 txtInfoSub: "Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.",
@@ -2753,43 +2798,11 @@
             populateDropdowns();
         }
 
-        function detectSafetyUrgency(message) {
-            const msg = normalizeText(message);
-            const dangerWords = [
-                "fire", "flames", "smoke", "burning", "fuel smell", "gas leak",
-                "no brakes", "pedal to floor", "oil pressure", "overheating", "steam",
-                "fuego", "humo", "gasolina", "sin frenos", "pedal al piso",
-                "presion de aceite", "se calienta", "vapor"
-            ];
 
-            return dangerWords.some(word => msg.includes(normalizeText(word)));
-        }
 
-        function detectSafetyUrgency(message) {
-            const msg = normalizeText(message);
-            const dangerWords = [
-                "fire", "flames", "smoke", "burning", "fuel smell", "gas leak",
-                "no brakes", "pedal to floor", "oil pressure", "overheating", "steam",
-                "fuego", "humo", "gasolina", "sin frenos", "pedal al piso",
-                "presion de aceite", "se calienta", "vapor"
-            ];
 
-            return dangerWords.some(word => msg.includes(normalizeText(word)));
-        }
 
-        function detectSafetyUrgency(message) {
-            const msg = normalizeText(message);
-            const dangerWords = [
-                "fire", "flames", "smoke", "burning", "fuel smell", "gas leak",
-                "no brakes", "pedal to floor", "oil pressure", "overheating", "steam",
-                "fuego", "humo", "gasolina", "sin frenos", "pedal al piso",
-                "presion de aceite", "se calienta", "vapor"
-            ];
-
-            return dangerWords.some(word => msg.includes(normalizeText(word)));
-        }
-
-        function askChat(text) {
+function askChat(text) {
             addUserMessage(text);
             setTimeout(() => {
                 addBotMessage(findChatAnswer(text));
