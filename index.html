@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 -->
     <!-- TRIAD FIX: GALLERY INLINE THUMBNAILS V3 - hard inline sizing -->
     <!-- TRIAD VERSION: COMPACT GALLERY V2 - images reduced hard -->
     <meta charset="UTF-8">
@@ -1210,6 +1211,44 @@
             }
         }
 
+    
+        /* TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 */
+        .image-fallback-card {
+            width: 100% !important;
+            height: 128px !important;
+            max-height: 128px !important;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 16px;
+            background:
+                radial-gradient(circle at center, rgba(255, 59, 87, 0.10), transparent 55%),
+                linear-gradient(145deg, rgba(13,16,24,0.96), rgba(5,6,8,0.98));
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .image-fallback-card span {
+            display: block;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 410px) {
+            .image-fallback-card {
+                height: 112px !important;
+                max-height: 112px !important;
+                font-size: 11px;
+            }
+        }
+
     </style>
 </head>
 
@@ -1492,7 +1531,9 @@
                 </div>
 
                 <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="014F6546-DD28-487F-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
+                    <!-- SHO IMAGE FILENAME MUST MATCH EXACTLY IN GITHUB ROOT -->
+                    <img src="./014F6546-DD28-487F-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-fallback-card">SHO Diagnostics & Maintenance<span>Upload/check: 014F6546-DD28-487F-B3EA-CFFCF828DC0C.png</span></div>
                     <div class="project-caption">Diagnostics & Maintenance<span>Modern vehicles, no-starts, leaks, and warning lights</span></div>
                 </div>
 
