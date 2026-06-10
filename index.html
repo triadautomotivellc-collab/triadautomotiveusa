@@ -39,7 +39,7 @@
       --text-gray: #a0a0aa;
     }
 
-    /* Custom Scrollbar */
+    /* Custom Chrome/Metallic & Neon Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -352,7 +352,7 @@
       display: inline-block;
     }
 
-    /* Diagnostics UI Center */
+    /* System Control Display Sub-Panels */
     .diagnostic-panel {
       background: #09090d;
       border: 2px solid #1c1c24;
@@ -630,14 +630,8 @@
 
     /* Keyframe Animations */
     @keyframes engineStart {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes heartbeat {
@@ -710,6 +704,7 @@
     <div class="nav-links">
       <a href="#services" data-en="Services" data-es="Servicios">Services</a>
       <a href="#resources" data-en="Help Scanner" data-es="Escáner de Ayuda">Help Scanner</a>
+      <a href="#estimator" data-en="Estimator" data-es="Estimador">Estimator</a>
       <a href="#about" data-en="About" data-es="Nosotros">About</a>
       <a href="#faq" data-en="FAQ" data-es="Preguntas">FAQ</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
@@ -723,7 +718,7 @@
 
   <header id="home">
     <div class="hero">
-      <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="logo" data-en="Triad Automotive Logo" data-es="Logotipo de Triad Automotive" />
+      <img src="image.png" alt="Triad Automotive Logo" class="logo" data-en="Triad Automotive Logo" data-es="Logotipo de Triad Automotive" />
 
       <div class="eyebrow" data-en="Family Owned • English & Spanish • Mobile Service Available" data-es="Negocio Familiar • Inglés y Español • Servicio Móvil Disponible">
         Family Owned • English & Spanish • Mobile Service Available
@@ -740,7 +735,12 @@
       </p>
 
       <div class="buttons">
-        <a href="#contact" class="btn-red" data-en="Request Service" data-es="Pedir Servicio">Request Service</a>
+        <a href="sms:+19564757834?&body=Hi%20Triad%20Automotive,%20I'd%20like%20to%20request%20a%20diagnostic%20appointment%20for%20my%20vehicle." 
+           class="btn-red" 
+           data-en="Text For Appointment" 
+           data-es="Texto Para Cita">
+           Text For Appointment
+        </a>
         <a href="#services" class="btn-dark" data-en="View Services" data-es="Ver Servicios">View Services</a>
       </div>
 
@@ -819,8 +819,8 @@
       <div class="scanner-header">
         <span class="scanner-title">OBD-II SYSTEM MATRIX</span>
         <div class="scanner-status">
-          <div class="blink-dot"></div>
-          <span data-en="Ecu Connected" data-es="Ecu Conectado">Ecu Connected</span>
+          <div class="blink-dot" id="statusDot"></div>
+          <span id="liveStatusText" data-en="Checking System..." data-es="Verificando Sistema...">Checking System...</span>
         </div>
       </div>
 
@@ -834,6 +834,42 @@
       </select>
 
       <p id="helpResult"></p>
+    </div>
+  </section>
+
+  <section id="estimator">
+    <h2 data-en="Instant Cost Estimator" data-es="Estimador de Costo Instantáneo">Instant Cost Estimator</h2>
+    <p class="section-sub" data-en="Select your repair metrics below to generate a transparent base calculation." data-es="Seleccione sus métricas de reparación a continuación para generar un cálculo base transparente.">
+      Select your repair metrics below to generate a transparent base calculation.
+    </p>
+
+    <div class="diagnostic-panel" style="max-width: 630px;">
+      <div class="scanner-header">
+        <span class="scanner-title" data-en="RATE CALCULATOR" data-es="CALCULADORA DE TARIFAS">RATE CALCULATOR</span>
+        <span style="color: var(--neon-red); font-family: monospace; font-weight: 800;">v2.6</span>
+      </div>
+      
+      <label style="display:block; margin-bottom: 8px; font-weight:700;" data-en="Select Service Layer:" data-es="Seleccione Capa de Servicio:">Select Service Layer:</label>
+      <select id="calcService" onchange="calculateEstimate()">
+        <option value="0" data-en="-- Select Repair Type --" data-es="-- Seleccione Tipo de Reparación --">-- Select Repair Type --</option>
+        <option value="85" data-en="Computer Diagnostics & Sensor Scan" data-es="Diagnóstico por Computadora y Escaneo">Computer Diagnostics & Sensor Scan</option>
+        <option value="120" data-en="Brake Pads & Rotors Service (Per Axle)" data-es="Servicio de Balatas y Discos (Por Eje)">Brake Pads & Rotors Service (Per Axle)</option>
+        <option value="150" data-en="Exhaust / Muffler Weld & Repair" data-es="Reparación / Soldadura de Escape">Exhaust / Muffler Weld & Repair</option>
+        <option value="95" data-en="Suspension Component Replacement" data-es="Reemplazo de Componente de Suspensión">Suspension Component Replacement</option>
+      </select>
+
+      <div style="margin-top:24px;">
+        <label style="display:inline-flex; align-items:center; gap:12px; cursor:pointer;">
+          <input type="checkbox" id="calcMobile" onchange="calculateEstimate()" style="accent-color: var(--neon-red); width:18px; height:18px;">
+          <span style="font-weight:700;" data-en="Request Mobile / On-Site Service? (+$50 dispatch)" data-es="¿Solicita Servicio Móvil / A Domicilio? (+$50 despacho)">Request Mobile Work? (+$50 dispatch)</span>
+        </label>
+      </div>
+
+      <div id="estimateDisplay" style="margin-top: 25px; padding: 24px; background: rgba(255,255,255,0.01); border-radius: 8px; text-align: center; border: 1px dashed var(--panel-border);">
+        <h3 style="color: var(--text-gray); font-size: 0.85rem; letter-spacing: 1px;" data-en="ESTIMATED BASE TOTAL" data-es="TOTAL BASE ESTIMADO">ESTIMATED BASE TOTAL</h3>
+        <div id="estimatePrice" style="font-size: 3.2rem; font-weight: 900; color: #fff; margin: 10px 0; transition: color 0.15s ease;">$0.00</div>
+        <p style="font-size: 0.8rem; color: #555;" data-en="*Excludes parts and taxes. Exact quote provided upon vehicle inspection." data-es="*Excluye refacciones e impuestos. Cotización exacta dada al inspeccionar el vehículo.">*Excludes parts and taxes. Exact quote provided upon vehicle inspection.</p>
+      </div>
     </div>
   </section>
 
@@ -976,14 +1012,12 @@
       currentLanguage = language;
       document.documentElement.lang = language;
 
-      // Clean translation engine: loops elements once, checks tag types, swaps values
+      // Smart DOM translation loop interface
       document.querySelectorAll("[data-en]").forEach(el => {
         const translation = el.dataset[language];
         if (translation) {
           if (el.tagName === "IMG") {
             el.alt = translation;
-          } else if (el.tagName === "OPTION") {
-            el.textContent = translation;
           } else {
             el.textContent = translation;
           }
@@ -994,6 +1028,8 @@
       document.getElementById("btn-es").classList.toggle("active", language === "es");
 
       showHelpInfo();
+      updateLiveStatus();
+      calculateEstimate();
     }
 
     function showHelpInfo() {
@@ -1026,6 +1062,47 @@
       result.style.display = "block";
       result.textContent = info[currentLanguage][value];
     }
+
+    function calculateEstimate() {
+      const servicePrice = parseFloat(document.getElementById('calcService').value) || 0;
+      const isMobile = document.getElementById('calcMobile').checked;
+      const dispatchFee = isMobile ? 50 : 0;
+      
+      const totalPrice = servicePrice + dispatchFee;
+      const priceDisplay = document.getElementById('estimatePrice');
+      
+      if(totalPrice === 0) {
+        priceDisplay.textContent = "$0.00";
+      } else {
+        priceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
+        priceDisplay.style.color = "var(--neon-red)";
+        setTimeout(() => { priceDisplay.style.color = "#fff"; }, 150);
+      }
+    }
+
+    function updateLiveStatus() {
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentDay = now.getDay();
+      
+      const statusDot = document.getElementById('statusDot');
+      const statusText = document.getElementById('liveStatusText');
+      
+      if (currentDay !== 0 && currentHour >= 8 && currentHour < 18) {
+        statusDot.style.background = "#00ff66";
+        statusText.setAttribute('data-en', 'SHOP ACTIVE // DISPATCH OPEN');
+        statusText.setAttribute('data-es', 'TALLER ACTIVO // DESPACHO ABIERTO');
+      } else {
+        statusDot.style.background = "#ffaa00";
+        statusText.setAttribute('data-en', 'STANDBY // TEXTS MONITORED');
+        statusText.setAttribute('data-es', 'EN ESPERA // MONITOREANDO TEXTOS');
+      }
+      
+      statusText.textContent = statusText.getAttribute(`data-${currentLanguage}`);
+    }
+
+    // Initialize scripts on runtime load
+    updateLiveStatus();
   </script>
 </body>
 </html>
