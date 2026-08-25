@@ -1,3039 +1,568 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- TRIAD FINAL PLUS PROGRAMS V7 - rewards fleet pickup Spanish Wawa Bot -->
-    <!-- TRIAD REORGANIZED PRO WATERMARK V6 -->
-    <!-- TRIAD UPDATE: PICKUP DROPOFF + SHO EXACT FILE V5 CLEAN -->
-    <!-- TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 -->
-    <!-- TRIAD FIX: GALLERY INLINE THUMBNAILS V3 - hard inline sizing -->
-    <!-- TRIAD VERSION: COMPACT GALLERY V2 - images reduced hard -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Automotive | Baraboo, WI Auto Service & Diagnostics</title>
-    <meta name="description" content="Triad Automotive LLC provides automotive service, maintenance, diagnostics, repair, truck and trailer service, custom parts sourcing, LED lighting, audio equipment sourcing, SBC/LS/LT parts support, and LS VATS delete support in Baraboo, Wisconsin.">
-    <meta name="theme-color" content="#050608">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Rajdhani:wght@600;700&family=Teko:wght@600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-dark: #050608;
-            --card-bg: rgba(13, 16, 24, 0.88);
-            --card-bg-strong: rgba(13, 16, 24, 0.97);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --accent-red: #ff3b57;
-            --accent-blue: #007aff;
-            --accent-green: #25d366;
-            --text-main: #f3f4f6;
-            --text-muted: #a3aab8;
-            --text-soft: #737b8c;
-            --shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
-            color-scheme: dark;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        html {
-            background: var(--bg-dark);
-        }
-
-        body {
-            background:
-                radial-gradient(circle at 20% 0%, rgba(255, 59, 87, 0.045), transparent 30%),
-                radial-gradient(circle at 90% 8%, rgba(0, 122, 255, 0.035), transparent 28%),
-                linear-gradient(180deg, #050608 0%, #080a0f 42%, #030405 100%);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            padding: 18px 16px 28px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
-            background-repeat: no-repeat;
-            background-position: center 130px;
-            background-size: min(560px, 92vw) auto;
-            opacity: 0.014;
-            pointer-events: none;
-            z-index: 0;
-            filter: blur(0.2px);
-        }
-
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 490px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .utility-bar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 12px;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.045);
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 7px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            gap: 12px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 0;
-        }
-
-        .brand-img {
-            height: 88px;
-            width: auto;
-            flex-shrink: 0;
-            opacity: 0.84;
-            mix-blend-mode: normal;
-            border-radius: 12px;
-            filter: brightness(1.02) contrast(1.08);
-        }
-
-        .brand-name {
-            font-family: 'Rajdhani', 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            text-transform: uppercase;
-            line-height: 0.95;
-            white-space: nowrap;
-            letter-spacing: 0.7px;
-        }
-
-        .contact-group {
-            display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        .contact-btn {
-            font-size: 13px;
-            font-weight: 900;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 13px;
-            background: rgba(255, 255, 255, 0.045);
-            border: 1px solid var(--border-color);
-            border-radius: 999px;
-        }
-
-        .contact-btn.primary {
-            background: var(--accent-red);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.025);
-        }
-
-        .logo-header {
-            justify-content: center;
-            align-items: center;
-            margin: 0 0 10px;
-        }
-
-        .center-logo-wrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            text-decoration: none;
-        }
-
-        .main-logo {
-            height: 185px;
-            max-width: 94%;
-            border-radius: 26px;
-            opacity: 0.98;
-            filter: brightness(1.1) contrast(1.12) drop-shadow(0 22px 52px rgba(0, 0, 0, 0.68));
-            -webkit-mask-image: radial-gradient(ellipse at center, black 58%, rgba(0,0,0,0.86) 70%, rgba(0,0,0,0.45) 83%, transparent 100%);
-            mask-image: radial-gradient(ellipse at center, black 58%, rgba(0,0,0,0.86) 70%, rgba(0,0,0,0.45) 83%, transparent 100%);
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-        }
-
-        .logo-contact-card {
-            margin-top: -4px;
-            margin-bottom: 18px;
-            text-align: left;
-            background: rgba(5, 6, 8, 0.68);
-            border-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 18px 48px rgba(0,0,0,0.28);
-        }
-
-        .logo-contact-card a {
-            display: block;
-        }
-
-        .top-contact-card {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 7px;
-            margin-bottom: 18px;
-            padding: 12px 14px;
-            background: rgba(5, 6, 8, 0.56);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .top-contact-card a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Rajdhani', 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: 0.55px;
-            text-transform: uppercase;
-        }
-
-        .top-contact-card span {
-            color: var(--accent-red);
-            font-family: 'Teko', 'Rajdhani', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-right: 6px;
-        }
-
-        .hero {
-            background: linear-gradient(145deg, rgba(10, 13, 19, 0.94), rgba(6, 8, 12, 0.96));
-            border: 1px solid rgba(255, 255, 255, 0.075);
-            border-radius: 28px;
-            padding: 22px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after,
-        .card::after {
-            content: "";
-            position: absolute;
-            right: -72px;
-            bottom: -78px;
-            width: 190px;
-            height: 190px;
-            background-image: url("DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            opacity: 0.006;
-            pointer-events: none;
-        }
-
-        .slogan {
-            color: #fff;
-            font-family: 'Rajdhani', 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .info-red {
-            color: var(--accent-red);
-        }
-
-        .hero-title {
-            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
-            font-size: 31px;
-            line-height: 1.02;
-            letter-spacing: -1.4px;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.55;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-btn {
-            flex: 1;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 46px;
-            border-radius: 15px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 800;
-            border: 1px solid var(--border-color);
-        }
-
-        .hero-btn.red {
-            background: var(--accent-red);
-            box-shadow: 0 14px 38px rgba(255, 255, 255, 0.035);
-        }
-
-        .hero-btn.dark {
-            background: rgba(255, 255, 255, 0.045);
-        }
-
-        .info-sub {
-            color: var(--text-soft);
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 14px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .trust-strip {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 12px;
-            margin-bottom: 18px;
-            scrollbar-width: none;
-        }
-
-        .trust-strip::-webkit-scrollbar,
-        .dept-navigation::-webkit-scrollbar {
-            display: none;
-        }
-
-        .trust-pill {
-            color: #fff;
-            font-size: 11px;
-            font-weight: 800;
-            white-space: nowrap;
-            padding: 8px 10px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.045);
-            border: 1px solid var(--border-color);
-        }
-
-        .dept-navigation {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding: 12px 2px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(5, 6, 8, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .dept-tab {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .dept-tab.active {
-            color: var(--accent-red);
-        }
-
-        .about-card {
-            background:
-                linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02)),
-                rgba(5, 6, 8, 0.78);
-            border: 1px solid rgba(255,255,255,0.09);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-point {
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 15px;
-            padding: 12px;
-            color: #fff;
-            font-size: 13px;
-            line-height: 1.45;
-            font-weight: 700;
-        }
-
-        .quick-help {
-            background: rgba(5, 6, 8, 0.54);
-            border: 1px solid var(--border-color);
-            padding: 18px;
-            border-radius: 20px;
-            margin-bottom: 22px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quick-help-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quick-help-text {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 14px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quick-help a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 800;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card {
-            background: rgba(13, 16, 24, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--border-color);
-            border-radius: 26px;
-            padding: 26px;
-            margin-bottom: 22px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-        }
-
-        .card::after {
-            width: 180px;
-            height: 180px;
-            opacity: 0.005;
-        }
-
-        .core-badge {
-            display: inline-block;
-            background: var(--accent-red);
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 7px;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 0.3px;
-        }
-
-        .core-badge.blue {
-            background: var(--accent-blue);
-        }
-
-        .core-badge.dark {
-            background: #1e293b;
-        }
-
-        .card-title {
-            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 24px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            color: #fff;
-            position: relative;
-            z-index: 1;
-            letter-spacing: -0.6px;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.55;
-            margin-bottom: 22px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-note-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            margin: 14px 0 22px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-note {
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.085);
-            border-radius: 14px;
-            padding: 11px 12px;
-            color: #e5e7eb;
-            font-size: 12px;
-            font-weight: 800;
-            line-height: 1.35;
-        }
-
-        .service-note strong {
-            color: #8ec5ff;
-        }
-
-        .program-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-            margin-top: 16px;
-        }
-
-        .program-card {
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.085);
-            border-radius: 16px;
-            padding: 14px;
-            color: #e5e7eb;
-            line-height: 1.45;
-        }
-
-        .program-card strong {
-            color: #fff;
-            display: block;
-            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
-            font-size: 17px;
-            letter-spacing: 0.15px;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
-
-        .program-card span {
-            color: var(--text-muted);
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .oil-reward-strip {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 6px;
-            margin: 14px 0 18px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .reward-step {
-            min-height: 42px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.045);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Rajdhani', 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 12px;
-        }
-
-        .reward-step.final {
-            background: rgba(255,59,87,0.18);
-            border-color: rgba(255,59,87,0.34);
-            color: #fff;
-        }
-
-        .mini-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 9px;
-            margin-bottom: 22px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mini-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
-            color: #fff;
-            border-radius: 13px;
-            padding: 10px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .promo-box {
-            background: rgba(37, 211, 102, 0.08);
-            border: 1px solid rgba(37, 211, 102, 0.24);
-            border-radius: 14px;
-            padding: 14px;
-            margin-bottom: 22px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .promo-box.blue {
-            background: rgba(0, 122, 255, 0.09);
-            border-color: rgba(0, 122, 255, 0.26);
-        }
-
-        .promo-box.blue .promo-text {
-            color: #8ec5ff;
-        }
-
-        .promo-box.red {
-            background: rgba(255, 59, 87, 0.075);
-            border-color: rgba(255, 59, 87, 0.22);
-        }
-
-        .promo-text {
-            font-size: 13px;
-            color: var(--accent-green);
-            font-weight: 700;
-            line-height: 1.45;
-        }
-
-        .promo-box.red .promo-text {
-            color: #ff6478;
-        }
-
-        .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid var(--border-color);
-            padding-top: 19px;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .price-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-soft);
-            font-weight: 800;
-            letter-spacing: 0.4px;
-        }
-
-        .price-value {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 29px;
-            color: #fff;
-            display: block;
-            letter-spacing: -0.8px;
-        }
-
-        .book-btn {
-            font-weight: 800;
-            font-size: 14px;
-            color: #fff;
-            text-decoration: none;
-            background: var(--accent-red);
-            padding: 14px 22px;
-            border-radius: 15px;
-            text-align: center;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.025);
-        }
-
-        .book-btn.blue {
-            background: var(--accent-blue);
-            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.16);
-        }
-
-        .book-btn.dark {
-            background: #1e293b;
-            box-shadow: none;
-        }
-
-        .review-card {
-            background: rgba(255, 255, 255, 0.028);
-            border: 1px solid var(--border-color);
-            padding: 16px;
-            border-radius: 18px;
-            margin-bottom: 12px;
-        }
-
-        .stars {
-            color: #f59e0b;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .review-text {
-            font-style: italic;
-            font-size: 14px;
-            line-height: 1.45;
-            margin-bottom: 8px;
-            color: #e5e7eb;
-        }
-
-        .review-name {
-            font-weight: 800;
-            font-size: 12px;
-            color: var(--accent-blue);
-        }
-
-        .gallery-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 13px;
-            text-transform: uppercase;
-            color: var(--text-soft);
-            text-align: center;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .image-card {
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            aspect-ratio: 4 / 5;
-            display: flex;
-            background: #12161f;
-        }
-
-        .grid-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-label {
-            display: block;
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 7px;
-        }
-
-        .form-input {
-            background: #050608;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 15px;
-            width: 100%;
-            min-height: 50px;
-            appearance: none;
-            -webkit-appearance: none;
-            outline: none;
-        }
-
-        .form-input:focus {
-            border-color: rgba(255, 59, 87, 0.58);
-            box-shadow: 0 0 0 4px rgba(255, 59, 87, 0.08);
-        }
-
-        textarea.form-input {
-            resize: vertical;
-            min-height: 88px;
-            line-height: 1.4;
-        }
-
-        .submit-btn {
-            background: var(--accent-blue);
-            color: #fff;
-            padding: 16px;
-            border: none;
-            border-radius: 17px;
-            font-weight: 800;
-            font-size: 15px;
-            width: 100%;
-            cursor: pointer;
-            margin-top: 8px;
-            box-shadow: 0 16px 40px rgba(0, 122, 255, 0.18);
-        }
-
-        .small-note {
-            color: var(--text-soft);
-            font-size: 12px;
-            line-height: 1.45;
-            text-align: center;
-            margin-top: 12px;
-        }
-
-        footer {
-            text-align: center;
-            color: var(--text-soft);
-            font-size: 12px;
-            padding: 12px 0 24px;
-            line-height: 1.5;
-        }
-
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 800;
-        }
-
-        /* TRIAD SMART CHATBOT */
-        .triad-chat-launcher {
-            position: fixed;
-            right: 16px;
-            bottom: 16px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(5, 6, 8, 0.72);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.18);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 999px;
-            padding: 12px 16px;
-            font-weight: 900;
-            font-size: 13px;
-            box-shadow: 0 18px 55px rgba(0,0,0,0.58), inset 0 1px 0 rgba(255,255,255,0.08);
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .triad-chat-pulse {
-            width: 10px;
-            height: 10px;
-            background: #25d366;
-            border-radius: 999px;
-            animation: triadPulse 1.8s infinite;
-        }
-
-        @keyframes triadPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
-            70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-
-        .triad-chat-window {
-            position: fixed;
-            right: 14px;
-            bottom: 74px;
-            z-index: 9998;
-            width: min(390px, calc(100vw - 28px));
-            height: min(640px, calc(100vh - 105px));
-            display: none;
-            flex-direction: column;
-            background:
-                radial-gradient(circle at top left, rgba(255,59,87,0.13), transparent 30%),
-                linear-gradient(180deg, rgba(13,16,24,0.98), rgba(5,6,8,0.98));
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 24px;
-            box-shadow: 0 24px 90px rgba(0,0,0,0.68);
-            overflow: hidden;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .triad-chat-window.open {
-            display: flex;
-        }
-
-        .triad-chat-header {
-            padding: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.035);
-        }
-
-        .triad-chat-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 0;
-        }
-
-        .triad-chat-logo {
-            width: 34px;
-            height: 34px;
-            border-radius: 12px;
-            object-fit: contain;
-            background: rgba(0,0,0,0.35);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .triad-chat-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 900;
-            color: #fff;
-        }
-
-        .triad-chat-status {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-weight: 700;
-            margin-top: 3px;
-        }
-
-        .chat-lang-toggle {
-            display: flex;
-            gap: 5px;
-            margin-left: auto;
-            margin-right: 8px;
-        }
-
-        .chat-lang-btn {
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            border-radius: 999px;
-            padding: 7px 9px;
-            font-size: 10px;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        .chat-lang-btn.active {
-            background: var(--accent-red);
-            border-color: rgba(255,255,255,0.18);
-        }
-
-        .triad-chat-close {
-            width: 34px;
-            height: 34px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .triad-chat-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 14px;
-            scrollbar-width: none;
-        }
-
-        .triad-chat-body::-webkit-scrollbar {
-            display: none;
-        }
-
-        .chat-row {
-            display: flex;
-            margin-bottom: 10px;
-        }
-
-        .chat-row.bot {
-            justify-content: flex-start;
-        }
-
-        .chat-row.user {
-            justify-content: flex-end;
-        }
-
-        .chat-bubble {
-            max-width: 88%;
-            border-radius: 16px;
-            padding: 11px 12px;
-            font-size: 13px;
-            line-height: 1.45;
-            white-space: pre-wrap;
-        }
-
-        .chat-row.bot .chat-bubble {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: #e5e7eb;
-            border-bottom-left-radius: 6px;
-        }
-
-        .chat-row.user .chat-bubble {
-            background: rgba(255,255,255,0.12);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-bottom-right-radius: 6px;
-            font-weight: 700;
-        }
-
-        .chat-quick-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 12px 0 10px;
-        }
-
-        .chat-chip {
-            background: rgba(255,255,255,0.055);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.12);
-            padding: 9px 10px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .chat-chip.red {
-            background: rgba(255,255,255,0.075);
-            border-color: rgba(255,255,255,0.16);
-        }
-
-        .chat-chip.blue {
-            background: rgba(0,122,255,0.14);
-            border-color: rgba(0,122,255,0.28);
-        }
-
-        .triad-chat-lead {
-            margin-top: 12px;
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.09);
-            border-radius: 18px;
-            padding: 12px;
-        }
-
-        .lead-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .lead-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-
-        .lead-input {
-            background: #050608;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 12px;
-            padding: 12px;
-            font-size: 13px;
-            outline: none;
-            width: 100%;
-        }
-
-        .lead-textarea {
-            min-height: 72px;
-            resize: vertical;
-        }
-
-        .lead-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .lead-btn {
-            border: none;
-            border-radius: 13px;
-            padding: 12px 10px;
-            font-weight: 900;
-            color: #fff;
-            cursor: pointer;
-            font-size: 12px;
-            text-decoration: none;
-            text-align: center;
-            background: var(--accent-red);
-        }
-
-        .lead-btn.secondary {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.11);
-        }
-
-        .triad-chat-footer {
-            padding: 12px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            background: rgba(5,6,8,0.86);
-        }
-
-        .chat-input-row {
-            display: flex;
-            gap: 8px;
-        }
-
-        .chat-input {
-            flex: 1;
-            min-height: 44px;
-            border-radius: 14px;
-            border: 1px solid rgba(255,255,255,0.13);
-            background: rgba(255,255,255,0.045);
-            color: #fff;
-            padding: 11px 12px;
-            outline: none;
-            font-size: 13px;
-        }
-
-        .chat-send {
-            width: 46px;
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 14px;
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-            font-size: 17px;
-            cursor: pointer;
-            font-weight: 900;
-        }
-
-        .chat-disclaimer {
-            color: var(--text-soft);
-            font-size: 10px;
-            line-height: 1.35;
-            margin-top: 8px;
-            text-align: center;
-        }
-        @media (max-width: 410px) {
-            .logo-header {
-                margin-top: 0;
-                margin-bottom: 12px;
-            }
-
-            .main-logo {
-                height: 132px;
-                max-width: 92%;
-            }
-
-            .brand-img {
-                height: 64px;
-                opacity: 0.84;
-            }
-
-            .brand-name {
-                font-size: 21px;
-            }
-
-            .contact-btn {
-                padding: 8px 10px;
-                font-size: 11px;
-            }
-
-            .hero-title {
-                font-size: 28px;
-            }
-
-            .card {
-                padding: 23px;
-            }
-
-            .card-title {
-                font-size: 22px;
-            }
-
-            .price-value {
-                font-size: 26px;
-            }
-
-            body::before {
-                background-size: 290px auto;
-                background-position: center 140px;
-                opacity: 0.005;
-            }
-
-            .triad-chat-launcher {
-                right: 12px;
-                bottom: 12px;
-                padding: 11px 13px;
-                font-size: 12px;
-            }
-
-            .triad-chat-window {
-                right: 8px;
-                bottom: 66px;
-                width: calc(100vw - 16px);
-                height: min(650px, calc(100vh - 82px));
-                border-radius: 20px;
-            }
-        }
-
-        @media (max-width: 370px) {
-            .main-logo {
-                height: 118px;
-                max-width: 94%;
-            }
-
-            .brand-img {
-                height: 56px;
-            }
-
-            .brand-name {
-                font-size: 18px;
-            }
-
-            header {
-                align-items: flex-start;
-            }
-
-            .contact-group {
-                flex-direction: column;
-                gap: 6px;
-            }
-
-            .contact-btn {
-                text-align: center;
-            }
-        }
-
-        /* TRIAD FIX: GALLERY INLINE THUMBNAILS V3 */
-        .project-gallery {
-            width: 100%;
-            max-width: 490px;
-            margin: 0 auto 28px;
-            overflow: hidden;
-        }
-
-        .project-grid {
-            width: 100% !important;
-            max-width: 100% !important;
-            display: grid !important;
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            gap: 10px !important;
-            margin-top: 14px !important;
-        }
-
-        .project-card,
-        .project-card.tall {
-            width: 100% !important;
-            height: 128px !important;
-            max-height: 128px !important;
-            min-height: 0 !important;
-            display: block !important;
-            position: relative !important;
-            overflow: hidden !important;
-            border-radius: 15px !important;
-            border: 1px solid rgba(255,255,255,0.08) !important;
-            background: #10141c !important;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.28) !important;
-        }
-
-        .project-card img {
-            width: 100% !important;
-            max-width: 100% !important;
-            height: 128px !important;
-            max-height: 128px !important;
-            min-height: 0 !important;
-            display: block !important;
-            object-fit: cover !important;
-            object-position: center !important;
-            border: 0 !important;
-        }
-
-        .project-caption {
-            position: absolute !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            padding: 26px 8px 8px !important;
-            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.86)) !important;
-            color: #fff !important;
-            font-size: 10px !important;
-            line-height: 1.12 !important;
-            font-weight: 900 !important;
-            z-index: 2 !important;
-        }
-
-        .project-caption span {
-            display: none !important;
-        }
-
-        @media (max-width: 410px) {
-            .project-grid {
-                gap: 8px !important;
-            }
-
-            .project-card,
-            .project-card.tall,
-            .project-card img {
-                height: 112px !important;
-                max-height: 112px !important;
-            }
-
-            .project-caption {
-                font-size: 9px !important;
-                padding: 22px 7px 7px !important;
-            }
-        }
-
-        /* TRIAD FIX: SHO IMAGE SAFE FALLBACK V4 */
-        .image-fallback-card {
-            width: 100% !important;
-            height: 128px !important;
-            max-height: 128px !important;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 16px;
-            background:
-                radial-gradient(circle at center, rgba(255, 59, 87, 0.10), transparent 55%),
-                linear-gradient(145deg, rgba(13,16,24,0.96), rgba(5,6,8,0.98));
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 13px;
-            font-weight: 900;
-            line-height: 1.3;
-        }
-
-        .image-fallback-card span {
-            display: block;
-            color: var(--text-muted);
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            margin-top: 5px;
-            font-weight: 700;
-        }
-
-        @media (max-width: 410px) {
-            .image-fallback-card {
-                height: 112px !important;
-                max-height: 112px !important;
-                font-size: 11px;
-            }
-        }
-
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090b0f" />
+  <meta name="description" content="Triad Automotive in Baraboo, Wisconsin — diagnostics, maintenance, repair, pickup & return service, fleet maintenance, truck and trailer transport, parts support, and LS/SBC/LT services." />
+  <title>Triad Automotive | Baraboo, WI Auto Service & Diagnostics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#08090c;
+      --bg-2:#0e1116;
+      --panel:#12161d;
+      --panel-2:#171c24;
+      --line:rgba(255,255,255,.09);
+      --text:#f4f6f8;
+      --muted:#a8b0bc;
+      --red:#e31b23;
+      --red-2:#ff3b3f;
+      --silver:#d9dde3;
+      --green:#4fca7b;
+      --max:1280px;
+      --shadow:0 24px 80px rgba(0,0,0,.34);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 85% -10%, rgba(227,27,35,.15), transparent 60%),
+        radial-gradient(700px 420px at -10% 28%, rgba(255,255,255,.035), transparent 60%),
+        var(--bg);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    section{scroll-margin-top:92px}
+
+    .container{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
+    .eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#d3d8df;font-weight:800}
+    .eyebrow.red{color:#ff6f73}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:30px}
+    .section-head h2{margin:.35rem 0 0;font-family:"Barlow Condensed",Inter,sans-serif;font-size:clamp(2.2rem,4vw,4.1rem);line-height:.95;letter-spacing:-.02em;text-transform:uppercase}
+    .section-head p{max-width:620px;margin:0;color:var(--muted)}
+
+    .topbar{border-bottom:1px solid var(--line);background:#050608;color:#c9ced6;font-size:.82rem}
+    .topbar .container{min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .topbar-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .topbar a:hover{color:#fff}
+    .lang-btn{border:0;background:transparent;color:#fff;font-weight:700;padding:7px 0}
+
+    .nav-wrap{position:sticky;top:0;z-index:50;background:rgba(8,9,12,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .mark{width:34px;height:30px;position:relative;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(145deg,#f5f5f5,#6d727a);padding:4px}
+    .mark:after{content:"";position:absolute;inset:6px 7px 5px;background:linear-gradient(135deg,var(--red-2),#7b0006);clip-path:inherit}
+    .brand-text strong{font-family:"Barlow Condensed",sans-serif;font-size:1.42rem;letter-spacing:.06em;line-height:.9;display:block}
+    .brand-text span{font-size:.57rem;letter-spacing:.28em;text-transform:uppercase;color:#9ea7b3;display:block;margin-top:3px}
+
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:.9rem;color:#c4cad3}
+    .nav-links a{position:relative;padding:25px 0}
+    .nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:18px;height:2px;background:var(--red);transition:.2s}
+    .nav-links a:hover{color:#fff}
+    .nav-links a:hover:after{right:0}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:12px;padding:13px 18px;font-weight:800;font-size:.92rem;border:1px solid transparent;transition:.2s ease;white-space:nowrap}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--red-2),#b70d15);box-shadow:0 12px 35px rgba(227,27,35,.23)}
+    .btn-primary:hover{box-shadow:0 15px 42px rgba(227,27,35,.34)}
+    .btn-secondary{background:rgba(255,255,255,.055);border-color:var(--line);color:#eef1f5}
+    .btn-secondary:hover{background:rgba(255,255,255,.09)}
+    .menu-btn{display:none;width:44px;height:44px;border-radius:11px;border:1px solid var(--line);background:#11151b;color:#fff}
+
+    .hero{min-height:720px;display:grid;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#08090c 0%,rgba(8,9,12,.95) 36%,rgba(8,9,12,.48) 68%,rgba(8,9,12,.12) 100%),url('https://triadautomotiveusa.com/2FB52FB2-5D05-497D-840C-234481131CB2.png') center right/cover no-repeat;filter:saturate(.8) contrast(1.05)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:220px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+    .hero .container{position:relative;z-index:2;padding:90px 0 110px}
+    .hero-copy{max-width:730px}
+    .hero-kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(255,255,255,.13);background:rgba(7,8,10,.62);backdrop-filter:blur(8px);border-radius:999px;color:#dce1e7;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .pulse{width:8px;height:8px;border-radius:99px;background:var(--green);box-shadow:0 0 0 5px rgba(79,202,123,.11)}
+    h1{font-family:"Barlow Condensed",Inter,sans-serif;font-size:clamp(4.5rem,8vw,8rem);text-transform:uppercase;line-height:.82;margin:24px 0 24px;letter-spacing:-.035em;max-width:760px}
+    h1 .accent{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.53)}
+    .hero-copy>p{font-size:clamp(1rem,1.5vw,1.2rem);color:#c3cad4;max-width:650px;margin:0 0 32px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-meta{margin-top:34px;display:flex;gap:10px 22px;flex-wrap:wrap;color:#a8b0bb;font-size:.88rem}
+    .hero-meta span{display:flex;align-items:center;gap:8px}
+    .check{color:#fff;background:rgba(227,27,35,.18);border:1px solid rgba(227,27,35,.34);width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.7rem}
+
+    .trust-strip{position:relative;z-index:4;margin-top:-58px}
+    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(16,19,25,.92);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);backdrop-filter:blur(18px);overflow:hidden}
+    .trust-item{padding:24px 26px;border-right:1px solid var(--line)}
+    .trust-item:last-child{border-right:0}
+    .trust-item strong{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:1.28rem;display:block;letter-spacing:.03em}
+    .trust-item span{font-size:.82rem;color:var(--muted)}
+
+    .section{padding:105px 0}
+    .services-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .service-card{position:relative;min-height:260px;padding:27px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));overflow:hidden;transition:.25s ease}
+    .service-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.17);background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.02))}
+    .service-card.large{grid-column:span 6}
+    .service-card.small{grid-column:span 3}
+    .service-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(227,27,35,.12);border:1px solid rgba(227,27,35,.28);font-size:1.15rem;font-weight:900}
+    .service-card h3{font-family:"Barlow Condensed",sans-serif;font-size:1.75rem;text-transform:uppercase;margin:44px 0 8px;line-height:1}
+    .service-card p{color:var(--muted);font-size:.92rem;margin:0;max-width:420px}
+    .service-link{position:absolute;bottom:24px;right:25px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+    .service-card:hover .service-link{background:var(--red);border-color:var(--red)}
+
+    .feature-section{padding:30px 0 105px}
+    .feature-shell{display:grid;grid-template-columns:1.08fr .92fr;gap:0;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
+    .feature-image{min-height:610px;background:linear-gradient(180deg,transparent,rgba(5,6,8,.55)),url('https://triadautomotiveusa.com/IMG_7602.jpeg') center/cover no-repeat;position:relative}
+    .feature-badge{position:absolute;left:26px;bottom:26px;padding:13px 16px;border-radius:14px;background:rgba(8,9,12,.78);border:1px solid var(--line);backdrop-filter:blur(10px);font-size:.86rem}
+    .feature-badge strong{display:block;color:#fff}
+    .feature-badge span{color:var(--muted)}
+    .feature-copy{padding:58px;display:flex;flex-direction:column;justify-content:center}
+    .feature-copy h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(3rem,5vw,5rem);line-height:.9;text-transform:uppercase;margin:12px 0 22px}
+    .feature-copy>p{color:var(--muted);font-size:1rem}
+    .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px 0 30px}
+    .feature-list div{padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);font-size:.88rem;font-weight:700}
+
+    .diag{padding:105px 0;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+    .diag-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+    .diag-price{border-radius:26px;background:linear-gradient(145deg,#151a22,#0e1116);border:1px solid var(--line);padding:42px;display:flex;flex-direction:column;justify-content:space-between;min-height:430px}
+    .diag-price h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:3rem;line-height:.95;margin:10px 0}
+    .price{font-family:"Barlow Condensed",sans-serif;font-size:5.6rem;font-weight:800;line-height:1;margin:20px 0;color:#fff}
+    .price small{font-family:Inter,sans-serif;font-size:.85rem;color:var(--muted);font-weight:600;margin-left:8px}
+    .diag-price p{color:var(--muted)}
+    .diag-explain{border-radius:26px;overflow:hidden;position:relative;min-height:430px;background:linear-gradient(90deg,rgba(9,10,13,.94),rgba(9,10,13,.38)),url('https://triadautomotiveusa.com/014F6546-DD28-487E-B3EA-CFFCF828DC0C.png') center/cover no-repeat;border:1px solid var(--line);padding:42px;display:flex;align-items:flex-end}
+    .diag-explain .copy{max-width:590px}
+    .diag-explain h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:2.7rem;line-height:.95;margin:8px 0 12px}
+    .diag-explain p{color:#c1c7d0}
+
+    .gallery{padding:105px 0}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:12px}
+    .gallery-item{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#11151b}
+    .gallery-item.tall{grid-row:span 2}
+    .gallery-item.wide{grid-column:span 2}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:.4s ease}
+    .gallery-item:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+    .gallery-item:hover img{transform:scale(1.04)}
+    .gallery-caption{position:absolute;z-index:2;left:18px;right:18px;bottom:16px;font-size:.83rem;color:#d8dde4}
+    .gallery-caption strong{display:block;color:#fff;font-size:.98rem}
+
+    .split-section{padding:20px 0 105px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .split-card{border:1px solid var(--line);background:var(--panel);border-radius:24px;padding:40px;min-height:395px}
+    .split-card h3{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:3rem;line-height:.95;margin:12px 0 18px}
+    .split-card p{color:var(--muted)}
+    .chip-row{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0 30px}
+    .chip{padding:8px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.035);font-size:.78rem;color:#d6dbe2;font-weight:700}
+    .split-card.performance{background:linear-gradient(145deg,rgba(227,27,35,.13),rgba(18,22,29,.96))}
+
+    .reviews{padding:100px 0;background:#0b0d11;border-block:1px solid var(--line)}
+    .reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .review{border:1px solid var(--line);border-radius:20px;padding:30px;background:rgba(255,255,255,.025)}
+    .stars{color:#ffcd46;letter-spacing:.1em}
+    .review blockquote{margin:18px 0 20px;font-size:1.05rem;color:#e8ebef}
+    .review cite{color:var(--muted);font-style:normal;font-size:.86rem}
+
+    .booking{padding:105px 0}
+    .booking-shell{display:grid;grid-template-columns:.78fr 1.22fr;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
+    .booking-copy{padding:52px;background:linear-gradient(160deg,#1b2029,#0e1116)}
+    .booking-copy h2{font-family:"Barlow Condensed",sans-serif;font-size:4rem;line-height:.9;text-transform:uppercase;margin:12px 0 20px}
+    .booking-copy p{color:var(--muted)}
+    .contact-stack{display:grid;gap:11px;margin-top:30px}
+    .contact-stack a{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-weight:700}
+    .booking-form{padding:42px;background:#11151b}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field.full{grid-column:1/-1}
+    label{display:block;font-size:.77rem;font-weight:800;color:#c7cdd5;text-transform:uppercase;letter-spacing:.06em;margin:0 0 7px}
+    input,select,textarea{width:100%;background:#0b0e13;color:#fff;border:1px solid rgba(255,255,255,.11);border-radius:11px;padding:13px 14px;outline:none;transition:.15s}
+    textarea{min-height:115px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:rgba(255,59,63,.68);box-shadow:0 0 0 3px rgba(227,27,35,.1)}
+    select option{background:#0b0e13}
+    .form-actions{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .form-note{font-size:.76rem;color:#89929f;margin-top:14px}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#181d25;border:1px solid var(--line);box-shadow:var(--shadow);padding:12px 16px;border-radius:12px;z-index:100;transition:.25s}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    .about{padding:40px 0 100px}
+    .about-shell{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .about-image{height:500px;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+    .about-image img{width:100%;height:100%;object-fit:cover}
+    .about-copy h2{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:4.2rem;line-height:.9;margin:12px 0 20px}
+    .about-copy p{color:var(--muted)}
+    .about-points{display:grid;gap:10px;margin-top:24px}
+    .about-points div{padding:12px 14px;border-left:2px solid var(--red);background:rgba(255,255,255,.025);color:#d5dbe2}
+
+    footer{border-top:1px solid var(--line);padding:48px 0 26px;background:#050608}
+    .footer-grid{display:grid;grid-template-columns:1.4fr repeat(2,1fr);gap:40px}
+    .footer-brand{max-width:420px}
+    .footer-brand p{color:#8e97a4;font-size:.86rem;margin-top:15px}
+    footer h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:#8e97a4;margin:0 0 14px}
+    footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:.88rem;color:#c1c7d0}
+    footer a:hover{color:#fff}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:42px;padding-top:20px;border-top:1px solid var(--line);font-size:.76rem;color:#777f8a}
+
+    .mobile-cta{display:none}
+
+    @media(max-width:1080px){
+      .nav-links{display:none}
+      .menu-btn{display:grid;place-items:center}
+      .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;padding:14px 20px 22px;background:#090b0f;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+      .nav-links.open a{padding:14px 8px;border-bottom:1px solid var(--line)}
+      .nav-links.open a:after{display:none}
+      .trust-grid{grid-template-columns:1fr 1fr}
+      .trust-item:nth-child(2){border-right:0}
+      .trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .service-card.small{grid-column:span 6}
+      .feature-shell,.booking-shell,.about-shell{grid-template-columns:1fr}
+      .feature-image{min-height:470px}
+      .booking-copy{padding:42px}
+      .about-image{height:420px;order:2}
+      .about-copy{order:1}
+    }
+
+    @media(max-width:780px){
+      .container{width:min(calc(100% - 28px),var(--max))}
+      .topbar .container{min-height:38px}
+      .topbar-links .email,.topbar-links .area{display:none}
+      .nav-actions .btn-secondary{display:none}
+      .nav-actions .btn-primary{padding:11px 13px}
+      .hero{min-height:680px}
+      .hero:before{background:linear-gradient(180deg,rgba(8,9,12,.20),rgba(8,9,12,.82) 56%,#08090c 90%),url('https://triadautomotiveusa.com/2FB52FB2-5D05-497D-840C-234481131CB2.png') 64% center/cover no-repeat}
+      .hero .container{padding:260px 0 90px}
+      h1{font-size:clamp(4rem,20vw,6rem)}
+      .hero-copy>p{font-size:.98rem}
+      .trust-strip{margin-top:-35px}
+      .trust-grid{grid-template-columns:1fr 1fr}
+      .trust-item{padding:18px}
+      .trust-item strong{font-size:1.05rem}
+      .section,.diag,.gallery,.reviews,.booking{padding:78px 0}
+      .section-head{display:block}
+      .section-head p{margin-top:16px}
+      .service-card.large,.service-card.small{grid-column:span 12;min-height:230px}
+      .feature-copy{padding:35px 24px}
+      .feature-list{grid-template-columns:1fr}
+      .diag-grid,.split,.reviews-grid{grid-template-columns:1fr}
+      .diag-price,.diag-explain{min-height:auto;padding:30px}
+      .diag-explain{min-height:420px}
+      .price{font-size:4.5rem}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:210px}
+      .gallery-item.wide{grid-column:span 2}
+      .split-card{padding:30px}
+      .booking-form{padding:28px 22px}
+      .form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
+      .about-copy h2,.booking-copy h2{font-size:3.4rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .footer-brand{grid-column:1/-1}
+      .footer-bottom{display:block}
+      .footer-bottom span{display:block;margin-top:6px}
+      .mobile-cta{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;background:rgba(12,14,18,.9);backdrop-filter:blur(15px);border:1px solid var(--line);border-radius:15px;padding:7px;gap:7px;box-shadow:0 16px 45px rgba(0,0,0,.45)}
+      .mobile-cta a{padding:11px 8px;border-radius:10px;text-align:center;font-size:.82rem;font-weight:800}
+      .mobile-cta a:first-child{background:#202630}
+      .mobile-cta a:last-child{background:var(--red)}
+      body{padding-bottom:74px}
+    }
+
+    @media(max-width:520px){
+      .brand-text span{display:none}
+      .nav-actions .btn-primary{display:none}
+      .trust-item span{font-size:.72rem}
+      .gallery-grid{grid-template-columns:1fr;grid-auto-rows:260px}
+      .gallery-item.wide,.gallery-item.tall{grid-column:auto;grid-row:auto}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-brand{grid-column:auto}
+    }
+
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AutoRepair",
+    "name":"Triad Automotive LLC",
+    "url":"https://triadautomotiveusa.com/",
+    "telephone":"+1-608-404-7360",
+    "email":"triadautomotivellc@gmail.com",
+    "areaServed":["Baraboo, WI","Wisconsin Dells, WI","Portage, WI","Reedsburg, WI","Sauk City, WI","Lake Delton, WI"],
+    "description":"Automotive diagnostics, maintenance, repair, pickup and return service, fleet maintenance, vehicle transport, tire sourcing, parts support, and SBC/LS/LT services."
+  }
+  </script>
 </head>
-
 <body>
+  <div class="topbar">
     <div class="container">
-        <div class="utility-bar">
-            <button class="lang-btn" onclick="toggleLanguage()">🌐 <span id="txtLangBtn">Español</span></button>
+      <div class="topbar-links">
+        <span class="area">Baraboo, Wisconsin</span>
+        <a href="tel:+16084047360">(608) 404-7360</a>
+        <a class="email" href="mailto:triadautomotivellc@gmail.com">triadautomotivellc@gmail.com</a>
+      </div>
+      <button class="lang-btn" id="langToggle" type="button">🌐 Español</button>
+    </div>
+  </div>
+
+  <header class="nav-wrap">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Triad Automotive home">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="brand-text"><strong>TRIAD</strong><span>Automotive</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#diagnostics" data-i18n="navDiagnostics">Diagnostics</a>
+        <a href="#pickup" data-i18n="navPickup">Pickup & Return</a>
+        <a href="#work" data-i18n="navWork">Our Work</a>
+        <a href="#performance" data-i18n="navPerformance">Performance</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="sms:+16084047360" data-i18n="textUs">Text Us</a>
+        <a class="btn btn-primary" href="#schedule" data-i18n="schedule">Schedule Service</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span class="pulse"></span><span data-i18n="heroKicker">Family-owned • Baraboo, Wisconsin</span></div>
+          <h1><span data-i18n="heroTitle1">Service built for</span> <span class="accent" data-i18n="heroTitle2">real life.</span></h1>
+          <p data-i18n="heroBody">Diagnostics, maintenance, repair, pickup & return service, fleet support, truck and trailer transport, and parts help for daily drivers, work vehicles, and enthusiast builds.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#schedule" data-i18n="requestService">Request Service</a>
+            <a class="btn btn-secondary" href="tel:+16084047360" data-i18n="callShop">Call the Shop</a>
+          </div>
+          <div class="hero-meta">
+            <span><i class="check">✓</i><span data-i18n="domesticForeign">Domestic & foreign</span></span>
+            <span><i class="check">✓</i><span data-i18n="bilingual">Se habla español</span></span>
+            <span><i class="check">✓</i><span data-i18n="pickupMeta">Pickup available by schedule</span></span>
+          </div>
         </div>
-
-        <header class="logo-header">
-            <a href="#top" class="center-logo-wrap" aria-label="Triad Automotive Home">
-                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive Logo" class="brand-img main-logo">
-            </a>
-        </header>
-
-        <div class="top-contact-card logo-contact-card">
-            <a href="tel:+16084047360"><span id="topPhoneLabel">Phone</span> (608) 404-7360</a>
-            <a href="mailto:triadautomotivellc@gmail.com"><span id="topEmailLabel">Email</span> triadautomotivellc@gmail.com</a>
-        </div>
-
-        <section class="hero" id="top">
-            <div class="slogan" id="txtInfoArea">Texas Roots. <span class="info-red">Wisconsin Built.</span></div>
-
-            <h2 class="hero-title" id="heroTitle">Diagnostics, Maintenance & Repair Done Right.</h2>
-
-            <p class="hero-text" id="heroText">
-                Diagnostics, maintenance, repair, pickup & return service, fleet maintenance options, tire sourcing, and parts support for domestic and foreign vehicles in Baraboo, WI. Se habla español.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#scheduler" class="hero-btn red" id="heroBook">Schedule Service</a>
-                <a href="sms:+16084047360" class="hero-btn dark" id="heroTextBtn">Text Us</a>
-            </div>
-
-            <p class="info-sub" id="txtInfoSub">
-                Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.
-            </p>
-        </section>
-
-        <div class="trust-strip">
-            <span class="trust-pill" id="pillService">Service & Maintenance</span>
-            <span class="trust-pill" id="pillDomestic">Domestic & Foreign</span>
-            <span class="trust-pill" id="pillDiag">Diagnostics</span>
-            <span class="trust-pill" id="pillMobile">Mobile Repair</span>
-            <span class="trust-pill" id="pillPickup">Pickup & Drop-Off</span>
-            <span class="trust-pill" id="pillFleet">Fleet Accounts</span>
-            <span class="trust-pill" id="pillRewards">Oil Change Rewards</span>
-            <span class="trust-pill" id="pillTow">Truck & Trailer</span>
-            <span class="trust-pill" id="pillParts">LEDs & Audio</span>
-            <span class="trust-pill" id="pillPerformance">SBC / LS / LT</span>
-            <span class="trust-pill" id="pillVats">LS VATS Delete</span>
-            <span class="trust-pill" id="pillTires">Tire Sourcing</span>
-        </div>
-
-        <nav class="dept-navigation">
-            <a href="#service" class="dept-tab active" id="tabService">Service</a>
-            <a href="#triad-plus" class="dept-tab" id="tabTriadPlus">Triad Plus</a>
-            <a href="#about" class="dept-tab" id="tabAbout">About Us</a>
-            <a href="#diagnostics" class="dept-tab" id="tabDiag">Diagnostics</a>
-            <a href="#towing" class="dept-tab" id="tabTow">Truck & Trailer</a>
-            <a href="#pickup-dropoff" class="dept-tab" id="tabPickup">Pickup & Drop-Off</a>
-            <a href="#parts" class="dept-tab" id="tabParts">Parts</a>
-            <a href="#performance" class="dept-tab" id="tabPerf">Performance</a>
-            <a href="#scheduler" class="dept-tab" id="tabSchedule">Schedule</a>
-        </nav>
-
-        <div class="quick-help">
-            <h2 class="quick-help-title" id="quickTitle">Not sure what you need?</h2>
-            <p class="quick-help-text" id="quickText">
-                Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.
-            </p>
-            <a href="sms:+16084047360" id="quickBtn">Text a Picture →</a>
-        </div>
-
-        <section class="card" id="service">
-            <div class="core-badge" id="bdgService">General Service</div>
-            <h2 class="card-title" id="ttlService">Automotive Service & Maintenance</h2>
-            <p class="card-desc" id="dscService">
-                Triad Automotive provides service, maintenance, diagnostics, and repair for domestic and foreign vehicles. From daily drivers to work trucks and family SUVs, we help keep your vehicle reliable and road-ready.
-            </p>
-
-            <div class="mini-list">
-                <div class="mini-item" id="svcMini1">Brakes</div>
-                <div class="mini-item" id="svcMini2">Suspension</div>
-                <div class="mini-item" id="svcMini3">Tune-Ups</div>
-                <div class="mini-item" id="svcMini4">No-Starts</div>
-            </div>
-
-            <div class="promo-box">
-                <p class="promo-text" id="promoService">
-                    Oil leaks, warning lights, noises, steering issues, overheating, and general repairs—text us what’s going on and we’ll help you figure out the next step.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPriceService">General Repair</span>
-                    <span class="price-value" id="valPriceService">Quote</span>
-                </div>
-                <a href="#scheduler" class="book-btn" id="btnService">Request Service</a>
-            </div>
-        </section>
-
-        <section class="card" id="triad-plus">
-            <div class="core-badge blue" id="bdgTriadPlus">Triad Plus</div>
-            <h2 class="card-title" id="ttlTriadPlus">Convenience Programs & Business Services</h2>
-            <p class="card-desc" id="dscTriadPlus">
-                Triad Automotive is built for real life. Ask about pickup and return service, fleet maintenance, oil change rewards, and business service options designed to keep you moving.
-            </p>
-
-            <div class="mini-list">
-                <div class="mini-item" id="plusMini1">Pickup & Return</div>
-                <div class="mini-item" id="plusMini2">Fleet Maintenance</div>
-                <div class="mini-item" id="plusMini3">Oil Change Rewards</div>
-                <div class="mini-item" id="plusMini4">Business Accounts</div>
-            </div>
-
-            <div class="oil-reward-strip" aria-label="Oil change rewards">
-                <div class="reward-step">1</div>
-                <div class="reward-step">2</div>
-                <div class="reward-step">3</div>
-                <div class="reward-step">4</div>
-                <div class="reward-step">5</div>
-                <div class="reward-step final" id="rewardFinal">6th</div>
-            </div>
-
-            <div class="promo-box">
-                <p class="promo-text" id="promoTriadPlus">
-                    Ask about Triad Maintenance Rewards: after 5 completed oil change services, returning customers may qualify for a 6th oil change labor reward. Oil and filter still apply unless otherwise stated.
-                </p>
-            </div>
-
-            <div class="program-grid">
-                <div class="program-card">
-                    <strong id="plusCard1Title">Pickup & Return Service</strong>
-                    <span id="plusCard1Text">Busy at work? Within our service area and schedule, we may be able to pick up your vehicle, complete approved service, and return it when finished.</span>
-                </div>
-
-                <div class="program-card">
-                    <strong id="plusCard2Title">Fleet & Business Maintenance</strong>
-                    <span id="plusCard2Text">Local contractors, landscapers, delivery vehicles, work trucks, and small businesses can ask about maintenance scheduling and service coordination.</span>
-                </div>
-
-                <div class="program-card">
-                    <strong id="plusCard3Title">Oil Change Club</strong>
-                    <span id="plusCard3Text">Keep up with maintenance and build rewards over time. Perfect for families, commuters, and work vehicles.</span>
-                </div>
-            </div>
-        </section>
-
-        <main class="card" id="diagnostics">
-            <div class="core-badge" id="bdgDiag">Core Evaluation</div>
-            <h2 class="card-title" id="ttlDiag">Check Engine Light Scan</h2>
-            <p class="card-desc" id="dscDiag">
-                We plug the scanner into your vehicle’s system, read the fault codes, and give you honest direction on what may be failing before you start throwing parts at it.
-            </p>
-
-            <div class="promo-box red">
-                <p class="promo-text" id="promoDiag">
-                    A scan is a starting point. Real diagnostics may require additional inspection depending on the issue.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPriceDiag">Flat Rate</span>
-                    <span class="price-value">$45</span>
-                </div>
-                <a href="#scheduler" class="book-btn" id="btnBookDiag">Book Scan</a>
-            </div>
-        </main>
-
-        <section class="card" id="towing">
-            <div class="core-badge blue" id="bdgTow">Recovery & Transport</div>
-            <h2 class="card-title" id="ttlTow">Truck & Trailer Service</h2>
-            <p class="card-desc" id="dscTow">
-                Stuck or need a vehicle moved? We can dispatch our truck and trailer to safely transport your vehicle or help coordinate pickup for repair.
-            </p>
-
-            <div class="promo-box">
-                <p class="promo-text" id="promoTow">
-                    Tow to our shop for repairs and ask about tow discounts depending on your location and repair.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPriceTow">Transport</span>
-                    <span class="price-value" id="valPriceTow">Quote</span>
-                </div>
-
-                <div style="display:flex; flex-direction:column; gap:8px;">
-                    <a href="sms:+16084047360" class="book-btn blue" style="padding:10px 14px; font-size:12px;" id="btnActionTow">Get Tow</a>
-                    <a href="#scheduler" class="book-btn dark" style="padding:10px 14px; font-size:12px;" id="btnActionMobile">Schedule</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="card" id="pickup-dropoff">
-            <div class="core-badge blue" id="bdgPickup">Convenience Service</div>
-            <h2 class="card-title" id="ttlPickup">Workday Pickup & Drop-Off</h2>
-            <p class="card-desc" id="dscPickup">
-                Busy at work or unable to bring the vehicle to us? Schedule with Triad and we can arrange vehicle pickup, service, and drop-off when available. You keep working while your vehicle gets maintenance, diagnostics, parts installs, or approved repairs handled.
-            </p>
-
-            <div class="mini-list">
-                <div class="mini-item" id="pickupMini1">At Work</div>
-                <div class="mini-item" id="pickupMini2">At Home</div>
-                <div class="mini-item" id="pickupMini3">Scheduled Only</div>
-                <div class="mini-item" id="pickupMini4">Within Range</div>
-            </div>
-
-            <div class="service-note-list">
-                <div class="service-note" id="pickupNote1"><strong>Good for:</strong> maintenance, diagnostics, brakes, parts installs, tire sourcing, and approved repairs.</div>
-                <div class="service-note" id="pickupNote2"><strong>Important:</strong> availability depends on location, schedule, vehicle condition, and job type. Some vehicles may require trailer transport.</div>
-            </div>
-
-            <div class="promo-box blue">
-                <p class="promo-text" id="promoPickup">
-                    Inspired by dealership-style convenience: we pick up your vehicle, complete approved work, and return it when finished when schedule and distance allow.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPricePickup">Convenience</span>
-                    <span class="price-value" id="valPricePickup">Quote</span>
-                </div>
-                <a href="#scheduler" class="book-btn blue" id="btnPickup">Schedule Pickup</a>
-            </div>
-        </section>
-
-        <section class="card" id="parts">
-            <div class="core-badge dark" id="bdgParts">Special Order</div>
-            <h2 class="card-title" id="ttlParts">Custom Parts by Order</h2>
-            <p class="card-desc" id="dscParts">
-                Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds.
-            </p>
-
-            <div class="mini-list">
-                <div class="mini-item" id="partsMini1">OEM Parts</div>
-                <div class="mini-item" id="partsMini2">Aftermarket</div>
-                <div class="mini-item" id="partsMini3">LED Lighting</div>
-                <div class="mini-item" id="partsMini4">Audio Gear</div>
-            </div>
-
-            <div class="promo-box red">
-                <p class="promo-text" id="promoParts">
-                    Ask us about LED lighting, audio equipment, lighting upgrades, and custom parts by order.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPriceParts">Availability</span>
-                    <span class="price-value" id="valPriceParts">Quote</span>
-                </div>
-                <a href="#scheduler" class="book-btn" id="btnParts">Request Parts</a>
-            </div>
-        </section>
-
-        <section class="card" id="performance">
-            <div class="core-badge" id="bdgPerf">Performance</div>
-            <h2 class="card-title" id="ttlPerf">SBC, LS & LT Parts Support</h2>
-            <p class="card-desc" id="dscPerf">
-                We offer parts sourcing and support for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, supporting parts, and LS VATS delete for swap applications, we can help plan the setup and source the right components.
-            </p>
-
-            <div class="mini-list">
-                <div class="mini-item" id="perfMini1">SBC</div>
-                <div class="mini-item" id="perfMini2">LS Gen 3/4</div>
-                <div class="mini-item" id="perfMini3">LT Parts</div>
-                <div class="mini-item" id="perfMini4">VATS Delete</div>
-            </div>
-
-            <div class="promo-box red">
-                <p class="promo-text" id="promoPerf">
-                    Tell us your engine, vehicle, and goal. We can help with parts planning, LS swap support, and VATS delete on compatible LS platforms using HP Tuners.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPricePerf">Parts & Support</span>
-                    <span class="price-value" id="valPricePerf">Quote</span>
-                </div>
-                <a href="#scheduler" class="book-btn" id="btnPerf">Start Build</a>
-            </div>
-        </section>
-
-        <section class="card" id="builds">
-            <div class="core-badge dark" id="bdgBuilds">Build Planning</div>
-            <h2 class="card-title" id="ttlBuilds">Build & Upgrade Consultation</h2>
-            <p class="card-desc" id="dscBuilds">
-                Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, audio upgrades, LEDs, and custom upgrades before you spend money on the wrong parts.
-            </p>
-
-            <div class="promo-box red">
-                <p class="promo-text" id="promoBuilds">
-                    Text us your vehicle and your goal. We’ll help you build a parts plan that makes sense.
-                </p>
-            </div>
-
-            <div class="card-footer">
-                <div>
-                    <span class="price-label" id="lblPriceBuilds">Starting At</span>
-                    <span class="price-value" id="valPriceBuilds">$25</span>
-                </div>
-                <a href="#scheduler" class="book-btn" id="btnBuilds">Plan Build</a>
-            </div>
-        </section>
-
-        <section class="project-gallery" id="projects">
-            <h3 class="gallery-title" id="galTitle">Real Vehicles. Real Repairs.</h3>
-            <p class="card-desc" id="galSub" style="text-align:center;">
-                From daily drivers and family SUVs to work trucks, classics, performance builds, and engine repairs, Triad Automotive delivers real-world automotive service backed by hands-on experience.
-            </p>
-
-            <div class="project-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:100%;margin-top:14px;">
-                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="IMG_7602.jpeg" alt="Dually truck at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">Truck & Work Vehicle Service<span>Diesel, gas, trailers, and daily-use rigs</span></div>
-                </div>
-
-                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="82DA2A2C-0BC8-4B41-9AE8-0957E52F55A0.png" alt="Classic Chevrolet truck at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">Classic Truck Service<span>Older vehicles, clean builds, and repairs</span></div>
-                </div>
-
-                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette serviced by Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">Performance & Enthusiast Vehicles<span>Parts support, upgrades, and direction</span></div>
-                </div>
-
-                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <!-- SHO IMAGE FILENAME MUST MATCH EXACTLY IN GITHUB ROOT -->
-                    <img src="./014F6546-DD28-487E-B3EA-CFFCF828DC0C.png" alt="Ford Taurus SHO engine bay at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-fallback-card">SHO Diagnostics & Maintenance<span>Upload/check: 014F6546-DD28-487E-B3EA-CFFCF828DC0C.png</span></div>
-                    <div class="project-caption">Diagnostics & Maintenance<span>Modern vehicles, no-starts, leaks, and warning lights</span></div>
-                </div>
-
-                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="5455C887-3C5F-4383-884E-F6934B8291F5.png" alt="Timing chain repair at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">Timing & Internal Engine Work<span>Real repair work, not guesswork</span></div>
-                </div>
-
-                <div class="project-card tall" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="89F51DBD-F1A4-4C18-B528-432AEA699051.png" alt="LS engine work at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">LS / SBC / LT Support<span>Valvetrain, swap parts, and build planning</span></div>
-                </div>
-
-                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Truck build at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">Custom Parts & Upgrades<span>Wheels, lighting, audio, accessories, and more</span></div>
-                </div>
-
-                <div class="project-card" style="position:relative;overflow:hidden;height:128px;max-height:128px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:#10141c;">
-                    <img src="EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic car at Triad Automotive" style="width:100%;max-width:100%;height:128px;max-height:128px;display:block;object-fit:cover;object-position:center;">
-                    <div class="project-caption">Domestic & Foreign Vehicles<span>Daily drivers, classics, SUVs, trucks, and cars</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="card" id="tires">
-            <div class="core-badge dark" id="bdgTires">Coming Soon</div>
-            <h2 class="card-title" id="ttlTires">Tire Sourcing & Tire Services</h2>
-            <p class="card-desc" id="dscTires">
-                Need tires? Triad Automotive can help source new and used tires by size, vehicle, and budget. Mounted and balanced tire service is coming soon.
-            </p>
-
-            <div class="mini-list">
-                <div class="mini-item" id="tiresMini1">New Tires</div>
-                <div class="mini-item" id="tiresMini2">Used Tires</div>
-                <div class="mini-item" id="tiresMini3">Tire Sourcing</div>
-                <div class="mini-item" id="tiresMini4">Mount & Balance Soon</div>
-            </div>
-
-            <div class="promo-box">
-                <p class="promo-text" id="promoTires">
-                    Send us your tire size or vehicle info and we can help source options. Mounting and balancing will be added soon.
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">
-                    "Fixed my truck real fast when it died in the trailer park. Legit guys, don't go anywhere else."
-                </p>
-                <div class="review-name">— Dylan Seipp</div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">
-                    "These guys know what they're doing. Got me back on the road in no time."
-                </p>
-                <div class="review-name">— Kavik Copus</div>
-            </div>
-        </section>
-
-        <section class="card" id="scheduler" style="background: var(--card-bg-strong);">
-            <div class="core-badge blue" id="bdgSchedule">Service Request</div>
-            <h3 class="card-title" style="text-align:left;" id="frmTitle">Schedule Service</h3>
-            <p class="card-desc" id="frmSub">
-                Send us the details and your phone will open a prepared text message to Triad Automotive.
-            </p>
-
-            <form onsubmit="event.preventDefault(); sendBookingSMS();">
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmName">1. Your Name</label>
-                    <input type="text" id="bookingName" class="form-input" placeholder="Your name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmVehicle">2. Vehicle</label>
-                    <input type="text" id="bookingVehicle" class="form-input" placeholder="Year / Make / Model" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmSvc">3. Select Service</label>
-                    <select id="bookingService" class="form-input"></select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmCity">4. City / Area</label>
-                    <select id="bookingCity" class="form-input">
-                        <option value="Baraboo">Baraboo</option>
-                        <option value="Wisconsin Dells">Wisconsin Dells</option>
-                        <option value="Portage">Portage</option>
-                        <option value="Reedsburg">Reedsburg</option>
-                        <option value="Sauk City">Sauk City</option>
-                        <option value="Lake Delton">Lake Delton</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmLoc">5. Address / Location</label>
-                    <input type="text" id="bookingLocation" class="form-input" placeholder="123 Main St or general area" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmPickup">6. Pickup / Drop-Off Needed?</label>
-                    <select id="bookingPickup" class="form-input">
-                        <option value="No pickup/drop-off needed">No pickup/drop-off needed</option>
-                        <option value="Pickup and drop-off requested">Pickup and drop-off requested</option>
-                        <option value="Pickup only requested">Pickup only requested</option>
-                        <option value="Drop-off only requested">Drop-off only requested</option>
-                        <option value="Vehicle may need trailer transport">Vehicle may need trailer transport</option>
-                    </select>
-                </div>
-
-                <div style="display:flex; gap:12px;">
-                    <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmDate">7. Date</label>
-                        <input type="date" id="bookingDate" class="form-input" required>
-                    </div>
-
-                    <div class="form-group" style="flex:1;">
-                        <label class="form-label" id="lblFrmTime">8. Time</label>
-                        <select id="bookingTime" class="form-input">
-                            <option value="ASAP">ASAP</option>
-                            <option value="8:00 AM">8:00 AM</option>
-                            <option value="8:30 AM">8:30 AM</option>
-                            <option value="9:00 AM">9:00 AM</option>
-                            <option value="9:30 AM">9:30 AM</option>
-                            <option value="10:00 AM">10:00 AM</option>
-                            <option value="10:30 AM">10:30 AM</option>
-                            <option value="11:00 AM">11:00 AM</option>
-                            <option value="11:30 AM">11:30 AM</option>
-                            <option value="12:00 PM">12:00 PM</option>
-                            <option value="12:30 PM">12:30 PM</option>
-                            <option value="1:00 PM">1:00 PM</option>
-                            <option value="1:30 PM">1:30 PM</option>
-                            <option value="2:00 PM">2:00 PM</option>
-                            <option value="2:30 PM">2:30 PM</option>
-                            <option value="3:00 PM">3:00 PM</option>
-                            <option value="3:30 PM">3:30 PM</option>
-                            <option value="4:00 PM">4:00 PM</option>
-                            <option value="4:30 PM">4:30 PM</option>
-                            <option value="5:00 PM">5:00 PM</option>
-                            <option value="After Hours">After Hours</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" id="lblFrmNotes">9. What’s Going On?</label>
-                    <textarea id="bookingNotes" class="form-input" placeholder="Example: check engine light, brakes grinding, no start, needs tow, wants parts ordered..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn" id="btnFrmSubmit">Confirm & Text Request</button>
-
-                <p class="small-note" id="frmNote">
-                    This form opens your text messages. Your request is not sent until you press send on your phone.
-                </p>
-            </form>
-        </section>
-
-        <section class="card about-card" id="about">
-            <div class="core-badge dark" id="bdgAbout">About Triad</div>
-            <h2 class="card-title" id="ttlAbout">Three Brothers. South Texas Roots.</h2>
-            <p class="card-desc" id="dscAbout">
-                Triad Automotive was built by three brothers—Jose, Javier, and Miguel—who grew up in the 956 area code around mechanics, tools, trucks, and real repair work. Automotive work has been part of our upbringing since day one — learning around shops, family projects, daily drivers, and the kind of vehicles people depend on every day.
-            </p>
-
-            <div class="about-grid">
-                <div class="about-point" id="aboutPoint1">Family-owned and built from real hands-on experience.</div>
-                <div class="about-point" id="aboutPoint2">Raised around mechanics, repairs, trucks, and problem solving.</div>
-                <div class="about-point" id="aboutPoint3">Texas roots, Wisconsin built — serving Baraboo and nearby communities.</div>
-            </div>
-        </section>
-
-        <footer>
-            <p id="footerText">Triad Automotive LLC • Baraboo, Wisconsin</p>
-            <p>
-                <a href="tel:+16084047360">(608) 404-7360</a> •
-                <a href="mailto:triadautomotivellc@gmail.com">triadautomotivellc@gmail.com</a>
-            </p>
-            <p id="footerSub">Automotive service • Diagnostics • Maintenance • Tire sourcing • LEDs • Audio • Parts sourcing • VATS delete support</p>
-        </footer>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item"><strong>Diagnostics</strong><span data-i18n="trust1">Find the problem before buying parts</span></div>
+        <div class="trust-item"><strong>Pickup & Return</strong><span data-i18n="trust2">Convenience when your day is packed</span></div>
+        <div class="trust-item"><strong>Fleet Support</strong><span data-i18n="trust3">Maintenance for small local businesses</span></div>
+        <div class="trust-item"><strong>LS / SBC / LT</strong><span data-i18n="trust4">Parts, build planning & VATS support</span></div>
+      </div>
     </div>
 
-    <button class="triad-chat-launcher" id="triadChatLauncher" onclick="toggleTriadChat()">
-        <span class="triad-chat-pulse"></span>
-        <span id="chatLauncherText">Wawa Bot</span>
-    </button>
-
-    <aside class="triad-chat-window" id="triadChatWindow" aria-label="Triad Automotive chat assistant">
-        <div class="triad-chat-header">
-            <div class="triad-chat-brand">
-                <img src="DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive" class="triad-chat-logo">
-                <div>
-                    <div class="triad-chat-title" id="chatHeaderTitle">Wawa Bot</div>
-                    <div class="triad-chat-status" id="chatHeaderStatus">Smart help • Safety-first</div>
-                </div>
-            </div>
-            <div class="chat-lang-toggle">
-                <button type="button" class="chat-lang-btn active" id="chatLangEn" onclick="setChatLanguage('en')">EN</button>
-                <button type="button" class="chat-lang-btn" id="chatLangEs" onclick="setChatLanguage('es')">ES</button>
-            </div>
-
-            <button class="triad-chat-close" onclick="toggleTriadChat()" aria-label="Close chat">×</button>
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow red" data-i18n="serviceEyebrow">What we do</span><h2 data-i18n="serviceTitle">One shop. A lot of capability.</h2></div>
+          <p data-i18n="serviceIntro">From warning lights and worn brakes to work trucks, custom parts, and planned upgrades, Triad handles the jobs people actually need every week.</p>
         </div>
-
-        <div class="triad-chat-body" id="chatBody"></div>
-
-        <div class="triad-chat-footer">
-            <div class="chat-input-row">
-                <input class="chat-input" id="chatInput" type="text" placeholder="Ask about service, towing, diagnostics..." onkeydown="handleChatKey(event)">
-                <button class="chat-send" onclick="sendChatMessage()">➤</button>
-            </div>
-            <div class="chat-disclaimer" id="chatDisclaimer">
-                Safety-first help. For emergencies, move to safety and contact emergency services.
-            </div>
+        <div class="services-grid">
+          <a class="service-card large" href="#schedule">
+            <div class="service-icon">01</div><h3 data-i18n="svcGeneral">General Service & Repair</h3><p data-i18n="svcGeneralBody">Brakes, suspension, tune-ups, no-starts, leaks, overheating, steering issues, maintenance, and general repairs.</p><span class="service-link">↗</span>
+          </a>
+          <a class="service-card large" href="#diagnostics">
+            <div class="service-icon">02</div><h3 data-i18n="svcDiag">Diagnostics</h3><p data-i18n="svcDiagBody">Code scanning, warning lights, drivability problems, electrical direction, and a smarter first step before parts get thrown at the vehicle.</p><span class="service-link">↗</span>
+          </a>
+          <a class="service-card small" href="#pickup"><div class="service-icon">03</div><h3 data-i18n="svcPickup">Pickup & Return</h3><p data-i18n="svcPickupBody">Scheduled vehicle pickup, approved service, and return when distance and job type allow.</p><span class="service-link">↗</span></a>
+          <a class="service-card small" href="#schedule"><div class="service-icon">04</div><h3 data-i18n="svcFleet">Fleet & Business</h3><p data-i18n="svcFleetBody">Service coordination for local contractors, work trucks, delivery vehicles, and small fleets.</p><span class="service-link">↗</span></a>
+          <a class="service-card small" href="#performance"><div class="service-icon">05</div><h3 data-i18n="svcParts">Parts & Upgrades</h3><p data-i18n="svcPartsBody">OEM, aftermarket, LEDs, audio, wheels, tires, suspension, accessories, and build planning.</p><span class="service-link">↗</span></a>
+          <a class="service-card small" href="#schedule"><div class="service-icon">06</div><h3 data-i18n="svcTransport">Truck & Trailer</h3><p data-i18n="svcTransportBody">Vehicle transport and repair pickup coordination with truck and trailer service.</p><span class="service-link">↗</span></a>
         </div>
-    </aside>
+      </div>
+    </section>
 
-    <script>
-        let currentLang = 'en';
-        const triadPhone = "+16084047360";
-        const triadWebsite = "https://www.triadautomotiveusa.com";
+    <section class="feature-section" id="pickup">
+      <div class="container feature-shell">
+        <div class="feature-image"><div class="feature-badge"><strong data-i18n="featureBadge1">Workday-friendly service</strong><span data-i18n="featureBadge2">Available by location, schedule & vehicle condition</span></div></div>
+        <div class="feature-copy">
+          <span class="eyebrow red" data-i18n="convenience">Triad convenience</span>
+          <h2 data-i18n="pickupTitle">Your car can come to us.</h2>
+          <p data-i18n="pickupBody">Busy at work or tied up at home? When the schedule, location, and repair allow it, we can arrange pickup, complete approved work, and return the vehicle when finished.</p>
+          <div class="feature-list">
+            <div data-i18n="pickupPoint1">At work or at home</div><div data-i18n="pickupPoint2">Scheduled in advance</div><div data-i18n="pickupPoint3">Maintenance & diagnostics</div><div data-i18n="pickupPoint4">Trailer transport when needed</div>
+          </div>
+          <div><a class="btn btn-primary" href="#schedule" data-i18n="schedulePickup">Schedule Pickup</a></div>
+        </div>
+      </div>
+    </section>
 
-        const trans = {
-            en: {
-                txtLangBtn: "Español",
-                txtCallBtn: "Call",
-                txtTextBtn: "Text",
-                topPhoneLabel: "Phone",
-                topEmailLabel: "Email",
-                txtInfoArea: "Texas Roots. <span class='info-red'>Wisconsin Built.</span>",
-                heroTitle: "Diagnostics, Maintenance & Repair Done Right.",
-                heroText: "Diagnostics, maintenance, repair, pickup & return service, fleet maintenance options, tire sourcing, and parts support for domestic and foreign vehicles in Baraboo, WI. Se habla español.",
-                heroBook: "Schedule Service",
-                heroTextBtn: "Text Us",
-                txtInfoSub: "Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.",
-                pillService: "Service & Maintenance",
-                pillDomestic: "Domestic & Foreign",
-                pillDiag: "Diagnostics",
-                pillMobile: "Mobile Repair",
-                pillPickup: "Pickup & Drop-Off",
-                pillFleet: "Fleet Accounts",
-                pillRewards: "Oil Change Rewards",
-                pillTow: "Truck & Trailer",
-                pillParts: "LEDs & Audio",
-                pillPerformance: "SBC / LS / LT",
-                pillVats: "LS VATS Delete",
-                pillTires: "Tire Sourcing",
-                tabService: "Service",
-                tabTriadPlus: "Triad Plus",
-                tabAbout: "About Us",
-                tabDiag: "Diagnostics",
-                tabTow: "Truck & Trailer",
-                tabPickup: "Pickup & Drop-Off",
-                tabParts: "Parts",
-                tabPerf: "Performance",
-                tabSchedule: "Schedule",
-                quickTitle: "Not sure what you need?",
-                quickText: "Text us a picture of the warning light, leak, damage, noise, or part you want installed. We’ll point you in the right direction.",
-                quickBtn: "Text a Picture →",
-                bdgAbout: "About Triad",
-                ttlAbout: "Three Brothers. South Texas Roots.",
-                dscAbout: "Triad Automotive was built by three brothers—Jose, Javier, and Miguel—who grew up in the 956 area code around mechanics, tools, trucks, and real repair work. Automotive work has been part of our upbringing since day one — learning around shops, family projects, daily drivers, and the kind of vehicles people depend on every day.",
-                aboutPoint1: "Family-owned and built from real hands-on experience.",
-                aboutPoint2: "Raised around mechanics, repairs, trucks, and problem solving.",
-                aboutPoint3: "Texas roots, Wisconsin built — serving Baraboo and nearby communities.",
-                bdgService: "General Service",
-                ttlService: "Automotive Service & Maintenance",
-                dscService: "Triad Automotive provides service, maintenance, diagnostics, and repair for domestic and foreign vehicles. From daily drivers to work trucks and family SUVs, we help keep your vehicle reliable and road-ready.",
-                svcMini1: "Brakes",
-                svcMini2: "Suspension",
-                svcMini3: "Tune-Ups",
-                svcMini4: "No-Starts",
-                promoService: "Oil leaks, warning lights, noises, steering issues, overheating, and general repairs—text us what’s going on and we’ll help you figure out the next step.",
-                lblPriceService: "General Repair",
-                valPriceService: "Quote",
-                btnService: "Request Service",
-                bdgDiag: "Core Evaluation",                
-                bdgTriadPlus: "Triad Plus",
-                ttlTriadPlus: "Convenience Programs & Business Services",
-                dscTriadPlus: "Triad Automotive is built for real life. Ask about pickup and return service, fleet maintenance, oil change rewards, and business service options designed to keep you moving.",
-                plusMini1: "Pickup & Return",
-                plusMini2: "Fleet Maintenance",
-                plusMini3: "Oil Change Rewards",
-                plusMini4: "Business Accounts",
-                rewardFinal: "6th",
-                promoTriadPlus: "Ask about Triad Maintenance Rewards: after 5 completed oil change services, returning customers may qualify for a 6th oil change labor reward. Oil and filter still apply unless otherwise stated.",
-                plusCard1Title: "Pickup & Return Service",
-                plusCard1Text: "Busy at work? Within our service area and schedule, we may be able to pick up your vehicle, complete approved service, and return it when finished.",
-                plusCard2Title: "Fleet & Business Maintenance",
-                plusCard2Text: "Local contractors, landscapers, delivery vehicles, work trucks, and small businesses can ask about maintenance scheduling and service coordination.",
-                plusCard3Title: "Oil Change Club",
-                plusCard3Text: "Keep up with maintenance and build rewards over time. Perfect for families, commuters, and work vehicles.",
+    <section class="diag" id="diagnostics">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow red" data-i18n="diagEyebrow">Start with facts</span><h2 data-i18n="diagTitle">Check engine light scan</h2></div><p data-i18n="diagIntro">A scan is the beginning of a diagnosis—not a magic parts list. We read the fault information and give you direction on the next step.</p></div>
+        <div class="diag-grid">
+          <div class="diag-price">
+            <div><span class="eyebrow" data-i18n="coreEval">Core evaluation</span><h3 data-i18n="flatScan">Flat-rate scan</h3><div class="price">$45<small data-i18n="scanLabel">scan</small></div><p data-i18n="scanBody">We connect a scanner, read stored fault codes, review what the system is reporting, and explain what may need further testing.</p></div>
+            <a class="btn btn-primary" href="#schedule" data-i18n="bookScan">Book a Scan</a>
+          </div>
+          <div class="diag-explain"><div class="copy"><span class="eyebrow red" data-i18n="notGuess">Not guesswork</span><h3 data-i18n="diagExplainTitle">Codes point the direction. Testing confirms the failure.</h3><p data-i18n="diagExplainBody">Some issues need electrical testing, mechanical inspection, smoke testing, pressure checks, or hands-on diagnosis after the initial scan. We’ll tell you when that’s the case.</p></div></div>
+        </div>
+      </div>
+    </section>
 
-                ttlDiag: "Check Engine Light Scan",
-                dscDiag: "We plug the scanner into your vehicle’s system, read the fault codes, and give you honest direction on what may be failing before you start throwing parts at it.",
-                promoDiag: "A scan is a starting point. Real diagnostics may require additional inspection depending on the issue.",
-                lblPriceDiag: "Flat Rate",
-                btnBookDiag: "Book Scan",
-                bdgTow: "Recovery & Transport",
-                ttlTow: "Truck & Trailer Service",
-                dscTow: "Stuck or need a vehicle moved? We can dispatch our truck and trailer to safely transport your vehicle or help coordinate pickup for repair.",
-                promoTow: "Tow to our shop for repairs and ask about tow discounts depending on your location and repair.",
-                lblPriceTow: "Transport",
-                valPriceTow: "Quote",
-                btnActionTow: "Get Tow",
-                btnActionMobile: "Schedule",
-                bdgParts: "Special Order",                
-                bdgPickup: "Convenience Service",
-                ttlPickup: "Workday Pickup & Drop-Off",
-                dscPickup: "Busy at work? Schedule with Triad and we can arrange vehicle pickup, service, and drop-off when available. You keep working while your vehicle gets maintenance, diagnostics, parts installs, or approved repairs handled.",
-                pickupMini1: "At Work",
-                pickupMini2: "At Home",
-                pickupMini3: "Scheduled Only",
-                pickupMini4: "Availability Based",
-                promoPickup: "Pickup and drop-off depends on location, schedule, vehicle condition, and job type. Some vehicles may require trailer transport instead.",
-                lblPricePickup: "Convenience",
-                valPricePickup: "Quote",
-                btnPickup: "Schedule Pickup",
+    <section class="gallery" id="work">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow red" data-i18n="galleryEyebrow">In the shop</span><h2 data-i18n="galleryTitle">Real vehicles. Real work.</h2></div><p data-i18n="galleryIntro">Daily drivers, classics, work trucks, performance cars, engine repairs, and custom projects—we’d rather show the work than fill the page with stock photos.</p></div>
+        <div class="gallery-grid">
+          <figure class="gallery-item tall"><img loading="lazy" src="https://triadautomotiveusa.com/2FB52FB2-5D05-497D-840C-234481131CB2.png" alt="Custom dually truck"><figcaption class="gallery-caption"><strong>Truck & Work Vehicle Service</strong>Diesel, gas, trailers & daily-use rigs</figcaption></figure>
+          <figure class="gallery-item wide"><img loading="lazy" src="https://triadautomotiveusa.com/EEC5F32A-FADF-4AD0-86E6-4C3A8CCAA97E.png" alt="Classic Chevrolet vehicles in shop"><figcaption class="gallery-caption"><strong>Classics & Builds</strong>Older vehicles, clean builds & repairs</figcaption></figure>
+          <figure class="gallery-item"><img loading="lazy" src="https://triadautomotiveusa.com/BC3A25CF-972F-4359-A01A-1498B0DB0515.png" alt="Corvette at Triad Automotive"><figcaption class="gallery-caption"><strong>Enthusiast Vehicles</strong>Maintenance, upgrades & direction</figcaption></figure>
+          <figure class="gallery-item"><img loading="lazy" src="https://triadautomotiveusa.com/5455C887-3C5F-4383-884E-F6934B8291F5.png" alt="Timing chain repair"><figcaption class="gallery-caption"><strong>Engine Repair</strong>Timing and internal work</figcaption></figure>
+          <figure class="gallery-item wide"><img loading="lazy" src="https://triadautomotiveusa.com/89F51DBD-F1A4-4C18-B528-432AEA699051.png" alt="LS engine work"><figcaption class="gallery-caption"><strong>LS / SBC / LT Support</strong>Valvetrain, swap parts & build planning</figcaption></figure>
+          <figure class="gallery-item"><img loading="lazy" src="https://triadautomotiveusa.com/82DA2A2C-0BC8-4B41-9AE8-0957E52F55A0.png" alt="Classic Chevrolet truck"><figcaption class="gallery-caption"><strong>Old-School Service</strong>Classics welcome</figcaption></figure>
+        </div>
+      </div>
+    </section>
 
-                ttlParts: "Custom Parts by Order",
-                dscParts: "Need a specific part? We can help source and order OEM replacement parts, aftermarket parts, accessories, LED lighting, audio equipment, suspension, wheels, tires, and parts for custom builds.",
-                partsMini1: "OEM Parts",
-                partsMini2: "Aftermarket",
-                partsMini3: "LED Lighting",
-                partsMini4: "Audio Gear",
-                promoParts: "Ask us about LED lighting, audio equipment, lighting upgrades, and custom parts by order.",
-                lblPriceParts: "Availability",
-                valPriceParts: "Quote",
-                btnParts: "Request Parts",
-                bdgPerf: "Performance",
-                ttlPerf: "SBC, LS & LT Parts Support",
-                dscPerf: "We offer parts sourcing and support for Small Block Chevy, LS Gen 3, LS Gen 4, and LT-based builds. From intakes, exhaust, headers, cams, valvetrain parts, fuel upgrades, supporting parts, and LS VATS delete for swap applications, we can help plan the setup and source the right components.",
-                perfMini1: "SBC",
-                perfMini2: "LS Gen 3/4",
-                perfMini3: "LT Parts",
-                perfMini4: "VATS Delete",
-                promoPerf: "Tell us your engine, vehicle, and goal. We can help with parts planning, LS swap support, and VATS delete on compatible LS platforms using HP Tuners.",
-                lblPricePerf: "Parts & Support",
-                valPricePerf: "Quote",
-                btnPerf: "Start Build",
-                bdgBuilds: "Build Planning",
-                ttlBuilds: "Build & Upgrade Consultation",
-                dscBuilds: "Want to upgrade your truck, car, or SUV but not sure where to start? We can help plan wheels, tires, suspension, lighting, performance parts, accessories, audio upgrades, LEDs, and custom upgrades before you spend money on the wrong parts.",
-                promoBuilds: "Text us your vehicle and your goal. We’ll help you build a parts plan that makes sense.",
-                lblPriceBuilds: "Starting At",
-                valPriceBuilds: "$25",
-                btnBuilds: "Plan Build",
-                galTitle: "Real Vehicles. Real Repairs.",
-                galSub: "From daily drivers and family SUVs to work trucks, classics, performance builds, and engine repairs, Triad Automotive delivers real-world automotive service backed by hands-on experience.",
-                bdgTires: "Coming Soon",
-                ttlTires: "Tire Sourcing & Tire Services",
-                dscTires: "Need tires? Triad Automotive can help source new and used tires by size, vehicle, and budget. Mounted and balanced tire service is coming soon.",
-                tiresMini1: "New Tires",
-                tiresMini2: "Used Tires",
-                tiresMini3: "Tire Sourcing",
-                tiresMini4: "Mount & Balance Soon",
-                promoTires: "Send us your tire size or vehicle info and we can help source options. Mounting and balancing will be added soon.",
-                bdgSchedule: "Service Request",
-                frmTitle: "Schedule Service",
-                frmSub: "Send us the details and your phone will open a prepared text message to Triad Automotive.",
-                lblFrmName: "1. Your Name",
-                lblFrmVehicle: "2. Vehicle",
-                lblFrmSvc: "3. Select Service",
-                lblFrmCity: "4. City / Area",
-                lblFrmLoc: "5. Address / Location",
-                lblFrmPickup: "6. Pickup / Drop-Off Needed?",
-                lblFrmDate: "7. Date",
-                lblFrmTime: "8. Time",
-                lblFrmNotes: "9. What’s Going On?",
-                btnFrmSubmit: "Confirm & Text Request",
-                frmNote: "This form opens your text messages. Your request is not sent until you press send on your phone.",
-                footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
-                footerSub: "Automotive service • Diagnostics • Maintenance • Tire sourcing • LEDs • Audio • Parts sourcing • VATS delete support",
-                chatLauncherText: "Wawa Bot",
-                chatHeaderTitle: "Wawa Bot",
-                chatHeaderStatus: "Bilingual help • Safety-first",
-                chatDisclaimer: "Safety-first help. For emergencies, move to safety and contact emergency services.",
-                chatPlaceholder: "Ask about service, towing, diagnostics...",
-                svcs: [
-                    {v: "Automotive Service & Maintenance", t: "Automotive Service & Maintenance"},
-                    {v: "Computer Diagnostics ($45)", t: "Diagnostics ($45)"},
-                    {v: "Truck & Trailer Service", t: "Truck & Trailer Service"},
-                    {v: "Mobile Repair", t: "Mobile Repair"},
-                    {v: "Workday Pickup & Drop-Off", t: "Workday Pickup & Drop-Off"},
-                    {v: "Oil Change / Maintenance Rewards", t: "Oil Change / Maintenance Rewards"},
-                    {v: "Fleet Maintenance / Business Account", t: "Fleet Maintenance / Business Account"},
-                    {v: "Custom Parts by Order", t: "Custom Parts by Order"},
-                    {v: "LED Lighting / Audio Gear", t: "LED Lighting / Audio Gear"},
-                    {v: "SBC, LS & LT Parts Support", t: "SBC, LS & LT Parts Support"},
-                    {v: "LS VATS Delete / HP Tuners Support", t: "LS VATS Delete / HP Tuners Support"},
-                    {v: "Build & Upgrade Consultation", t: "Build & Upgrade Consultation"},
-                    {v: "Source Rust-Free Texas Truck/Car", t: "Sourcing: Rust-Free Texas Truck/Car"}
-                ]
-            },
+    <section class="split-section" id="performance">
+      <div class="container split">
+        <div class="split-card performance"><span class="eyebrow red" data-i18n="perfEyebrow">Performance & swaps</span><h3 data-i18n="perfTitle">SBC, LS & LT support</h3><p data-i18n="perfBody">Parts sourcing and setup support for Small Block Chevy, LS Gen 3/4, and LT-based builds—including intakes, exhaust, headers, cams, valvetrain, fuel upgrades, supporting parts, and LS VATS delete on compatible platforms.</p><div class="chip-row"><span class="chip">SBC</span><span class="chip">LS Gen 3 / 4</span><span class="chip">LT</span><span class="chip">VATS Delete</span><span class="chip">Build Planning</span></div><a class="btn btn-primary" href="#schedule" data-i18n="startBuild">Start a Build</a></div>
+        <div class="split-card"><span class="eyebrow" data-i18n="partsEyebrow">Special order</span><h3 data-i18n="partsTitle">Parts without the guesswork</h3><p data-i18n="partsBody">Tell us the vehicle, what you’re trying to fix or change, and your budget. We can help source OEM replacement parts, aftermarket parts, lighting, audio, suspension, wheels, tires, accessories, and custom-order items.</p><div class="chip-row"><span class="chip">OEM</span><span class="chip">Aftermarket</span><span class="chip">LED</span><span class="chip">Audio</span><span class="chip">Wheels & Tires</span></div><a class="btn btn-secondary" href="#schedule" data-i18n="requestParts">Request Parts</a></div>
+      </div>
+    </section>
 
-            es: {
-                txtLangBtn: "English",
-                txtCallBtn: "Llamar",
-                txtTextBtn: "Texto",
-                topPhoneLabel: "Teléfono",
-                topEmailLabel: "Correo",
-                txtInfoArea: "Raíces de Texas. <span class='info-red'>Construido en Wisconsin.</span>",
-                heroTitle: "Diagnóstico, Mantenimiento y Reparación Bien Hechos.",
-                heroText: "Diagnóstico, mantenimiento, reparación, pickup y entrega, opciones de mantenimiento para flotas, búsqueda de llantas y soporte de partes para vehículos domésticos y extranjeros en Baraboo, WI. Se habla español.",
-                heroBook: "Agendar Servicio",
-                heroTextBtn: "Mandar Texto",
-                txtInfoSub: "Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.",
-                pillService: "Servicio y Mantenimiento",
-                pillDomestic: "Domésticos y Extranjeros",
-                pillDiag: "Diagnósticos",
-                pillMobile: "Reparación Móvil",
-                pillPickup: "Pickup y Entrega",
-                pillFleet: "Cuentas de Flota",
-                pillRewards: "Recompensas de Aceite",
-                pillTow: "Camión y Remolque",
-                pillParts: "LEDs y Audio",
-                pillPerformance: "SBC / LS / LT",
-                pillVats: "VATS Delete LS",
-                pillTires: "Búsqueda de Llantas",
-                tabService: "Servicio",
-                tabAbout: "Nosotros",
-                tabDiag: "Diagnósticos",
-                tabTow: "Camión y Remolque",
-                tabPickup: "Pickup y Entrega",
-                tabParts: "Partes",
-                tabPerf: "Performance",
-                tabSchedule: "Agendar",
-                quickTitle: "¿No sabes qué necesitas?",
-                quickText: "Mándanos una foto de la luz del tablero, fuga, daño, ruido o parte que quieres instalar. Te ayudamos a saber por dónde empezar.",
-                quickBtn: "Mandar Foto →",
-                bdgAbout: "Sobre Triad",
-                ttlAbout: "Tres Hermanos. Raíces del Sur de Texas.",
-                dscAbout: "Triad Automotive fue creado por tres hermanos—Jose, Javier y Miguel—que crecieron en el área 956 rodeados de mecánicos, herramientas, camionetas y trabajo real de reparación. El mundo automotriz ha sido parte de nuestra crianza desde el primer día — aprendiendo en talleres, proyectos familiares, carros diarios y vehículos que la gente usa todos los días.",
-                aboutPoint1: "Negocio familiar construido con experiencia real de trabajo.",
-                aboutPoint2: "Criados alrededor de mecánica, reparaciones, camionetas y soluciones.",
-                aboutPoint3: "Raíces de Texas, construido en Wisconsin — sirviendo Baraboo y comunidades cercanas.",
-                bdgService: "Servicio General",
-                ttlService: "Servicio y Mantenimiento Automotriz",
-                dscService: "Triad Automotive ofrece servicio, mantenimiento, diagnóstico y reparación para vehículos domésticos y extranjeros. Desde carros diarios hasta camionetas de trabajo y SUVs familiares, ayudamos a mantener tu vehículo confiable y listo para el camino.",
-                svcMini1: "Frenos",
-                svcMini2: "Suspensión",
-                svcMini3: "Tune-Ups",
-                svcMini4: "No Prende",
-                promoService: "Fugas de aceite, luces del tablero, ruidos, problemas de dirección, calentamiento y reparación general—mándanos qué está pasando y te ayudamos a saber el siguiente paso.",
-                lblPriceService: "Reparación General",
-                valPriceService: "Cotizar",
-                btnService: "Pedir Servicio",
-                bdgDiag: "Evaluación Central",                
-                bdgTriadPlus: "Triad Plus",
-                ttlTriadPlus: "Programas de Conveniencia y Servicios para Negocios",
-                dscTriadPlus: "Triad Automotive está hecho para la vida real. Pregunta por pickup y entrega, mantenimiento de flotas, recompensas de cambio de aceite y opciones de servicio para negocios.",
-                plusMini1: "Pickup y Entrega",
-                plusMini2: "Mantenimiento de Flota",
-                plusMini3: "Recompensas de Aceite",
-                plusMini4: "Cuentas de Negocio",
-                rewardFinal: "6to",
-                promoTriadPlus: "Pregunta por Triad Maintenance Rewards: después de 5 cambios de aceite completados, clientes frecuentes pueden calificar para recompensa de labor en el 6to cambio. Aceite y filtro aplican salvo que se indique lo contrario.",
-                plusCard1Title: "Servicio de Pickup y Entrega",
-                plusCard1Text: "¿Ocupado en el trabajo? Dentro de nuestra área y horario, podemos recoger tu vehículo, completar servicio aprobado y regresarlo cuando esté listo.",
-                plusCard2Title: "Mantenimiento de Flotas y Negocios",
-                plusCard2Text: "Contratistas, jardineros, vehículos de reparto, camionetas de trabajo y negocios pequeños pueden preguntar por coordinación de mantenimiento.",
-                plusCard3Title: "Club de Cambios de Aceite",
-                plusCard3Text: "Mantén tu vehículo al día y acumula recompensas con el tiempo. Perfecto para familias, commuters y vehículos de trabajo.",
+    <section class="reviews">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow red" data-i18n="reviewEyebrow">Customer feedback</span><h2 data-i18n="reviewTitle">People remember being taken care of.</h2></div></div>
+        <div class="reviews-grid">
+          <article class="review"><div class="stars">★★★★★</div><blockquote>“Fixed my truck real fast when it died in the trailer park. Legit guys, don't go anywhere else.”</blockquote><cite>— Dylan Seipp</cite></article>
+          <article class="review"><div class="stars">★★★★★</div><blockquote>“These guys know what they're doing. Got me back on the road in no time.”</blockquote><cite>— Kavik Copus</cite></article>
+        </div>
+      </div>
+    </section>
 
-                ttlDiag: "Diagnóstico por Computadora",
-                dscDiag: "Conectamos el escáner al sistema de tu vehículo, leemos los códigos y te damos una dirección honesta sobre lo que puede estar fallando antes de gastar dinero en partes.",
-                promoDiag: "El escaneo es el punto de inicio. Un diagnóstico real puede requerir inspección adicional dependiendo del problema.",
-                lblPriceDiag: "Precio Fijo",
-                btnBookDiag: "Agendar Scan",
-                bdgTow: "Recuperación y Transporte",
-                ttlTow: "Servicio de Camión y Remolque",
-                dscTow: "¿Quedaste tirado o necesitas mover un vehículo? Podemos enviar nuestro camión y remolque para transportar tu vehículo o coordinar recolección para reparación.",
-                promoTow: "Trae tu vehículo a nuestro taller para reparación y pregunta por descuentos de grúa dependiendo de tu ubicación y reparación.",
-                lblPriceTow: "Transporte",
-                valPriceTow: "Cotizar",
-                btnActionTow: "Pedir Grúa",
-                btnActionMobile: "Agendar",
-                bdgParts: "Orden Especial",                
-                bdgPickup: "Servicio de Conveniencia",
-                ttlPickup: "Pickup y Entrega Durante el Trabajo",
-                dscPickup: "¿Estás ocupado en el trabajo? Agenda con Triad y podemos coordinar pickup, servicio y entrega cuando esté disponible. Tú sigues trabajando mientras tu vehículo recibe mantenimiento, diagnóstico, instalación de partes o reparaciones aprobadas.",
-                pickupMini1: "En el Trabajo",
-                pickupMini2: "En Casa",
-                pickupMini3: "Solo con Cita",
-                pickupMini4: "Según Disponibilidad",
-                promoPickup: "Pickup y entrega depende de ubicación, horario, condición del vehículo y tipo de trabajo. Algunos vehículos pueden requerir transporte en remolque.",
-                lblPricePickup: "Conveniencia",
-                valPricePickup: "Cotizar",
-                btnPickup: "Agendar Pickup",
+    <section class="booking" id="schedule">
+      <div class="container booking-shell">
+        <div class="booking-copy">
+          <span class="eyebrow red" data-i18n="bookEyebrow">Request service</span>
+          <h2 data-i18n="bookTitle">Tell us what the vehicle needs.</h2>
+          <p data-i18n="bookBody">Build a service request below. On mobile, you can send it as a prepared text. On desktop, copy it or open it in your computer’s messaging app.</p>
+          <div class="contact-stack"><a href="tel:+16084047360"><span data-i18n="phone">Phone</span><span>(608) 404-7360 ↗</span></a><a href="mailto:triadautomotivellc@gmail.com"><span data-i18n="email">Email</span><span>triadautomotivellc@gmail.com ↗</span></a></div>
+        </div>
+        <form class="booking-form" id="serviceForm">
+          <div class="form-grid">
+            <div class="field"><label for="name" data-i18n="nameLabel">Your name</label><input id="name" name="name" autocomplete="name" required placeholder="Name"></div>
+            <div class="field"><label for="vehicle" data-i18n="vehicleLabel">Vehicle</label><input id="vehicle" name="vehicle" required placeholder="Year / Make / Model"></div>
+            <div class="field"><label for="service" data-i18n="serviceLabel">Service</label><select id="service" name="service" required><option value="">Choose service</option><option>Diagnostics / Warning Light</option><option>General Repair</option><option>Brakes / Suspension</option><option>Maintenance / Oil Change</option><option>Pickup & Return</option><option>Fleet / Business Service</option><option>Truck & Trailer Transport</option><option>Parts / Upgrades</option><option>LS / SBC / LT / VATS</option><option>Other</option></select></div>
+            <div class="field"><label for="area" data-i18n="areaLabel">City / Area</label><select id="area" name="area"><option>Baraboo</option><option>Wisconsin Dells</option><option>Lake Delton</option><option>Portage</option><option>Reedsburg</option><option>Sauk City</option><option>Nearby / Other</option></select></div>
+            <div class="field"><label for="date" data-i18n="dateLabel">Preferred date</label><input id="date" name="date" type="date"></div>
+            <div class="field"><label for="pickupNeeded" data-i18n="pickupLabel">Pickup needed?</label><select id="pickupNeeded" name="pickupNeeded"><option>No</option><option>Yes — pickup & return</option><option>Possibly — tell me options</option><option>Trailer transport may be needed</option></select></div>
+            <div class="field full"><label for="details" data-i18n="detailsLabel">What’s going on?</label><textarea id="details" name="details" required placeholder="Warning light, noise, leak, repair needed, part you want installed, symptoms, etc."></textarea></div>
+          </div>
+          <div class="form-actions"><button class="btn btn-primary" type="submit" data-i18n="textRequest">Text Request</button><button class="btn btn-secondary" id="copyRequest" type="button" data-i18n="copyRequest">Copy Request</button></div>
+          <p class="form-note" data-i18n="formNote">Nothing is sent automatically. The text button opens a prepared message for you to review before sending.</p>
+        </form>
+      </div>
+    </section>
 
-                ttlParts: "Partes Especiales por Pedido",
-                dscParts: "¿Necesitas una parte específica? Podemos ayudarte a buscar y ordenar partes OEM, aftermarket, accesorios, luces LED, equipo de audio, suspensión, rines, llantas y partes para proyectos personalizados.",
-                partsMini1: "Partes OEM",
-                partsMini2: "Aftermarket",
-                partsMini3: "Luces LED",
-                partsMini4: "Audio",
-                promoParts: "Pregunta por luces LED, equipo de audio, upgrades de iluminación y partes especiales por pedido.",
-                lblPriceParts: "Disponibilidad",
-                valPriceParts: "Cotizar",
-                btnParts: "Pedir Partes",
-                bdgPerf: "Performance",
-                ttlPerf: "Soporte de Partes SBC, LS y LT",
-                dscPerf: "Ofrecemos búsqueda de partes y soporte para Small Block Chevy, LS Gen 3, LS Gen 4 y motores LT. Podemos ayudarte con intake, escape, headers, cam, valvetrain, fuel upgrades, partes de soporte y VATS delete en plataformas LS compatibles para swaps.",
-                perfMini1: "SBC",
-                perfMini2: "LS Gen 3/4",
-                perfMini3: "Partes LT",
-                perfMini4: "VATS Delete",
-                promoPerf: "Dinos qué motor tienes, qué vehículo es y cuál es tu meta. Podemos ayudarte con planeación de partes, soporte para swaps LS y VATS delete en plataformas LS compatibles usando HP Tuners.",
-                lblPricePerf: "Partes y Soporte",
-                valPricePerf: "Cotizar",
-                btnPerf: "Empezar Build",
-                bdgBuilds: "Plan de Proyecto",
-                ttlBuilds: "Consulta de Modificaciones",
-                dscBuilds: "¿Quieres modificar tu troca, carro o SUV pero no sabes por dónde empezar? Te ayudamos a planear rines, llantas, suspensión, luces, performance, accesorios, audio, LEDs y upgrades antes de gastar dinero en partes equivocadas.",
-                promoBuilds: "Mándanos tu vehículo y tu meta. Te ayudamos a armar un plan de partes que tenga sentido.",
-                lblPriceBuilds: "Desde",
-                valPriceBuilds: "$25",
-                btnBuilds: "Planear Proyecto",
-                galTitle: "Vehículos Reales. Reparaciones Reales.",
-                galSub: "Desde carros diarios y SUVs familiares hasta camionetas de trabajo, clásicos, builds performance y reparaciones de motor, Triad Automotive ofrece servicio real con experiencia práctica.",
-                bdgTires: "Próximamente",
-                ttlTires: "Búsqueda de Llantas y Servicios",
-                dscTires: "¿Necesitas llantas? Triad Automotive puede ayudarte a buscar llantas nuevas o usadas por medida, vehículo y presupuesto. Montaje y balanceo viene pronto.",
-                tiresMini1: "Llantas Nuevas",
-                tiresMini2: "Llantas Usadas",
-                tiresMini3: "Búsqueda de Llantas",
-                tiresMini4: "Montaje y Balanceo Pronto",
-                promoTires: "Mándanos la medida de tu llanta o la información del vehículo y podemos ayudarte a buscar opciones. Montaje y balanceo viene pronto.",
-                bdgSchedule: "Solicitud de Servicio",
-                frmTitle: "Agendar Servicio",
-                frmSub: "Mándanos los detalles y tu teléfono abrirá un mensaje de texto preparado para Triad Automotive.",
-                lblFrmName: "1. Tu Nombre",
-                lblFrmVehicle: "2. Vehículo",
-                lblFrmSvc: "3. Selecciona Servicio",
-                lblFrmCity: "4. Ciudad / Área",
-                lblFrmLoc: "5. Dirección / Ubicación",
-                lblFrmPickup: "6. ¿Necesitas Pickup / Entrega?",
-                lblFrmDate: "7. Fecha",
-                lblFrmTime: "8. Hora",
-                lblFrmNotes: "9. ¿Qué Está Pasando?",
-                btnFrmSubmit: "Confirmar y Enviar Texto",
-                frmNote: "Este formulario abre tus mensajes de texto. La solicitud no se envía hasta que tú presiones enviar en tu teléfono.",
-                footerText: "Triad Automotive LLC • Baraboo, Wisconsin",
-                footerSub: "Servicio automotriz • Diagnóstico • Mantenimiento • Búsqueda de llantas • LEDs • Audio • Búsqueda de partes • Soporte VATS Delete",
-                chatLauncherText: "Wawa Bot",
-                chatHeaderTitle: "Wawa Bot",
-                chatHeaderStatus: "Ayuda bilingüe • Seguridad primero",
-                chatDisclaimer: "Ayuda con enfoque en seguridad. Para emergencias, aléjate del peligro y contacta servicios de emergencia.",
-                chatPlaceholder: "Pregunta por servicio, grúa, diagnósticos...",
-                svcs: [
-                    {v: "Servicio y Mantenimiento Automotriz", t: "Servicio y Mantenimiento Automotriz"},
-                    {v: "Diagnóstico por Computadora ($45)", t: "Diagnóstico ($45)"},
-                    {v: "Servicio de Camión y Remolque", t: "Servicio de Camión y Remolque"},
-                    {v: "Reparación Móvil", t: "Reparación Móvil"},
-                    {v: "Partes Especiales por Pedido", t: "Partes Especiales por Pedido"},
-                    {v: "Luces LED / Equipo de Audio", t: "Luces LED / Equipo de Audio"},
-                    {v: "Soporte de Partes SBC, LS y LT", t: "Soporte de Partes SBC, LS y LT"},
-                    {v: "VATS Delete LS / Soporte HP Tuners", t: "VATS Delete LS / Soporte HP Tuners"},
-                    {v: "Consulta de Modificaciones", t: "Consulta de Modificaciones"},
-                    {v: "Búsqueda de Vehículo de Texas", t: "Búsqueda de Vehículo de Texas"}
-                ]
-            }
-        };
+    <section class="about" id="about">
+      <div class="container about-shell">
+        <div class="about-image"><img loading="lazy" src="https://triadautomotiveusa.com/DEE1AD41-9768-4C72-A8F1-5C1417C0ABB2.png" alt="Triad Automotive logo"></div>
+        <div class="about-copy"><span class="eyebrow red" data-i18n="aboutEyebrow">About Triad</span><h2 data-i18n="aboutTitle">Three brothers. South Texas roots.</h2><p data-i18n="aboutBody">Triad Automotive was built by three brothers—Jose, Javier, and Miguel—who grew up around mechanics, tools, trucks, family projects, and the kind of vehicles people depend on every day. Today, Triad brings that hands-on background to Baraboo and the surrounding area.</p><div class="about-points"><div data-i18n="aboutPoint1">Family-owned and built from hands-on automotive experience.</div><div data-i18n="aboutPoint2">Texas roots. Wisconsin built.</div><div data-i18n="aboutPoint3">Serving Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton, and nearby areas.</div></div></div>
+      </div>
+    </section>
+  </main>
 
-        const chatData = {
-            "en": {
-                        "welcome": "Welcome to Ask Triad. I can help you figure out if it is safe to drive, if you should stop, or if Triad should come your way.\n\nTell me what is happening, or tap a quick topic below.",
-                        "fallback": "I want to point you the right way without guessing. Tell me:\n1. Year / make / model\n2. What happened\n3. Any warning lights\n4. Noise, smell, smoke, leak, or overheating\n5. Your city/area\n\nIf it does not feel safe to move, stay parked and use the service form so Triad can come your way or help coordinate pickup.",
-                        "quick": [
-                                    "Overheating",
-                                    "No brakes",
-                                    "Smoke / fire smell",
-                                    "Check engine flashing",
-                                    "No start",
-                                    "Fluid leak",
-                                    "Tires",
-                                    "Parts / VATS"
-                        ],
-                        "safetyNote": "Safety-first help. If the vehicle feels unsafe, do not force it home. Park safely and request service so Triad can come your way or help coordinate transport.",
-                        "answers": [
-                                    {
-                                                "priority": 100,
-                                                "keys": [
-                                                            "fire",
-                                                            "flames",
-                                                            "burning wire",
-                                                            "electrical fire",
-                                                            "smoke from wires",
-                                                            "battery fire",
-                                                            "fuel fire",
-                                                            "gas fire",
-                                                            "on fire"
-                                                ],
-                                                "answer": "URGENT: pull over safely, shut the vehicle off, get everyone away from it, and do not open the hood if there are flames or heavy smoke.\n\nAfter everyone is safe, request service/transport through Triad. If there is immediate danger, contact emergency services first."
-                                    },
-                                    {
-                                                "priority": 98,
-                                                "keys": [
-                                                            "no brakes",
-                                                            "brake pedal to floor",
-                                                            "pedal went to floor",
-                                                            "brakes failed",
-                                                            "can't stop",
-                                                            "cant stop",
-                                                            "lost brakes",
-                                                            "soft brake pedal"
-                                                ],
-                                                "answer": "Do not keep driving with brake issues like this. Park safely and do not try to limp it home.\n\nTriad can come your way or help coordinate transport so the vehicle can be checked safely."
-                                    },
-                                    {
-                                                "priority": 96,
-                                                "keys": [
-                                                            "oil pressure",
-                                                            "low oil pressure",
-                                                            "red oil light",
-                                                            "oil light",
-                                                            "stop engine",
-                                                            "engine pressure"
-                                                ],
-                                                "answer": "Shut the engine off and do not keep driving with an oil pressure warning. That can turn into major engine damage fast.\n\nPark safely and request Triad service/transport instead of trying to make it home."
-                                    },
-                                    {
-                                                "priority": 95,
-                                                "keys": [
-                                                            "overheat",
-                                                            "overheating",
-                                                            "hot",
-                                                            "temperature",
-                                                            "temp gauge",
-                                                            "steam",
-                                                            "coolant boiling",
-                                                            "boiling",
-                                                            "radiator hot",
-                                                            "car is hot"
-                                                ],
-                                                "answer": "If it is overheating, do not push it. Pull over safely, shut it off, and let it cool. Do not open the radiator cap or coolant reservoir while hot.\n\nIf you cannot safely move it, Triad can come your way or help coordinate transport. Use the service request form and include your location, vehicle, and what the temperature gauge did."
-                                    },
-                                    {
-                                                "priority": 94,
-                                                "keys": [
-                                                            "fuel smell",
-                                                            "smells like gas",
-                                                            "gas smell",
-                                                            "fuel leak",
-                                                            "gas leak",
-                                                            "raw fuel"
-                                                ],
-                                                "answer": "A strong fuel smell or fuel leak is not something to gamble with. Park safely, shut it off, and keep sparks/flames away.\n\nOnce safe, request Triad service/transport so it can be handled without risking a fire."
-                                    },
-                                    {
-                                                "priority": 92,
-                                                "keys": [
-                                                            "check engine flashing",
-                                                            "flashing check engine",
-                                                            "cel flashing",
-                                                            "blinking check engine",
-                                                            "check engine blinking",
-                                                            "flashing engine light"
-                                                ],
-                                                "answer": "A flashing check engine light usually means the vehicle should not be driven hard. If it is shaking, park it.\n\nTriad can scan it and check what is going on before it turns into more damage. Use the service form and mention that the light is flashing."
-                                    },
-                                    {
-                                                "priority": 90,
-                                                "keys": [
-                                                            "battery smoking",
-                                                            "battery hot",
-                                                            "battery melted",
-                                                            "sparking battery",
-                                                            "battery sparks",
-                                                            "burnt battery",
-                                                            "battery cable hot"
-                                                ],
-                                                "answer": "If the battery is smoking, sparking, melting, or cables are hot, do not touch it with bare hands and do not keep driving.\n\nPark safely, keep clear of the battery area, and request Triad service/transport."
-                                    },
-                                    {
-                                                "priority": 85,
-                                                "keys": [
-                                                            "transmission slipping",
-                                                            "won't shift",
-                                                            "wont shift",
-                                                            "stuck in gear",
-                                                            "no reverse",
-                                                            "no drive",
-                                                            "transmission hot",
-                                                            "burnt transmission"
-                                                ],
-                                                "answer": "Do not keep forcing a transmission that is slipping, not shifting, or smells burnt.\n\nTriad can help check it or coordinate transport so you do not make the damage worse trying to move it."
-                                    },
-                                    {
-                                                "priority": 82,
-                                                "keys": [
-                                                            "flat tire",
-                                                            "tire flat",
-                                                            "blowout",
-                                                            "tire blew",
-                                                            "low tire",
-                                                            "tpms",
-                                                            "tire pressure",
-                                                            "tires",
-                                                            "new tires",
-                                                            "used tires",
-                                                            "mount balance",
-                                                            "mounted balanced"
-                                                ],
-                                                "answer": "Triad can help source new or used tires by size, vehicle, and budget. Mounted and balanced tire service is coming soon.\n\nIf the tire is flat, shredded, or unsafe, do not drive on it. Request service or send your tire size through the website form so Triad can help source options."
-                                    },
-                                    {
-                                                "priority": 80,
-                                                "keys": [
-                                                            "no start",
-                                                            "won't start",
-                                                            "wont start",
-                                                            "doesn't start",
-                                                            "doesnt start",
-                                                            "crank",
-                                                            "click",
-                                                            "dead battery",
-                                                            "starter",
-                                                            "alternator"
-                                                ],
-                                                "answer": "If it will not start, Triad can come your way depending on location and issue.\n\nUse the service request form and include what it does: no power, one click, rapid clicking, cranks/no start, or starts then dies."
-                                    },
-                                    {
-                                                "priority": 70,
-                                                "keys": [
-                                                            "oil leak",
-                                                            "leaking oil",
-                                                            "fluid leak",
-                                                            "leak",
-                                                            "transmission leak",
-                                                            "red fluid",
-                                                            "brown fluid",
-                                                            "coolant leak",
-                                                            "antifreeze leak"
-                                                ],
-                                                "answer": "A leak needs context before guessing. If it is fuel, brake fluid, heavy coolant, or oil pressure warning, do not drive it.\n\nUse the service form and include fluid color, where it is dripping, and your vehicle info so Triad can help."
-                                    },
-                                    {
-                                                "priority": 65,
-                                                "keys": [
-                                                            "diagnostic",
-                                                            "diagnostics",
-                                                            "scan",
-                                                            "scanner",
-                                                            "check engine",
-                                                            "engine light",
-                                                            "cel",
-                                                            "code",
-                                                            "codes",
-                                                            "warning light"
-                                                ],
-                                                "answer": "Triad offers check engine light scans starting at $45. The scan points us in the right direction, then we can decide if deeper diagnostics are needed.\n\nUse the service request form and include any codes or warning lights."
-                                    },
-                                    {
-                                                "priority": 60,
-                                                "keys": [
-                                                            "parts",
-                                                            "part",
-                                                            "source",
-                                                            "sourcing",
-                                                            "order",
-                                                            "oem",
-                                                            "aftermarket",
-                                                            "wheels",
-                                                            "tires",
-                                                            "rims"
-                                                ],
-                                                "answer": "Triad can help source OEM parts, aftermarket parts, tires, wheels, suspension parts, LEDs, audio equipment, and build parts.\n\nUse the service form with your year/make/model, engine, VIN if available, and the exact part or tire size."
-                                    },
-                                    {
-                                                "priority": 55,
-                                                "keys": [
-                                                            "ls",
-                                                            "lt",
-                                                            "sbc",
-                                                            "small block",
-                                                            "swap",
-                                                            "cam",
-                                                            "headers",
-                                                            "long tubes",
-                                                            "intake",
-                                                            "valvetrain",
-                                                            "vats",
-                                                            "vats delete",
-                                                            "hp tuners",
-                                                            "hptuners"
-                                                ],
-                                                "answer": "Triad can help with SBC, LS, and LT parts sourcing, swap support, and LS VATS delete support for compatible swap applications using HP Tuners.\n\nUse the form and include engine, vehicle, transmission, current setup, and goal."
-                                    },
-                                    {
-                                                "priority": 50,
-                                                "keys": [
-                                                            "price",
-                                                            "pricing",
-                                                            "cost",
-                                                            "quote",
-                                                            "estimate",
-                                                            "how much",
-                                                            "charge"
-                                                ],
-                                                "answer": "Pricing depends on the vehicle, job, parts, location, and diagnostic time.\n\nUse the service form with your vehicle, issue, city, and preferred time so Triad can quote it properly."
-                                    },
-                                    {
-                                                "priority": 40,
-                                                "keys": [
-                                                            "spanish",
-                                                            "espanol",
-                                                            "español",
-                                                            "habla",
-                                                            "hablan"
-                                                ],
-                                                "answer": "Yes, se habla español. Use the website in English or Spanish and send the details through the service form."
-                                    }
-                        ]
-            },
-            "es": {
-                        "welcome": "Bienvenido a Ask Triad. Te puedo ayudar a saber si es seguro mover el vehículo, si debes apagarlo, o si Triad puede ir hacia ti.\n\nDime qué está pasando o toca un tema rápido.",
-                        "fallback": "No quiero adivinar mal. Dime:\n1. Año / marca / modelo\n2. Qué pasó\n3. Luces en el tablero\n4. Ruido, olor, humo, fuga o calentamiento\n5. Tu ciudad/área\n\nSi no se siente seguro moverlo, déjalo estacionado y usa la forma de servicio para que Triad pueda ir hacia ti o coordinar transporte.",
-                        "quick": [
-                                    "Se calienta",
-                                    "Sin frenos",
-                                    "Humo / olor quemado",
-                                    "Check engine parpadea",
-                                    "No prende",
-                                    "Fuga de líquido",
-                                    "Llantas",
-                                    "Partes / VATS"
-                        ],
-                        "safetyNote": "Seguridad primero. Si el vehículo se siente inseguro, no lo fuerces a llegar a casa. Estaciónate seguro y pide servicio para que Triad pueda ir hacia ti o ayudar con transporte.",
-                        "answers": [
-                                    {
-                                                "priority": 100,
-                                                "keys": [
-                                                            "fuego",
-                                                            "llamas",
-                                                            "cables quemados",
-                                                            "humo de cables",
-                                                            "bateria quemada",
-                                                            "batería quemada",
-                                                            "se quema",
-                                                            "incendio"
-                                                ],
-                                                "answer": "URGENTE: oríllate seguro, apaga el vehículo, saca a todos y aléjense. No abras el cofre si hay llamas o humo fuerte.\n\nCuando todos estén seguros, pide servicio/transporte con Triad. Si hay peligro inmediato, contacta emergencias primero."
-                                    },
-                                    {
-                                                "priority": 98,
-                                                "keys": [
-                                                            "sin frenos",
-                                                            "no frena",
-                                                            "pedal al piso",
-                                                            "pedal se fue al piso",
-                                                            "perdi frenos",
-                                                            "perdí frenos",
-                                                            "freno aguado"
-                                                ],
-                                                "answer": "No lo sigas manejando con frenos así. Estaciónate seguro y no intentes llegar a casa.\n\nTriad puede ir hacia ti o ayudar a coordinar transporte para revisarlo de forma segura."
-                                    },
-                                    {
-                                                "priority": 96,
-                                                "keys": [
-                                                            "presion de aceite",
-                                                            "presión de aceite",
-                                                            "luz de aceite",
-                                                            "aceite rojo",
-                                                            "stop engine"
-                                                ],
-                                                "answer": "Apaga el motor y no sigas manejando con luz de presión de aceite. Eso puede causar daño grande de motor.\n\nEstaciónate seguro y pide servicio/transporte con Triad en vez de intentar llegar a casa."
-                                    },
-                                    {
-                                                "priority": 95,
-                                                "keys": [
-                                                            "calienta",
-                                                            "calentando",
-                                                            "se calienta",
-                                                            "sobrecalienta",
-                                                            "temperatura",
-                                                            "vapor",
-                                                            "hierve",
-                                                            "anticongelante hirviendo",
-                                                            "radiador caliente"
-                                                ],
-                                                "answer": "Si se está calentando, no lo fuerces. Oríllate seguro, apágalo y deja que se enfríe. No abras el tapón del radiador o depósito mientras está caliente.\n\nSi no puedes moverlo con seguridad, Triad puede ir hacia ti o ayudar a coordinar transporte. Usa la forma de servicio e incluye ubicación, vehículo y qué hizo la temperatura."
-                                    },
-                                    {
-                                                "priority": 94,
-                                                "keys": [
-                                                            "olor a gasolina",
-                                                            "huele a gas",
-                                                            "fuga de gasolina",
-                                                            "tira gasolina",
-                                                            "gasolina"
-                                                ],
-                                                "answer": "Olor fuerte a gasolina o fuga no es para arriesgarse. Estaciónate seguro, apágalo y evita chispas/fuego.\n\nCuando esté seguro, pide servicio/transporte con Triad para manejarlo sin riesgo."
-                                    },
-                                    {
-                                                "priority": 92,
-                                                "keys": [
-                                                            "check engine parpadea",
-                                                            "check engine flashing",
-                                                            "luz parpadea",
-                                                            "parpadeando",
-                                                            "engine parpadeando"
-                                                ],
-                                                "answer": "Check engine parpadeando normalmente significa que no debes manejarlo fuerte. Si tiembla, estaciónalo.\n\nTriad puede escanearlo y revisar qué está pasando antes de que cause más daño. Usa la forma y menciona que la luz parpadea."
-                                    },
-                                    {
-                                                "priority": 90,
-                                                "keys": [
-                                                            "bateria humeando",
-                                                            "batería humeando",
-                                                            "bateria caliente",
-                                                            "batería caliente",
-                                                            "bateria derretida",
-                                                            "chispas bateria",
-                                                            "cable caliente"
-                                                ],
-                                                "answer": "Si la batería humea, saca chispas, se derrite o los cables están calientes, no la toques con las manos y no sigas manejando.\n\nEstaciónate seguro, aléjate del área de batería y pide servicio/transporte con Triad."
-                                    },
-                                    {
-                                                "priority": 82,
-                                                "keys": [
-                                                            "llanta ponchada",
-                                                            "llanta baja",
-                                                            "se poncho",
-                                                            "se ponchó",
-                                                            "truena llanta",
-                                                            "revento llanta",
-                                                            "reventó llanta",
-                                                            "tpms",
-                                                            "presion de llanta",
-                                                            "presión de llanta",
-                                                            "llantas",
-                                                            "llanta nueva",
-                                                            "llanta usada",
-                                                            "balanceo",
-                                                            "montaje"
-                                                ],
-                                                "answer": "Triad puede ayudar a buscar llantas nuevas o usadas por medida, vehículo y presupuesto. Montaje y balanceo viene pronto.\n\nSi la llanta está ponchada, destrozada o insegura, no manejes así. Usa la forma de servicio y manda medida de llanta o info del vehículo para buscar opciones."
-                                    },
-                                    {
-                                                "priority": 80,
-                                                "keys": [
-                                                            "no prende",
-                                                            "no enciende",
-                                                            "no arranca",
-                                                            "bateria",
-                                                            "batería",
-                                                            "marcha",
-                                                            "starter",
-                                                            "alternador",
-                                                            "click"
-                                                ],
-                                                "answer": "Si no prende, Triad puede ir hacia ti dependiendo de ubicación y problema.\n\nUsa la forma de servicio e incluye qué hace: sin poder, un click, click rápido, da marcha pero no prende, o prende y se apaga."
-                                    },
-                                    {
-                                                "priority": 70,
-                                                "keys": [
-                                                            "fuga",
-                                                            "tira aceite",
-                                                            "aceite",
-                                                            "transmision",
-                                                            "transmisión",
-                                                            "liquido",
-                                                            "líquido",
-                                                            "rojo",
-                                                            "cafe",
-                                                            "café",
-                                                            "anticongelante",
-                                                            "coolant"
-                                                ],
-                                                "answer": "Una fuga necesita contexto antes de adivinar. Si es gasolina, líquido de frenos, mucho coolant o luz de aceite, no manejes.\n\nUsa la forma e incluye color, dónde gotea y info del vehículo para que Triad ayude."
-                                    },
-                                    {
-                                                "priority": 65,
-                                                "keys": [
-                                                            "diagnostico",
-                                                            "diagnóstico",
-                                                            "scan",
-                                                            "scanner",
-                                                            "check engine",
-                                                            "luz",
-                                                            "codigo",
-                                                            "código",
-                                                            "codigos",
-                                                            "códigos"
-                                                ],
-                                                "answer": "Triad ofrece escaneo de check engine desde $45. El scan apunta en la dirección correcta y luego se decide si necesita diagnóstico más profundo.\n\nUsa la forma de servicio e incluye códigos o luces del tablero."
-                                    },
-                                    {
-                                                "priority": 60,
-                                                "keys": [
-                                                            "parte",
-                                                            "partes",
-                                                            "pedido",
-                                                            "ordenar",
-                                                            "oem",
-                                                            "aftermarket",
-                                                            "rines",
-                                                            "llantas"
-                                                ],
-                                                "answer": "Triad puede buscar partes OEM, aftermarket, llantas, rines, suspensión, luces, accesorios y partes de proyectos.\n\nUsa la forma con año/marca/modelo, motor, VIN si lo tienes y parte o medida exacta."
-                                    },
-                                    {
-                                                "priority": 55,
-                                                "keys": [
-                                                            "ls",
-                                                            "lt",
-                                                            "sbc",
-                                                            "small block",
-                                                            "swap",
-                                                            "cam",
-                                                            "headers",
-                                                            "intake",
-                                                            "valvetrain",
-                                                            "vats",
-                                                            "vats delete",
-                                                            "hp tuners",
-                                                            "hptuners"
-                                                ],
-                                                "answer": "Triad puede ayudar con partes SBC, LS y LT, soporte de swaps y VATS delete LS compatible usando HP Tuners.\n\nUsa la forma e incluye motor, vehículo, transmisión, setup actual y meta."
-                                    },
-                                    {
-                                                "priority": 50,
-                                                "keys": [
-                                                            "precio",
-                                                            "precios",
-                                                            "cuanto",
-                                                            "cuánto",
-                                                            "cotizar",
-                                                            "cotizacion",
-                                                            "cotización",
-                                                            "cobran",
-                                                            "costo"
-                                                ],
-                                                "answer": "El precio depende del vehículo, trabajo, partes, ubicación y tiempo de diagnóstico.\n\nUsa la forma con vehículo, problema, ciudad y hora preferida para cotizar bien."
-                                    },
-                                    {
-                                                "priority": 40,
-                                                "keys": [
-                                                            "ingles",
-                                                            "inglés",
-                                                            "english"
-                                                ],
-                                                "answer": "Yes, se habla español and English. Use the form in either language."
-                                    }
-                        ]
-            }
-};
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="brand" href="#top"><span class="mark"></span><span class="brand-text"><strong>TRIAD</strong><span>Automotive</span></span></a><p data-i18n="footerDesc">Automotive service, diagnostics, maintenance, pickup & return, fleet support, transport, parts sourcing, LEDs, audio, tire sourcing, and LS/SBC/LT support in Baraboo, Wisconsin.</p></div>
+        <div><h4 data-i18n="footerServices">Services</h4><ul><li><a href="#services">General Repair</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#pickup">Pickup & Return</a></li><li><a href="#performance">Performance & Parts</a></li></ul></div>
+        <div><h4 data-i18n="footerContact">Contact</h4><ul><li><a href="tel:+16084047360">(608) 404-7360</a></li><li><a href="mailto:triadautomotivellc@gmail.com">triadautomotivellc@gmail.com</a></li><li>Baraboo, Wisconsin</li><li><a href="#schedule" data-i18n="schedule">Schedule Service</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Triad Automotive LLC. All rights reserved.</span><span data-i18n="footerTag">Texas roots. Wisconsin built.</span></div>
+    </div>
+  </footer>
 
-        function populateDropdowns() {
-            const serviceSelect = document.getElementById('bookingService');
-            serviceSelect.innerHTML = '';
+  <div class="mobile-cta"><a href="tel:+16084047360" data-i18n="call">Call</a><a href="#schedule" data-i18n="schedule">Schedule</a></div>
+  <div class="toast" id="toast" role="status" aria-live="polite">Request copied.</div>
 
-            trans[currentLang].svcs.forEach(item => {
-                let option = document.createElement('option');
-                option.value = item.v;
-                option.textContent = item.t;
-                serviceSelect.appendChild(option);
-            });
-        }
+  <script>
+    const PHONE = '+16084047360';
+    const form = document.getElementById('serviceForm');
+    const toast = document.getElementById('toast');
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            const selectedLanguage = trans[currentLang];
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-            Object.keys(selectedLanguage).forEach(id => {
-                const element = document.getElementById(id);
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.textContent='☰';
+    }));
 
-                if (element && id !== 'svcs' && id !== 'chatPlaceholder') {
-                    element.innerHTML = selectedLanguage[id];
-                }
-            });
+    function buildRequest(){
+      const data = new FormData(form);
+      return [
+        'TRIAD AUTOMOTIVE SERVICE REQUEST',
+        '',
+        `Name: ${data.get('name') || '-'}`,
+        `Vehicle: ${data.get('vehicle') || '-'}`,
+        `Service: ${data.get('service') || '-'}`,
+        `Area: ${data.get('area') || '-'}`,
+        `Preferred date: ${data.get('date') || 'Flexible'}`,
+        `Pickup: ${data.get('pickupNeeded') || 'No'}`,
+        '',
+        `Details: ${data.get('details') || '-'}`
+      ].join('\n');
+    }
 
-            const chatInput = document.getElementById("chatInput");
-            if (chatInput) chatInput.placeholder = selectedLanguage.chatPlaceholder;
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=>toast.classList.remove('show'),2200);
+    }
 
-            populateDropdowns();
-            resetChat(true);
-        }
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if(!form.reportValidity()) return;
+      const body = encodeURIComponent(buildRequest());
+      window.location.href = `sms:${PHONE}?&body=${body}`;
+    });
 
-        function sendBookingSMS() {
-            const name = document.getElementById('bookingName').value;
-            const vehicle = document.getElementById('bookingVehicle').value;
-            const service = document.getElementById('bookingService').value;
-            const city = document.getElementById('bookingCity').value;
-            const location = document.getElementById('bookingLocation').value;
-            const pickup = document.getElementById("bookingPickup") ? document.getElementById("bookingPickup").value : "No pickup/drop-off needed";
-            const date = document.getElementById('bookingDate').value;
-            const time = document.getElementById('bookingTime').value;
-            const notes = document.getElementById('bookingNotes').value;
+    document.getElementById('copyRequest').addEventListener('click', async () => {
+      if(!form.reportValidity()) return;
+      try{
+        await navigator.clipboard.writeText(buildRequest());
+        showToast(currentLang === 'es' ? 'Solicitud copiada.' : 'Request copied.');
+      }catch{
+        const tmp = document.createElement('textarea');
+        tmp.value = buildRequest();
+        document.body.appendChild(tmp); tmp.select(); document.execCommand('copy'); tmp.remove();
+        showToast(currentLang === 'es' ? 'Solicitud copiada.' : 'Request copied.');
+      }
+    });
 
-            const message =
-                "Hi Triad, my name is " + name +
-                ". Vehicle: " + vehicle +
-                ". I need: " + service +
-                ". City: " + city +
-                ". Location: " + location +
-                ". Pickup/Drop-off: " + pickup +
-                ". Preferred date: " + date +
-                ". Preferred time: " + time +
-                ". Notes: " + notes;
+    const translations = {
+      es: {
+        navServices:'Servicios',navDiagnostics:'Diagnóstico',navPickup:'Recogida y entrega',navWork:'Nuestro trabajo',navPerformance:'Performance',navAbout:'Nosotros',textUs:'Mándanos texto',schedule:'Agendar servicio',heroKicker:'Negocio familiar • Baraboo, Wisconsin',heroTitle1:'Servicio hecho para',heroTitle2:'la vida real.',heroBody:'Diagnóstico, mantenimiento, reparación, recogida y entrega, servicio para flotillas, transporte con troca y remolque, y ayuda con partes para vehículos diarios, de trabajo y proyectos.',requestService:'Solicitar servicio',callShop:'Llamar al taller',domesticForeign:'Domésticos e importados',bilingual:'Hablamos español',pickupMeta:'Recogida disponible con cita',trust1:'Encuentra la falla antes de comprar partes',trust2:'Conveniencia cuando tienes el día ocupado',trust3:'Mantenimiento para negocios locales',trust4:'Partes, planeación y soporte VATS',serviceEyebrow:'Lo que hacemos',serviceTitle:'Un taller. Mucha capacidad.',serviceIntro:'Desde luces de check engine y frenos hasta trocas de trabajo, partes especiales y mejoras planeadas, Triad trabaja con lo que la gente realmente necesita.',svcGeneral:'Servicio y reparación general',svcGeneralBody:'Frenos, suspensión, afinaciones, no arranca, fugas, sobrecalentamiento, dirección, mantenimiento y reparaciones generales.',svcDiag:'Diagnóstico',svcDiagBody:'Escaneo de códigos, luces de advertencia, fallas de manejo, dirección eléctrica y un mejor primer paso antes de cambiar piezas.',svcPickup:'Recogida y entrega',svcPickupBody:'Recogemos el vehículo con cita, hacemos el trabajo aprobado y lo regresamos cuando distancia y trabajo lo permiten.',svcFleet:'Flotillas y negocios',svcFleetBody:'Coordinación de servicio para contratistas, trocas de trabajo, vehículos de entrega y flotillas pequeñas.',svcParts:'Partes y mejoras',svcPartsBody:'OEM, aftermarket, LED, audio, rines, llantas, suspensión, accesorios y planeación de proyectos.',svcTransport:'Troca y remolque',svcTransportBody:'Transporte de vehículos y coordinación de recogida para reparación.',featureBadge1:'Servicio pensado para tu día de trabajo',featureBadge2:'Disponible según ubicación, agenda y condición',convenience:'Conveniencia Triad',pickupTitle:'Tu carro puede venir a nosotros.',pickupBody:'¿Ocupado en el trabajo o en casa? Cuando la agenda, ubicación y reparación lo permiten, podemos recoger tu vehículo, hacer el trabajo aprobado y regresarlo al terminar.',pickupPoint1:'En tu trabajo o casa',pickupPoint2:'Programado con anticipación',pickupPoint3:'Mantenimiento y diagnóstico',pickupPoint4:'Remolque cuando sea necesario',schedulePickup:'Agendar recogida',diagEyebrow:'Empieza con datos',diagTitle:'Escaneo de check engine',diagIntro:'Un escaneo es el inicio del diagnóstico, no una lista mágica de piezas. Leemos la información de falla y te damos dirección para el siguiente paso.',coreEval:'Evaluación inicial',flatScan:'Escaneo a precio fijo',scanLabel:'escaneo',scanBody:'Conectamos el escáner, leemos los códigos guardados, revisamos lo que reporta el sistema y explicamos qué puede requerir más pruebas.',bookScan:'Agendar escaneo',notGuess:'Sin adivinar',diagExplainTitle:'Los códigos dan dirección. Las pruebas confirman la falla.',diagExplainBody:'Algunas fallas requieren pruebas eléctricas, inspección mecánica, smoke test, presión u otro diagnóstico después del escaneo inicial. Te diremos cuando sea necesario.',galleryEyebrow:'En el taller',galleryTitle:'Vehículos reales. Trabajo real.',galleryIntro:'Carros diarios, clásicos, trocas de trabajo, performance, reparación de motores y proyectos. Preferimos mostrar trabajo real que llenar la página con fotos de stock.',perfEyebrow:'Performance y swaps',perfTitle:'Soporte SBC, LS y LT',perfBody:'Partes y soporte de configuración para Small Block Chevy, LS Gen 3/4 y LT: intake, escape, headers, cams, valvetrain, combustible, partes de soporte y LS VATS delete en plataformas compatibles.',startBuild:'Empezar proyecto',partsEyebrow:'Pedido especial',partsTitle:'Partes sin adivinar',partsBody:'Dinos el vehículo, qué quieres reparar o cambiar y tu presupuesto. Podemos ayudar con OEM, aftermarket, luces, audio, suspensión, rines, llantas, accesorios y piezas especiales.',requestParts:'Pedir partes',reviewEyebrow:'Opiniones',reviewTitle:'La gente recuerda cuando la tratan bien.',bookEyebrow:'Solicitar servicio',bookTitle:'Dinos qué necesita el vehículo.',bookBody:'Arma tu solicitud aquí. En teléfono puedes mandarla como mensaje preparado; en computadora puedes copiarla o abrirla en tu app de mensajes.',phone:'Teléfono',email:'Correo',nameLabel:'Tu nombre',vehicleLabel:'Vehículo',serviceLabel:'Servicio',areaLabel:'Ciudad / área',dateLabel:'Fecha preferida',pickupLabel:'¿Necesitas recogida?',detailsLabel:'¿Qué está pasando?',textRequest:'Mandar por texto',copyRequest:'Copiar solicitud',formNote:'Nada se manda automáticamente. El botón abre un mensaje preparado para que lo revises antes de enviarlo.',aboutEyebrow:'Sobre Triad',aboutTitle:'Tres hermanos. Raíces del sur de Texas.',aboutBody:'Triad Automotive fue creado por tres hermanos—Jose, Javier y Miguel—que crecieron entre mecánicos, herramientas, trocas, proyectos familiares y los vehículos que la gente usa todos los días. Hoy Triad lleva esa experiencia práctica a Baraboo y sus alrededores.',aboutPoint1:'Negocio familiar basado en experiencia automotriz práctica.',aboutPoint2:'Raíces de Texas. Construido en Wisconsin.',aboutPoint3:'Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.',footerDesc:'Servicio automotriz, diagnóstico, mantenimiento, recogida y entrega, flotillas, transporte, partes, LEDs, audio, llantas y soporte LS/SBC/LT en Baraboo, Wisconsin.',footerServices:'Servicios',footerContact:'Contacto',footerTag:'Raíces de Texas. Construido en Wisconsin.',call:'Llamar'
+      }
+    };
 
-            window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
-        }
-
-        function setChatLanguage(lang) {
-            currentLang = lang;
-            applyLanguageWithoutReset();
-            updateChatLanguageButtons();
-
-            const chatWindow = document.getElementById("triadChatWindow");
-            if (chatWindow && chatWindow.classList.contains("open")) {
-                resetChat(false);
-            }
-        }
-
-        function updateChatLanguageButtons() {
-            const enBtn = document.getElementById("chatLangEn");
-            const esBtn = document.getElementById("chatLangEs");
-
-            if (!enBtn || !esBtn) return;
-
-            enBtn.classList.toggle("active", currentLang === "en");
-            esBtn.classList.toggle("active", currentLang === "es");
-        }
-
-        function toggleTriadChat() {
-            const chat = document.getElementById("triadChatWindow");
-            chat.classList.toggle("open");
-
-            if (chat.classList.contains("open") && document.getElementById("chatBody").children.length === 0) {
-                resetChat(false);
-            }
-        }
-
-        function resetChat(clearOnly) {
-            const body = document.getElementById("chatBody");
-            if (!body) return;
-
-            body.innerHTML = "";
-            if (!clearOnly) {
-                addBotMessage(chatData[currentLang].welcome);
-                addBotMessage(chatData[currentLang].safetyNote);
-                renderQuickChips();
-            } else if (document.getElementById("triadChatWindow").classList.contains("open")) {
-                addBotMessage(chatData[currentLang].welcome);
-                addBotMessage(chatData[currentLang].safetyNote);
-                renderQuickChips();
-            }
-        }
-
-        function addBotMessage(text) {
-            addChatMessage(text, "bot");
-        }
-
-        function addUserMessage(text) {
-            addChatMessage(text, "user");
-        }
-
-        function addChatMessage(text, type) {
-            const body = document.getElementById("chatBody");
-            const row = document.createElement("div");
-            row.className = "chat-row " + type;
-
-            const bubble = document.createElement("div");
-            bubble.className = "chat-bubble";
-            bubble.textContent = text;
-
-            row.appendChild(bubble);
-            body.appendChild(row);
-            body.scrollTop = body.scrollHeight;
-        }
-
-        function renderQuickChips() {
-            const body = document.getElementById("chatBody");
-            const wrap = document.createElement("div");
-            wrap.className = "chat-quick-wrap";
-
-            chatData[currentLang].quick.forEach((label, index) => {
-                const btn = document.createElement("button");
-                btn.className = "chat-chip " + (index < 3 ? "red" : index < 6 ? "blue" : "");
-                btn.type = "button";
-                btn.textContent = label;
-                btn.onclick = () => askChat(label);
-                wrap.appendChild(btn);
-            });
-
-            body.appendChild(wrap);
-            body.scrollTop = body.scrollHeight;
-        }
-
-        function renderLeadForm() {
-            const old = document.getElementById("triadLeadForm");
-            if (old) old.remove();
-
-            const body = document.getElementById("chatBody");
-            const data = chatData[currentLang];
-
-            const card = document.createElement("div");
-            card.className = "triad-chat-lead";
-            card.id = "triadLeadForm";
-
-            card.innerHTML = `
-                <div class="lead-title">${data.leadTitle}</div>
-                <div class="lead-grid">
-                    <input class="lead-input" id="leadName" placeholder="${data.name}">
-                    <input class="lead-input" id="leadVehicle" placeholder="${data.vehicle}">
-                    <input class="lead-input" id="leadPhone" placeholder="${data.phone}">
-                    <textarea class="lead-input lead-textarea" id="leadIssue" placeholder="${data.issue}"></textarea>
-                </div>
-                <div class="lead-actions">
-                    <button type="button" class="lead-btn" onclick="sendLeadText()">${data.sendText}</button>
-                    <a class="lead-btn secondary" href="tel:${triadPhone}">${data.callNow}</a>
-                </div>
-            `;
-
-            body.appendChild(card);
-            body.scrollTop = body.scrollHeight;
-        }
-
-        function normalizeText(text) {
-            return text.toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
-        }
-
-        function findChatAnswer(message) {
-            const msg = normalizeText(message);
-            const answers = [...chatData[currentLang].answers].sort((a, b) => (b.priority || 0) - (a.priority || 0));
-
-            for (const item of answers) {
-                for (const key of item.keys) {
-                    if (msg.includes(normalizeText(key))) {
-                        return item.answer;
-                    }
-                }
-            }
-
-            if (msg.includes("hola") || msg.includes("buenas")) {
-                currentLang = "es";
-                applyLanguageWithoutReset();
-                return chatData.es.welcome;
-            }
-
-            if (msg.includes("hello") || msg.includes("hi")) {
-                currentLang = "en";
-                applyLanguageWithoutReset();
-                return chatData.en.welcome;
-            }
-
-            return chatData[currentLang].fallback;
-        }
-
-        function applyLanguageWithoutReset() {
-            const selectedLanguage = trans[currentLang];
-
-            Object.keys(selectedLanguage).forEach(id => {
-                const element = document.getElementById(id);
-                if (element && id !== 'svcs' && id !== 'chatPlaceholder') {
-                    element.innerHTML = selectedLanguage[id];
-                }
-            });
-
-            const chatInput = document.getElementById("chatInput");
-            if (chatInput) chatInput.placeholder = selectedLanguage.chatPlaceholder;
-
-            populateDropdowns();
-        }
-
-        function askChat(text) {
-            addUserMessage(text);
-            setTimeout(() => {
-                addBotMessage(findChatAnswer(text));
-
-                if (detectSafetyUrgency(text)) {
-                    addBotMessage(currentLang === "es"
-                        ? "Si hay peligro inmediato para personas, aléjate del vehículo y contacta emergencias primero. Después, pide servicio con Triad si el vehículo no se puede mover seguro."
-                        : "If there is immediate danger to people, move away from the vehicle and contact emergency services first. Then request Triad service if the vehicle cannot move safely."
-                    );
-                }
-
-                renderQuickChips();
-            }, 220);
-        }
-
-        function sendChatMessage() {
-            const input = document.getElementById("chatInput");
-            const text = input.value.trim();
-
-            if (!text) return;
-
-            input.value = "";
-            askChat(text);
-        }
-
-        function handleChatKey(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                sendChatMessage();
-            }
-        }
-
-        function sendLeadText() {
-            const name = document.getElementById("leadName").value.trim();
-            const vehicle = document.getElementById("leadVehicle").value.trim();
-            const phone = document.getElementById("leadPhone").value.trim();
-            const issue = document.getElementById("leadIssue").value.trim();
-
-            const data = chatData[currentLang];
-
-            let message = `${data.intentPrefix}
-Name / Nombre: ${name}
-Vehicle / Vehículo: ${vehicle}
-Phone / Teléfono: ${phone}
-Issue / Problema: ${issue}
-Website: ${triadWebsite}`;
-
-            window.location.href = `sms:${triadPhone}?body=${encodeURIComponent(message)}`;
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const chatInput = document.getElementById("chatInput");
-            if (chatInput) chatInput.placeholder = trans[currentLang].chatPlaceholder;
-            populateDropdowns();
-            if (typeof updateChatLanguageButtons === 'function') updateChatLanguageButtons();
-        });
-    </script>
+    let currentLang = 'en';
+    const originalText = {};
+    document.querySelectorAll('[data-i18n]').forEach(el => originalText[el.dataset.i18n] ??= el.textContent);
+    document.getElementById('langToggle').addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'es' : 'en';
+      document.documentElement.lang = currentLang;
+      document.getElementById('langToggle').textContent = currentLang === 'en' ? '🌐 Español' : '🌐 English';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        el.textContent = currentLang === 'es' ? (translations.es[key] || originalText[key]) : originalText[key];
+      });
+    });
+  </script>
 </body>
 </html>
