@@ -383,6 +383,161 @@
     }
 
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    /* Responsive refinement: fluid spacing, accessible controls, and resilient grids. */
+    :root{--muted:#b0b8c4;--line:rgba(255,255,255,.12)}
+    html{scroll-padding-top:90px}
+    body{overflow-x:clip}
+    main:focus{outline:none}
+    .skip-link{position:fixed;left:16px;top:-80px;z-index:200;background:#fff;color:#111;padding:12px 18px;border-radius:8px;font-weight:700}
+    .skip-link:focus{top:12px}
+    :focus-visible{outline:3px solid #ff8588;outline-offset:5px}
+    .container{width:min(calc(100% - 64px),var(--max))}
+    .nav{gap:20px}
+    .nav-links{gap:18px;font-size:.84rem}
+    .nav-links a{white-space:nowrap}
+    .nav-actions{flex-shrink:0}
+    .nav-actions .btn-secondary{display:none}
+    .lang-btn{min-height:44px}
+    .brand-text strong{font-size:1.6rem}
+    .btn{min-height:48px;border-radius:10px;white-space:normal;text-align:center;line-height:1.4}
+    .btn-primary{color:#fff;background:#dc2028;box-shadow:0 8px 24px rgba(227,27,35,.16)}
+    .btn-primary:hover{background:#ef3038}
+    .hero{min-height:650px}
+    .hero .container{padding:80px 0 108px}
+    .hero-copy{max-width:720px}
+    h1{font-size:clamp(4rem,7vw,6.8rem);line-height:.94;letter-spacing:-.025em;text-wrap:balance}
+    h1 .accent{color:#f4f6f8;-webkit-text-stroke:0}
+    .hero-copy>p{max-width:610px;line-height:1.75;font-size:1.06rem}
+    .hero-source-tag{flex-wrap:wrap;gap:4px 12px;max-width:620px;font-size:.78rem}
+    .hero-meta{font-size:.8rem;gap:12px 22px;margin-top:26px}
+    .hero-kicker{line-height:1.5;letter-spacing:.055em}
+    .pulse{flex-shrink:0}
+    .section,.diag,.gallery,.reviews,.booking,.sourcing{padding:84px 0}
+    .feature-section,.split-section,.faq{padding-bottom:84px}
+    .process{padding-bottom:60px}
+    .proof-band{padding-bottom:84px}
+    .section-head{gap:40px;align-items:start}
+    .section-head>div{flex:1;min-width:0}
+    .section-head>p{flex:1;max-width:520px;font-size:.96rem;line-height:1.75}
+    .section-head h2{font-size:clamp(2.4rem,3.7vw,3.7rem);line-height:1.02;text-wrap:balance}
+    .trust-item{padding:24px}
+    .trust-item span{display:block;margin-top:6px;line-height:1.6}
+    .services-grid,.form-grid{grid-template-columns:repeat(12,minmax(0,1fr))}
+    .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .service-card{padding:28px 28px 76px;min-width:0}
+    .service-card h3{margin-top:28px;line-height:1.1}
+    .service-card p{line-height:1.7}
+    .service-link{bottom:22px;right:24px}
+    .feature-copy,.booking-copy,.booking-form,.source-copy{padding:clamp(28px,3.7vw,48px);min-width:0}
+    .feature-copy h2,.source-copy h3,.split-card h3,.booking-copy h2,.about-copy h2{line-height:1.03;text-wrap:balance}
+    .feature-shell,.source-shell,.booking-shell,.about-shell,.diag-grid,.split{min-width:0}
+    .feature-shell>* ,.source-shell>* ,.booking-shell>* ,.about-shell>* ,.diag-grid>* ,.split>*{min-width:0}
+    .gallery-item{margin:0;min-width:0}
+    .gallery-caption{line-height:1.55;text-shadow:0 1px 10px #000}
+    .gallery-item:after{inset:20% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+    .about-image{background:#0b0d11}
+    .about-image img{object-fit:contain;padding:24px}
+    .contact-stack a{gap:14px;flex-wrap:wrap;align-items:start}
+    .contact-stack a span:last-child{overflow-wrap:anywhere;font-size:.9rem}
+    input,select,textarea{color-scheme:dark;font-size:16px;min-height:48px;min-width:0;max-width:100%}
+    .field{min-width:0}
+    textarea{min-height:140px}
+    .form-note,.source-disclaimer{color:#abb4c0;font-size:.82rem;line-height:1.65}
+    .form-actions .btn{flex:1 1 140px}
+    .request-preview{margin-top:18px}
+    .request-preview textarea{margin-top:8px;min-height:250px}
+    .footer-brand p,footer h4,.footer-bottom{color:#a6aebb}
+    footer a{overflow-wrap:anywhere}
+    .footer-grid>*{min-width:0}
+    .reveal{opacity:1;transform:none}
+    .toast{width:max-content;max-width:calc(100% - 32px);text-align:center}
+    @media(min-width:1241px){
+      .nav-links.open{position:static;flex-direction:row;padding:0;border:0;background:transparent}
+    }
+    @media(max-width:1240px){
+      .nav-links{display:none}
+      .menu-btn{display:grid;place-items:center;flex-shrink:0;font-size:1.5rem}
+      .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;padding:12px 24px 20px;background:#0b0e13;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;max-height:calc(100dvh - 90px);overflow-y:auto;box-shadow:0 18px 30px #0006}
+      .nav-links.open a{padding:14px 8px;border-bottom:1px solid var(--line);white-space:normal;font-size:1rem}
+      .nav-links.open a:after{display:none}
+      .nav-actions .btn-secondary{display:inline-flex}
+    }
+    @media(max-width:1080px){
+      .section-head{gap:28px}
+      .feature-image{min-height:380px}
+      .source-map{min-height:460px}
+      .source-copy{padding:36px}
+      .booking-shell{grid-template-columns:1fr}
+      .booking-copy h2{max-width:620px}
+      .contact-stack{max-width:600px}
+      .about-image{height:380px}
+    }
+    @media(max-width:780px){
+      .container{width:calc(100% - 40px)}
+      .nav-actions .btn-secondary{display:none}
+      .nav{gap:12px}
+      .hero{min-height:0}
+      .hero .container{padding:72px 0 88px}
+      .hero:before{background:linear-gradient(90deg,rgba(8,9,12,.88),rgba(8,9,12,.55)),linear-gradient(0deg,#08090c,transparent 80%),url('https://triadautomotiveusa.com/2FB52FB2-5D05-497D-840C-234481131CB2.png') 62% center/cover no-repeat}
+      h1{font-size:clamp(3.5rem,10vw,5.5rem);max-width:650px;margin:22px 0}
+      .hero-copy>p{font-size:1rem;line-height:1.7;margin-bottom:24px}
+      .hero-actions{gap:10px}
+      .hero-meta{gap:12px;font-size:.78rem}
+      .hero-kicker{font-size:.69rem}
+      .hero-source-tag{margin-top:22px}
+      .trust-strip{margin-top:-30px}
+      .trust-item{padding:20px 16px}
+      .trust-item strong{font-size:1.2rem;line-height:1.2}
+      .trust-item span{font-size:.8rem}
+      .section,.diag,.gallery,.reviews,.booking,.sourcing{padding:60px 0}
+      .feature-section,.split-section,.faq,.process,.proof-band{padding-bottom:60px}
+      .section-head{margin-bottom:24px}
+      .section-head h2{font-size:2.7rem}
+      .service-card{padding:24px 24px 74px}
+      .service-card h3{margin-top:22px}
+      .feature-image{min-height:300px}
+      .feature-copy,.booking-copy,.booking-form,.source-copy{padding:28px 24px}
+      .feature-copy h2,.booking-copy h2,.about-copy h2,.split-card h3,.faq-intro h2{font-size:3rem;line-height:1.04}
+      .source-map{min-height:420px}
+      .form-grid{grid-template-columns:minmax(0,1fr)}
+      .gallery-grid{gap:12px;grid-auto-rows:240px}
+      .review{padding:24px}
+      .about{padding:10px 0 60px}
+      .about-shell{gap:26px}
+      .about-image{height:300px}
+      .mobile-cta{bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+      body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+      .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+      footer{padding-top:36px}
+    }
+    @media(max-width:520px){
+      .container{width:calc(100% - 32px)}
+      .hero .container{padding-top:48px}
+      .hero-actions .btn{flex:1 1 calc(50% - 10px);font-size:.86rem;padding:13px 12px}
+      .hero-actions .btn:first-child{flex-basis:100%}
+      .hero-source-tag{display:flex;align-items:start;flex-direction:column}
+      .hero-meta{display:grid;grid-template-columns:1fr;gap:10px}
+      .hero-meta span{min-width:0}
+      .decision-shell{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .decision-intro{grid-column:1/-1;padding:10px}
+      .decision-card{padding:14px 12px;gap:10px;min-height:112px}
+      .decision-card b{font-size:.78rem}
+      .decision-card span{font-size:.75rem;line-height:1.5}
+      .booking-copy,.booking-form,.source-copy{padding:26px 20px}
+      .gallery-grid{grid-template-columns:1fr;grid-auto-rows:260px}
+      .contact-stack a{flex-direction:column;gap:5px}
+      .source-map-top h2{font-size:3rem}
+      .source-map{padding:26px 20px}
+      .source-disclaimer{font-size:.8rem}
+      .feature-badge{left:16px;right:16px;bottom:16px}
+      .trust-item{padding:18px 14px}
+      .trust-item strong{font-size:1.05rem}
+      .source-service h3{font-size:2rem}
+      .footer-grid{gap:28px}
+      summary{padding:18px 16px;font-size:.92rem;gap:12px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
   </style>
   <script type="application/ld+json">
   {
@@ -404,6 +559,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#top" data-i18n="skipLink">Skip to content</a>
   <div class="topbar">
     <div class="container">
       <div class="topbar-links">
@@ -423,22 +579,20 @@
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="#services" data-i18n="navServices">Services</a>
-        <a href="#diagnostics" data-i18n="navDiagnostics">Diagnostics</a>
         <a href="#pickup" data-i18n="navPickup">Pickup & Return</a>
         <a href="#sourcing" data-i18n="navSourcing">Vehicle Sourcing</a>
         <a href="#work" data-i18n="navWork">Our Work</a>
-        <a href="#performance" data-i18n="navPerformance">Performance</a>
         <a href="#about" data-i18n="navAbout">About</a>
       </nav>
       <div class="nav-actions">
         <a class="btn btn-secondary" href="sms:+19564757053" data-i18n="textUs">Text Us</a>
         <a class="btn btn-primary" href="#schedule" data-i18n="schedule">Schedule Service</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-controls="navLinks" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
     </div>
   </header>
 
-  <main id="top">
+  <main id="top" tabindex="-1">
     <section class="hero">
       <div class="container">
         <div class="hero-copy">
@@ -512,7 +666,7 @@
           <div class="feature-list">
             <div data-i18n="pickupPoint1">At work or at home</div><div data-i18n="pickupPoint2">Scheduled in advance</div><div data-i18n="pickupPoint3">Maintenance & diagnostics</div><div data-i18n="pickupPoint4">Trailer transport when needed</div>
           </div>
-          <div><a class="btn btn-primary" href="#schedule" data-i18n="schedulePickup">Schedule Pickup</a></div>
+          <div><a class="btn btn-primary" href="#schedule" data-service="Pickup & Return" data-i18n="schedulePickup">Schedule Pickup</a></div>
         </div>
       </div>
     </section>
@@ -574,7 +728,7 @@
         <div class="diag-grid">
           <div class="diag-price">
             <div><span class="eyebrow" data-i18n="coreEval">Core evaluation</span><h3 data-i18n="flatScan">Flat-rate scan</h3><div class="price">$45<small data-i18n="scanLabel">scan</small></div><p data-i18n="scanBody">We connect a scanner, read stored fault codes, review what the system is reporting, and explain what may need further testing.</p></div>
-            <a class="btn btn-primary" href="#schedule" data-i18n="bookScan">Book a Scan</a>
+            <a class="btn btn-primary" href="#schedule" data-service="Diagnostics / Warning Light" data-i18n="bookScan">Book a Scan</a>
           </div>
           <div class="diag-explain"><div class="copy"><span class="eyebrow red" data-i18n="notGuess">Not guesswork</span><h3 data-i18n="diagExplainTitle">Codes point the direction. Testing confirms the failure.</h3><p data-i18n="diagExplainBody">Some issues need electrical testing, mechanical inspection, smoke testing, pressure checks, or hands-on diagnosis after the initial scan. We’ll tell you when that’s the case.</p></div></div>
         </div>
@@ -597,7 +751,7 @@
 
     <section class="split-section" id="performance">
       <div class="container split">
-        <div class="split-card performance"><span class="eyebrow red" data-i18n="perfEyebrow">Performance & swaps</span><h3 data-i18n="perfTitle">SBC, LS & LT support</h3><p data-i18n="perfBody">Parts sourcing and setup support for Small Block Chevy, LS Gen 3/4, and LT-based builds—including intakes, exhaust, headers, cams, valvetrain, fuel upgrades, supporting parts, and LS VATS delete on compatible platforms.</p><div class="chip-row"><span class="chip">SBC</span><span class="chip">LS Gen 3 / 4</span><span class="chip">LT</span><span class="chip">VATS Delete</span><span class="chip">Build Planning</span></div><a class="btn btn-primary" href="#schedule" data-i18n="startBuild">Start a Build</a></div>
+        <div class="split-card performance"><span class="eyebrow red" data-i18n="perfEyebrow">Performance & swaps</span><h3 data-i18n="perfTitle">SBC, LS & LT support</h3><p data-i18n="perfBody">Parts sourcing and setup support for Small Block Chevy, LS Gen 3/4, and LT-based builds—including intakes, exhaust, headers, cams, valvetrain, fuel upgrades, supporting parts, and LS VATS delete on compatible platforms.</p><div class="chip-row"><span class="chip">SBC</span><span class="chip">LS Gen 3 / 4</span><span class="chip">LT</span><span class="chip">VATS Delete</span><span class="chip">Build Planning</span></div><a class="btn btn-primary" href="#schedule" data-service="LS / SBC / LT / VATS" data-i18n="startBuild">Start a Build</a></div>
         <div class="split-card"><span class="eyebrow" data-i18n="partsEyebrow">Special order</span><h3 data-i18n="partsTitle">Parts without the guesswork</h3><p data-i18n="partsBody">Tell us the vehicle, what you’re trying to fix or change, and your budget. We can help source OEM replacement parts, aftermarket parts, lighting, audio, suspension, wheels, tires, accessories, custom-order items, and hard-to-find parts from Mexico when appropriate.</p><div class="chip-row"><span class="chip">OEM</span><span class="chip">Aftermarket</span><span class="chip">Mexico Sourcing</span><span class="chip">LED / Audio</span><span class="chip">Wheels & Tires</span></div><button class="btn btn-secondary prefill-service" type="button" data-service="Mexico Parts Sourcing" data-i18n="requestParts">Request Parts</button></div>
       </div>
     </section>
@@ -637,17 +791,18 @@
           <div class="form-grid">
             <div class="field"><label for="name" data-i18n="nameLabel">Your name</label><input id="name" name="name" autocomplete="name" required placeholder="Name"></div>
             <div class="field"><label for="vehicle" data-i18n="vehicleLabel">Vehicle</label><input id="vehicle" name="vehicle" required placeholder="Year / Make / Model"></div>
-            <div class="field"><label for="service" data-i18n="serviceLabel">Service</label><select id="service" name="service" required><option value="">Choose service</option><option>Diagnostics / Warning Light</option><option>General Repair</option><option>Brakes / Suspension</option><option>Maintenance / Oil Change</option><option>Pickup & Return</option><option>Fleet / Business Service</option><option>Truck & Trailer Transport</option><option>Parts / Upgrades</option><option>South Texas Vehicle Sourcing</option><option>Mexico Parts Sourcing</option><option>LS / SBC / LT / VATS</option><option>Other</option></select></div>
-            <div class="field"><label for="area" data-i18n="areaLabel">City / Area</label><select id="area" name="area"><option>Baraboo</option><option>Wisconsin Dells</option><option>Lake Delton</option><option>Portage</option><option>Reedsburg</option><option>Sauk City</option><option>Nearby / Other</option></select></div>
+            <div class="field"><label for="service" data-i18n="serviceLabel">Service</label><select id="service" name="service" required><option value="" data-i18n="option0">Choose service</option><option value="Diagnostics / Warning Light" data-i18n="option1">Diagnostics / Warning Light</option><option value="General Repair" data-i18n="option2">General Repair</option><option value="Brakes / Suspension" data-i18n="option3">Brakes / Suspension</option><option value="Maintenance / Oil Change" data-i18n="option4">Maintenance / Oil Change</option><option value="Pickup & Return" data-i18n="option5">Pickup & Return</option><option value="Fleet / Business Service" data-i18n="option6">Fleet / Business Service</option><option value="Truck & Trailer Transport" data-i18n="option7">Truck & Trailer Transport</option><option value="Parts / Upgrades" data-i18n="option8">Parts / Upgrades</option><option value="South Texas Vehicle Sourcing" data-i18n="option9">South Texas Vehicle Sourcing</option><option value="Mexico Parts Sourcing" data-i18n="option10">Mexico Parts Sourcing</option><option value="LS / SBC / LT / VATS" data-i18n="option11">LS / SBC / LT / VATS</option><option value="Other" data-i18n="option12">Other</option></select></div>
+            <div class="field"><label for="area" data-i18n="areaLabel">City / Area</label><select id="area" name="area"><option>Baraboo</option><option>Wisconsin Dells</option><option>Lake Delton</option><option>Portage</option><option>Reedsburg</option><option>Sauk City</option><option value="Nearby / Other" data-i18n="option13">Nearby / Other</option></select></div>
             <div class="field"><label for="date" data-i18n="dateLabel">Preferred date</label><input id="date" name="date" type="date"></div>
-            <div class="field"><label for="pickupNeeded" data-i18n="pickupLabel">Pickup needed?</label><select id="pickupNeeded" name="pickupNeeded"><option>No</option><option>Yes — pickup & return</option><option>Possibly — tell me options</option><option>Trailer transport may be needed</option></select></div>
+            <div class="field"><label for="pickupNeeded" data-i18n="pickupLabel">Pickup needed?</label><select id="pickupNeeded" name="pickupNeeded"><option value="No" data-i18n="option14">No</option><option value="Yes — pickup & return" data-i18n="option15">Yes — pickup & return</option><option value="Possibly — tell me options" data-i18n="option16">Possibly — tell me options</option><option value="Trailer transport may be needed" data-i18n="option17">Trailer transport may be needed</option></select></div>
             <div class="field"><label for="budget" data-i18n="budgetLabel">Budget / target</label><input id="budget" name="budget" placeholder="$ budget or target price"></div>
-            <div class="field"><label for="contact" data-i18n="contactLabel">Best callback / text number</label><input id="contact" name="contact" inputmode="tel" autocomplete="tel" placeholder="Phone number"></div>
+            <div class="field"><label for="contact" data-i18n="contactLabel">Best callback / text number</label><input id="contact" name="contact" type="tel" inputmode="tel" autocomplete="tel" placeholder="Phone number"></div>
             <div class="booking-source-note" id="sourceFormNote" data-i18n="sourceFormNote">For vehicle sourcing, include acceptable years, trim, drivetrain, mileage, color preferences, title requirements, rust tolerance, and deal-breakers. For Mexico parts, include VIN/part number/photos if available.</div>
             <div class="field full"><label for="details" data-i18n="detailsLabel">What’s going on?</label><textarea id="details" name="details" required placeholder="Warning light, noise, leak, repair needed, part you want installed, symptoms, etc."></textarea></div>
           </div>
-          <div class="form-actions"><button class="btn btn-primary" type="submit" data-i18n="textRequest">Text Request</button><button class="btn btn-secondary" id="copyRequest" type="button" data-i18n="copyRequest">Copy Request</button></div>
-          <p class="form-note" data-i18n="formNote">Nothing is sent automatically. The text button opens a prepared message for you to review before sending.</p>
+          <div class="form-actions"><button class="btn btn-primary" type="submit" data-i18n="textRequest">Text Request</button><button class="btn btn-secondary" id="emailRequest" type="button" data-i18n="emailRequest">Email Request</button><button class="btn btn-secondary" id="copyRequest" type="button" data-i18n="copyRequest">Copy Request</button></div>
+          <p class="form-note" data-i18n="formNote">Nothing is sent automatically. Choose text or email to review your request in your messaging app before sending. An appointment is confirmed only after we reply.</p>
+          <div class="request-preview" id="requestPreview" hidden><label for="requestText" data-i18n="manualCopy">Your request — select and copy the text below</label><textarea id="requestText" readonly></textarea></div>
         </form>
       </div>
     </section>
@@ -671,7 +826,7 @@
     </div>
   </footer>
 
-  <div class="mobile-cta" style="grid-template-columns:repeat(3,1fr)"><a href="tel:+19564757053" data-i18n="call">Call</a><a href="sms:+19564757053" data-i18n="textUs">Text</a><a href="#schedule" data-i18n="schedule">Schedule</a></div>
+  <div class="mobile-cta" style="grid-template-columns:repeat(3,1fr)"><a href="tel:+19564757053" data-i18n="call">Call</a><a href="sms:+19564757053" data-i18n="mobileText">Text</a><a href="#schedule" data-i18n="mobileSchedule">Schedule</a></div>
   <div class="toast" id="toast" role="status" aria-live="polite">Request copied.</div>
 
   <script>
@@ -682,17 +837,39 @@
     const navLinks = document.getElementById('navLinks');
 
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+    document.getElementById('date').min = localDateString();
 
+    function localDateString(){
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    }
+    function syncMenuLabel(){
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-label', document.documentElement.lang === 'es' ? (open ? 'Cerrar menú' : 'Abrir menú') : (open ? 'Close menu' : 'Open menu'));
+    }
+    function closeMenu(returnFocus = false){
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.textContent='☰';
+      syncMenuLabel();
+      if(returnFocus) menuBtn.focus();
+    }
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu(true);
+    });
+    document.addEventListener('click', e => {if(!e.target.closest('.nav-wrap')) closeMenu();});
+    window.matchMedia('(max-width:1240px)').addEventListener('change', () => closeMenu());
     menuBtn.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', String(open));
       menuBtn.textContent = open ? '×' : '☰';
+      syncMenuLabel();
     });
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       navLinks.classList.remove('open');
       menuBtn.setAttribute('aria-expanded','false');
       menuBtn.textContent='☰';
+      syncMenuLabel();
     }));
 
     const serviceSelect = document.getElementById('service');
@@ -704,10 +881,10 @@
     function prefillService(value){
       serviceSelect.value = value;
       updateSourceNote();
-      document.getElementById('schedule').scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById('schedule').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block:'start'});
       setTimeout(()=>document.getElementById('details').focus({preventScroll:true}), 550);
     }
-    document.querySelectorAll('[data-service]').forEach(el => el.addEventListener('click', () => prefillService(el.dataset.service)));
+    document.querySelectorAll('[data-service]').forEach(el => el.addEventListener('click', e => {e.preventDefault(); prefillService(el.dataset.service);}));
     serviceSelect.addEventListener('change', updateSourceNote);
 
     const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
@@ -746,7 +923,14 @@
       e.preventDefault();
       if(!form.reportValidity()) return;
       const body = encodeURIComponent(buildRequest());
-      window.location.href = `sms:${PHONE}?&body=${body}`;
+      const separator = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? '&' : '?';
+      window.location.href = `sms:${PHONE}${separator}body=${body}`;
+    });
+
+    document.getElementById('emailRequest').addEventListener('click', () => {
+      if(!form.reportValidity()) return;
+      const subject = currentLang === 'es' ? 'Solicitud de servicio — Triad Automotive' : 'Service request — Triad Automotive';
+      window.location.href = `mailto:triadautomotivellc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildRequest())}`;
     });
 
     document.getElementById('copyRequest').addEventListener('click', async () => {
@@ -755,19 +939,32 @@
         await navigator.clipboard.writeText(buildRequest());
         showToast(currentLang === 'es' ? 'Solicitud copiada.' : 'Request copied.');
       }catch{
-        const tmp = document.createElement('textarea');
-        tmp.value = buildRequest();
-        document.body.appendChild(tmp); tmp.select(); document.execCommand('copy'); tmp.remove();
-        showToast(currentLang === 'es' ? 'Solicitud copiada.' : 'Request copied.');
+        const preview = document.getElementById('requestPreview');
+        const text = document.getElementById('requestText');
+        preview.hidden = false;
+        text.value = buildRequest();
+        text.focus(); text.select();
+        let copied = false;
+        try { copied = document.execCommand('copy'); } catch {}
+        if(copied){
+          preview.hidden = true;
+          document.getElementById('copyRequest').focus();
+          showToast(currentLang === 'es' ? 'Solicitud copiada.' : 'Request copied.');
+        }else{
+          showToast(currentLang === 'es' ? 'Selecciona y copia tu solicitud abajo.' : 'Select and copy your request below.');
+        }
       }
     });
 
     const translations = {
       es: {
-        navServices:'Servicios',navDiagnostics:'Diagnóstico',navPickup:'Recogida y entrega',navWork:'Nuestro trabajo',navPerformance:'Performance',navAbout:'Nosotros',textUs:'Mándanos texto',schedule:'Agendar servicio',heroKicker:'Negocio familiar • Baraboo, Wisconsin',heroTitle1:'Servicio hecho para',heroTitle2:'la vida real.',heroBody:'Diagnóstico, reparación, recogida y entrega, flotillas, performance, más búsqueda de vehículos con poca corrosión en el sur de Texas y acceso a partes difíciles de México.',requestService:'Solicitar servicio',callShop:'Llamar al taller',domesticForeign:'Domésticos e importados',bilingual:'Hablamos español',pickupMeta:'Recogida disponible con cita',southTexasMeta:'Ruta de búsqueda en el sur de Texas',trust1:'Encuentra la falla antes de comprar partes',trust2:'Conveniencia cuando tienes el día ocupado',trust3:'Vehículos con poca corrosión del Valle del Río Grande',trust4:'Partes, planeación y soporte VATS',serviceEyebrow:'Lo que hacemos',serviceTitle:'Un taller. Mucha capacidad.',serviceIntro:'Desde luces de check engine y frenos hasta trocas de trabajo, partes especiales y mejoras planeadas, Triad trabaja con lo que la gente realmente necesita.',svcGeneral:'Servicio y reparación general',svcGeneralBody:'Frenos, suspensión, afinaciones, no arranca, fugas, sobrecalentamiento, dirección, mantenimiento y reparaciones generales.',svcDiag:'Diagnóstico',svcDiagBody:'Escaneo de códigos, luces de advertencia, fallas de manejo, dirección eléctrica y un mejor primer paso antes de cambiar piezas.',svcPickup:'Recogida y entrega',svcPickupBody:'Recogemos el vehículo con cita, hacemos el trabajo aprobado y lo regresamos cuando distancia y trabajo lo permiten.',svcFleet:'Flotillas y negocios',svcFleetBody:'Coordinación de servicio para contratistas, trocas de trabajo, vehículos de entrega y flotillas pequeñas.',svcParts:'Partes y mejoras',svcPartsBody:'OEM, aftermarket, LED, audio, rines, llantas, suspensión, accesorios y planeación de proyectos.',svcTransport:'Troca y remolque',svcTransportBody:'Transporte de vehículos y coordinación de recogida para reparación.',featureBadge1:'Servicio pensado para tu día de trabajo',featureBadge2:'Disponible según ubicación, agenda y condición',convenience:'Conveniencia Triad',pickupTitle:'Tu carro puede venir a nosotros.',pickupBody:'¿Ocupado en el trabajo o en casa? Cuando la agenda, ubicación y reparación lo permiten, podemos recoger tu vehículo, hacer el trabajo aprobado y regresarlo al terminar.',pickupPoint1:'En tu trabajo o casa',pickupPoint2:'Programado con anticipación',pickupPoint3:'Mantenimiento y diagnóstico',pickupPoint4:'Remolque cuando sea necesario',schedulePickup:'Agendar recogida',diagEyebrow:'Empieza con datos',diagTitle:'Escaneo de check engine',diagIntro:'Un escaneo es el inicio del diagnóstico, no una lista mágica de piezas. Leemos la información de falla y te damos dirección para el siguiente paso.',coreEval:'Evaluación inicial',flatScan:'Escaneo a precio fijo',scanLabel:'escaneo',scanBody:'Conectamos el escáner, leemos los códigos guardados, revisamos lo que reporta el sistema y explicamos qué puede requerir más pruebas.',bookScan:'Agendar escaneo',notGuess:'Sin adivinar',diagExplainTitle:'Los códigos dan dirección. Las pruebas confirman la falla.',diagExplainBody:'Algunas fallas requieren pruebas eléctricas, inspección mecánica, smoke test, presión u otro diagnóstico después del escaneo inicial. Te diremos cuando sea necesario.',galleryEyebrow:'En el taller',galleryTitle:'Vehículos reales. Trabajo real.',galleryIntro:'Carros diarios, clásicos, trocas de trabajo, performance, reparación de motores y proyectos. Preferimos mostrar trabajo real que llenar la página con fotos de stock.',perfEyebrow:'Performance y swaps',perfTitle:'Soporte SBC, LS y LT',perfBody:'Partes y soporte de configuración para Small Block Chevy, LS Gen 3/4 y LT: intake, escape, headers, cams, valvetrain, combustible, partes de soporte y LS VATS delete en plataformas compatibles.',startBuild:'Empezar proyecto',partsEyebrow:'Pedido especial',partsTitle:'Partes sin adivinar',partsBody:'Dinos el vehículo, qué quieres reparar o cambiar y tu presupuesto. Podemos ayudar con OEM, aftermarket, luces, audio, suspensión, rines, llantas, accesorios, piezas especiales y partes difíciles de México cuando aplique.',requestParts:'Pedir partes',reviewEyebrow:'Opiniones',reviewTitle:'La gente recuerda cuando la tratan bien.',bookEyebrow:'Solicitar servicio',bookTitle:'Dinos qué necesita el vehículo.',bookBody:'Reparación, búsqueda de vehículo limpio, parte de México, recogida, flotilla o proyecto de performance: manda una sola solicitud bien detallada para que TRIAD pueda actuar.',phone:'Teléfono',email:'Correo',nameLabel:'Tu nombre',vehicleLabel:'Vehículo',serviceLabel:'Servicio',areaLabel:'Ciudad / área',dateLabel:'Fecha preferida',pickupLabel:'¿Necesitas recogida?',detailsLabel:'¿Qué está pasando?',textRequest:'Mandar por texto',copyRequest:'Copiar solicitud',formNote:'Nada se manda automáticamente. El botón abre un mensaje preparado para que lo revises antes de enviarlo.',aboutEyebrow:'Sobre Triad',aboutTitle:'Tres hermanos. Raíces del sur de Texas.',aboutBody:'Triad Automotive fue creado por tres hermanos—Jose, Javier y Miguel—que crecieron entre mecánicos, herramientas, trocas y proyectos familiares. Hoy TRIAD lleva esa experiencia a Baraboo y mantiene una ruta directa con el sur de Texas para búsqueda de vehículos y partes.',aboutPoint1:'Negocio familiar basado en experiencia automotriz práctica.',aboutPoint2:'Raíces de Texas. Construido en Wisconsin. Ventaja de búsqueda en el sur de Texas.',aboutPoint3:'Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.',footerDesc:'Servicio automotriz, diagnóstico, mantenimiento, recogida y entrega, flotillas, transporte, búsqueda de vehículos del sur de Texas, partes de México y soporte LS/SBC/LT desde Baraboo, Wisconsin.',footerServices:'Servicios',footerContact:'Contacto',footerTag:'Raíces de Texas. Construido en Wisconsin.',call:'Llamar',navSourcing:'Búsqueda de vehículos',sourceVehicle:'Buscar vehículo',sourceTagLead:'VENTAJA DEL SUR DE TEXAS',sourceTagBody:'Búsqueda de vehículos con poca corrosión + acceso a partes de México.',decisionTitle:'¿Qué quieres hacer?',decisionBody:'Ve directo al área correcta de TRIAD.',decision1:'Arreglar una falla',decision1b:'Luz, ruido, no arranca, fuga',decision2:'Encontrar vehículo limpio',decision2b:'Sur de Texas / poca corrosión',decision3:'Encontrar parte difícil',decision3b:'Búsqueda en México + EE.UU.',decision4:'Armar un proyecto',decision4b:'LS / SBC / LT / mejoras',svcSource:'Vehículos sin óxido del sur de Texas',svcSourceBody:'¿Buscas una troca, SUV, proyecto o vehículo de trabajo sin años de sal de carretera del norte? TRIAD puede buscar candidatos con chasis limpio y poca corrosión en el Valle del Río Grande y sur de Texas.',sourceEyebrow:'TRIAD HACIA EL SUR',sourceTitle:'Escápate del cinturón de óxido.',sourceIntro:'Usamos nuestras raíces del sur de Texas para buscar los vehículos que en el norte cuesta encontrar limpios: trocas, SUVs, clásicos, vehículos de trabajo, donadores y proyectos del Valle del Río Grande y alrededores.',sourceDivision:'División de vehículos y partes',sourceH3:'Un segundo mercado que muchos talleres de Wisconsin no tienen.',sourceBody:'En vez de limitarte a lo que sobrevivió inviernos del norte, TRIAD puede buscar al sur. Danos años, modelo, tracción, presupuesto, millas y lo que no aceptarías. Podemos localizar candidatos, pedir información del vendedor, fotos detalladas de abajo y coordinar los siguientes pasos.',sourceCard1:'Objetivo: sin óxido / poca corrosión',sourceCard1b:'Priorizamos vehículos sin la corrosión fuerte por sal de carretera y verificamos condición antes de llamar limpio a un candidato.',sourceCard2:'Primero inspección',sourceCard2b:'Fotos, video, parte de abajo, título, VIN e información del vendedor antes de comprometerte cuando esté disponible.',sourceCard3:'Partes de México',sourceCard3b:'Partes OEM, aftermarket, molduras, luces, mecánicas, de troca y específicas de plataforma cuando sea legal, disponible y compatible.',sourceCard4:'Coordinación de transporte',sourceCard4b:'Cuando aparezca el vehículo correcto, TRIAD puede ayudar a coordinar la logística para traerlo al norte.',sourceRequest:'Solicitar búsqueda de vehículo',mexicoPartRequest:'Buscar parte en México',sourceDisclaimer:'“Sin óxido” es el objetivo de búsqueda, no una garantía general. Cada vehículo depende de su condición. Las partes de México dependen de disponibilidad, compatibilidad, reglas aduanales/de importación y cumplimiento legal.',processEyebrow:'Cómo funciona la búsqueda',processTitle:'De “búscame uno” a un candidato real.',processIntro:'Un proceso claro hace útil la compra a distancia.',process1:'Dinos el objetivo',process1b:'Años, modelo, versión, tracción, presupuesto, millas, color, requisitos y lo que no aceptarías.',process2:'Buscamos al sur',process2b:'Buscamos por el sur de Texas y nuestra red vehículos o partes que cumplan.',process3:'Verificar antes de vender humo',process3b:'Pedimos VIN, título, fotos de abajo, fallas conocidas, vendedor y costos reales.',process4:'Coordinar el movimiento',process4b:'Si apruebas el candidato, ayudamos a coordinar compra, transporte o movimiento de partes.',proof1:'Raíces 956',proof1b:'La conexión de TRIAD con el sur de Texas forma parte del origen de la empresa.',proof2:'Necesidades de Wisconsin',proof2b:'Entendemos por qué importan chasis, líneas de freno, rockers, tornillería y corrosión.',proof3:'Partes transfronterizas',proof3b:'Una ruta bilingüe abre opciones de partes mexicanas y regionales difíciles de encontrar cuando se pueden conseguir legalmente.',faqEyebrow:'Respuestas claras',faqTitle:'Antes de preguntar.',faqIntro:'El programa reduce incertidumbre; no pretende eliminar todo riesgo.',faqQ1:'¿Garantizan que un vehículo del sur de Texas no tenga óxido?',faqA1:'No. Generalmente evitan años de sal de carretera, pero cada vehículo es diferente. Sin óxido / poca corrosión es el objetivo y verificamos condición visible según la inspección y medios disponibles.',faqQ2:'¿Pueden buscar una troca, SUV, clásico o proyecto específico?',faqA2:'Sí. Manda plataforma, años aceptables, tracción, millas, presupuesto, colores y requisitos. Entre más claro el objetivo, mejor la búsqueda.',faqQ3:'¿TRIAD puede conseguir partes de México?',faqA3:'Sí, cuando sea legal conseguir/importar la pieza, esté disponible y sea compatible. Envío, aduana, fitment y garantía varían caso por caso.',faqQ4:'¿Tengo que comprar el primer vehículo que encuentren?',faqA4:'No. El candidato debe cumplir lo pedido y tener sentido financiero. El proceso busca darte información antes de decidir.',faqQ5:'¿Pueden ayudar a traer el vehículo a Wisconsin?',faqA5:'TRIAD puede ayudar a coordinar transporte y logística. Precio y opciones dependen de ubicación, condición, tiempo y transportista.',budgetLabel:'Presupuesto / objetivo',contactLabel:'Mejor número para llamada / texto',sourceFormNote:'Para búsqueda de vehículo incluye años, versión, tracción, millas, colores, título, tolerancia al óxido y lo que no aceptarías. Para partes de México incluye VIN, número de parte o fotos si las tienes.'
+        navServices:'Servicios',navDiagnostics:'Diagnóstico',navPickup:'Recogida y entrega',navWork:'Nuestro trabajo',navPerformance:'Performance',navAbout:'Nosotros',textUs:'Mándanos texto',schedule:'Agendar servicio',heroKicker:'Negocio familiar • Baraboo, Wisconsin',heroTitle1:'Servicio hecho para',heroTitle2:'la vida real.',heroBody:'Diagnóstico, reparación, recogida y entrega, flotillas, performance, más búsqueda de vehículos con poca corrosión en el sur de Texas y acceso a partes difíciles de México.',requestService:'Solicitar servicio',callShop:'Llamar al taller',domesticForeign:'Domésticos e importados',bilingual:'Hablamos español',pickupMeta:'Recogida disponible con cita',southTexasMeta:'Ruta de búsqueda en el sur de Texas',trust1:'Encuentra la falla antes de comprar partes',trust2:'Conveniencia cuando tienes el día ocupado',trust3:'Vehículos con poca corrosión del Valle del Río Grande',trust4:'Partes, planeación y soporte VATS',serviceEyebrow:'Lo que hacemos',serviceTitle:'Un taller. Mucha capacidad.',serviceIntro:'Desde luces de check engine y frenos hasta trocas de trabajo, partes especiales y mejoras planeadas, Triad trabaja con lo que la gente realmente necesita.',svcGeneral:'Servicio y reparación general',svcGeneralBody:'Frenos, suspensión, afinaciones, no arranca, fugas, sobrecalentamiento, dirección, mantenimiento y reparaciones generales.',svcDiag:'Diagnóstico',svcDiagBody:'Escaneo de códigos, luces de advertencia, fallas de manejo, dirección eléctrica y un mejor primer paso antes de cambiar piezas.',svcPickup:'Recogida y entrega',svcPickupBody:'Recogemos el vehículo con cita, hacemos el trabajo aprobado y lo regresamos cuando distancia y trabajo lo permiten.',svcFleet:'Flotillas y negocios',svcFleetBody:'Coordinación de servicio para contratistas, trocas de trabajo, vehículos de entrega y flotillas pequeñas.',svcParts:'Partes y mejoras',svcPartsBody:'OEM, aftermarket, LED, audio, rines, llantas, suspensión, accesorios y planeación de proyectos.',svcTransport:'Troca y remolque',svcTransportBody:'Transporte de vehículos y coordinación de recogida para reparación.',featureBadge1:'Servicio pensado para tu día de trabajo',featureBadge2:'Disponible según ubicación, agenda y condición',convenience:'Conveniencia Triad',pickupTitle:'Tu carro puede venir a nosotros.',pickupBody:'¿Ocupado en el trabajo o en casa? Cuando la agenda, ubicación y reparación lo permiten, podemos recoger tu vehículo, hacer el trabajo aprobado y regresarlo al terminar.',pickupPoint1:'En tu trabajo o casa',pickupPoint2:'Programado con anticipación',pickupPoint3:'Mantenimiento y diagnóstico',pickupPoint4:'Remolque cuando sea necesario',schedulePickup:'Agendar recogida',diagEyebrow:'Empieza con datos',diagTitle:'Escaneo de check engine',diagIntro:'Un escaneo es el inicio del diagnóstico, no una lista mágica de piezas. Leemos la información de falla y te damos dirección para el siguiente paso.',coreEval:'Evaluación inicial',flatScan:'Escaneo a precio fijo',scanLabel:'escaneo',scanBody:'Conectamos el escáner, leemos los códigos guardados, revisamos lo que reporta el sistema y explicamos qué puede requerir más pruebas.',bookScan:'Agendar escaneo',notGuess:'Sin adivinar',diagExplainTitle:'Los códigos dan dirección. Las pruebas confirman la falla.',diagExplainBody:'Algunas fallas requieren pruebas eléctricas, inspección mecánica, smoke test, presión u otro diagnóstico después del escaneo inicial. Te diremos cuando sea necesario.',galleryEyebrow:'En el taller',galleryTitle:'Vehículos reales. Trabajo real.',galleryIntro:'Carros diarios, clásicos, trocas de trabajo, performance, reparación de motores y proyectos. Preferimos mostrar trabajo real que llenar la página con fotos de stock.',perfEyebrow:'Performance y swaps',perfTitle:'Soporte SBC, LS y LT',perfBody:'Partes y soporte de configuración para Small Block Chevy, LS Gen 3/4 y LT: intake, escape, headers, cams, valvetrain, combustible, partes de soporte y LS VATS delete en plataformas compatibles.',startBuild:'Empezar proyecto',partsEyebrow:'Pedido especial',partsTitle:'Partes sin adivinar',partsBody:'Dinos el vehículo, qué quieres reparar o cambiar y tu presupuesto. Podemos ayudar con OEM, aftermarket, luces, audio, suspensión, rines, llantas, accesorios, piezas especiales y partes difíciles de México cuando aplique.',requestParts:'Pedir partes',reviewEyebrow:'Opiniones',reviewTitle:'La gente recuerda cuando la tratan bien.',bookEyebrow:'Solicitar servicio',bookTitle:'Dinos qué necesita el vehículo.',bookBody:'Reparación, búsqueda de vehículo limpio, parte de México, recogida, flotilla o proyecto de performance: manda una sola solicitud bien detallada para que TRIAD pueda actuar.',phone:'Teléfono',email:'Correo',nameLabel:'Tu nombre',vehicleLabel:'Vehículo',serviceLabel:'Servicio',areaLabel:'Ciudad / área',dateLabel:'Fecha preferida',pickupLabel:'¿Necesitas recogida?',detailsLabel:'¿Qué está pasando?',textRequest:'Mandar por texto',copyRequest:'Copiar solicitud',formNote:'Nada se manda automáticamente. Elige texto o correo para revisar la solicitud en tu aplicación antes de enviarla. La cita se confirma cuando respondamos.',aboutEyebrow:'Sobre Triad',aboutTitle:'Tres hermanos. Raíces del sur de Texas.',aboutBody:'Triad Automotive fue creado por tres hermanos—Jose, Javier y Miguel—que crecieron entre mecánicos, herramientas, trocas y proyectos familiares. Hoy TRIAD lleva esa experiencia a Baraboo y mantiene una ruta directa con el sur de Texas para búsqueda de vehículos y partes.',aboutPoint1:'Negocio familiar basado en experiencia automotriz práctica.',aboutPoint2:'Raíces de Texas. Construido en Wisconsin. Ventaja de búsqueda en el sur de Texas.',aboutPoint3:'Sirviendo Baraboo, Wisconsin Dells, Portage, Reedsburg, Sauk City, Lake Delton y áreas cercanas.',footerDesc:'Servicio automotriz, diagnóstico, mantenimiento, recogida y entrega, flotillas, transporte, búsqueda de vehículos del sur de Texas, partes de México y soporte LS/SBC/LT desde Baraboo, Wisconsin.',footerServices:'Servicios',footerContact:'Contacto',footerTag:'Raíces de Texas. Construido en Wisconsin.',call:'Llamar',navSourcing:'Búsqueda de vehículos',sourceVehicle:'Buscar vehículo',sourceTagLead:'VENTAJA DEL SUR DE TEXAS',sourceTagBody:'Búsqueda de vehículos con poca corrosión + acceso a partes de México.',decisionTitle:'¿Qué quieres hacer?',decisionBody:'Ve directo al área correcta de TRIAD.',decision1:'Arreglar una falla',decision1b:'Luz, ruido, no arranca, fuga',decision2:'Encontrar vehículo limpio',decision2b:'Sur de Texas / poca corrosión',decision3:'Encontrar parte difícil',decision3b:'Búsqueda en México + EE.UU.',decision4:'Armar un proyecto',decision4b:'LS / SBC / LT / mejoras',svcSource:'Vehículos sin óxido del sur de Texas',svcSourceBody:'¿Buscas una troca, SUV, proyecto o vehículo de trabajo sin años de sal de carretera del norte? TRIAD puede buscar candidatos con chasis limpio y poca corrosión en el Valle del Río Grande y sur de Texas.',sourceEyebrow:'TRIAD HACIA EL SUR',sourceTitle:'Escápate del cinturón de óxido.',sourceIntro:'Usamos nuestras raíces del sur de Texas para buscar los vehículos que en el norte cuesta encontrar limpios: trocas, SUVs, clásicos, vehículos de trabajo, donadores y proyectos del Valle del Río Grande y alrededores.',sourceDivision:'División de vehículos y partes',sourceH3:'Un segundo mercado que muchos talleres de Wisconsin no tienen.',sourceBody:'En vez de limitarte a lo que sobrevivió inviernos del norte, TRIAD puede buscar al sur. Danos años, modelo, tracción, presupuesto, millas y lo que no aceptarías. Podemos localizar candidatos, pedir información del vendedor, fotos detalladas de abajo y coordinar los siguientes pasos.',sourceCard1:'Objetivo: sin óxido / poca corrosión',sourceCard1b:'Priorizamos vehículos sin la corrosión fuerte por sal de carretera y verificamos condición antes de llamar limpio a un candidato.',sourceCard2:'Primero inspección',sourceCard2b:'Fotos, video, parte de abajo, título, VIN e información del vendedor antes de comprometerte cuando esté disponible.',sourceCard3:'Partes de México',sourceCard3b:'Partes OEM, aftermarket, molduras, luces, mecánicas, de troca y específicas de plataforma cuando sea legal, disponible y compatible.',sourceCard4:'Coordinación de transporte',sourceCard4b:'Cuando aparezca el vehículo correcto, TRIAD puede ayudar a coordinar la logística para traerlo al norte.',sourceRequest:'Solicitar búsqueda de vehículo',mexicoPartRequest:'Buscar parte en México',sourceDisclaimer:'“Sin óxido” es el objetivo de búsqueda, no una garantía general. Cada vehículo depende de su condición. Las partes de México dependen de disponibilidad, compatibilidad, reglas aduanales/de importación y cumplimiento legal.',processEyebrow:'Cómo funciona la búsqueda',processTitle:'De “búscame uno” a un candidato real.',processIntro:'Un proceso claro hace útil la compra a distancia.',process1:'Dinos el objetivo',process1b:'Años, modelo, versión, tracción, presupuesto, millas, color, requisitos y lo que no aceptarías.',process2:'Buscamos al sur',process2b:'Buscamos por el sur de Texas y nuestra red vehículos o partes que cumplan.',process3:'Verificar antes de vender humo',process3b:'Pedimos VIN, título, fotos de abajo, fallas conocidas, vendedor y costos reales.',process4:'Coordinar el movimiento',process4b:'Si apruebas el candidato, ayudamos a coordinar compra, transporte o movimiento de partes.',proof1:'Raíces 956',proof1b:'La conexión de TRIAD con el sur de Texas forma parte del origen de la empresa.',proof2:'Necesidades de Wisconsin',proof2b:'Entendemos por qué importan chasis, líneas de freno, rockers, tornillería y corrosión.',proof3:'Partes transfronterizas',proof3b:'Una ruta bilingüe abre opciones de partes mexicanas y regionales difíciles de encontrar cuando se pueden conseguir legalmente.',faqEyebrow:'Respuestas claras',faqTitle:'Antes de preguntar.',faqIntro:'El programa reduce incertidumbre; no pretende eliminar todo riesgo.',faqQ1:'¿Garantizan que un vehículo del sur de Texas no tenga óxido?',faqA1:'No. Generalmente evitan años de sal de carretera, pero cada vehículo es diferente. Sin óxido / poca corrosión es el objetivo y verificamos condición visible según la inspección y medios disponibles.',faqQ2:'¿Pueden buscar una troca, SUV, clásico o proyecto específico?',faqA2:'Sí. Manda plataforma, años aceptables, tracción, millas, presupuesto, colores y requisitos. Entre más claro el objetivo, mejor la búsqueda.',faqQ3:'¿TRIAD puede conseguir partes de México?',faqA3:'Sí, cuando sea legal conseguir/importar la pieza, esté disponible y sea compatible. Envío, aduana, fitment y garantía varían caso por caso.',faqQ4:'¿Tengo que comprar el primer vehículo que encuentren?',faqA4:'No. El candidato debe cumplir lo pedido y tener sentido financiero. El proceso busca darte información antes de decidir.',faqQ5:'¿Pueden ayudar a traer el vehículo a Wisconsin?',faqA5:'TRIAD puede ayudar a coordinar transporte y logística. Precio y opciones dependen de ubicación, condición, tiempo y transportista.',budgetLabel:'Presupuesto / objetivo',contactLabel:'Mejor número para llamada / texto',sourceFormNote:'Para búsqueda de vehículo incluye años, versión, tracción, millas, colores, título, tolerancia al óxido y lo que no aceptarías. Para partes de México incluye VIN, número de parte o fotos si las tienes.'
       }
     };
 
+
+    Object.assign(translations.es, {"emailRequest": "Enviar por correo", "manualCopy": "Tu solicitud — selecciona y copia el texto de abajo", "skipLink": "Ir al contenido", "option0": "Elige un servicio", "option1": "Diagnóstico / luz de advertencia", "option2": "Reparación general", "option3": "Frenos / suspensión", "option4": "Mantenimiento / cambio de aceite", "option5": "Recogida y entrega", "option6": "Servicio de flotillas / negocios", "option7": "Transporte con remolque", "option8": "Partes / mejoras", "option9": "Búsqueda de vehículos en el sur de Texas", "option10": "Búsqueda de partes de México", "option11": "LS / SBC / LT / VATS", "option12": "Otro", "option13": "Cerca / otra área", "option14": "No", "option15": "Sí — recogida y entrega", "option16": "Tal vez — quiero conocer las opciones", "option17": "Puede necesitar transporte con remolque"});
+    Object.assign(translations.es, {mobileText:'Texto',mobileSchedule:'Agendar'});
     let currentLang = 'en';
     const originalText = {};
     document.querySelectorAll('[data-i18n]').forEach(el => originalText[el.dataset.i18n] ??= el.textContent);
@@ -780,6 +977,21 @@
         el.textContent = currentLang === 'es' ? (translations.es[key] || originalText[key]) : originalText[key];
       });
     });
+
+    const placeholders = {
+      name:['Name','Nombre'], vehicle:['Year / Make / Model','Año / marca / modelo'],
+      budget:['$ budget or target price','Presupuesto o precio objetivo'],contact:['Phone number','Número de teléfono'],
+      details:['Describe the symptoms, repair, vehicle, or part you need.','Describe los síntomas, la reparación, el vehículo o la parte que necesitas.']
+    };
+    function updateLanguageExtras(){
+      Object.entries(placeholders).forEach(([id,labels])=>document.getElementById(id).placeholder=labels[currentLang === 'es' ? 1 : 0]);
+      syncMenuLabel();
+      try {localStorage.setItem('triad-language', currentLang);} catch {}
+    }
+    document.getElementById('langToggle').addEventListener('click', updateLanguageExtras);
+    try {if(localStorage.getItem('triad-language') === 'es') document.getElementById('langToggle').click();} catch {}
+    updateLanguageExtras();
+    updateSourceNote();
   </script>
 </body>
 </html>
